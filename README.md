@@ -12,7 +12,6 @@
 |  Name | Description | Progress |
 | - | - | - |
 | `Workplace` | `Szoftver tartalmazzon egy workpacet amit colorcodeolni is lehetne, ebben a workpalceben lehetne uj merrseket inditani, azokat kirajzolni stb.` | `[0%]` |
-| `Workplace` | `Szoftver tartalmazzon egy workpacet amit colorcodeolni is lehetne, ebben a workpalceben lehetne uj merrseket inditani, azokat kirajzolni stb.` | `[0%]` |
 
 
 
