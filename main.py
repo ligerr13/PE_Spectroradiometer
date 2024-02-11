@@ -12,23 +12,28 @@ class MyApp(QMainWindow):
         self.ui.setupUi(self)
         self.prev_button = None
 
+
         self.ui.pushButton.clicked.connect(self.handle_navbar_button_backgorund_signal)
         self.ui.pushButton_2.clicked.connect(self.handle_navbar_button_backgorund_signal)
         self.ui.pushButton_3.clicked.connect(self.handle_navbar_button_backgorund_signal)
 
     def handle_navbar_button_backgorund_signal(self):
             button = self.sender()
-            
-            button.setStyleSheet("background-color: #33ccff")
-            
-            if self.prev_button is not None:
-                self.prev_button.setStyleSheet("background-color: transparent, border: 0px")
-            
-            self.prev_button = button
+
+            if button == self.prev_button:
+                self.prev_button.setStyleSheet("border: 0px")
+                self.prev_button = None
+            else:
+                if self.prev_button is not None:
+                    self.prev_button.setStyleSheet("border: 0px")
+                
+                button.setStyleSheet("background-color: #3366cc; border: 2px solid white")
+                self.prev_button = button
+
 
 if __name__ == "__main__":
     app = QApplication([])
-    app.setStyleSheet(qdarktheme.load_stylesheet("light"))
+    app.setStyleSheet(qdarktheme.load_stylesheet("dark"))
 
     window = MyApp()
     window.show()
