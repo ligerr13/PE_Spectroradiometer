@@ -14,7 +14,7 @@ class MyApp(QMainWindow):
 
 if __name__ == "__main__":
     app = QApplication([])
-    app.setStyleSheet(qdarktheme.load_stylesheet())
+    app.setStyleSheet(qdarktheme.load_stylesheet("dark"))
 
     window = MyApp()
     window.show()
