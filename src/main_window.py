@@ -61,6 +61,8 @@ class Ui_MainWindow(object):
         icon.addPixmap(QtGui.QPixmap("../resources/icons/vector.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.pushButton.setIcon(icon)
         self.pushButton.setIconSize(QtCore.QSize(25, 25))
+        self.pushButton.setCheckable(True)
+        self.pushButton.setChecked(False)
         self.pushButton.setObjectName("pushButton")
         self.verticalLayout_4.addWidget(self.pushButton)
         self.line_3 = QtWidgets.QFrame(parent=self.widget_3)
@@ -81,6 +83,8 @@ class Ui_MainWindow(object):
         icon1.addPixmap(QtGui.QPixmap("../resources/icons/workspace.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.pushButton_2.setIcon(icon1)
         self.pushButton_2.setIconSize(QtCore.QSize(25, 25))
+        self.pushButton_2.setCheckable(True)
+        self.pushButton_2.setChecked(False)
         self.pushButton_2.setObjectName("pushButton_2")
         self.verticalLayout_4.addWidget(self.pushButton_2)
         spacerItem1 = QtWidgets.QSpacerItem(20, 411, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
@@ -95,6 +99,8 @@ class Ui_MainWindow(object):
         icon2.addPixmap(QtGui.QPixmap("../resources/icons/setting.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.pushButton_3.setIcon(icon2)
         self.pushButton_3.setIconSize(QtCore.QSize(25, 25))
+        self.pushButton_3.setCheckable(True)
+        self.pushButton_3.setChecked(False)
         self.pushButton_3.setObjectName("pushButton_3")
         self.verticalLayout_4.addWidget(self.pushButton_3)
         self.verticalLayout_3.addWidget(self.widget_3)
@@ -113,7 +119,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
