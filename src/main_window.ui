@@ -124,6 +124,11 @@
           </item>
           <item>
            <widget class="Line" name="line_3">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(129, 129, 129, 50);
+border: 0px;
+border-radius: 50%</string>
+            </property>
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
@@ -220,6 +225,11 @@
     </item>
     <item row="0" column="1">
      <widget class="Line" name="line">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(129, 129, 129, 50);
+border: 0px;
+border-radius: 50%</string>
+      </property>
       <property name="orientation">
        <enum>Qt::Vertical</enum>
       </property>

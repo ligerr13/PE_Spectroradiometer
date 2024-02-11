@@ -60,6 +60,9 @@ class Ui_MainWindow(object):
         self.pushButton.setObjectName("pushButton")
         self.verticalLayout_4.addWidget(self.pushButton)
         self.line_3 = QtWidgets.QFrame(parent=self.widget_3)
+        self.line_3.setStyleSheet("background-color: rgba(129, 129, 129, 50);\n"
+"border: 0px;\n"
+"border-radius: 50%")
         self.line_3.setFrameShape(QtWidgets.QFrame.Shape.HLine)
         self.line_3.setFrameShadow(QtWidgets.QFrame.Shadow.Sunken)
         self.line_3.setObjectName("line_3")
@@ -93,6 +96,9 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.addWidget(self.widget_3)
         self.gridLayout.addWidget(self.widget, 0, 0, 1, 1)
         self.line = QtWidgets.QFrame(parent=self.centralwidget)
+        self.line.setStyleSheet("background-color: rgba(129, 129, 129, 50);\n"
+"border: 0px;\n"
+"border-radius: 50%")
         self.line.setFrameShape(QtWidgets.QFrame.Shape.VLine)
         self.line.setFrameShadow(QtWidgets.QFrame.Shadow.Sunken)
         self.line.setObjectName("line")
