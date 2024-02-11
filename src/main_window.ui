@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>588</width>
-    <height>640</height>
+    <width>662</width>
+    <height>726</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -56,6 +56,9 @@
         <height>16777215</height>
        </size>
       </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <property name="leftMargin">
         <number>5</number>
@@ -98,12 +101,24 @@
               <height>16777215</height>
              </size>
             </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">border: 0px</string>
+            </property>
             <property name="text">
              <string/>
             </property>
             <property name="icon">
-             <iconset resource="../resources/resources.qrc">
-              <normaloff>:/icons/icons/workspace.png</normaloff>:/icons/icons/workspace.png</iconset>
+             <iconset>
+              <normaloff>../resources/icons/vector.png</normaloff>../resources/icons/vector.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>25</width>
+              <height>25</height>
+             </size>
             </property>
            </widget>
           </item>
@@ -128,12 +143,24 @@
               <height>16777215</height>
              </size>
             </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">border: 0px</string>
+            </property>
             <property name="text">
              <string/>
             </property>
             <property name="icon">
-             <iconset resource="../resources/resources.qrc">
-              <normaloff>:/icons/icons/vector.png</normaloff>:/icons/icons/vector.png</iconset>
+             <iconset>
+              <normaloff>../resources/icons/workspace.png</normaloff>../resources/icons/workspace.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>25</width>
+              <height>25</height>
+             </size>
             </property>
            </widget>
           </item>
@@ -164,12 +191,24 @@
               <height>16777215</height>
              </size>
             </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">border: 0px</string>
+            </property>
             <property name="text">
              <string/>
             </property>
             <property name="icon">
-             <iconset resource="../resources/resources.qrc">
-              <normaloff>:/icons/icons/setting.png</normaloff>:/icons/icons/setting.png</iconset>
+             <iconset>
+              <normaloff>../resources/icons/setting.png</normaloff>../resources/icons/setting.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>25</width>
+              <height>25</height>
+             </size>
             </property>
            </widget>
           </item>

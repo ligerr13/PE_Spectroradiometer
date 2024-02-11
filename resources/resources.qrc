@@ -1,7 +1,0 @@
-<RCC>
-  <qresource prefix="icons">
-    <file>icons/setting.png</file>
-    <file>icons/vector.png</file>
-    <file>icons/workspace.png</file>
-  </qresource>
-</RCC>
