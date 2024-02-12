@@ -17,7 +17,7 @@ class MyApp(QMainWindow):
         self.navbar = NavBar(self.ui)   
         self.nodeboard = NodeBoard(self.ui)
         
-        self.nodeboard.sceneWithPen(self.nodeboard.grid)
+        self.nodeboard.generateSquareTiles(self.nodeboard.grid)
 
 if __name__ == "__main__":
     app = QApplication([])

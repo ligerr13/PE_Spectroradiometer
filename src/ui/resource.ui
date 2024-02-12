@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>805</width>
+    <width>702</width>
     <height>640</height>
    </rect>
   </property>
@@ -249,6 +249,18 @@ border-radius: 50%</string>
 border-radius: 5px;</string>
       </property>
       <layout class="QGridLayout" name="gridLayout_2">
+       <property name="leftMargin">
+        <number>9</number>
+       </property>
+       <property name="topMargin">
+        <number>9</number>
+       </property>
+       <property name="rightMargin">
+        <number>9</number>
+       </property>
+       <property name="bottomMargin">
+        <number>9</number>
+       </property>
        <item row="0" column="0">
         <widget class="QStackedWidget" name="stackedWidget">
          <property name="maximumSize">
@@ -266,13 +278,13 @@ border-radius: 5px;</string>
          <widget class="QWidget" name="page">
           <layout class="QGridLayout" name="gridLayout_4">
            <property name="leftMargin">
-            <number>0</number>
+            <number>2</number>
            </property>
            <property name="topMargin">
             <number>0</number>
            </property>
            <property name="rightMargin">
-            <number>0</number>
+            <number>2</number>
            </property>
            <property name="bottomMargin">
             <number>0</number>
@@ -281,14 +293,14 @@ border-radius: 5px;</string>
             <widget class="QWidget" name="widget_4" native="true">
              <property name="minimumSize">
               <size>
-               <width>0</width>
-               <height>0</height>
+               <width>35</width>
+               <height>105</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
-               <width>60</width>
-               <height>200</height>
+               <width>35</width>
+               <height>105</height>
               </size>
              </property>
              <property name="styleSheet">
@@ -309,14 +321,17 @@ border-radius: 5px;</string>
               </property>
               <item>
                <layout class="QVBoxLayout" name="verticalLayout_6">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
                 <property name="leftMargin">
-                 <number>2</number>
+                 <number>0</number>
                 </property>
                 <property name="topMargin">
                  <number>0</number>
                 </property>
                 <property name="rightMargin">
-                 <number>2</number>
+                 <number>0</number>
                 </property>
                 <property name="bottomMargin">
                  <number>0</number>
@@ -325,14 +340,14 @@ border-radius: 5px;</string>
                  <widget class="QPushButton" name="pushButton_4">
                   <property name="minimumSize">
                    <size>
-                    <width>30</width>
-                    <height>30</height>
+                    <width>35</width>
+                    <height>35</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>45</width>
-                    <height>45</height>
+                    <width>35</width>
+                    <height>35</height>
                    </size>
                   </property>
                   <property name="cursor">
@@ -373,14 +388,14 @@ border-radius: 50%</string>
                  <widget class="QPushButton" name="pushButton_6">
                   <property name="minimumSize">
                    <size>
-                    <width>30</width>
-                    <height>30</height>
+                    <width>35</width>
+                    <height>35</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>45</width>
-                    <height>16777215</height>
+                    <width>35</width>
+                    <height>35</height>
                    </size>
                   </property>
                   <property name="cursor">
@@ -421,14 +436,14 @@ border-radius: 50%</string>
                  <widget class="QPushButton" name="pushButton_5">
                   <property name="minimumSize">
                    <size>
-                    <width>30</width>
-                    <height>30</height>
+                    <width>35</width>
+                    <height>35</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>45</width>
-                    <height>16777215</height>
+                    <width>35</width>
+                    <height>35</height>
                    </size>
                   </property>
                   <property name="cursor">
@@ -459,7 +474,11 @@ border-radius: 50%</string>
             </widget>
            </item>
            <item row="1" column="1">
-            <widget class="QGraphicsView" name="graphicsView"/>
+            <widget class="QGraphicsView" name="graphicsView">
+             <property name="styleSheet">
+              <string notr="true">border:0px;</string>
+             </property>
+            </widget>
            </item>
           </layout>
          </widget>

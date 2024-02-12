@@ -30,7 +30,7 @@ class NodeBoard(QObject):
             button.setStyleSheet("background-color: rgba(0, 0, 0, 50); border: 0px")
             self.prev_button = button
 
-    def sceneWithPen(self, grid):
+    def generateSquareTiles(self, grid):
 
         scene = QGraphicsScene()
         view = self.ui.graphicsView
