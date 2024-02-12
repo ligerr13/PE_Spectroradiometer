@@ -1,5 +1,5 @@
 from PyQt6.QtWidgets import QApplication, QMainWindow
-from src.main_window import Ui_MainWindow
+from resource import Ui_MainWindow
 import qdarktheme
 from PyQt6.QtCore import QObject, pyqtSignal
 from PyQt6.QtWidgets import QApplication, QMainWindow, QPushButton
@@ -14,8 +14,16 @@ class MyApp(QMainWindow):
 
 
         self.ui.pushButton.clicked.connect(self.handle_navbar_button_backgorund_signal)
+        self.ui.pushButton.clicked.connect(lambda: self.ui.stackedWidget.setCurrentIndex(0))
+
         self.ui.pushButton_2.clicked.connect(self.handle_navbar_button_backgorund_signal)
+        self.ui.pushButton_2.clicked.connect(lambda: self.ui.stackedWidget.setCurrentIndex(2))
+
         self.ui.pushButton_3.clicked.connect(self.handle_navbar_button_backgorund_signal)
+        self.ui.pushButton_3.clicked.connect(lambda: self.ui.stackedWidget.setCurrentIndex(1))
+
+
+
 
     def handle_navbar_button_backgorund_signal(self):
             button = self.sender()
@@ -33,7 +41,7 @@ class MyApp(QMainWindow):
 
 if __name__ == "__main__":
     app = QApplication([])
-    app.setStyleSheet(qdarktheme.load_stylesheet("dark"))
+    app.setStyleSheet(qdarktheme.load_stylesheet("light"))
 
     window = MyApp()
     window.show()
