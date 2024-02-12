@@ -1,4 +1,5 @@
 from PyQt6.QtWidgets import QApplication, QMainWindow
+
 import qdarktheme
 
 from src.resource_1 import Ui_MainWindow
@@ -12,8 +13,11 @@ class MyApp(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
+
         self.navbar = NavBar(self.ui)   
-        self.nodeboard = NodeBoard(self.ui)   
+        self.nodeboard = NodeBoard(self.ui)
+        
+        self.nodeboard.sceneWithPen(self.nodeboard.grid)
 
 if __name__ == "__main__":
     app = QApplication([])
