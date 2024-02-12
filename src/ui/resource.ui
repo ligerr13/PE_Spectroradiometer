@@ -189,7 +189,7 @@ border-radius: 50%</string>
             </property>
             <property name="icon">
              <iconset>
-              <normaloff>../resources/icons/vector.png</normaloff>../resources/icons/vector.png</iconset>
+              <normaloff>../../resources/icons/vector.png</normaloff>../../resources/icons/vector.png</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -242,7 +242,7 @@ border-radius: 50%</string>
             </property>
             <property name="icon">
              <iconset>
-              <normaloff>../resources/icons/workspace.png</normaloff>../resources/icons/workspace.png</iconset>
+              <normaloff>../../resources/icons/workspace.png</normaloff>../../resources/icons/workspace.png</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -296,7 +296,7 @@ border-radius: 50%</string>
             </property>
             <property name="icon">
              <iconset>
-              <normaloff>../resources/icons/setting.png</normaloff>../resources/icons/setting.png</iconset>
+              <normaloff>../../resources/icons/setting.png</normaloff>../../resources/icons/setting.png</iconset>
             </property>
             <property name="iconSize">
              <size>
