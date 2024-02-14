@@ -13,11 +13,15 @@ class MyApp(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
+        self.navbar = NavBar(self.ui)
 
-        self.navbar = NavBar(self.ui)   
         self.nodeboard = NodeBoard(self.ui)
-        
         self.nodeboard.generateSquareTiles(self.nodeboard.grid)
+
+    def OnNavbarButtonClicked(self, pageId: int):
+        self.ui.stackedWidget.setCurrentIndex(pageId)
+    
+    
 
 if __name__ == "__main__":
     app = QApplication([])

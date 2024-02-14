@@ -1,6 +1,7 @@
 from PyQt6.QtCore import QObject, QLineF
-from PyQt6.QtWidgets import QGraphicsScene, QGridLayout
+from PyQt6.QtWidgets import QGraphicsScene
 from PyQt6.QtGui import QColor, qRgb
+
 
 class NodeBoard(QObject):
     def __init__(self, resource):
