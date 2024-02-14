@@ -94,7 +94,12 @@ border-radius: 5px;</string>
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="styleSheet">
-             <string notr="true">border: 0px</string>
+             <string notr="true">QPushButton {
+		border: 0px;
+        }
+QPushButton:hover {
+            background: rgb(55, 55, 55);
+        }</string>
             </property>
             <property name="text">
              <string/>
@@ -150,7 +155,12 @@ border-radius: 50%</string>
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="styleSheet">
-             <string notr="true">border: 0px</string>
+             <string notr="true">QPushButton {
+		border: 0px;
+        }
+QPushButton:hover {
+            background: rgb(55, 55, 55);
+        }</string>
             </property>
             <property name="text">
              <string/>
@@ -207,7 +217,12 @@ border-radius: 50%</string>
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="styleSheet">
-             <string notr="true">border: 0px</string>
+             <string notr="true">QPushButton {
+		border: 0px;
+        }
+QPushButton:hover {
+            background: rgb(55, 55, 55);
+        }</string>
             </property>
             <property name="text">
              <string/>
@@ -282,7 +297,7 @@ border-radius: 5px;</string>
           <string notr="true"/>
          </property>
          <property name="currentIndex">
-          <number>1</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="page">
           <layout class="QGridLayout" name="gridLayout_4">
@@ -314,8 +329,8 @@ border-radius: 5px;</string>
              </property>
              <property name="maximumSize">
               <size>
-               <width>50</width>
-               <height>105</height>
+               <width>55</width>
+               <height>130</height>
               </size>
              </property>
              <property name="styleSheet">
@@ -349,28 +364,32 @@ border-radius: 5px;</string>
                  <number>0</number>
                 </property>
                 <property name="bottomMargin">
-                 <number>0</number>
+                 <number>2</number>
                 </property>
                 <item>
                  <widget class="QPushButton" name="pushButton_4">
                   <property name="minimumSize">
                    <size>
-                    <width>35</width>
-                    <height>35</height>
+                    <width>40</width>
+                    <height>40</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>35</width>
-                    <height>35</height>
+                    <width>40</width>
+                    <height>40</height>
                    </size>
                   </property>
                   <property name="cursor">
                    <cursorShape>PointingHandCursor</cursorShape>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">border: 0px
-</string>
+                   <string notr="true">QPushButton {
+		border: 0px;
+        }
+QPushButton:hover {
+            background: rgb(55, 55, 55);
+        }</string>
                   </property>
                   <property name="text">
                    <string/>
@@ -385,6 +404,9 @@ border-radius: 5px;</string>
                     <height>15</height>
                    </size>
                   </property>
+                  <attribute name="buttonGroup">
+                   <string notr="true">NodeBoardbuttonGroup</string>
+                  </attribute>
                  </widget>
                 </item>
                 <item>
@@ -392,7 +414,11 @@ border-radius: 5px;</string>
                   <property name="styleSheet">
                    <string notr="true">background-color: rgba(129, 129, 129, 50);
 border: 0px;
-border-radius: 50%</string>
+border-radius: 50%;
+margin: 5, 5, 5, 5;</string>
+                  </property>
+                  <property name="lineWidth">
+                   <number>3</number>
                   </property>
                   <property name="orientation">
                    <enum>Qt::Horizontal</enum>
@@ -403,22 +429,26 @@ border-radius: 50%</string>
                  <widget class="QPushButton" name="pushButton_6">
                   <property name="minimumSize">
                    <size>
-                    <width>35</width>
-                    <height>35</height>
+                    <width>40</width>
+                    <height>40</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>35</width>
-                    <height>35</height>
+                    <width>40</width>
+                    <height>40</height>
                    </size>
                   </property>
                   <property name="cursor">
                    <cursorShape>PointingHandCursor</cursorShape>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">border: 0px
-</string>
+                   <string notr="true">QPushButton {
+		border: 0px;
+        }
+QPushButton:hover {
+            background: rgb(55, 55, 55);
+        }</string>
                   </property>
                   <property name="text">
                    <string/>
@@ -433,6 +463,9 @@ border-radius: 50%</string>
                     <height>15</height>
                    </size>
                   </property>
+                  <attribute name="buttonGroup">
+                   <string notr="true">NodeBoardbuttonGroup</string>
+                  </attribute>
                  </widget>
                 </item>
                 <item>
@@ -440,7 +473,11 @@ border-radius: 50%</string>
                   <property name="styleSheet">
                    <string notr="true">background-color: rgba(129, 129, 129, 50);
 border: 0px;
-border-radius: 50%</string>
+border-radius: 50%;
+margin: 5, 5, 5, 5;</string>
+                  </property>
+                  <property name="lineWidth">
+                   <number>3</number>
                   </property>
                   <property name="orientation">
                    <enum>Qt::Horizontal</enum>
@@ -451,22 +488,26 @@ border-radius: 50%</string>
                  <widget class="QPushButton" name="pushButton_5">
                   <property name="minimumSize">
                    <size>
-                    <width>35</width>
-                    <height>35</height>
+                    <width>40</width>
+                    <height>40</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>35</width>
-                    <height>35</height>
+                    <width>40</width>
+                    <height>40</height>
                    </size>
                   </property>
                   <property name="cursor">
                    <cursorShape>PointingHandCursor</cursorShape>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">border: 0px
-</string>
+                   <string notr="true">QPushButton {
+		border: 0px;
+        }
+QPushButton:hover {
+            background: rgb(55, 55, 55);
+        }</string>
                   </property>
                   <property name="text">
                    <string/>
@@ -481,6 +522,9 @@ border-radius: 50%</string>
                     <height>15</height>
                    </size>
                   </property>
+                  <attribute name="buttonGroup">
+                   <string notr="true">NodeBoardbuttonGroup</string>
+                  </attribute>
                  </widget>
                 </item>
                </layout>
@@ -488,13 +532,29 @@ border-radius: 50%</string>
              </layout>
             </widget>
            </item>
-           <item row="1" column="1">
+           <item row="1" column="2">
             <widget class="QGraphicsView" name="graphicsView">
              <property name="styleSheet">
               <string notr="true">border:0px;
 </string>
              </property>
             </widget>
+           </item>
+           <item row="1" column="1">
+            <spacer name="horizontalSpacer_2">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Fixed</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>5</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
            </item>
           </layout>
          </widget>
@@ -575,10 +635,16 @@ border-radius: 50%</string>
                       <cursorShape>PointingHandCursor</cursorShape>
                      </property>
                      <property name="styleSheet">
-                      <string notr="true">border-radius: 5px;
-background-color: rgb(35, 35, 35);
-color: white;
-border: 0px</string>
+                      <string notr="true">
+QPushButton {
+		border-radius: 5px;
+		background-color: rgb(35, 35, 35);
+		color: white;
+		border: 0px
+        }
+QPushButton:hover {
+            background: rgb(55, 55 55);
+        }</string>
                      </property>
                      <property name="text">
                       <string> Edit</string>
@@ -613,10 +679,16 @@ border: 0px</string>
                       <cursorShape>PointingHandCursor</cursorShape>
                      </property>
                      <property name="styleSheet">
-                      <string notr="true">border-radius: 5px;
-background-color: rgb(35, 35, 35);
-color: white;
-border: 0px</string>
+                      <string notr="true">
+QPushButton {
+		border-radius: 5px;
+		background-color: rgb(35, 35, 35);
+		color: white;
+		border: 0px
+        }
+QPushButton:hover {
+            background: rgb(220, 20, 60);
+        }</string>
                      </property>
                      <property name="text">
                       <string> Delete</string>
@@ -638,6 +710,9 @@ border: 0px</string>
                 </item>
                 <item>
                  <widget class="QWidget" name="widget_10" native="true">
+                  <property name="styleSheet">
+                   <string notr="true"/>
+                  </property>
                   <layout class="QVBoxLayout" name="verticalLayout_16">
                    <property name="leftMargin">
                     <number>0</number>
@@ -735,7 +810,7 @@ border-radius: 50%</string>
                       <bool>false</bool>
                      </property>
                      <property name="styleSheet">
-                      <string notr="true">background-color: rgb(45, 45, 45);
+                      <string notr="true">border: 2px solid rgb(45,45,45);
 border-radius: 5px;</string>
                      </property>
                      <property name="placeholderText">
@@ -776,10 +851,13 @@ border-radius: 5px;</string>
                       <bool>false</bool>
                      </property>
                      <property name="styleSheet">
-                      <string notr="true">border-radius: 5px;
-background-color: rgb(35, 35, 35);
-color: white;
-border: 0px</string>
+                      <string notr="true">QToolButton {
+		background-color: rgb(45, 45, 45);
+		border: 0px;
+        }
+QToolButton:hover {
+            background: rgb(55, 55, 55);
+        }</string>
                      </property>
                      <property name="text">
                       <string/>
@@ -823,9 +901,15 @@ border: 0px</string>
                       <cursorShape>PointingHandCursor</cursorShape>
                      </property>
                      <property name="styleSheet">
-                      <string notr="true">border-radius: 5px;
-background-color: rgb(63, 101, 255);
-border:0px;</string>
+                      <string notr="true">
+QPushButton {
+			border-radius: 5px;
+			background-color: rgb(63, 101, 255);
+			border:0px;
+        }
+QPushButton:hover {
+            	background: rgb(73, 111, 255);
+        }</string>
                      </property>
                      <property name="text">
                       <string/>
@@ -933,5 +1017,6 @@ border-radius: 50%</string>
  </slots>
  <buttongroups>
   <buttongroup name="NavBarbuttonGroup"/>
+  <buttongroup name="NodeBoardbuttonGroup"/>
  </buttongroups>
 </ui>

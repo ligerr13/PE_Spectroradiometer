@@ -44,7 +44,12 @@ class Ui_MainWindow(object):
         self.pushButton.setMinimumSize(QtCore.QSize(50, 50))
         self.pushButton.setMaximumSize(QtCore.QSize(45, 16777215))
         self.pushButton.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
-        self.pushButton.setStyleSheet("border: 0px")
+        self.pushButton.setStyleSheet("QPushButton {\n"
+"        border: 0px;\n"
+"        }\n"
+"QPushButton:hover {\n"
+"            background: rgb(55, 55, 55);\n"
+"        }")
         self.pushButton.setText("")
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("ui/../../resources/icons/vector.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
@@ -69,7 +74,12 @@ class Ui_MainWindow(object):
         self.pushButton_2.setMinimumSize(QtCore.QSize(50, 50))
         self.pushButton_2.setMaximumSize(QtCore.QSize(45, 16777215))
         self.pushButton_2.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
-        self.pushButton_2.setStyleSheet("border: 0px")
+        self.pushButton_2.setStyleSheet("QPushButton {\n"
+"        border: 0px;\n"
+"        }\n"
+"QPushButton:hover {\n"
+"            background: rgb(55, 55, 55);\n"
+"        }")
         self.pushButton_2.setText("")
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap("ui/../../resources/icons/workspace.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
@@ -86,7 +96,12 @@ class Ui_MainWindow(object):
         self.pushButton_3.setMinimumSize(QtCore.QSize(50, 50))
         self.pushButton_3.setMaximumSize(QtCore.QSize(45, 16777215))
         self.pushButton_3.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
-        self.pushButton_3.setStyleSheet("border: 0px")
+        self.pushButton_3.setStyleSheet("QPushButton {\n"
+"        border: 0px;\n"
+"        }\n"
+"QPushButton:hover {\n"
+"            background: rgb(55, 55, 55);\n"
+"        }")
         self.pushButton_3.setText("")
         icon2 = QtGui.QIcon()
         icon2.addPixmap(QtGui.QPixmap("ui/../../resources/icons/setting.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
@@ -125,70 +140,91 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.widget_4.sizePolicy().hasHeightForWidth())
         self.widget_4.setSizePolicy(sizePolicy)
         self.widget_4.setMinimumSize(QtCore.QSize(0, 0))
-        self.widget_4.setMaximumSize(QtCore.QSize(50, 105))
+        self.widget_4.setMaximumSize(QtCore.QSize(55, 130))
         self.widget_4.setStyleSheet("background-color: rgb(35, 35, 35);")
         self.widget_4.setObjectName("widget_4")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.widget_4)
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.verticalLayout_6 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_6.setContentsMargins(0, 0, 0, 2)
         self.verticalLayout_6.setSpacing(0)
         self.verticalLayout_6.setObjectName("verticalLayout_6")
         self.pushButton_4 = QtWidgets.QPushButton(parent=self.widget_4)
-        self.pushButton_4.setMinimumSize(QtCore.QSize(35, 35))
-        self.pushButton_4.setMaximumSize(QtCore.QSize(35, 35))
+        self.pushButton_4.setMinimumSize(QtCore.QSize(40, 40))
+        self.pushButton_4.setMaximumSize(QtCore.QSize(40, 40))
         self.pushButton_4.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
-        self.pushButton_4.setStyleSheet("border: 0px\n"
-"")
+        self.pushButton_4.setStyleSheet("QPushButton {\n"
+"        border: 0px;\n"
+"        }\n"
+"QPushButton:hover {\n"
+"            background: rgb(55, 55, 55);\n"
+"        }")
         self.pushButton_4.setText("")
         icon3 = QtGui.QIcon()
         icon3.addPixmap(QtGui.QPixmap("ui/../../resources/icons/delete.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.pushButton_4.setIcon(icon3)
         self.pushButton_4.setIconSize(QtCore.QSize(15, 15))
         self.pushButton_4.setObjectName("pushButton_4")
+        self.NodeBoardbuttonGroup = QtWidgets.QButtonGroup(MainWindow)
+        self.NodeBoardbuttonGroup.setObjectName("NodeBoardbuttonGroup")
+        self.NodeBoardbuttonGroup.addButton(self.pushButton_4)
         self.verticalLayout_6.addWidget(self.pushButton_4)
         self.line_2 = QtWidgets.QFrame(parent=self.widget_4)
         self.line_2.setStyleSheet("background-color: rgba(129, 129, 129, 50);\n"
 "border: 0px;\n"
-"border-radius: 50%")
+"border-radius: 50%;\n"
+"margin: 5, 5, 5, 5;")
+        self.line_2.setLineWidth(3)
         self.line_2.setFrameShape(QtWidgets.QFrame.Shape.HLine)
         self.line_2.setFrameShadow(QtWidgets.QFrame.Shadow.Sunken)
         self.line_2.setObjectName("line_2")
         self.verticalLayout_6.addWidget(self.line_2)
         self.pushButton_6 = QtWidgets.QPushButton(parent=self.widget_4)
-        self.pushButton_6.setMinimumSize(QtCore.QSize(35, 35))
-        self.pushButton_6.setMaximumSize(QtCore.QSize(35, 35))
+        self.pushButton_6.setMinimumSize(QtCore.QSize(40, 40))
+        self.pushButton_6.setMaximumSize(QtCore.QSize(40, 40))
         self.pushButton_6.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
-        self.pushButton_6.setStyleSheet("border: 0px\n"
-"")
+        self.pushButton_6.setStyleSheet("QPushButton {\n"
+"        border: 0px;\n"
+"        }\n"
+"QPushButton:hover {\n"
+"            background: rgb(55, 55, 55);\n"
+"        }")
         self.pushButton_6.setText("")
         icon4 = QtGui.QIcon()
         icon4.addPixmap(QtGui.QPixmap("ui/../../resources/icons/move.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.pushButton_6.setIcon(icon4)
         self.pushButton_6.setIconSize(QtCore.QSize(15, 15))
         self.pushButton_6.setObjectName("pushButton_6")
+        self.NodeBoardbuttonGroup.addButton(self.pushButton_6)
         self.verticalLayout_6.addWidget(self.pushButton_6)
         self.line_4 = QtWidgets.QFrame(parent=self.widget_4)
         self.line_4.setStyleSheet("background-color: rgba(129, 129, 129, 50);\n"
 "border: 0px;\n"
-"border-radius: 50%")
+"border-radius: 50%;\n"
+"margin: 5, 5, 5, 5;")
+        self.line_4.setLineWidth(3)
         self.line_4.setFrameShape(QtWidgets.QFrame.Shape.HLine)
         self.line_4.setFrameShadow(QtWidgets.QFrame.Shadow.Sunken)
         self.line_4.setObjectName("line_4")
         self.verticalLayout_6.addWidget(self.line_4)
         self.pushButton_5 = QtWidgets.QPushButton(parent=self.widget_4)
-        self.pushButton_5.setMinimumSize(QtCore.QSize(35, 35))
-        self.pushButton_5.setMaximumSize(QtCore.QSize(35, 35))
+        self.pushButton_5.setMinimumSize(QtCore.QSize(40, 40))
+        self.pushButton_5.setMaximumSize(QtCore.QSize(40, 40))
         self.pushButton_5.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
-        self.pushButton_5.setStyleSheet("border: 0px\n"
-"")
+        self.pushButton_5.setStyleSheet("QPushButton {\n"
+"        border: 0px;\n"
+"        }\n"
+"QPushButton:hover {\n"
+"            background: rgb(55, 55, 55);\n"
+"        }")
         self.pushButton_5.setText("")
         icon5 = QtGui.QIcon()
         icon5.addPixmap(QtGui.QPixmap("ui/../../resources/icons/more.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.pushButton_5.setIcon(icon5)
         self.pushButton_5.setIconSize(QtCore.QSize(15, 15))
         self.pushButton_5.setObjectName("pushButton_5")
+        self.NodeBoardbuttonGroup.addButton(self.pushButton_5)
         self.verticalLayout_6.addWidget(self.pushButton_5)
         self.horizontalLayout.addLayout(self.verticalLayout_6)
         self.gridLayout_4.addWidget(self.widget_4, 1, 0, 1, 1)
@@ -196,7 +232,9 @@ class Ui_MainWindow(object):
         self.graphicsView.setStyleSheet("border:0px;\n"
 "")
         self.graphicsView.setObjectName("graphicsView")
-        self.gridLayout_4.addWidget(self.graphicsView, 1, 1, 1, 1)
+        self.gridLayout_4.addWidget(self.graphicsView, 1, 2, 1, 1)
+        spacerItem1 = QtWidgets.QSpacerItem(5, 20, QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.gridLayout_4.addItem(spacerItem1, 1, 1, 1, 1)
         self.stackedWidget.addWidget(self.page)
         self.page_4 = QtWidgets.QWidget()
         self.page_4.setObjectName("page_4")
@@ -216,16 +254,22 @@ class Ui_MainWindow(object):
         self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.widget_11)
         self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
-        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.horizontalLayout_4.addItem(spacerItem1)
+        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalLayout_4.addItem(spacerItem2)
         self.pushButton_9 = QtWidgets.QPushButton(parent=self.widget_11)
         self.pushButton_9.setMinimumSize(QtCore.QSize(60, 35))
         self.pushButton_9.setMaximumSize(QtCore.QSize(35, 16777215))
         self.pushButton_9.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
-        self.pushButton_9.setStyleSheet("border-radius: 5px;\n"
-"background-color: rgb(35, 35, 35);\n"
-"color: white;\n"
-"border: 0px")
+        self.pushButton_9.setStyleSheet("\n"
+"QPushButton {\n"
+"        border-radius: 5px;\n"
+"        background-color: rgb(35, 35, 35);\n"
+"        color: white;\n"
+"        border: 0px\n"
+"        }\n"
+"QPushButton:hover {\n"
+"            background: rgb(55, 55 55);\n"
+"        }")
         icon6 = QtGui.QIcon()
         icon6.addPixmap(QtGui.QPixmap("ui/../../resources/icons/pencil.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.pushButton_9.setIcon(icon6)
@@ -236,16 +280,23 @@ class Ui_MainWindow(object):
         self.pushButton_8.setMinimumSize(QtCore.QSize(75, 35))
         self.pushButton_8.setMaximumSize(QtCore.QSize(35, 16777215))
         self.pushButton_8.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
-        self.pushButton_8.setStyleSheet("border-radius: 5px;\n"
-"background-color: rgb(35, 35, 35);\n"
-"color: white;\n"
-"border: 0px")
+        self.pushButton_8.setStyleSheet("\n"
+"QPushButton {\n"
+"        border-radius: 5px;\n"
+"        background-color: rgb(35, 35, 35);\n"
+"        color: white;\n"
+"        border: 0px\n"
+"        }\n"
+"QPushButton:hover {\n"
+"            background: rgb(220, 20, 60);\n"
+"        }")
         self.pushButton_8.setIcon(icon3)
         self.pushButton_8.setIconSize(QtCore.QSize(15, 15))
         self.pushButton_8.setObjectName("pushButton_8")
         self.horizontalLayout_4.addWidget(self.pushButton_8)
         self.verticalLayout_15.addWidget(self.widget_11)
         self.widget_10 = QtWidgets.QWidget(parent=self.widget_9)
+        self.widget_10.setStyleSheet("")
         self.widget_10.setObjectName("widget_10")
         self.verticalLayout_16 = QtWidgets.QVBoxLayout(self.widget_10)
         self.verticalLayout_16.setContentsMargins(0, 0, 0, 0)
@@ -277,7 +328,7 @@ class Ui_MainWindow(object):
         self.lineEdit.setMinimumSize(QtCore.QSize(0, 35))
         self.lineEdit.setBaseSize(QtCore.QSize(45, 45))
         self.lineEdit.setAutoFillBackground(False)
-        self.lineEdit.setStyleSheet("background-color: rgb(45, 45, 45);\n"
+        self.lineEdit.setStyleSheet("border: 2px solid rgb(45,45,45);\n"
 "border-radius: 5px;")
         self.lineEdit.setObjectName("lineEdit")
         self.horizontalLayout_3.addWidget(self.lineEdit)
@@ -293,10 +344,13 @@ class Ui_MainWindow(object):
         self.toolButton.setFocusPolicy(QtCore.Qt.FocusPolicy.TabFocus)
         self.toolButton.setContextMenuPolicy(QtCore.Qt.ContextMenuPolicy.NoContextMenu)
         self.toolButton.setAcceptDrops(False)
-        self.toolButton.setStyleSheet("border-radius: 5px;\n"
-"background-color: rgb(35, 35, 35);\n"
-"color: white;\n"
-"border: 0px")
+        self.toolButton.setStyleSheet("QToolButton {\n"
+"        background-color: rgb(45, 45, 45);\n"
+"        border: 0px;\n"
+"        }\n"
+"QToolButton:hover {\n"
+"            background: rgb(55, 55, 55);\n"
+"        }")
         self.toolButton.setText("")
         icon7 = QtGui.QIcon()
         icon7.addPixmap(QtGui.QPixmap("ui/../../resources/icons/menu.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
@@ -315,9 +369,15 @@ class Ui_MainWindow(object):
         self.pushButton_7.setMinimumSize(QtCore.QSize(35, 35))
         self.pushButton_7.setMaximumSize(QtCore.QSize(35, 35))
         self.pushButton_7.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
-        self.pushButton_7.setStyleSheet("border-radius: 5px;\n"
-"background-color: rgb(63, 101, 255);\n"
-"border:0px;")
+        self.pushButton_7.setStyleSheet("\n"
+"QPushButton {\n"
+"            border-radius: 5px;\n"
+"            background-color: rgb(63, 101, 255);\n"
+"            border:0px;\n"
+"        }\n"
+"QPushButton:hover {\n"
+"                background: rgb(73, 111, 255);\n"
+"        }")
         self.pushButton_7.setText("")
         self.pushButton_7.setIcon(icon5)
         self.pushButton_7.setIconSize(QtCore.QSize(20, 20))
@@ -361,7 +421,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(0)
         self.NavBarbuttonGroup.idClicked['int'].connect(MainWindow.OnNavbarButtonClicked) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
