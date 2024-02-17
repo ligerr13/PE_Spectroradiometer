@@ -1,8 +1,16 @@
 from PyQt6.QtCore import QObject, QLineF
-from PyQt6.QtWidgets import QGraphicsScene
+from PyQt6.QtCore import Qt, QPointF
+from PyQt6.QtWidgets import QGraphicsScene, QGraphicsView, QWidget
 from PyQt6.QtGui import QColor, qRgb
 from functools import partial
+from src.objects.workspace_1 import Ui_Form
 
+class CustomWidget(QWidget):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        # Set up the UI from the generated file
+        self.ui = Ui_Form()
+        self.ui.setupUi(self)
 
 class NodeBoard(QObject):
     def __init__(self, resource):
@@ -11,60 +19,43 @@ class NodeBoard(QObject):
         self.prev_button = None
         self.grid = self.ui.gridLayout_4
 
+        self.test_widget = CustomWidget()
+        self.test_widget2 = CustomWidget()
+
+        self.view = self.ui.graphicsView
+        self.scene = QGraphicsScene()
+
         #Calling Methods
-        self.HandleButtonVisuals()
+        self.view.setScene(self.scene)
+        self.scene.addWidget(self.test_widget)
+        self.scene.addWidget(self.test_widget2).setPos(QPointF(0.0, 100.0))
 
-
-
-
-    def HandleButtonVisuals(self):
-        for i, button in enumerate(self.ui.NodeBoardbuttonGroup.buttons()):
-            button.clicked.connect(partial(self.handle_navbar_button_background_signal, button))           
-
-    def handle_navbar_button_background_signal(self, button):
-        if button == self.prev_button:
-            self.prev_button.setStyleSheet("QPushButton {border: 0px;}QPushButton:hover {background: rgb(55, 55, 55);}")
-            self.prev_button = None
-        else:
-            if self.prev_button is not None:
-                self.prev_button.setStyleSheet("QPushButton {border: 0px;}QPushButton:hover {background: rgb(55, 55, 55);}")
-            
-            button.setStyleSheet("QPushButton {border: 0px;background-color: rgb(63, 101, 255);}, QPushButton:hover {background: rgb(55, 55, 55);}")
-            self.prev_button = button
+        
 
     def generateSquareTiles(self, grid):
-        square = 60 
-        scene = QGraphicsScene()
-        view = self.ui.graphicsView
-        view.setScene(scene)
-
         red = QColor(qRgb(50, 50, 50))
         blue = QColor(qRgb(70, 70, 70))
-         # Set length of square's side and number of horizontal and vertical lines
-        vLines = square
-        hLines = square
-        side = square/2
-        # Set starting values for loops
+        vLines = 100
+        hLines = 100
+        side = 30
         hor = 0
         ver = 0
-        subdiv = square
+        subdiv = 100
         leftX,leftY = 0, 0
         rightX, rightY = subdiv*side, 0
         bottomX, bottomY= 0, 0
         topX, topY = 0, subdiv*side
 
         while ver < vLines:
-        # Drawing vertical lines
             ver = ver + 1
             vLine = QLineF(bottomX, bottomY, topX, topY)
             bottomX, topX = bottomX + side, topX + side
-            scene.addLine(vLine, red)
+            self.scene.addLine(vLine, red)
 
         while hor < hLines:
-        #Drawing horizontal lines
             hor = hor + 1
             hLine = QLineF(leftX, leftY, rightX, rightY)
             leftY, rightY = leftY + side, rightY + side
-            scene.addLine(hLine, blue)
+            self.scene.addLine(hLine, blue)
 
-        grid.addWidget(view, 1, 1, 1, 1)
+        grid.addWidget(self.view, 1, 1, 1, 1)
