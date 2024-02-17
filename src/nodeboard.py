@@ -33,7 +33,7 @@ class NodeBoard(QObject):
             self.prev_button = button
 
     def generateSquareTiles(self, grid):
-
+        square = 60 
         scene = QGraphicsScene()
         view = self.ui.graphicsView
         view.setScene(scene)
@@ -41,13 +41,13 @@ class NodeBoard(QObject):
         red = QColor(qRgb(50, 50, 50))
         blue = QColor(qRgb(70, 70, 70))
          # Set length of square's side and number of horizontal and vertical lines
-        vLines = 30
-        hLines = 30
-        side = 30
+        vLines = square
+        hLines = square
+        side = square/2
         # Set starting values for loops
         hor = 0
         ver = 0
-        subdiv = 30
+        subdiv = square
         leftX,leftY = 0, 0
         rightX, rightY = subdiv*side, 0
         bottomX, bottomY= 0, 0
