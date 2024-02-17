@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>850</width>
-    <height>741</height>
+    <width>915</width>
+    <height>770</height>
    </rect>
   </property>
   <property name="acceptDrops">
@@ -336,7 +336,7 @@ border-radius: 5px;</string>
              <property name="maximumSize">
               <size>
                <width>55</width>
-               <height>130</height>
+               <height>160</height>
               </size>
              </property>
              <property name="styleSheet">
@@ -372,6 +372,53 @@ border-radius: 5px;</string>
                 <property name="bottomMargin">
                  <number>2</number>
                 </property>
+                <item>
+                 <widget class="QPushButton" name="pushButton_10">
+                  <property name="minimumSize">
+                   <size>
+                    <width>40</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton {
+		border: 0px;
+        }
+QPushButton:hover {
+            background: rgb(55, 55, 55);
+        }</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="icon">
+                   <iconset>
+                    <normaloff>../../resources/icons/cursor.png</normaloff>../../resources/icons/cursor.png</iconset>
+                  </property>
+                  <property name="checkable">
+                   <bool>true</bool>
+                  </property>
+                  <attribute name="buttonGroup">
+                   <string notr="true">NodeBoardbuttonGroup</string>
+                  </attribute>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="Line" name="line_7">
+                  <property name="styleSheet">
+                   <string notr="true">background-color: rgba(129, 129, 129, 50);
+border: 0px;
+border-radius: 50%;
+margin: 5, 5, 5, 5;</string>
+                  </property>
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                 </widget>
+                </item>
                 <item>
                  <widget class="QPushButton" name="pushButton_4">
                   <property name="minimumSize">
@@ -556,7 +603,7 @@ QPushButton:hover {
              </layout>
             </widget>
            </item>
-           <item row="1" column="2">
+           <item row="1" column="1">
             <widget class="QGraphicsView" name="graphicsView">
              <property name="styleSheet">
               <string notr="true">border:0px;
@@ -1111,22 +1158,6 @@ border-radius: 50%</string>
    </hints>
   </connection>
   <connection>
-   <sender>NodeBoardbuttonGroup</sender>
-   <signal>buttonClicked(QAbstractButton*)</signal>
-   <receiver>MainWindow</receiver>
-   <slot>OnNodeboardSceneButtonClicked(QAbstractButton*)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>457</x>
-     <y>384</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>pushButton_6</sender>
    <signal>toggled(bool)</signal>
    <receiver>MainWindow</receiver>
@@ -1142,11 +1173,27 @@ border-radius: 50%</string>
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>pushButton_10</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>HandleSelectMode(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>111</x>
+     <y>335</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>457</x>
+     <y>384</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>OnNavbarButtonClicked(int)</slot>
-  <slot>OnNodeboardSceneButtonClicked(QAbstractButton*)</slot>
   <slot>HandleDragMode(bool)</slot>
+  <slot>HandleSelectMode(bool)</slot>
  </slots>
  <buttongroups>
   <buttongroup name="NodeBoardbuttonGroup"/>
