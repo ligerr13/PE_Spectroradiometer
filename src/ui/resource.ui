@@ -16,6 +16,18 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string>QPushButton {
+		border: 0px;
+        }
+QPushButton:hover {
+            background: rgb(55, 55, 55);
+        }
+QPushButton:checked  {
+		border: 0px;
+		background-color: rgb(63, 101, 255);
+}</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="1">
@@ -93,13 +105,25 @@ border-radius: 5px;</string>
             <property name="cursor">
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
+            <property name="toolTip">
+             <string>Nodeboard</string>
+            </property>
             <property name="styleSheet">
              <string notr="true">QPushButton {
 		border: 0px;
+		font: 12pt;
         }
 QPushButton:hover {
             background: rgb(55, 55, 55);
-        }</string>
+        }
+QPushButton:checked  {
+		border: 0px;
+		background-color: rgb(63, 101, 255);
+}
+QToolTip{ 
+		font: 12pt;
+		color: rgb(100, 100, 100);
+}</string>
             </property>
             <property name="text">
              <string/>
@@ -154,13 +178,25 @@ border-radius: 50%</string>
             <property name="cursor">
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
+            <property name="toolTip">
+             <string>Workspaces</string>
+            </property>
             <property name="styleSheet">
              <string notr="true">QPushButton {
 		border: 0px;
+		font: 12pt;
         }
 QPushButton:hover {
             background: rgb(55, 55, 55);
-        }</string>
+        }
+QPushButton:checked  {
+		border: 0px;
+		background-color: rgb(63, 101, 255);
+}
+QToolTip{ 
+		font: 12pt;
+		color: rgb(100, 100, 100);
+}</string>
             </property>
             <property name="text">
              <string/>
@@ -216,13 +252,25 @@ QPushButton:hover {
             <property name="cursor">
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
+            <property name="toolTip">
+             <string>Settings</string>
+            </property>
             <property name="styleSheet">
              <string notr="true">QPushButton {
 		border: 0px;
+		font: 12pt;
         }
 QPushButton:hover {
             background: rgb(55, 55, 55);
-        }</string>
+        }
+QPushButton:checked  {
+		border: 0px;
+		background-color: rgb(63, 101, 255);
+}
+QToolTip{ 
+		font: 12pt;
+		color: rgb(100, 100, 100);
+}</string>
             </property>
             <property name="text">
              <string/>
@@ -300,18 +348,21 @@ border-radius: 5px;</string>
           </size>
          </property>
          <property name="styleSheet">
-          <string notr="true"/>
+          <string notr="true">border: 0px</string>
          </property>
          <property name="currentIndex">
           <number>0</number>
          </property>
          <widget class="QWidget" name="page">
+          <property name="toolTip">
+           <string/>
+          </property>
           <property name="styleSheet">
            <string>QPushButton {
 		border: 0px;
         }
 QPushButton:hover {
-			background: rgb(55, 55, 55)
+            background: rgb(55, 55, 55);
         }</string>
           </property>
           <layout class="QGridLayout" name="gridLayout_4">
@@ -391,13 +442,26 @@ QPushButton:hover {
                   <property name="cursor">
                    <cursorShape>PointingHandCursor</cursorShape>
                   </property>
+                  <property name="toolTip">
+                   <string>Select:
+Enable to select widgets</string>
+                  </property>
                   <property name="styleSheet">
                    <string notr="true">QPushButton {
 		border: 0px;
+		font: 12pt;
         }
 QPushButton:hover {
             background: rgb(55, 55, 55);
-        }</string>
+        }
+QPushButton:checked  {
+		border: 0px;
+		background-color: rgb(63, 101, 255);
+}
+QToolTip{ 
+		font: 12pt;
+		color: rgb(100, 100, 100);
+}</string>
                   </property>
                   <property name="text">
                    <string/>
@@ -444,13 +508,26 @@ margin: 5, 5, 5, 5;</string>
                   <property name="cursor">
                    <cursorShape>PointingHandCursor</cursorShape>
                   </property>
+                  <property name="toolTip">
+                   <string>Delete:
+Click to delete the selected widget</string>
+                  </property>
                   <property name="styleSheet">
                    <string notr="true">QPushButton {
 		border: 0px;
+		font: 12pt;
         }
 QPushButton:hover {
-			background: rgb(55, 55, 55)
-        }</string>
+            background: rgb(55, 55, 55);
+        }
+QPushButton:checked  {
+		border: 0px;
+		background-color: rgb(63, 101, 255);
+}
+QToolTip{ 
+		font: 12pt;
+		color: rgb(100, 100, 100);
+}</string>
                   </property>
                   <property name="text">
                    <string/>
@@ -467,6 +544,9 @@ QPushButton:hover {
                   </property>
                   <property name="checkable">
                    <bool>true</bool>
+                  </property>
+                  <property name="checked">
+                   <bool>false</bool>
                   </property>
                   <attribute name="buttonGroup">
                    <string notr="true">NodeBoardbuttonGroup</string>
@@ -509,13 +589,26 @@ margin: 5, 5, 5, 5;</string>
                   <property name="cursor">
                    <cursorShape>PointingHandCursor</cursorShape>
                   </property>
+                  <property name="toolTip">
+                   <string>Move:
+Click to navigate within the scene</string>
+                  </property>
                   <property name="styleSheet">
                    <string notr="true">QPushButton {
 		border: 0px;
+		font: 12pt;
         }
 QPushButton:hover {
             background: rgb(55, 55, 55);
-        }</string>
+        }
+QPushButton:checked  {
+		border: 0px;
+		background-color: rgb(63, 101, 255);
+}
+QToolTip{ 
+		font: 12pt;
+		color: rgb(100, 100, 100);
+}</string>
                   </property>
                   <property name="text">
                    <string/>
@@ -577,13 +670,26 @@ margin: 5, 5, 5, 5;</string>
                   <property name="cursor">
                    <cursorShape>PointingHandCursor</cursorShape>
                   </property>
+                  <property name="toolTip">
+                   <string>New:
+Click to add a new widget</string>
+                  </property>
                   <property name="styleSheet">
                    <string notr="true">QPushButton {
 		border: 0px;
+		font: 12pt;
         }
 QPushButton:hover {
             background: rgb(55, 55, 55);
-        }</string>
+        }
+QPushButton:checked  {
+		border: 0px;
+		background-color: rgb(63, 101, 255);
+}
+QToolTip{ 
+		font: 12pt;
+		color: rgb(100, 100, 100);
+}</string>
                   </property>
                   <property name="text">
                    <string/>

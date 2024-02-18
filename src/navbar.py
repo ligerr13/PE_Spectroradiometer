@@ -25,11 +25,6 @@ class NavBar(QObject):
             
     def handle_navbar_button_background_signal(self, button):
         if button == self.prev_button:
-            self.prev_button.setStyleSheet("QPushButton {border: 0px;}QPushButton:hover {background: rgb(55, 55, 55);}")
             self.prev_button = None
         else:
-            if self.prev_button is not None:
-                self.prev_button.setStyleSheet("QPushButton {border: 0px;}QPushButton:hover {background: rgb(55, 55, 55);}")
-            
-            button.setStyleSheet("QPushButton {border: 0px;background-color: rgb(63, 101, 255);}, QPushButton:hover {background: rgb(55, 55, 55);}")
             self.prev_button = button
