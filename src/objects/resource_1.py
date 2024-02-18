@@ -46,10 +46,19 @@ class Ui_MainWindow(object):
         self.pushButton.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.pushButton.setStyleSheet("QPushButton {\n"
 "        border: 0px;\n"
+"        font: 12pt;\n"
 "        }\n"
 "QPushButton:hover {\n"
 "            background: rgb(55, 55, 55);\n"
-"        }")
+"        }\n"
+"QPushButton:checked  {\n"
+"        border: 0px;\n"
+"        background-color: rgb(63, 101, 255);\n"
+"}\n"
+"QToolTip{ \n"
+"        font: 12pt;\n"
+"        color: rgb(100, 100, 100);\n"
+"}")
         self.pushButton.setText("")
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/vector.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
@@ -76,10 +85,19 @@ class Ui_MainWindow(object):
         self.pushButton_2.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.pushButton_2.setStyleSheet("QPushButton {\n"
 "        border: 0px;\n"
+"        font: 12pt;\n"
 "        }\n"
 "QPushButton:hover {\n"
 "            background: rgb(55, 55, 55);\n"
-"        }")
+"        }\n"
+"QPushButton:checked  {\n"
+"        border: 0px;\n"
+"        background-color: rgb(63, 101, 255);\n"
+"}\n"
+"QToolTip{ \n"
+"        font: 12pt;\n"
+"        color: rgb(100, 100, 100);\n"
+"}")
         self.pushButton_2.setText("")
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/workspace.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
@@ -98,10 +116,19 @@ class Ui_MainWindow(object):
         self.pushButton_3.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.pushButton_3.setStyleSheet("QPushButton {\n"
 "        border: 0px;\n"
+"        font: 12pt;\n"
 "        }\n"
 "QPushButton:hover {\n"
 "            background: rgb(55, 55, 55);\n"
-"        }")
+"        }\n"
+"QPushButton:checked  {\n"
+"        border: 0px;\n"
+"        background-color: rgb(63, 101, 255);\n"
+"}\n"
+"QToolTip{ \n"
+"        font: 12pt;\n"
+"        color: rgb(100, 100, 100);\n"
+"}")
         self.pushButton_3.setText("")
         icon2 = QtGui.QIcon()
         icon2.addPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/setting.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
@@ -127,9 +154,10 @@ class Ui_MainWindow(object):
         self.stackedWidget = QtWidgets.QStackedWidget(parent=self.widget_2)
         self.stackedWidget.setMinimumSize(QtCore.QSize(0, 35))
         self.stackedWidget.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.stackedWidget.setStyleSheet("")
+        self.stackedWidget.setStyleSheet("border: 0px")
         self.stackedWidget.setObjectName("stackedWidget")
         self.page = QtWidgets.QWidget()
+        self.page.setToolTip("")
         self.page.setObjectName("page")
         self.gridLayout_4 = QtWidgets.QGridLayout(self.page)
         self.gridLayout_4.setContentsMargins(5, 5, 5, 5)
@@ -156,10 +184,19 @@ class Ui_MainWindow(object):
         self.pushButton_10.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.pushButton_10.setStyleSheet("QPushButton {\n"
 "        border: 0px;\n"
+"        font: 12pt;\n"
 "        }\n"
 "QPushButton:hover {\n"
 "            background: rgb(55, 55, 55);\n"
-"        }")
+"        }\n"
+"QPushButton:checked  {\n"
+"        border: 0px;\n"
+"        background-color: rgb(63, 101, 255);\n"
+"}\n"
+"QToolTip{ \n"
+"        font: 12pt;\n"
+"        color: rgb(100, 100, 100);\n"
+"}")
         self.pushButton_10.setText("")
         icon3 = QtGui.QIcon()
         icon3.addPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/cursor.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
@@ -185,16 +222,26 @@ class Ui_MainWindow(object):
         self.pushButton_4.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.pushButton_4.setStyleSheet("QPushButton {\n"
 "        border: 0px;\n"
+"        font: 12pt;\n"
 "        }\n"
 "QPushButton:hover {\n"
-"            background: rgb(55, 55, 55)\n"
-"        }")
+"            background: rgb(55, 55, 55);\n"
+"        }\n"
+"QPushButton:checked  {\n"
+"        border: 0px;\n"
+"        background-color: rgb(63, 101, 255);\n"
+"}\n"
+"QToolTip{ \n"
+"        font: 12pt;\n"
+"        color: rgb(100, 100, 100);\n"
+"}")
         self.pushButton_4.setText("")
         icon4 = QtGui.QIcon()
         icon4.addPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/delete.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.pushButton_4.setIcon(icon4)
         self.pushButton_4.setIconSize(QtCore.QSize(15, 15))
         self.pushButton_4.setCheckable(True)
+        self.pushButton_4.setChecked(False)
         self.pushButton_4.setObjectName("pushButton_4")
         self.NodeBoardbuttonGroup.addButton(self.pushButton_4)
         self.verticalLayout_6.addWidget(self.pushButton_4)
@@ -215,10 +262,19 @@ class Ui_MainWindow(object):
         self.pushButton_6.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.pushButton_6.setStyleSheet("QPushButton {\n"
 "        border: 0px;\n"
+"        font: 12pt;\n"
 "        }\n"
 "QPushButton:hover {\n"
 "            background: rgb(55, 55, 55);\n"
-"        }")
+"        }\n"
+"QPushButton:checked  {\n"
+"        border: 0px;\n"
+"        background-color: rgb(63, 101, 255);\n"
+"}\n"
+"QToolTip{ \n"
+"        font: 12pt;\n"
+"        color: rgb(100, 100, 100);\n"
+"}")
         self.pushButton_6.setText("")
         icon5 = QtGui.QIcon()
         icon5.addPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/move.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
@@ -246,10 +302,19 @@ class Ui_MainWindow(object):
         self.pushButton_5.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.pushButton_5.setStyleSheet("QPushButton {\n"
 "        border: 0px;\n"
+"        font: 12pt;\n"
 "        }\n"
 "QPushButton:hover {\n"
 "            background: rgb(55, 55, 55);\n"
-"        }")
+"        }\n"
+"QPushButton:checked  {\n"
+"        border: 0px;\n"
+"        background-color: rgb(63, 101, 255);\n"
+"}\n"
+"QToolTip{ \n"
+"        font: 12pt;\n"
+"        color: rgb(100, 100, 100);\n"
+"}")
         self.pushButton_5.setText("")
         icon6 = QtGui.QIcon()
         icon6.addPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/more.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
@@ -499,12 +564,33 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setStyleSheet(_translate("MainWindow", "QPushButton {\n"
+"        border: 0px;\n"
+"        }\n"
+"QPushButton:hover {\n"
+"            background: rgb(55, 55, 55);\n"
+"        }\n"
+"QPushButton:checked  {\n"
+"        border: 0px;\n"
+"        background-color: rgb(63, 101, 255);\n"
+"}"))
+        self.pushButton.setToolTip(_translate("MainWindow", "Nodeboard"))
+        self.pushButton_2.setToolTip(_translate("MainWindow", "Workspaces"))
+        self.pushButton_3.setToolTip(_translate("MainWindow", "Settings"))
         self.page.setStyleSheet(_translate("MainWindow", "QPushButton {\n"
 "        border: 0px;\n"
 "        }\n"
 "QPushButton:hover {\n"
-"            background: rgb(55, 55, 55)\n"
+"            background: rgb(55, 55, 55);\n"
 "        }"))
+        self.pushButton_10.setToolTip(_translate("MainWindow", "Select:\n"
+"Enable to select widgets"))
+        self.pushButton_4.setToolTip(_translate("MainWindow", "Delete:\n"
+"Click to delete the selected widget"))
+        self.pushButton_6.setToolTip(_translate("MainWindow", "Move:\n"
+"Click to navigate within the scene"))
+        self.pushButton_5.setToolTip(_translate("MainWindow", "New:\n"
+"Click to add a new widget"))
         self.label_2.setText(_translate("MainWindow", "Workspace: #991013A"))
         self.pushButton_9.setText(_translate("MainWindow", " Edit"))
         self.pushButton_8.setText(_translate("MainWindow", " Delete"))
