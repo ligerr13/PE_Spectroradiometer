@@ -26,8 +26,9 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(45, 45, 45);
-border-radius: 5px;</string>
+   <string notr="true">QWidget {
+background-color: rgb(45, 45, 45);
+border-radius: 5px; }</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_2">
    <item row="1" column="1">

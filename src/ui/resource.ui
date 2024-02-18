@@ -306,6 +306,14 @@ border-radius: 5px;</string>
           <number>0</number>
          </property>
          <widget class="QWidget" name="page">
+          <property name="styleSheet">
+           <string>QPushButton {
+		border: 0px;
+        }
+QPushButton:hover {
+			background: rgb(55, 55, 55)
+        }</string>
+          </property>
           <layout class="QGridLayout" name="gridLayout_4">
            <property name="leftMargin">
             <number>5</number>
@@ -441,7 +449,7 @@ margin: 5, 5, 5, 5;</string>
 		border: 0px;
         }
 QPushButton:hover {
-            background: rgb(55, 55, 55);
+			background: rgb(55, 55, 55)
         }</string>
                   </property>
                   <property name="text">
@@ -1189,14 +1197,31 @@ border-radius: 50%</string>
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>pushButton_4</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>HandleDeleteMode(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>111</x>
+     <y>375</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>457</x>
+     <y>384</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>OnNavbarButtonClicked(int)</slot>
   <slot>HandleDragMode(bool)</slot>
   <slot>HandleSelectMode(bool)</slot>
+  <slot>HandleDeleteMode(bool)</slot>
  </slots>
  <buttongroups>
-  <buttongroup name="NodeBoardbuttonGroup"/>
   <buttongroup name="NavBarbuttonGroup"/>
+  <buttongroup name="NodeBoardbuttonGroup"/>
  </buttongroups>
 </ui>
