@@ -187,7 +187,7 @@ class Ui_MainWindow(object):
 "        border: 0px;\n"
 "        }\n"
 "QPushButton:hover {\n"
-"            background: rgb(55, 55, 55);\n"
+"            background: rgb(55, 55, 55)\n"
 "        }")
         self.pushButton_4.setText("")
         icon4 = QtGui.QIcon()
@@ -493,11 +493,18 @@ class Ui_MainWindow(object):
         self.NavBarbuttonGroup.idClicked['int'].connect(MainWindow.OnNavbarButtonClicked) # type: ignore
         self.pushButton_6.toggled['bool'].connect(MainWindow.HandleDragMode) # type: ignore
         self.pushButton_10.toggled['bool'].connect(MainWindow.HandleSelectMode) # type: ignore
+        self.pushButton_4.toggled['bool'].connect(MainWindow.HandleDeleteMode) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.page.setStyleSheet(_translate("MainWindow", "QPushButton {\n"
+"        border: 0px;\n"
+"        }\n"
+"QPushButton:hover {\n"
+"            background: rgb(55, 55, 55)\n"
+"        }"))
         self.label_2.setText(_translate("MainWindow", "Workspace: #991013A"))
         self.pushButton_9.setText(_translate("MainWindow", " Edit"))
         self.pushButton_8.setText(_translate("MainWindow", " Delete"))
