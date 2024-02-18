@@ -520,10 +520,6 @@ Click to delete the selected widget</string>
 QPushButton:hover {
             background: rgb(55, 55, 55);
         }
-QPushButton:checked  {
-		border: 0px;
-		background-color: rgb(63, 101, 255);
-}
 QToolTip{ 
 		font: 12pt;
 		color: rgb(100, 100, 100);
