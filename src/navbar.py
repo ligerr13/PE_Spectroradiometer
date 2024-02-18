@@ -13,8 +13,6 @@ class NavBar(QObject):
         self.HandleButtonVisuals()
 
 
-
-
     def group_butttons_to_pages(self):
         for i, button in enumerate(self.ui.NavBarbuttonGroup.buttons()):
             self.ui.NavBarbuttonGroup.setId(button,i)
@@ -22,7 +20,8 @@ class NavBar(QObject):
     def HandleButtonVisuals(self):
         for i, button in enumerate(self.ui.NavBarbuttonGroup.buttons()):
             button.clicked.connect(partial(self.handle_navbar_button_background_signal, button))
-            
+        
+    #change to toggle like in nodeboard
     def handle_navbar_button_background_signal(self, button):
         if button == self.prev_button:
             self.prev_button = None
