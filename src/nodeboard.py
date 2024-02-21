@@ -3,6 +3,8 @@ from PyQt6.QtWidgets import QGraphicsScene, QWidget, QGraphicsProxyWidget
 from PyQt6.QtGui import QColor, qRgb, QTransform
 from src.objects.workspace_1 import Ui_Form
 from src.signals.nodeboardsignalbus import NodeBoardSignalBus
+from src.dialogs.widgetCreator import WidgetCreatorDialog
+
 
 
 class NodeboardGraphicsScene(QGraphicsScene):
@@ -14,6 +16,7 @@ class NodeboardGraphicsScene(QGraphicsScene):
         # Buttons
         self.SelectButton = None
         self.DeleteButton = None
+        self.CreateWidgetButon = None
 
         # Widgets
         self.selectedWidget = None
@@ -22,6 +25,7 @@ class NodeboardGraphicsScene(QGraphicsScene):
         self.nodeboard_signal_bus.widgetSelectedSignal.connect(self.onSelectWidget)
         self.nodeboard_signal_bus.widgetDeselectedSignal.connect(self.onDeselectWidget)
         self.nodeboard_signal_bus.widgetDeletedSignal.connect(self.onWidgetDelete)
+            
 
     # Setters 
     def setSelecteButton(self, button):
@@ -93,12 +97,17 @@ class NodeBoard(QObject):
         self.view = self.ui.graphicsView
         self.scene = NodeboardGraphicsScene()
 
+        self.viewScalefactor = 1.2
+
+        #QDialogs
+        self.widgetCreator = WidgetCreatorDialog()
+
         # Calling Methods
         self.view.setScene(self.scene)
         self.scene.addWidget(self.test_widget)
         self.scene.addWidget(self.test_widget2).setPos(QPointF(0.0, 100.0))
 
-  
+
 
     def generateSquareTiles(self, grid):
         red = QColor(qRgb(50, 50, 50))
