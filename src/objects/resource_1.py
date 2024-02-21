@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file '.\ui\resource.ui'
+# Form implementation generated from reading ui file 'ui/resource.ui'
 #
 # Created by: PyQt6 UI code generator 6.6.1
 #
@@ -61,11 +61,11 @@ class Ui_MainWindow(object):
 "}")
         self.pushButton.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/vector.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon.addPixmap(QtGui.QPixmap("ui/../../resources/icons/vector.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.pushButton.setIcon(icon)
         self.pushButton.setIconSize(QtCore.QSize(25, 25))
         self.pushButton.setCheckable(True)
-        self.pushButton.setChecked(False)
+        self.pushButton.setChecked(True)
         self.pushButton.setObjectName("pushButton")
         self.NavBarbuttonGroup = QtWidgets.QButtonGroup(MainWindow)
         self.NavBarbuttonGroup.setObjectName("NavBarbuttonGroup")
@@ -100,7 +100,7 @@ class Ui_MainWindow(object):
 "}")
         self.pushButton_2.setText("")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/workspace.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon1.addPixmap(QtGui.QPixmap("ui/../../resources/icons/workspace.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.pushButton_2.setIcon(icon1)
         self.pushButton_2.setIconSize(QtCore.QSize(25, 25))
         self.pushButton_2.setCheckable(True)
@@ -131,7 +131,7 @@ class Ui_MainWindow(object):
 "}")
         self.pushButton_3.setText("")
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/setting.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon2.addPixmap(QtGui.QPixmap("ui/../../resources/icons/setting.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.pushButton_3.setIcon(icon2)
         self.pushButton_3.setIconSize(QtCore.QSize(25, 25))
         self.pushButton_3.setCheckable(True)
@@ -169,7 +169,7 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.widget_4.sizePolicy().hasHeightForWidth())
         self.widget_4.setSizePolicy(sizePolicy)
         self.widget_4.setMinimumSize(QtCore.QSize(0, 0))
-        self.widget_4.setMaximumSize(QtCore.QSize(55, 160))
+        self.widget_4.setMaximumSize(QtCore.QSize(55, 250))
         self.widget_4.setStyleSheet("background-color: rgb(35, 35, 35);")
         self.widget_4.setObjectName("widget_4")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.widget_4)
@@ -181,6 +181,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_6.setObjectName("verticalLayout_6")
         self.pushButton_10 = QtWidgets.QPushButton(parent=self.widget_4)
         self.pushButton_10.setMinimumSize(QtCore.QSize(40, 40))
+        self.pushButton_10.setMaximumSize(QtCore.QSize(40, 40))
         self.pushButton_10.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.pushButton_10.setStyleSheet("QPushButton {\n"
 "        border: 0px;\n"
@@ -199,9 +200,11 @@ class Ui_MainWindow(object):
 "}")
         self.pushButton_10.setText("")
         icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/cursor.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon3.addPixmap(QtGui.QPixmap("ui/../../resources/icons/cursor.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.pushButton_10.setIcon(icon3)
         self.pushButton_10.setCheckable(True)
+        self.pushButton_10.setChecked(False)
+        self.pushButton_10.setAutoExclusive(True)
         self.pushButton_10.setObjectName("pushButton_10")
         self.NodeBoardbuttonGroup = QtWidgets.QButtonGroup(MainWindow)
         self.NodeBoardbuttonGroup.setObjectName("NodeBoardbuttonGroup")
@@ -233,7 +236,7 @@ class Ui_MainWindow(object):
 "}")
         self.pushButton_4.setText("")
         icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/delete.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon4.addPixmap(QtGui.QPixmap("ui/../../resources/icons/delete.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.pushButton_4.setIcon(icon4)
         self.pushButton_4.setIconSize(QtCore.QSize(15, 15))
         self.pushButton_4.setCheckable(True)
@@ -251,6 +254,44 @@ class Ui_MainWindow(object):
         self.line_2.setFrameShadow(QtWidgets.QFrame.Shadow.Sunken)
         self.line_2.setObjectName("line_2")
         self.verticalLayout_6.addWidget(self.line_2)
+        self.pushButton_5 = QtWidgets.QPushButton(parent=self.widget_4)
+        self.pushButton_5.setMinimumSize(QtCore.QSize(40, 40))
+        self.pushButton_5.setMaximumSize(QtCore.QSize(40, 40))
+        self.pushButton_5.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        self.pushButton_5.setStyleSheet("QPushButton {\n"
+"        border: 0px;\n"
+"        font: 12pt;\n"
+"        }\n"
+"QPushButton:hover {\n"
+"            background: rgb(55, 55, 55);\n"
+"        }\n"
+"QPushButton:checked  {\n"
+"        border: 0px;\n"
+"        background-color: rgb(63, 101, 255);\n"
+"}\n"
+"QToolTip{ \n"
+"        font: 12pt;\n"
+"        color: rgb(100, 100, 100);\n"
+"}")
+        self.pushButton_5.setText("")
+        icon5 = QtGui.QIcon()
+        icon5.addPixmap(QtGui.QPixmap("ui/../../resources/icons/more.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.pushButton_5.setIcon(icon5)
+        self.pushButton_5.setIconSize(QtCore.QSize(15, 15))
+        self.pushButton_5.setCheckable(True)
+        self.pushButton_5.setObjectName("pushButton_5")
+        self.NodeBoardbuttonGroup.addButton(self.pushButton_5)
+        self.verticalLayout_6.addWidget(self.pushButton_5)
+        self.line_4 = QtWidgets.QFrame(parent=self.widget_4)
+        self.line_4.setStyleSheet("background-color: rgba(129, 129, 129, 50);\n"
+"border: 0px;\n"
+"border-radius: 50%;\n"
+"margin: 5, 5, 5, 5;")
+        self.line_4.setLineWidth(3)
+        self.line_4.setFrameShape(QtWidgets.QFrame.Shape.HLine)
+        self.line_4.setFrameShadow(QtWidgets.QFrame.Shadow.Sunken)
+        self.line_4.setObjectName("line_4")
+        self.verticalLayout_6.addWidget(self.line_4)
         self.pushButton_6 = QtWidgets.QPushButton(parent=self.widget_4)
         self.pushButton_6.setEnabled(True)
         self.pushButton_6.setMinimumSize(QtCore.QSize(40, 40))
@@ -272,9 +313,9 @@ class Ui_MainWindow(object):
 "        color: rgb(100, 100, 100);\n"
 "}")
         self.pushButton_6.setText("")
-        icon5 = QtGui.QIcon()
-        icon5.addPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/move.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButton_6.setIcon(icon5)
+        icon6 = QtGui.QIcon()
+        icon6.addPixmap(QtGui.QPixmap("ui/../../resources/icons/move.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.pushButton_6.setIcon(icon6)
         self.pushButton_6.setIconSize(QtCore.QSize(15, 15))
         self.pushButton_6.setCheckable(True)
         self.pushButton_6.setChecked(False)
@@ -282,44 +323,50 @@ class Ui_MainWindow(object):
         self.pushButton_6.setObjectName("pushButton_6")
         self.NodeBoardbuttonGroup.addButton(self.pushButton_6)
         self.verticalLayout_6.addWidget(self.pushButton_6)
-        self.line_4 = QtWidgets.QFrame(parent=self.widget_4)
-        self.line_4.setStyleSheet("background-color: rgba(129, 129, 129, 50);\n"
-"border: 0px;\n"
-"border-radius: 50%;\n"
-"margin: 5, 5, 5, 5;")
-        self.line_4.setLineWidth(3)
-        self.line_4.setFrameShape(QtWidgets.QFrame.Shape.HLine)
-        self.line_4.setFrameShadow(QtWidgets.QFrame.Shadow.Sunken)
-        self.line_4.setObjectName("line_4")
-        self.verticalLayout_6.addWidget(self.line_4)
-        self.pushButton_5 = QtWidgets.QPushButton(parent=self.widget_4)
-        self.pushButton_5.setMinimumSize(QtCore.QSize(40, 40))
-        self.pushButton_5.setMaximumSize(QtCore.QSize(40, 40))
-        self.pushButton_5.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
-        self.pushButton_5.setStyleSheet("QPushButton {\n"
+        self.pushButton_11 = QtWidgets.QPushButton(parent=self.widget_4)
+        self.pushButton_11.setMinimumSize(QtCore.QSize(40, 40))
+        self.pushButton_11.setMaximumSize(QtCore.QSize(40, 40))
+        self.pushButton_11.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        self.pushButton_11.setStyleSheet("QPushButton {\n"
 "        border: 0px;\n"
 "        font: 12pt;\n"
 "        }\n"
 "QPushButton:hover {\n"
 "            background: rgb(55, 55, 55);\n"
 "        }\n"
-"QPushButton:checked  {\n"
-"        border: 0px;\n"
-"        background-color: rgb(63, 101, 255);\n"
-"}\n"
 "QToolTip{ \n"
 "        font: 12pt;\n"
 "        color: rgb(100, 100, 100);\n"
 "}")
-        self.pushButton_5.setText("")
-        icon6 = QtGui.QIcon()
-        icon6.addPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/more.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButton_5.setIcon(icon6)
-        self.pushButton_5.setIconSize(QtCore.QSize(15, 15))
-        self.pushButton_5.setCheckable(True)
-        self.pushButton_5.setObjectName("pushButton_5")
-        self.NodeBoardbuttonGroup.addButton(self.pushButton_5)
-        self.verticalLayout_6.addWidget(self.pushButton_5)
+        self.pushButton_11.setText("")
+        icon7 = QtGui.QIcon()
+        icon7.addPixmap(QtGui.QPixmap("ui/../../resources/icons/magnifying-glass-2.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.pushButton_11.setIcon(icon7)
+        self.pushButton_11.setIconSize(QtCore.QSize(17, 17))
+        self.pushButton_11.setObjectName("pushButton_11")
+        self.verticalLayout_6.addWidget(self.pushButton_11)
+        self.pushButton_12 = QtWidgets.QPushButton(parent=self.widget_4)
+        self.pushButton_12.setMinimumSize(QtCore.QSize(40, 40))
+        self.pushButton_12.setMaximumSize(QtCore.QSize(40, 40))
+        self.pushButton_12.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        self.pushButton_12.setStyleSheet("QPushButton {\n"
+"        border: 0px;\n"
+"        font: 12pt;\n"
+"        }\n"
+"QPushButton:hover {\n"
+"            background: rgb(55, 55, 55);\n"
+"        }\n"
+"QToolTip{ \n"
+"        font: 12pt;\n"
+"        color: rgb(100, 100, 100);\n"
+"}")
+        self.pushButton_12.setText("")
+        icon8 = QtGui.QIcon()
+        icon8.addPixmap(QtGui.QPixmap("ui/../../resources/icons/magnifying-glass.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.pushButton_12.setIcon(icon8)
+        self.pushButton_12.setIconSize(QtCore.QSize(17, 17))
+        self.pushButton_12.setObjectName("pushButton_12")
+        self.verticalLayout_6.addWidget(self.pushButton_12)
         self.horizontalLayout.addLayout(self.verticalLayout_6)
         self.gridLayout_4.addWidget(self.widget_4, 1, 0, 1, 1)
         self.graphicsView = QtWidgets.QGraphicsView(parent=self.page)
@@ -386,9 +433,9 @@ class Ui_MainWindow(object):
 "QPushButton:hover {\n"
 "            background: rgb(55, 55 55);\n"
 "        }")
-        icon7 = QtGui.QIcon()
-        icon7.addPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/pencil.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButton_9.setIcon(icon7)
+        icon9 = QtGui.QIcon()
+        icon9.addPixmap(QtGui.QPixmap("ui/../../resources/icons/pencil.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.pushButton_9.setIcon(icon9)
         self.pushButton_9.setIconSize(QtCore.QSize(15, 15))
         self.pushButton_9.setObjectName("pushButton_9")
         self.horizontalLayout_4.addWidget(self.pushButton_9)
@@ -463,7 +510,7 @@ class Ui_MainWindow(object):
 "QPushButton:hover {\n"
 "                background: rgb(73, 111, 255);\n"
 "        }")
-        self.pushButton_7.setIcon(icon6)
+        self.pushButton_7.setIcon(icon5)
         self.pushButton_7.setIconSize(QtCore.QSize(20, 20))
         self.pushButton_7.setObjectName("pushButton_7")
         self.gridLayout_5.addWidget(self.pushButton_7, 2, 0, 1, 3)
@@ -487,9 +534,9 @@ class Ui_MainWindow(object):
 "            background: rgb(55, 55, 55);\n"
 "        }")
         self.toolButton.setText("")
-        icon8 = QtGui.QIcon()
-        icon8.addPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/menu.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.toolButton.setIcon(icon8)
+        icon10 = QtGui.QIcon()
+        icon10.addPixmap(QtGui.QPixmap("ui/../../resources/icons/menu.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.toolButton.setIcon(icon10)
         self.toolButton.setPopupMode(QtWidgets.QToolButton.ToolButtonPopupMode.DelayedPopup)
         self.toolButton.setToolButtonStyle(QtCore.Qt.ToolButtonStyle.ToolButtonIconOnly)
         self.toolButton.setAutoRaise(True)
@@ -532,7 +579,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 282, 556))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 100, 30))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.verticalLayout_17 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_17.setObjectName("verticalLayout_17")
@@ -555,6 +602,9 @@ class Ui_MainWindow(object):
         self.pushButton_6.toggled['bool'].connect(MainWindow.HandleDragMode) # type: ignore
         self.pushButton_10.toggled['bool'].connect(MainWindow.HandleSelectMode) # type: ignore
         self.pushButton_4.toggled['bool'].connect(MainWindow.HandleDeleteMode) # type: ignore
+        self.pushButton_5.toggled['bool'].connect(MainWindow.HandleCreateWidgetMode) # type: ignore
+        self.pushButton_11.clicked.connect(MainWindow.HandleZoomIn) # type: ignore
+        self.pushButton_12.clicked.connect(MainWindow.HandleZoomOut) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -580,13 +630,17 @@ class Ui_MainWindow(object):
 "            background: rgb(55, 55, 55);\n"
 "        }"))
         self.pushButton_10.setToolTip(_translate("MainWindow", "Select:\n"
-"Enable to select widgets"))
+"Enable to select widgets."))
         self.pushButton_4.setToolTip(_translate("MainWindow", "Delete:\n"
-"Click to delete the selected widget"))
+"Click to delete the selected widget."))
+        self.pushButton_5.setToolTip(_translate("MainWindow", "New:\n"
+"Click to add a new widget."))
         self.pushButton_6.setToolTip(_translate("MainWindow", "Move:\n"
 "Click to navigate within the scene"))
-        self.pushButton_5.setToolTip(_translate("MainWindow", "New:\n"
-"Click to add a new widget"))
+        self.pushButton_11.setToolTip(_translate("MainWindow", "Zoom in\n"
+"Click here to zoom in."))
+        self.pushButton_12.setToolTip(_translate("MainWindow", "Zoom out\n"
+"Click here to zoom out."))
         self.label_2.setText(_translate("MainWindow", "Workspace: #991013A"))
         self.pushButton_9.setText(_translate("MainWindow", " Edit"))
         self.pushButton_8.setText(_translate("MainWindow", " Delete"))

@@ -142,7 +142,7 @@ QToolTip{
              <bool>true</bool>
             </property>
             <property name="checked">
-             <bool>false</bool>
+             <bool>true</bool>
             </property>
             <attribute name="buttonGroup">
              <string notr="true">NavBarbuttonGroup</string>
@@ -395,7 +395,7 @@ QPushButton:hover {
              <property name="maximumSize">
               <size>
                <width>55</width>
-               <height>160</height>
+               <height>250</height>
               </size>
              </property>
              <property name="styleSheet">
@@ -439,12 +439,18 @@ QPushButton:hover {
                     <height>40</height>
                    </size>
                   </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>40</width>
+                    <height>40</height>
+                   </size>
+                  </property>
                   <property name="cursor">
                    <cursorShape>PointingHandCursor</cursorShape>
                   </property>
                   <property name="toolTip">
                    <string>Select:
-Enable to select widgets</string>
+Enable to select widgets.</string>
                   </property>
                   <property name="styleSheet">
                    <string notr="true">QPushButton {
@@ -471,6 +477,12 @@ QToolTip{
                     <normaloff>../../resources/icons/cursor.png</normaloff>../../resources/icons/cursor.png</iconset>
                   </property>
                   <property name="checkable">
+                   <bool>true</bool>
+                  </property>
+                  <property name="checked">
+                   <bool>false</bool>
+                  </property>
+                  <property name="autoExclusive">
                    <bool>true</bool>
                   </property>
                   <attribute name="buttonGroup">
@@ -510,7 +522,7 @@ margin: 5, 5, 5, 5;</string>
                   </property>
                   <property name="toolTip">
                    <string>Delete:
-Click to delete the selected widget</string>
+Click to delete the selected widget.</string>
                   </property>
                   <property name="styleSheet">
                    <string notr="true">QPushButton {
@@ -551,6 +563,81 @@ QToolTip{
                 </item>
                 <item>
                  <widget class="Line" name="line_2">
+                  <property name="styleSheet">
+                   <string notr="true">background-color: rgba(129, 129, 129, 50);
+border: 0px;
+border-radius: 50%;
+margin: 5, 5, 5, 5;</string>
+                  </property>
+                  <property name="lineWidth">
+                   <number>3</number>
+                  </property>
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="pushButton_5">
+                  <property name="minimumSize">
+                   <size>
+                    <width>40</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>40</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="toolTip">
+                   <string>New:
+Click to add a new widget.</string>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton {
+		border: 0px;
+		font: 12pt;
+        }
+QPushButton:hover {
+            background: rgb(55, 55, 55);
+        }
+QPushButton:checked  {
+		border: 0px;
+		background-color: rgb(63, 101, 255);
+}
+QToolTip{ 
+		font: 12pt;
+		color: rgb(100, 100, 100);
+}</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="icon">
+                   <iconset>
+                    <normaloff>../../resources/icons/more.png</normaloff>../../resources/icons/more.png</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>15</width>
+                    <height>15</height>
+                   </size>
+                  </property>
+                  <property name="checkable">
+                   <bool>true</bool>
+                  </property>
+                  <attribute name="buttonGroup">
+                   <string notr="true">NodeBoardbuttonGroup</string>
+                  </attribute>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="Line" name="line_4">
                   <property name="styleSheet">
                    <string notr="true">background-color: rgba(129, 129, 129, 50);
 border: 0px;
@@ -634,23 +721,7 @@ QToolTip{
                  </widget>
                 </item>
                 <item>
-                 <widget class="Line" name="line_4">
-                  <property name="styleSheet">
-                   <string notr="true">background-color: rgba(129, 129, 129, 50);
-border: 0px;
-border-radius: 50%;
-margin: 5, 5, 5, 5;</string>
-                  </property>
-                  <property name="lineWidth">
-                   <number>3</number>
-                  </property>
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="pushButton_5">
+                 <widget class="QPushButton" name="pushButton_11">
                   <property name="minimumSize">
                    <size>
                     <width>40</width>
@@ -667,8 +738,8 @@ margin: 5, 5, 5, 5;</string>
                    <cursorShape>PointingHandCursor</cursorShape>
                   </property>
                   <property name="toolTip">
-                   <string>New:
-Click to add a new widget</string>
+                   <string>Zoom in
+Click here to zoom in.</string>
                   </property>
                   <property name="styleSheet">
                    <string notr="true">QPushButton {
@@ -678,10 +749,6 @@ Click to add a new widget</string>
 QPushButton:hover {
             background: rgb(55, 55, 55);
         }
-QPushButton:checked  {
-		border: 0px;
-		background-color: rgb(63, 101, 255);
-}
 QToolTip{ 
 		font: 12pt;
 		color: rgb(100, 100, 100);
@@ -692,20 +759,63 @@ QToolTip{
                   </property>
                   <property name="icon">
                    <iconset>
-                    <normaloff>../../resources/icons/more.png</normaloff>../../resources/icons/more.png</iconset>
+                    <normaloff>../../resources/icons/magnifying-glass-2.png</normaloff>../../resources/icons/magnifying-glass-2.png</iconset>
                   </property>
                   <property name="iconSize">
                    <size>
-                    <width>15</width>
-                    <height>15</height>
+                    <width>17</width>
+                    <height>17</height>
                    </size>
                   </property>
-                  <property name="checkable">
-                   <bool>true</bool>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="pushButton_12">
+                  <property name="minimumSize">
+                   <size>
+                    <width>40</width>
+                    <height>40</height>
+                   </size>
                   </property>
-                  <attribute name="buttonGroup">
-                   <string notr="true">NodeBoardbuttonGroup</string>
-                  </attribute>
+                  <property name="maximumSize">
+                   <size>
+                    <width>40</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="toolTip">
+                   <string>Zoom out
+Click here to zoom out.</string>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton {
+		border: 0px;
+		font: 12pt;
+        }
+QPushButton:hover {
+            background: rgb(55, 55, 55);
+        }
+QToolTip{ 
+		font: 12pt;
+		color: rgb(100, 100, 100);
+}</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="icon">
+                   <iconset>
+                    <normaloff>../../resources/icons/magnifying-glass.png</normaloff>../../resources/icons/magnifying-glass.png</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>17</width>
+                    <height>17</height>
+                   </size>
+                  </property>
                  </widget>
                 </item>
                </layout>
@@ -1222,8 +1332,8 @@ border-radius: 50%</string>
                        <rect>
                         <x>0</x>
                         <y>0</y>
-                        <width>282</width>
-                        <height>556</height>
+                        <width>100</width>
+                        <height>30</height>
                        </rect>
                       </property>
                       <layout class="QVBoxLayout" name="verticalLayout_17"/>
@@ -1315,12 +1425,63 @@ border-radius: 50%</string>
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>pushButton_5</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>HandleCreateWidgetMode(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>111</x>
+     <y>452</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>457</x>
+     <y>384</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_11</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>HandleZoomIn()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>111</x>
+     <y>455</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>457</x>
+     <y>384</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_12</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>HandleZoomOut()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>111</x>
+     <y>495</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>457</x>
+     <y>384</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>OnNavbarButtonClicked(int)</slot>
   <slot>HandleDragMode(bool)</slot>
   <slot>HandleSelectMode(bool)</slot>
   <slot>HandleDeleteMode(bool)</slot>
+  <slot>HandleCreateWidgetMode(bool)</slot>
+  <slot>HandleZoomIn()</slot>
+  <slot>HandleZoomOut()</slot>
  </slots>
  <buttongroups>
   <buttongroup name="NavBarbuttonGroup"/>

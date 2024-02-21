@@ -58,6 +58,9 @@ border-radius: 5px; }</string>
        <height>16777215</height>
       </size>
      </property>
+     <property name="frameShadow">
+      <enum>QFrame::Sunken</enum>
+     </property>
      <property name="text">
       <string>Color</string>
      </property>

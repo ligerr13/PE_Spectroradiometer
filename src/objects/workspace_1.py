@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file '.\ui\workspace_widget.ui'
+# Form implementation generated from reading ui file 'ui/workspace_widget.ui'
 #
 # Created by: PyQt6 UI code generator 6.6.1
 #
@@ -17,8 +17,7 @@ class Ui_Form(object):
         Form.setMaximumSize(QtCore.QSize(16777215, 70))
         Form.setStyleSheet("QWidget {\n"
 "background-color: rgb(45, 45, 45);\n"
-"border-radius: 5px;\n"
-"border: 2px }")
+"border-radius: 5px; }")
         self.gridLayout_2 = QtWidgets.QGridLayout(Form)
         self.gridLayout_2.setObjectName("gridLayout_2")
         self.label_3 = QtWidgets.QLabel(parent=Form)
@@ -31,6 +30,7 @@ class Ui_Form(object):
         self.label = QtWidgets.QLabel(parent=Form)
         self.label.setMinimumSize(QtCore.QSize(0, 60))
         self.label.setMaximumSize(QtCore.QSize(60, 16777215))
+        self.label.setFrameShadow(QtWidgets.QFrame.Shadow.Sunken)
         self.label.setObjectName("label")
         self.gridLayout_2.addWidget(self.label, 0, 0, 1, 1)
         self.label_2 = QtWidgets.QLabel(parent=Form)
