@@ -9,11 +9,11 @@ class NavBar(QObject):
         self.prev_button = None
 
         #Calling Methods
-        self.group_butttons_to_pages()
+        self.group_buttons_to_pages()
         self.HandleButtonVisuals()
 
 
-    def group_butttons_to_pages(self):
+    def group_buttons_to_pages(self):
         for i, button in enumerate(self.ui.NavBarbuttonGroup.buttons()):
             self.ui.NavBarbuttonGroup.setId(button,i)
 
