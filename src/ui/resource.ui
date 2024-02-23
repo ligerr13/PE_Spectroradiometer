@@ -1484,7 +1484,7 @@ border-radius: 50%</string>
   <slot>HandleZoomOut()</slot>
  </slots>
  <buttongroups>
-  <buttongroup name="NavBarbuttonGroup"/>
   <buttongroup name="NodeBoardbuttonGroup"/>
+  <buttongroup name="NavBarbuttonGroup"/>
  </buttongroups>
 </ui>
