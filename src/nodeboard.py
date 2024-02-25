@@ -1,9 +1,12 @@
 from PyQt6.QtCore import QObject, QLineF, QPointF, pyqtSignal
-from PyQt6.QtWidgets import QGraphicsScene, QWidget, QGraphicsProxyWidget
+from PyQt6.QtWidgets import QGraphicsScene, QWidget, QGraphicsProxyWidget, QWidget
 from PyQt6.QtGui import QColor, qRgb, QTransform
-from src.objects.workspace_1 import Ui_Form
+
 from src.signals.nodeboardsignalbus import NodeBoardSignalBus
 from src.dialogs.widgetCreator import WidgetCreatorDialog
+from src.widgets.dataviewwidgetbase import DataViewTestWidget
+from src.widgets.testwidgetbase import CustomWidget
+
 
 
 
@@ -25,12 +28,12 @@ class NodeboardGraphicsScene(QGraphicsScene):
         self.nodeboard_signal_bus.widgetSelectedSignal.connect(self.onSelectWidget)
         self.nodeboard_signal_bus.widgetDeselectedSignal.connect(self.onDeselectWidget)
         self.nodeboard_signal_bus.widgetDeletedSignal.connect(self.onWidgetDelete)
-            
 
-    # Setters 
+
+    # Setters
     def setSelecteButton(self, button):
         self.SelectButton = button
-    
+
     def setDeleteButton(self, button):
         self.DeleteButton = button
         if button and button.isChecked() and self.selectedWidget:
@@ -38,7 +41,7 @@ class NodeboardGraphicsScene(QGraphicsScene):
 
     # Overwriten mousePressEvent
     def mousePressEvent(self, event):
-        if self.SelectButton and self.SelectButton.isChecked():                
+        if self.SelectButton and self.SelectButton.isChecked():
             item = self.itemAt(event.scenePos(), QTransform())
             if isinstance(item, QGraphicsProxyWidget):
                 if item != self.selectedWidget:
@@ -56,12 +59,12 @@ class NodeboardGraphicsScene(QGraphicsScene):
         if isinstance(deleted, QGraphicsProxyWidget):
                 self.nodeboard_signal_bus.onWidgetDeselectedSignalEmit(deleted)
                 self.removeItem(deleted)
-            
+
 
     def onSelectWidget(self, selected: QGraphicsProxyWidget):
         if isinstance(selected, QGraphicsProxyWidget):
             selected.widget().setStyleSheet("QWidget {\nbackground-color: rgb(75, 75, 75);\nborder-radius: 5px; }")
-        
+
 
     def onDeselectWidget(self, deselected: QGraphicsProxyWidget):
         if isinstance(deselected, QGraphicsProxyWidget):
@@ -69,22 +72,11 @@ class NodeboardGraphicsScene(QGraphicsScene):
             self.selectedWidget = None
 
 
-
-#Test CustomWidget
-class CustomWidget(QWidget):
-
-    def __init__(self, parent=None):
-        super().__init__(parent)
-        
-        #Setup UI
-        self.ui = Ui_Form()
-        self.ui.setupUi(self)
-
 class NodeBoard(QObject):
 
     def __init__(self, resource):
         super().__init__()
-        
+
         # Setup UI
         self.ui = resource
         self.grid = self.ui.gridLayout_4
@@ -92,6 +84,7 @@ class NodeBoard(QObject):
         # Hardcoded stuff for testing
         self.test_widget = CustomWidget()
         self.test_widget2 = CustomWidget()
+        self.test_widget3 = DataViewTestWidget()
 
         #Views and Scenes
         self.view = self.ui.graphicsView
@@ -106,6 +99,7 @@ class NodeBoard(QObject):
         self.view.setScene(self.scene)
         self.scene.addWidget(self.test_widget)
         self.scene.addWidget(self.test_widget2).setPos(QPointF(0.0, 100.0))
+        self.scene.addWidget(self.test_widget3).setPos(QPointF(0.0, 200.0))
 
 
 
