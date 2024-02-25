@@ -11,17 +11,19 @@ class WidgetCreatorDialog(QDialog):
         self.ui.setupUi(self)
 
         #Calling Methods
-        self.group_buttons_to_pages()
+    
+    
+    def closeEvent(self, event):
+            if self.result() == QDialog.DialogCode.Accepted:
+                print("Dialog accepted")
+            else:
+                print("Dialog rejected")
+            event.accept()
 
+    def onAccept(self):
+        print("Creating Widget")
+        self.accept()
 
-
-
-    def group_buttons_to_pages(self):
-        for i, button in enumerate(self.ui.widgetTypeButtonGroup.buttons()):
-            self.ui.widgetTypeButtonGroup.setId(button,i)
-
-    def WidgetTypePageHandler(self, pageId : int):
-        self.ui.stackedWidget.setCurrentIndex(pageId)
 
     def popUp(self):
         self.exec()
