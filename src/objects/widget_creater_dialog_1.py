@@ -12,7 +12,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(452, 689)
+        Dialog.resize(506, 541)
         Dialog.setStyleSheet("background-color: rgb(20, 20, 20); \n"
 "border-radius: 5px;")
         self.horizontalLayout = QtWidgets.QHBoxLayout(Dialog)
@@ -23,176 +23,11 @@ class Ui_Dialog(object):
         self.verticalLayout.setContentsMargins(2, 2, 2, 2)
         self.verticalLayout.setObjectName("verticalLayout")
         self.widget_2 = QtWidgets.QWidget(parent=self.widget)
-        self.widget_2.setStyleSheet("color:white;\n"
-"border-radius: 5px;\n"
-"background-color: rgb(35, 35, 35);")
         self.widget_2.setObjectName("widget_2")
-        self.gridLayout = QtWidgets.QGridLayout(self.widget_2)
-        self.gridLayout.setContentsMargins(9, 9, 9, 9)
-        self.gridLayout.setObjectName("gridLayout")
-        self.label_2 = QtWidgets.QLabel(parent=self.widget_2)
-        self.label_2.setStyleSheet("color: rgb(255, 255, 255);\n"
-"font: 700 10pt \"Segoe UI\";")
-        self.label_2.setObjectName("label_2")
-        self.gridLayout.addWidget(self.label_2, 0, 2, 1, 1)
-        self.label = QtWidgets.QLabel(parent=self.widget_2)
-        self.label.setMaximumSize(QtCore.QSize(25, 25))
-        self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/new-document.png"))
-        self.label.setScaledContents(True)
-        self.label.setObjectName("label")
-        self.gridLayout.addWidget(self.label, 0, 1, 1, 1)
-        self.label_3 = QtWidgets.QLabel(parent=self.widget_2)
-        self.label_3.setStyleSheet("color: rgb(100, 100, 100)")
-        self.label_3.setObjectName("label_3")
-        self.gridLayout.addWidget(self.label_3, 1, 1, 1, 2)
-        self.widget_3 = QtWidgets.QWidget(parent=self.widget_2)
-        self.widget_3.setMinimumSize(QtCore.QSize(0, 70))
-        self.widget_3.setStyleSheet("")
-        self.widget_3.setObjectName("widget_3")
-        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.widget_3)
-        self.horizontalLayout_2.setContentsMargins(2, 2, 2, 2)
-        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.pushButton = QtWidgets.QPushButton(parent=self.widget_3)
-        self.pushButton.setMinimumSize(QtCore.QSize(0, 55))
-        self.pushButton.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
-        self.pushButton.setStyleSheet("QPushButton {\n"
-"border :3px solid rgb(63, 101, 255);\n"
-"border-style : dashed;\n"
-"font: 700 10pt \"Segoe UI\";\n"
-" }")
-        self.pushButton.setIconSize(QtCore.QSize(16, 16))
-        self.pushButton.setObjectName("pushButton")
-        self.horizontalLayout_2.addWidget(self.pushButton)
-        self.gridLayout.addWidget(self.widget_3, 2, 1, 1, 2)
         self.verticalLayout.addWidget(self.widget_2)
-        self.line = QtWidgets.QFrame(parent=self.widget)
-        self.line.setStyleSheet("background-color: rgba(129, 129, 129, 50);\n"
-"border: 0px;\n"
-"border-radius: 50%")
-        self.line.setFrameShape(QtWidgets.QFrame.Shape.HLine)
-        self.line.setFrameShadow(QtWidgets.QFrame.Shadow.Sunken)
-        self.line.setObjectName("line")
-        self.verticalLayout.addWidget(self.line)
-        self.widget_4 = QtWidgets.QWidget(parent=self.widget)
-        self.widget_4.setMinimumSize(QtCore.QSize(0, 0))
-        self.widget_4.setStyleSheet("color:white;\n"
-"border-radius: 5px;\n"
-"background-color: rgb(35, 35, 35);")
-        self.widget_4.setObjectName("widget_4")
-        self.gridLayout_2 = QtWidgets.QGridLayout(self.widget_4)
-        self.gridLayout_2.setContentsMargins(9, 9, 9, 9)
-        self.gridLayout_2.setObjectName("gridLayout_2")
-        self.toolButton_2 = QtWidgets.QToolButton(parent=self.widget_4)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.toolButton_2.sizePolicy().hasHeightForWidth())
-        self.toolButton_2.setSizePolicy(sizePolicy)
-        self.toolButton_2.setMinimumSize(QtCore.QSize(200, 70))
-        self.toolButton_2.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
-        self.toolButton_2.setStyleSheet("QToolButton {\n"
-"        border: 0px;\n"
-"        font: 12pt;\n"
-"        }\n"
-"QToolButton:hover {\n"
-"            background: rgb(55, 55, 55);\n"
-"        }\n"
-"QToolButton:checked  {\n"
-"        border: 0px;\n"
-"        background-color: rgb(45, 45, 45);\n"
-"}\n"
-"QToolTip{ \n"
-"        font: 12pt;\n"
-"        color: rgb(100, 100, 100);\n"
-"}")
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/chart.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.toolButton_2.setIcon(icon)
-        self.toolButton_2.setIconSize(QtCore.QSize(30, 30))
-        self.toolButton_2.setCheckable(True)
-        self.toolButton_2.setChecked(False)
-        self.toolButton_2.setObjectName("toolButton_2")
-        self.buttonGroup = QtWidgets.QButtonGroup(Dialog)
-        self.buttonGroup.setObjectName("buttonGroup")
-        self.buttonGroup.addButton(self.toolButton_2)
-        self.gridLayout_2.addWidget(self.toolButton_2, 1, 2, 1, 1)
-        self.toolButton = QtWidgets.QToolButton(parent=self.widget_4)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.toolButton.sizePolicy().hasHeightForWidth())
-        self.toolButton.setSizePolicy(sizePolicy)
-        self.toolButton.setMinimumSize(QtCore.QSize(200, 70))
-        self.toolButton.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
-        self.toolButton.setStyleSheet("QToolButton {\n"
-"        border: 0px;\n"
-"        font: 12pt;\n"
-"        }\n"
-"QToolButton:hover {\n"
-"            background: rgb(55, 55, 55);\n"
-"        }\n"
-"QToolButton:checked  {\n"
-"        border: 0px;\n"
-"        background-color: rgb(45, 45, 45);\n"
-"}\n"
-"QToolTip{ \n"
-"        font: 12pt;\n"
-"        color: rgb(100, 100, 100);\n"
-"}")
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/cells.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.toolButton.setIcon(icon1)
-        self.toolButton.setIconSize(QtCore.QSize(30, 30))
-        self.toolButton.setCheckable(True)
-        self.toolButton.setChecked(True)
-        self.toolButton.setObjectName("toolButton")
-        self.buttonGroup.addButton(self.toolButton)
-        self.gridLayout_2.addWidget(self.toolButton, 1, 0, 1, 1)
-        self.widget_5 = QtWidgets.QWidget(parent=self.widget_4)
-        self.widget_5.setMinimumSize(QtCore.QSize(0, 50))
-        self.widget_5.setObjectName("widget_5")
-        self.gridLayout_3 = QtWidgets.QGridLayout(self.widget_5)
-        self.gridLayout_3.setContentsMargins(2, 2, 2, 2)
-        self.gridLayout_3.setObjectName("gridLayout_3")
-        self.label_4 = QtWidgets.QLabel(parent=self.widget_5)
-        self.label_4.setMaximumSize(QtCore.QSize(25, 25))
-        self.label_4.setText("")
-        self.label_4.setPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/choice.png"))
-        self.label_4.setScaledContents(True)
-        self.label_4.setObjectName("label_4")
-        self.gridLayout_3.addWidget(self.label_4, 0, 0, 1, 1)
-        self.label_6 = QtWidgets.QLabel(parent=self.widget_5)
-        self.label_6.setStyleSheet("color: rgb(255, 255, 255);\n"
-"font: 700 10pt \"Segoe UI\";")
-        self.label_6.setObjectName("label_6")
-        self.gridLayout_3.addWidget(self.label_6, 0, 1, 1, 1)
-        self.label_5 = QtWidgets.QLabel(parent=self.widget_5)
-        self.label_5.setStyleSheet("color: rgb(100, 100, 100)")
-        self.label_5.setObjectName("label_5")
-        self.gridLayout_3.addWidget(self.label_5, 1, 0, 1, 2)
-        self.gridLayout_2.addWidget(self.widget_5, 0, 0, 1, 3)
-        self.verticalLayout.addWidget(self.widget_4)
-        self.widget_7 = QtWidgets.QWidget(parent=self.widget)
-        self.widget_7.setObjectName("widget_7")
-        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.widget_7)
-        self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.stackedWidget = QtWidgets.QStackedWidget(parent=self.widget_7)
-        self.stackedWidget.setObjectName("stackedWidget")
-        self.page = QtWidgets.QWidget()
-        self.page.setObjectName("page")
-        self.gridLayout_4 = QtWidgets.QGridLayout(self.page)
-        self.gridLayout_4.setObjectName("gridLayout_4")
-        self.stackedWidget.addWidget(self.page)
-        self.page_2 = QtWidgets.QWidget()
-        self.page_2.setObjectName("page_2")
-        self.gridLayout_5 = QtWidgets.QGridLayout(self.page_2)
-        self.gridLayout_5.setObjectName("gridLayout_5")
-        self.stackedWidget.addWidget(self.page_2)
-        self.verticalLayout_2.addWidget(self.stackedWidget)
-        self.verticalLayout.addWidget(self.widget_7)
         self.widget_6 = QtWidgets.QWidget(parent=self.widget)
         self.widget_6.setMinimumSize(QtCore.QSize(0, 50))
+        self.widget_6.setMaximumSize(QtCore.QSize(16777215, 50))
         self.widget_6.setStyleSheet("color:white;\n"
 "border-radius: 5px;\n"
 "background-color: rgb(35, 35, 35);")
@@ -200,6 +35,29 @@ class Ui_Dialog(object):
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.widget_6)
         self.horizontalLayout_3.setContentsMargins(5, 5, 5, 5)
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
+        self.pushButton = QtWidgets.QPushButton(parent=self.widget_6)
+        self.pushButton.setMinimumSize(QtCore.QSize(0, 35))
+        self.pushButton.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        self.pushButton.setStyleSheet("QPushButton {\n"
+"        border: 0px;\n"
+"        font: 700 10pt \"Segoe UI\";\n"
+"        color: rgb(43, 81, 235);\n"
+"        background-color: rgb(0, 33, 71);\n"
+"        }\n"
+"QPushButton:hover {\n"
+"          background-color: rgb(10, 43, 81);\n"
+"        }\n"
+"QPushButton:checked  {\n"
+"        border: 0px;\n"
+"}\n"
+"QPushTip{ \n"
+"        font: 12pt;\n"
+"        color: rgb(100, 100, 100);\n"
+"}")
+        self.pushButton.setObjectName("pushButton")
+        self.horizontalLayout_3.addWidget(self.pushButton)
+        spacerItem = QtWidgets.QSpacerItem(100, 20, QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem)
         self.pushButton_2 = QtWidgets.QPushButton(parent=self.widget_6)
         self.pushButton_2.setMinimumSize(QtCore.QSize(0, 35))
         self.pushButton_2.setMaximumSize(QtCore.QSize(150, 16777215))
@@ -207,6 +65,7 @@ class Ui_Dialog(object):
         self.pushButton_2.setStyleSheet("QPushButton {\n"
 "        border: 0px;\n"
 "        font: 700 10pt \"Segoe UI\";\n"
+"        border :1.5px solid rgb(55, 55, 55);\n"
 "        }\n"
 "QPushButton:hover {\n"
 "            background: rgb(55, 55, 55);\n"
@@ -255,21 +114,14 @@ class Ui_Dialog(object):
         self.horizontalLayout.addWidget(self.widget)
 
         self.retranslateUi(Dialog)
-        self.stackedWidget.setCurrentIndex(1)
-        self.pushButton_2.clicked.connect(Dialog.reject) # type: ignore
         self.pushButton_3.clicked.connect(Dialog.onAccept) # type: ignore
+        self.pushButton_2.clicked.connect(Dialog.reject) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
         self.widget.setStyleSheet(_translate("Dialog", "0"))
-        self.label_2.setText(_translate("Dialog", "Upload files"))
-        self.label_3.setText(_translate("Dialog", " Select the file you want to work with."))
-        self.pushButton.setText(_translate("Dialog", " Choose file"))
-        self.toolButton_2.setText(_translate("Dialog", "..."))
-        self.toolButton.setText(_translate("Dialog", "..."))
-        self.label_6.setText(_translate("Dialog", "Choose widget type"))
-        self.label_5.setText(_translate("Dialog", " Select the widget type you want to work with."))
+        self.pushButton.setText(_translate("Dialog", "Preview"))
         self.pushButton_2.setText(_translate("Dialog", "Cancel"))
         self.pushButton_3.setText(_translate("Dialog", "Create"))

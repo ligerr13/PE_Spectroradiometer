@@ -1,29 +1,20 @@
 from PyQt6.QtCore import QObject
-from PyQt6.QtWidgets import QPushButton
-from functools import partial
+from src.dialogs.measureDialog import MeasureDialog
 
 class NavBar(QObject):
     def __init__(self, resource):
         super().__init__()
+
+        # Setup UI
         self.ui = resource
-        self.prev_button = None
+
+        #QDialogs
+        self.measureDialog = MeasureDialog()
 
         #Calling Methods
         self.group_buttons_to_pages()
-        self.HandleButtonVisuals()
 
 
     def group_buttons_to_pages(self):
         for i, button in enumerate(self.ui.NavBarbuttonGroup.buttons()):
             self.ui.NavBarbuttonGroup.setId(button,i)
-
-    def HandleButtonVisuals(self):
-        for i, button in enumerate(self.ui.NavBarbuttonGroup.buttons()):
-            button.clicked.connect(partial(self.handle_navbar_button_background_signal, button))
-        
-    #change to toggle like in nodeboard
-    def handle_navbar_button_background_signal(self, button):
-        if button == self.prev_button:
-            self.prev_button = None
-        else:
-            self.prev_button = button

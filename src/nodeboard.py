@@ -3,7 +3,7 @@ from PyQt6.QtWidgets import QGraphicsScene, QWidget, QGraphicsProxyWidget, QWidg
 from PyQt6.QtGui import QColor, qRgb, QTransform
 
 from src.signals.nodeboardsignalbus import NodeBoardSignalBus
-from src.dialogs.widgetCreator import WidgetCreatorDialog
+from src.dialogs.widgetCreatorDialog import WidgetCreatorDialog
 from src.widgets.dataviewwidgetbase import DataViewTestWidget
 from src.widgets.testwidgetbase import CustomWidget
 

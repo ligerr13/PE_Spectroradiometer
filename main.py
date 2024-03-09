@@ -30,17 +30,35 @@ class MyApp(QMainWindow):
 
 
     #MainWindow Slots
-    def HandleDragMode(self, drag: bool):        
-        if drag is not None:
-            if  drag == False:
+    def HandleMeasureDialog(self, selected: bool):
+        if selected is not None:
+            if  selected == False:
+                self.navbar.measureDialog.closePopUp()
+            else:
+                self.navbar.measureDialog.popUp()
+                self.sender().setChecked(False)
+
+
+    def HandleCreateWidgetMode(self, selected: bool):
+        if selected is not None:
+            if  selected == False:
+                self.nodeboard.widgetCreator.closePopUp()
+            else:
+                self.nodeboard.widgetCreator.popUp()
+                self.nodeboard.ui.pushButton_10.setChecked(True)
+
+
+    def HandleDragMode(self, selected: bool):
+        if selected is not None:
+            if  selected == False:
                 self.nodeboard.view.setDragMode(QGraphicsView.DragMode.NoDrag)
             else:
                 self.nodeboard.view.setDragMode(QGraphicsView.DragMode.ScrollHandDrag)
 
-    def HandleSelectMode(self, select: bool):
+    def HandleSelectMode(self, selected: bool):
         try:
-            if select is not None:
-                if select == False:
+            if selected is not None:
+                if selected == False:
                     self.nodeboard.scene.setSelecteButton(None)
                 else:
                     self.nodeboard.scene.setSelecteButton(self.sender())
@@ -48,21 +66,13 @@ class MyApp(QMainWindow):
             print("An AttributeError occurred:", e)
 
 
-    def HandleDeleteMode(self, delete: bool):
-        if delete is not None:
-            if  delete == False:
+    def HandleDeleteMode(self, selected: bool):
+        if selected is not None:
+            if  selected == False:
                 self.nodeboard.scene.setDeleteButton(None)
             else:
                 self.nodeboard.scene.setDeleteButton(self.sender())
 
-    def HandleCreateWidgetMode(self, create: bool):
-        if create is not None:
-            if  create == False:
-                # self.nodeboard.scene.setDeleteButton(None)
-                self.nodeboard.widgetCreator.closePopUp()
-            else:
-                # self.nodeboard.scene.setDeleteButton(self.sender())
-                self.nodeboard.widgetCreator.popUp()
 
     def OnNavbarButtonClicked(self, pageId: int):
         self.ui.stackedWidget.setCurrentIndex(pageId)
