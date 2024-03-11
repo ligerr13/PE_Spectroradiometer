@@ -1,6 +1,23 @@
 from PyQt6.QtWidgets import QWidget, QVBoxLayout, QTableView
 from PyQt6.QtGui import QStandardItemModel, QStandardItem
+# import pandas as pd
+import json
 
+
+class JSONreader:
+    def __init__(self, filename):
+        self.filename = filename
+    def read(self):
+        try:
+            with open(self.filename, 'r') as file:
+                data = json.load(file)
+            return data
+        except FileNotFoundError:
+            print(f"The File '{self.filename}' does not exist.")
+            return None
+        except json.JSONDecodeError:
+            print(f"Not supported JSON format.")
+            return None
 
 
 class DataViewTestWidget(QWidget):

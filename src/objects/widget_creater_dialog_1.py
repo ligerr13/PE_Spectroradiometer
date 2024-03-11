@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file '.\ui\widget_creater_dialog.ui'
+# Form implementation generated from reading ui file 'ui/widget_creater_dialog.ui'
 #
 # Created by: PyQt6 UI code generator 6.6.1
 #
@@ -38,7 +38,7 @@ class Ui_Dialog(object):
         self.label = QtWidgets.QLabel(parent=self.widget_2)
         self.label.setMaximumSize(QtCore.QSize(25, 25))
         self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/new-document.png"))
+        self.label.setPixmap(QtGui.QPixmap("ui/../../resources/icons/new-document.png"))
         self.label.setScaledContents(True)
         self.label.setObjectName("label")
         self.gridLayout.addWidget(self.label, 0, 1, 1, 1)
@@ -89,7 +89,7 @@ class Ui_Dialog(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.toolButton_2.sizePolicy().hasHeightForWidth())
         self.toolButton_2.setSizePolicy(sizePolicy)
-        self.toolButton_2.setMinimumSize(QtCore.QSize(200, 70))
+        self.toolButton_2.setMinimumSize(QtCore.QSize(200, 55))
         self.toolButton_2.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.toolButton_2.setStyleSheet("QToolButton {\n"
 "        border: 0px;\n"
@@ -107,7 +107,7 @@ class Ui_Dialog(object):
 "        color: rgb(100, 100, 100);\n"
 "}")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/chart.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon.addPixmap(QtGui.QPixmap("ui/../../resources/icons/chart.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.toolButton_2.setIcon(icon)
         self.toolButton_2.setIconSize(QtCore.QSize(30, 30))
         self.toolButton_2.setCheckable(True)
@@ -123,7 +123,7 @@ class Ui_Dialog(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.toolButton.sizePolicy().hasHeightForWidth())
         self.toolButton.setSizePolicy(sizePolicy)
-        self.toolButton.setMinimumSize(QtCore.QSize(200, 70))
+        self.toolButton.setMinimumSize(QtCore.QSize(200, 55))
         self.toolButton.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.toolButton.setStyleSheet("QToolButton {\n"
 "        border: 0px;\n"
@@ -141,7 +141,7 @@ class Ui_Dialog(object):
 "        color: rgb(100, 100, 100);\n"
 "}")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/cells.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon1.addPixmap(QtGui.QPixmap("ui/../../resources/icons/cells.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.toolButton.setIcon(icon1)
         self.toolButton.setIconSize(QtCore.QSize(30, 30))
         self.toolButton.setCheckable(True)
@@ -158,7 +158,7 @@ class Ui_Dialog(object):
         self.label_4 = QtWidgets.QLabel(parent=self.widget_5)
         self.label_4.setMaximumSize(QtCore.QSize(25, 25))
         self.label_4.setText("")
-        self.label_4.setPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/choice.png"))
+        self.label_4.setPixmap(QtGui.QPixmap("ui/../../resources/icons/choice.png"))
         self.label_4.setScaledContents(True)
         self.label_4.setObjectName("label_4")
         self.gridLayout_3.addWidget(self.label_4, 0, 0, 1, 1)
@@ -183,6 +183,9 @@ class Ui_Dialog(object):
         self.page.setObjectName("page")
         self.gridLayout_4 = QtWidgets.QGridLayout(self.page)
         self.gridLayout_4.setObjectName("gridLayout_4")
+        self.widget_8 = QtWidgets.QWidget(parent=self.page)
+        self.widget_8.setObjectName("widget_8")
+        self.gridLayout_4.addWidget(self.widget_8, 0, 0, 1, 1)
         self.stackedWidget.addWidget(self.page)
         self.page_2 = QtWidgets.QWidget()
         self.page_2.setObjectName("page_2")
@@ -255,7 +258,7 @@ class Ui_Dialog(object):
         self.horizontalLayout.addWidget(self.widget)
 
         self.retranslateUi(Dialog)
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(0)
         self.pushButton_2.clicked.connect(Dialog.reject) # type: ignore
         self.pushButton_3.clicked.connect(Dialog.onAccept) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(Dialog)

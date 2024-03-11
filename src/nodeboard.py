@@ -9,7 +9,6 @@ from src.widgets.testwidgetbase import CustomWidget
 
 
 
-
 class NodeboardGraphicsScene(QGraphicsScene):
     def __init__(self, parent=None):
         QGraphicsScene.__init__(self, parent)
@@ -99,7 +98,7 @@ class NodeBoard(QObject):
         self.view.setScene(self.scene)
         self.scene.addWidget(self.test_widget)
         self.scene.addWidget(self.test_widget2).setPos(QPointF(0.0, 100.0))
-        self.scene.addWidget(self.test_widget3).setPos(QPointF(0.0, 200.0))
+        # self.scene.addWidget(self.test_widget3).setPos(QPointF(0.0, 200.0))
 
 
 
