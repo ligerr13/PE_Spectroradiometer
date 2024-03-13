@@ -1,10 +1,10 @@
 from PyQt6.QtWidgets import QDialog
-from functools import partial
-from src.objects.widget_creater_dialog_1 import Ui_Dialog
+from src.objects.measure_dialog_1 import Ui_Dialog
 
-class WidgetCreatorDialog(QDialog):
+class MeasureDialog(QDialog):
     def __init__(self):
         super().__init__()
+
         
         #Setup UI
         self.ui = Ui_Dialog()
@@ -21,7 +21,7 @@ class WidgetCreatorDialog(QDialog):
             event.accept()
 
     def onAccept(self):
-        print("Creating Widget")
+        print("Start measure")
         self.accept()
 
 
