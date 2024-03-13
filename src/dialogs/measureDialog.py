@@ -1,5 +1,6 @@
 from PyQt6.QtWidgets import QDialog
 from src.objects.measure_dialog_1 import Ui_Dialog
+from src.instrument.connection import Connection
 
 class MeasureDialog(QDialog):
     def __init__(self):
@@ -18,7 +19,6 @@ class MeasureDialog(QDialog):
                 print("Dialog accepted")
             else:
                 print("Dialog rejected")
-            event.accept()
 
     def onAccept(self):
         print("Start measure")
