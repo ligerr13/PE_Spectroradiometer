@@ -3,7 +3,7 @@ from message import Message
 from connection import Connection
 import asyncio
 from enum import Enum
-from statemachine import StateMachine, State, Transition
+from statemachine import StateMachine, State
 
 delimiter = b'\n'
 ser = Connection()
@@ -14,7 +14,7 @@ class CommandState(Enum):
     IN_PROGRESS = 2
     ENDED = 3
 
-class CommandStateMachine(StateMachine):
+class StateMachine(StateMachine):
     started = State(CommandState.STARTED, initial=True)
     in_progress = State(CommandState.IN_PROGRESS)
     ended = State(CommandState.ENDED)
@@ -24,8 +24,6 @@ class CommandStateMachine(StateMachine):
 
 class Command(ABC):
     def __init__(self, *args, **kwargs):
-        self.state = CommandStateMachine()
-
         if not ser or not ser.open:
                 raise ValueError("Communication cannot be performed without an open connection.")
         if args:
@@ -33,7 +31,7 @@ class Command(ABC):
         else:
             self.params = kwargs.get('params', {})
 
-
+        self.state = StateMachine()
 
     @abstractmethod
     def prepare_message(self) -> Message:
@@ -146,25 +144,37 @@ class MEAS(Command):
         except Exception as err:
             raise ValueError("An error occurred while sending data: ", err)
 
-
-
-#TODO PROGRAMM CLASS 
-        #OPEN CLOSE CONENCTION
-        #ASYNC RUN PROGRAM
-
 basic_measure_program = [ 
     RMTS(switch = 1),
     MSWE(switch = 0),
     MEAS(switch = 1)
 ]
 
+class MeasurementComponent():
+    def __init__(self):
+        self.state = StateMachine()
+        self.connection = Connection()
+        self.connection.open()
 
-async def run_program(program: list[Command]) -> None:
-    for command in program:
-        message = command.prepare_message()
-        response = await command.send_message(message)
+    async def run_program(self, program: list[Command]) -> None:
+        self.state.start_to_in_progress()
         
-        print(response)
+        try:
+            for command in program:
+                message = command.prepare_message()
+                response = await command.send_message(message)
+
+                print(response)
+        except Exception as e:
+            self.state.in_progress_to_ended()
+            print(f"An error occurred: {e}")
+        else:
+            self.state.in_progress_to_ended()
+        finally:
+            self.cleanup()
+
+    def cleanup(self):
+        self.connection.close()
 
 
-asyncio.run(run_program(basic_measure_program))
+asyncio.run(MeasurementComponent().run_program(basic_measure_program))
