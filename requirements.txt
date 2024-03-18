@@ -1,2 +1,3 @@
 pyqtdarktheme
 PyQt6
+pyserial
