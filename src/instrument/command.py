@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
-from message import Message
-from connection import Connection
+from .message import Message
+from .connection import Connection
 import asyncio
 from enum import Enum
 from statemachine import StateMachine, State
@@ -22,10 +22,8 @@ class StateMachine(StateMachine):
 
 class Command(ABC):
     def __init__(self, *args, **kwargs):
-        self.connection = Connection.get_shared_connection()
+        self.connection = None
 
-        if not self.connection:
-            raise ValueError("Communication cannot be performed without an open connection or Connection object is not valid.")
         if args:
             self.params = args[0]
         else:
@@ -67,10 +65,13 @@ class Command(ABC):
         try:
             return self.connection.readline()
         except Exception as err:
-            raise ValueError("An error occurred while reading data: ", err)
+            raise Exception("An error occurred while reading data: ", err)
         
     
     def exec_write(self, message: str) -> None:
+        if not self.connection:
+            self.connection = Connection.get_shared_connection()
+        
         self.connection.write(message)
 
 
@@ -93,7 +94,7 @@ class RMTS(Command):
             resp1 = await self.receive_message()
             return resp1
         except Exception as err:
-            raise ValueError("An error occurred while sending data: ", err)
+            raise Exception("An error occurred while sending data: ", err)
         finally:
             self.state.in_progress_to_ended()
 
@@ -117,7 +118,7 @@ class MSWE(Command):
             resp1 = await self.receive_message()
             return resp1
         except Exception as err:
-            raise ValueError("An error occurred while sending data: ", err)
+            print("An error occurred while sending data: ", err)
         finally:
             self.state.in_progress_to_ended()
 
@@ -143,7 +144,7 @@ class MEAS(Command):
 
             return resp1, resp2
         except Exception as err:
-            raise ValueError("An error occurred while sending data: ", err)
+            print("An error occurred while sending data: ", err)
         finally:
             self.state.in_progress_to_ended()
 
@@ -183,15 +184,12 @@ class MEDR(Command):
 
             return resp1
         except Exception as err:
-            raise ValueError("An error occurred while sending data: ", err)
+            raise Exception("An error occurred while sending data: ", err)
         finally:
             self.state.in_progress_to_ended()
 
 
 class ExecuteProgram():
-    def __init__(self):
-        pass
-    
     @classmethod
     async def run_program(cls, program: list[Command]) -> None:
         state = StateMachine()
@@ -204,8 +202,8 @@ class ExecuteProgram():
                 response = await command.send_message(message)
 
                 print(response)
-        except Exception as e: 
-            print(f"An error occurred: {e}")
+        except Exception as err: 
+            print(f"An error occurred:", err)
         finally:
             state.in_progress_to_ended()
             cls.cleanup(connection)
@@ -214,17 +212,3 @@ class ExecuteProgram():
     def cleanup(cls, connection):
         if connection:
             connection.close()
-
-
-
-basic_measure_program = [
-    RMTS(switch = 1),
-    MSWE(switch = 0),
-    MEAS(switch = 1),
-    MEDR(data_mode = 0, data_format = 0, data_block_number_to_read = 1),
-  *[MEDR(data_mode=1, data_format=0, data_block_number_to_read=spectral_number) for spectral_number in range(1,5)],
-    MEDR(data_mode = 2, data_format = 0, data_block_number_to_read = 0),
-    RMTS(switch = 0)
-]
-
-asyncio.run(ExecuteProgram.run_program(basic_measure_program))

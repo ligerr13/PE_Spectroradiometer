@@ -16,12 +16,9 @@ class Connection:
             port = Connection.select_port()
             if port:
                 return serial.Serial(port, baudrate=9600, bytesize=8, stopbits=1, parity="N", timeout=10)
-            else:
-                return None
         except serial.SerialException as e:
             print("Error occurred while opening the port:", str(e))
-            return None
-    
+
     @staticmethod
     def select_port():
         try:

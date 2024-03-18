@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'ui/measure_dialog.ui'
+# Form implementation generated from reading ui file '.\ui\measure_dialog.ui'
 #
 # Created by: PyQt6 UI code generator 6.6.1
 #
@@ -12,7 +12,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(517, 675)
+        Dialog.resize(535, 675)
         Dialog.setStyleSheet("background-color: rgb(20, 20, 20); \n"
 "border-radius: 5px;")
         self.horizontalLayout = QtWidgets.QHBoxLayout(Dialog)
