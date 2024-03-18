@@ -190,9 +190,8 @@ class MEDR(Command):
 
 class ExecuteProgram():
     def __init__(self):
-        self.state = StateMachine()
-        self.connection = Connection.get_shared_connection()
-
+        pass
+    
     @classmethod
     async def run_program(cls, program: list[Command]) -> None:
         state = StateMachine()
