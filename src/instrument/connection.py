@@ -2,10 +2,28 @@ import serial
 import platform
 
 class Connection:
-    def __init__(self):
-        self.serial_port = None
+    _shared_connection = None
 
-    def select_port(self):
+    @classmethod
+    def get_shared_connection(cls):
+        if not cls._shared_connection:
+            cls._shared_connection = cls.open()
+        return cls._shared_connection
+    
+    @staticmethod
+    def open():
+        try:
+            port = Connection.select_port()
+            if port:
+                return serial.Serial(port, baudrate=9600, bytesize=8, stopbits=1, parity="N", timeout=10)
+            else:
+                return None
+        except serial.SerialException as e:
+            print("Error occurred while opening the port:", str(e))
+            return None
+    
+    @staticmethod
+    def select_port():
         try:
             if platform.system() == "Darwin":
                 return '/dev/cu.usbmodem12345678901'
@@ -18,21 +36,7 @@ class Connection:
             print("Error occurred while selecting the port:", str(e))
             return None
 
-    def open(self):
-        try:
-            port = self.select_port()
-            if port:
-                self.serial_port = serial.Serial(port, baudrate=9600, bytesize=8, stopbits=1, parity="N", timeout=10)
-                return True
-            else:
-                return False
-        except serial.SerialException as e:
-            print("Error occurred while opening the port:", str(e))
-            return False
-
-    def close(self):
-        if self.serial_port:
-            self.serial_port.close()
-            self.serial_port = None
-            
-# python -m serial.tools.list_ports 
+    @staticmethod
+    def close(serial_port):
+        if serial_port:
+            serial_port.close()
