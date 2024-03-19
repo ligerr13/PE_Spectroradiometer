@@ -34,11 +34,15 @@ class _RMTS(Command):
     def prepare_message(self) -> Message:
             message_content = b'RMTS,' + bytes(str(self.params["param"]), 'utf-8') + delimiter
             return Message(params=self.params, message=message_content)
+
     
     def send_message(self, msg: Message) -> bytes:
         if (0 <= msg.params["param"] <= 1):
-            ser.serial_port.write(msg.message)
-            return self.receive_message()
+            try:
+                ser.serial_port.write(msg.message)
+                return self.receive_message()
+            except Exception as e:
+                print("Error occurred while sending message:", str(e))
         else:
             raise ValueError("Invalid value! The value must be 0 or 1.")
     
