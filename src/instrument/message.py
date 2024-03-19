@@ -7,6 +7,5 @@ class Message:
     params: Dict[str, any]
     message: bytes
 
-@dataclass
-class Response:
-    data: bytes
+
+
