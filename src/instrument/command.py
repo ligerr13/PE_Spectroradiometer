@@ -3,6 +3,9 @@ from .message import Message
 from .connection import Connection
 from typing import Union
 from enum import Enum
+import os
+import json
+from datetime import datetime
 
 delimiter = b'\n'
 
@@ -162,11 +165,74 @@ class MEDR(Command):
             self.exec_write(msg.message)
             resp1 = await [self.receive_message().decode("utf-8").replace('"OK00,', '').strip('"\n')]
 
+            JsonBuilder.WriteToJson("hercegno", self.params, resp1)
             return resp1
         except Exception as err:
             raise Exception("An error occurred while sending data: ", err)
-        
-    
+
+class JsonBuilder:
+    @classmethod
+    def WriteToJson(cls, file_name: str, params: dict, data):
+        if params["data_mode"] == DataMode.COLORIMETRIC_DATA:
+            result_data = {"Colorimetric Data": {}}
+            colorimetric_keys = [
+                "Le", 
+                "Lv", 
+                "X", "Y", "Z", 
+                "x", "y", 
+                "u'", "v'", 
+                "T", "delta uv", 
+                "lambda d", "Pe",
+                "X10","Y10","Z10",
+                "x10","y10",
+                "u'10","v'10",
+                "T10","delta uv10",
+                "lambda d10","Pe10",
+            ]
+            for key, value in zip(colorimetric_keys, data):
+                result_data["Colorimetric Data"][key] = {"value": value, "switch": 0}
+
+            cls.buildJson(cls, file_name, result_data)
+
+        if params["data_mode"] == DataMode.MEASUREMENT_CONDITIONS:
+            result_data = {"Measurement Conditions": {}}
+            meascon_keys = [
+                "Speed mode", 
+                "Sync mode", 
+                "Integration time", 
+                "Internal ND filter",
+                "Optional close-up lens", 
+                "Optional external ND filter", 
+                "Measurement angle", 
+                "Calibration channel"]
+            
+            for key, value in zip(meascon_keys, data):
+                result_data["Measurement Conditions"][key] = {"value": value, "switch": 0}
+
+            cls.buildJson(cls, file_name, result_data)
+
+        if params["data_mode"] == DataMode.SPECTRAL_DATA:
+            result_data = {"Spectral data": {}}
+            result_data["Spectral data"][str(params['spectral_range'])] = {"value": data, "switch": 0}
+            
+            cls.buildJson(cls, file_name, result_data)
+
+    def buildJson(cls, file_name, data):
+        json_structure = data
+        data_folder = os.path.abspath(os.path.join(os.path.dirname(__file__), '.', 'data'))
+        filename = f"{file_name}.json"
+        file_path = os.path.join(data_folder, filename)
+
+        if os.path.exists(file_path):
+            with open(file_path, 'r') as existing_file:
+                existing_data = json.load(existing_file)
+            
+            existing_data.update(json_structure)
+            json_structure = existing_data
+
+        with open(file_path, 'w', newline='') as jsonfile:
+            json.dump(json_structure, jsonfile, indent=4)
+
 
 class ExecuteProgram:
     @classmethod
@@ -195,3 +261,4 @@ class ExecuteProgram:
     def cleanup(cls, connection):
         if connection:
             connection.close()
+
