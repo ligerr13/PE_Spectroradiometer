@@ -1,11 +1,8 @@
 from abc import ABC, abstractmethod
-from .message import Message
-from .connection import Connection
-from typing import Union
+from message import Message
+from connection import Connection
 from enum import Enum
-import os
-import json
-from datetime import datetime
+import os, json
 
 delimiter = b'\n'
 
@@ -60,7 +57,6 @@ class Command(ABC):
         
         self.connection.write(message)
 
-
 class ModeSelect(Enum):
     ENABLED = 1
     DISABLED = 0
@@ -81,7 +77,6 @@ class RMTS(Command):
             return resp1
         except Exception as err:
             raise Exception("An error occurred while sending data: ", err)
-
     
 class MSWE(Command):
     def __init__(self, switch: ModeSelect):
@@ -101,7 +96,6 @@ class MSWE(Command):
         except Exception as err:
             print("An error occurred while sending data: ", err)
         
-
 class MEAS(Command):
     def __init__(self, switch: ModeSelect):
         super().__init__(params={"switch": switch})
@@ -121,7 +115,6 @@ class MEAS(Command):
         except Exception as err:
             print("An error occurred while sending data: ", err)
 
-
 class DataMode(Enum):
     MEASUREMENT_CONDITIONS = 0
     SPECTRAL_DATA = 1
@@ -140,7 +133,6 @@ class SpectralRange(Enum):
     RANGE_480_TO_579 = 2  
     RANGE_580_TO_679 = 3  
     RANGE_680_TO_780 = 4 
-
 
 class MEDR(Command):
     def __init__(self, data_mode: DataMode, data_format: DataFormat, spectral_range: SpectralRange = None):
@@ -165,14 +157,20 @@ class MEDR(Command):
             self.exec_write(msg.message)
             resp1 = await [self.receive_message().decode("utf-8").replace('"OK00,', '').strip('"\n')]
 
-            JsonBuilder.WriteToJson("hercegno", self.params, resp1)
+            try:
+                JsonBuilder.WriteToJson(self.params, resp1)
+            except Exception as e:
+                print("An error occurred while trying to get file name or write to JSON:", e)
+            
             return resp1
         except Exception as err:
             raise Exception("An error occurred while sending data: ", err)
 
 class JsonBuilder:
     @classmethod
-    def WriteToJson(cls, file_name: str, params: dict, data):
+    def WriteToJson(cls, params: dict, data):
+        file_name = None
+
         if params["data_mode"] == DataMode.COLORIMETRIC_DATA:
             result_data = {"Colorimetric Data": {}}
             colorimetric_keys = [
@@ -234,31 +232,15 @@ class JsonBuilder:
             json.dump(json_structure, jsonfile, indent=4)
 
 
-class ExecuteProgram:
-    @classmethod
-    async def run_program(cls, program: Union[list[Command], Command]) -> None:
-        connection = Connection.get_shared_connection()
-        try:
-            if isinstance(program, list):
-                for command in program:
-                    message = command.prepare_message()
-                    response = await command.send_message(message)
-                    
-                    print(response)
-            elif isinstance(program, Command):
-                message = program.prepare_message()
-                response = await program.send_message(message)
 
-                print(response)
-            else:
-                raise TypeError("Invalid program type. Must be a Command or a list of Commands.")
-        except Exception as err: 
-            print(f"An error occurred:", err)
-        finally:
-            cls.cleanup(connection)
+params_colorimetric = {"data_mode": DataMode.COLORIMETRIC_DATA}
+data_colorimetric = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
+JsonBuilder.WriteToJson(params_colorimetric, data_colorimetric)
 
-    @classmethod
-    def cleanup(cls, connection):
-        if connection:
-            connection.close()
+params_measurement = {"data_mode": DataMode.MEASUREMENT_CONDITIONS}
+data_measurement = [1, 2, 3, 4, 5, 6, 7, 8]
+JsonBuilder.WriteToJson(params_measurement, data_measurement)
 
+params_spectral = {"data_mode": DataMode.SPECTRAL_DATA, "spectral_range": SpectralRange.RANGE_380_TO_479}
+data_spectral = [1, 2, 3, 4, 5]
+JsonBuilder.WriteToJson(params_spectral, data_spectral)
