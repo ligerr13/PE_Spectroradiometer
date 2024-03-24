@@ -4,6 +4,7 @@ from PyQt6.QtGui import QTransform
 from src.objects.resource_1 import Ui_MainWindow
 from src.navbar import NavBar
 from src.nodeboard import NodeBoard
+from src.footer import Footer
 
 import qdarktheme
 
@@ -19,7 +20,7 @@ class MyApp(QMainWindow):
         #QObject
         self.nodeboard = NodeBoard(self.ui)
         self.navbar = NavBar(self.ui)
-        
+        self.footer = Footer(self.ui)
 
         #Calling Methods
         self.nodeboard.generateSquareTiles(self.nodeboard.grid)
@@ -36,6 +37,10 @@ class MyApp(QMainWindow):
             else:
                 self.navbar.measureDialog.popUp()
                 self.sender().setChecked(False)
+
+
+    def HandleConnectionConfigDialog(self):
+        self.footer.connectionConfigDialog.popUp()
 
 
     def HandleCreateWidgetMode(self, selected: bool):

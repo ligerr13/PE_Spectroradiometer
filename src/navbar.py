@@ -17,4 +17,5 @@ class NavBar(QObject):
 
     def group_buttons_to_pages(self):
         for i, button in enumerate(self.ui.NavBarbuttonGroup.buttons()):
+            print(self.ui.NavBarbuttonGroup.buttons())
             self.ui.NavBarbuttonGroup.setId(button,i)
