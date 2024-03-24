@@ -28,7 +28,7 @@ class Command(ABC):
         pass
 
     @abstractmethod
-    async def send_message(self, msg: Message) -> bytes:
+    async def send_message(self, msg: Message):
 
         """
         Sends a message to the instrument.
@@ -52,7 +52,7 @@ class Command(ABC):
             raise Exception("An error occurred while reading data: ", err)
         
     
-    def exec_write(self, message: str) -> None:
+    def exec_write(self, message: bytes) -> bytes:
         if not self.connection:
             self.connection = Connection.get_shared_connection()
         
@@ -71,7 +71,7 @@ class RMTS(Command):
         message_content = b'RMTS,' + bytes(str(self.params["switch"].value), 'utf-8') + delimiter
         return Message(params=self.params, message=message_content)
     
-    async def send_message(self, msg: Message) -> bytes:
+    async def send_message(self, msg: Message):
         try:
             self.exec_write(msg.message)
 
@@ -89,7 +89,7 @@ class MSWE(Command):
         message_content = b'MSWE,' + bytes(str(self.params["switch"].value), 'utf-8') + delimiter
         return Message(params=self.params, message=message_content)
     
-    async def send_message(self, msg: Message) -> bytes:
+    async def send_message(self, msg: Message):
         try:
         
             self.exec_write(msg.message)
@@ -108,7 +108,7 @@ class MEAS(Command):
         message_content = b'MEAS,' + bytes(str(self.params["switch"].value), 'utf-8') + delimiter
         return Message(params=self.params, message=message_content)
     
-    async def send_message(self, msg: Message) -> bytes:
+    async def send_message(self, msg: Message):
         try:
             self.exec_write(msg.message)
             
@@ -127,7 +127,7 @@ class DataMode(Enum):
 
 class DataFormat(Enum):
     ALPHANUMERIC = 0
-    HEXADECIMAL = 1 #PLEASE DONT :)
+    HEXADECIMAL = 1
 
 class DataBlockNumber(Enum):
     MEASUREMENT_CONDITIONS = 1
@@ -158,33 +158,34 @@ class MEDR(Command):
 
         return Message(params=self.params, message=message_content)
     
-    async def send_message(self, msg: Message) -> bytes:
+    async def send_message(self, msg: Message):
         try:
             self.exec_write(msg.message)
             resp1 = await [self.receive_message().decode("utf-8").replace('"OK00,', '').strip('"\n')]
 
-            builder = JsonBuilderFactory.create_builder(self.params["data_mode"], "example_file", resp1)
-            builder.build()
             return resp1
         except Exception as err:
             raise Exception("An error occurred while sending data: ", err)
 
 class ExecuteProgram:
     @classmethod
-    async def run_program(cls, program: Union[list[Command], Command]) -> None:
+    async def run_program(cls, program: Union[list[Command], Command], save_file_name: str) -> None:
         connection = Connection.get_shared_connection()
         try:
             if isinstance(program, list):
                 for command in program:
                     message = command.prepare_message()
                     response = await command.send_message(message)
+
+                    builder = JsonBuilderFactory.create_builder(command.data_mode, save_file_name, response)
+                    builder.build()
                     
-                    print(response)
             elif isinstance(program, Command):
                 message = program.prepare_message()
                 response = await program.send_message(message)
 
-                print(response)
+                builder = JsonBuilderFactory.create_builder(program.data_mode, save_file_name, response)
+                builder.build()
             else:
                 raise TypeError("Invalid program type. Must be a Command or a list of Commands.")
         except Exception as err: 
@@ -217,6 +218,7 @@ class JsonBuilder:
 
         with open(file_path, 'w', newline='') as jsonfile:
             json.dump(json_structure, jsonfile, indent=4)
+
 
 class ColorimetricJsonBuilder(JsonBuilder):
     def __init__(self, file_name: str, data):
