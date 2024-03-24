@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1178</width>
-    <height>914</height>
+    <width>976</width>
+    <height>878</height>
    </rect>
   </property>
   <property name="acceptDrops">
@@ -1391,8 +1391,8 @@ border-radius: 50%</string>
                        <rect>
                         <x>0</x>
                         <y>0</y>
-                        <width>100</width>
-                        <height>30</height>
+                        <width>18</width>
+                        <height>18</height>
                        </rect>
                       </property>
                       <layout class="QVBoxLayout" name="verticalLayout_17"/>
@@ -1416,6 +1416,12 @@ border-radius: 50%</string>
     </item>
     <item row="2" column="0" colspan="2">
      <widget class="QWidget" name="widget_12" native="true">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>30</height>
+       </size>
+      </property>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <property name="leftMargin">
         <number>0</number>
@@ -1434,12 +1440,11 @@ border-radius: 50%</string>
          <property name="minimumSize">
           <size>
            <width>0</width>
-           <height>25</height>
+           <height>30</height>
           </size>
          </property>
          <property name="styleSheet">
-          <string notr="true">background-color: rgb(45, 45, 45);
-border-radius: 5px;
+          <string notr="true">border-radius: 5px;
 color: rgb(255, 255, 255);</string>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -1456,11 +1461,64 @@ color: rgb(255, 255, 255);</string>
            <number>2</number>
           </property>
           <item>
-           <widget class="QLabel" name="label_3">
+           <widget class="QToolButton" name="toolButton_2">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>25</height>
+             </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="toolTip">
+             <string>None</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QToolButton {
+		border: 0px;
+		 background: rgb(55, 55, 55);
+
+		font: 700 10pt &quot;Segoe UI&quot;;
+        }
+QToolButton:hover {
+            background: rgb(75, 75, 75);
+        }
+QToolTip{ 
+		font: 12pt;
+		color: rgb(100, 100, 100);
+}</string>
+            </property>
             <property name="text">
-             <string>TextLabel</string>
+             <string>  Connection status</string>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>../../resources/icons/link.png</normaloff>../../resources/icons/link.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>15</width>
+              <height>15</height>
+             </size>
+            </property>
+            <property name="toolButtonStyle">
+             <enum>Qt::ToolButtonTextBesideIcon</enum>
             </property>
            </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
           </item>
          </layout>
         </widget>
@@ -1602,6 +1660,22 @@ color: rgb(255, 255, 255);</string>
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>toolButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>HandleConnectionConfigDialog()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>85</x>
+     <y>832</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>487</x>
+     <y>438</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>OnNavbarButtonClicked(int)</slot>
@@ -1612,6 +1686,7 @@ color: rgb(255, 255, 255);</string>
   <slot>HandleZoomIn()</slot>
   <slot>HandleZoomOut()</slot>
   <slot>HandleMeasureDialog(bool)</slot>
+  <slot>HandleConnectionConfigDialog()</slot>
  </slots>
  <buttongroups>
   <buttongroup name="NavBarbuttonGroup"/>
