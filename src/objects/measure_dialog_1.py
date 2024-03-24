@@ -44,15 +44,15 @@ class Ui_Dialog(object):
         self.label.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.label.setObjectName("label")
         self.gridLayout.addWidget(self.label, 0, 0, 1, 1)
-        self.fileName = QtWidgets.QTextEdit(parent=self.widget_4)
-        self.fileName.setMaximumSize(QtCore.QSize(16777215, 35))
+        self.fileName = QtWidgets.QLineEdit(parent=self.widget_4)
+        self.fileName.setMinimumSize(QtCore.QSize(35, 35))
         self.fileName.setStyleSheet("border: 0px;\n"
 "        font: 700 10pt \"Segoe UI\";\n"
 "         background: rgb(55, 55, 55);\n"
 "        border :3px solid rgb(55, 55, 55);\n"
 "color: rgb(94, 94, 94)")
         self.fileName.setObjectName("fileName")
-        self.gridLayout.addWidget(self.fileName, 1, 0, 1, 2)
+        self.gridLayout.addWidget(self.fileName, 1, 0, 1, 1)
         self.verticalLayout_3.addWidget(self.widget_4)
         spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
         self.verticalLayout_3.addItem(spacerItem)
@@ -128,6 +128,6 @@ class Ui_Dialog(object):
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
         self.widget.setStyleSheet(_translate("Dialog", "0"))
         self.label.setText(_translate("Dialog", "Save file"))
-        self.fileName.setPlaceholderText(_translate("Dialog", "Enter filename"))
+        self.fileName.setPlaceholderText(_translate("Dialog", "File name"))
         self.pushButton_5.setText(_translate("Dialog", "Cancel"))
         self.pushButton_6.setText(_translate("Dialog", "Start"))
