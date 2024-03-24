@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
-from message import Message
-from connection import Connection
+from .message import Message
+from .connection import Connection
+from typing import Union
 from enum import Enum
 import os, json
 
@@ -57,6 +58,7 @@ class Command(ABC):
         
         self.connection.write(message)
 
+
 class ModeSelect(Enum):
     ENABLED = 1
     DISABLED = 0
@@ -77,6 +79,7 @@ class RMTS(Command):
             return resp1
         except Exception as err:
             raise Exception("An error occurred while sending data: ", err)
+
     
 class MSWE(Command):
     def __init__(self, switch: ModeSelect):
@@ -96,6 +99,7 @@ class MSWE(Command):
         except Exception as err:
             print("An error occurred while sending data: ", err)
         
+
 class MEAS(Command):
     def __init__(self, switch: ModeSelect):
         super().__init__(params={"switch": switch})
@@ -115,6 +119,7 @@ class MEAS(Command):
         except Exception as err:
             print("An error occurred while sending data: ", err)
 
+
 class DataMode(Enum):
     MEASUREMENT_CONDITIONS = 0
     SPECTRAL_DATA = 1
@@ -133,6 +138,7 @@ class SpectralRange(Enum):
     RANGE_480_TO_579 = 2  
     RANGE_580_TO_679 = 3  
     RANGE_680_TO_780 = 4 
+
 
 class MEDR(Command):
     def __init__(self, data_mode: DataMode, data_format: DataFormat, spectral_range: SpectralRange = None):
@@ -157,90 +163,96 @@ class MEDR(Command):
             self.exec_write(msg.message)
             resp1 = await [self.receive_message().decode("utf-8").replace('"OK00,', '').strip('"\n')]
 
-            try:
-                JsonBuilder.WriteToJson(self.params, resp1)
-            except Exception as e:
-                print("An error occurred while trying to get file name or write to JSON:", e)
-            
+            builder = JsonBuilderFactory.create_builder(self.params["data_mode"], "example_file", resp1)
+            builder.build()
             return resp1
         except Exception as err:
             raise Exception("An error occurred while sending data: ", err)
 
-class JsonBuilder:
+class ExecuteProgram:
     @classmethod
-    def WriteToJson(cls, params: dict, data):
-        file_name = None
+    async def run_program(cls, program: Union[list[Command], Command]) -> None:
+        connection = Connection.get_shared_connection()
+        try:
+            if isinstance(program, list):
+                for command in program:
+                    message = command.prepare_message()
+                    response = await command.send_message(message)
+                    
+                    print(response)
+            elif isinstance(program, Command):
+                message = program.prepare_message()
+                response = await program.send_message(message)
 
-        if params["data_mode"] == DataMode.COLORIMETRIC_DATA:
-            result_data = {"Colorimetric Data": {}}
-            colorimetric_keys = [
-                "Le", 
-                "Lv", 
-                "X", "Y", "Z", 
-                "x", "y", 
-                "u'", "v'", 
-                "T", "delta uv", 
-                "lambda d", "Pe",
-                "X10","Y10","Z10",
-                "x10","y10",
-                "u'10","v'10",
-                "T10","delta uv10",
-                "lambda d10","Pe10",
-            ]
-            for key, value in zip(colorimetric_keys, data):
-                result_data["Colorimetric Data"][key] = {"value": value, "switch": 0}
+                print(response)
+            else:
+                raise TypeError("Invalid program type. Must be a Command or a list of Commands.")
+        except Exception as err: 
+            print(f"An error occurred:", err)
+        finally:
+            cls.cleanup(connection)
 
-            cls.buildJson(cls, file_name, result_data)
+    @classmethod
+    def cleanup(cls, connection):
+        if connection:
+            connection.close()
 
-        if params["data_mode"] == DataMode.MEASUREMENT_CONDITIONS:
-            result_data = {"Measurement Conditions": {}}
-            meascon_keys = [
-                "Speed mode", 
-                "Sync mode", 
-                "Integration time", 
-                "Internal ND filter",
-                "Optional close-up lens", 
-                "Optional external ND filter", 
-                "Measurement angle", 
-                "Calibration channel"]
-            
-            for key, value in zip(meascon_keys, data):
-                result_data["Measurement Conditions"][key] = {"value": value, "switch": 0}
 
-            cls.buildJson(cls, file_name, result_data)
+class JsonBuilder:
+    def __init__(self, file_name: str):
+        self.file_name = file_name
+        self.result_data = {}
 
-        if params["data_mode"] == DataMode.SPECTRAL_DATA:
-            result_data = {"Spectral data": {}}
-            result_data["Spectral data"][str(params['spectral_range'])] = {"value": data, "switch": 0}
-            
-            cls.buildJson(cls, file_name, result_data)
-
-    def buildJson(cls, file_name, data):
-        json_structure = data
+    def build(self):
+        json_structure = {self.__class__.__name__: self.result_data}
         data_folder = os.path.abspath(os.path.join(os.path.dirname(__file__), '.', 'data'))
-        filename = f"{file_name}.json"
+        filename = f"{self.file_name}.json"
         file_path = os.path.join(data_folder, filename)
 
         if os.path.exists(file_path):
             with open(file_path, 'r') as existing_file:
                 existing_data = json.load(existing_file)
-            
             existing_data.update(json_structure)
             json_structure = existing_data
 
         with open(file_path, 'w', newline='') as jsonfile:
             json.dump(json_structure, jsonfile, indent=4)
 
+class ColorimetricJsonBuilder(JsonBuilder):
+    def __init__(self, file_name: str, data):
+        super().__init__(file_name)
+        self.colorimetric_keys = [
+            "Le", "Lv", "X", "Y", "Z", "x", "y", "u'", "v'", "T", "delta uv", "lambda d", "Pe",
+            "X10", "Y10", "Z10", "x10", "y10", "u'10", "v'10", "T10", "delta uv10", "lambda d10", "Pe10",
+        ]
+        self.result_data = {"Colorimetric Data": {}}
+        for key, value in zip(self.colorimetric_keys, data):
+            self.result_data["Colorimetric Data"][key] = {"value": value, "switch": 0}
 
+class MeasurementJsonBuilder(JsonBuilder):
+    def __init__(self, file_name: str, data):
+        super().__init__(file_name)
+        self.meascon_keys = [
+            "Speed mode", "Sync mode", "Integration time", "Internal ND filter",
+            "Optional close-up lens", "Optional external ND filter", "Measurement angle", "Calibration channel"
+        ]
+        self.result_data = {"Measurement Conditions": {}}
+        for key, value in zip(self.meascon_keys, data):
+            self.result_data["Measurement Conditions"][key] = {"value": value, "switch": 0}
 
-params_colorimetric = {"data_mode": DataMode.COLORIMETRIC_DATA}
-data_colorimetric = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
-JsonBuilder.WriteToJson(params_colorimetric, data_colorimetric)
+class SpectralJsonBuilder(JsonBuilder):
+    def __init__(self, file_name: str, spectral_range: str, data):
+        super().__init__(file_name)
+        self.result_data = {"Spectral data": {spectral_range: {"value": data, "switch": 0}}}
 
-params_measurement = {"data_mode": DataMode.MEASUREMENT_CONDITIONS}
-data_measurement = [1, 2, 3, 4, 5, 6, 7, 8]
-JsonBuilder.WriteToJson(params_measurement, data_measurement)
-
-params_spectral = {"data_mode": DataMode.SPECTRAL_DATA, "spectral_range": SpectralRange.RANGE_380_TO_479}
-data_spectral = [1, 2, 3, 4, 5]
-JsonBuilder.WriteToJson(params_spectral, data_spectral)
+class JsonBuilderFactory:
+    @staticmethod
+    def create_builder(builder_type, file_name, *args, **kwargs):
+        if builder_type == DataMode.COLORIMETRIC_DATA:
+            return ColorimetricJsonBuilder(file_name, *args, **kwargs)
+        elif builder_type == DataMode.MEASUREMENT_CONDITIONS:
+            return MeasurementJsonBuilder(file_name, *args, **kwargs)
+        elif builder_type == DataMode.SPECTRAL_DATA:
+            return SpectralJsonBuilder(file_name, *args, **kwargs)
+        else:
+            raise ValueError("Invalid builder type")
