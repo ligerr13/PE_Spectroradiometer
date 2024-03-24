@@ -1,8 +1,8 @@
-from PyQt6.QtWidgets import QDialog
+from PyQt6.QtWidgets import QDialog, QMessageBox
 from src.objects.measure_dialog_1 import Ui_Dialog
 from src.instrument.command import ExecuteProgram, RMTS, MSWE, MEAS, MEDR
 from src.instrument.command import DataMode, DataFormat, ModeSelect, SpectralRange
-import asyncio
+import asyncio, os, re
 
 
 basic_measure_program = [
@@ -18,6 +18,11 @@ basic_measure_program = [
     RMTS(switch = ModeSelect.DISABLED)
 ]
 
+class FileValidator:
+    @classmethod
+    def get_data_directory(cls):
+        script_dir = os.path.dirname(__file__)
+        return os.path.abspath(os.path.join(script_dir, '..', 'instrument', 'data'))
 
 class MeasureDialog(QDialog):
     def __init__(self):
@@ -35,10 +40,23 @@ class MeasureDialog(QDialog):
         event.accept()
 
     def onAccept(self):
-        print("Creating Widget")
-        asyncio.run(ExecuteProgram.run_program(basic_measure_program))
-        self.accept()
+            file_name = self.ui.fileName.text()
+            if len(file_name) < 5:
+                QMessageBox.warning(self, "Warning", "File name must be at least 5 characters long!")
+                return
+            elif not re.match(r'^[a-zA-Z0-9]*$', file_name):
+                QMessageBox.warning(self, "Warning", "File name must contain at least one letter or number!")
+                return
+            elif os.path.exists(os.path.join(FileValidator.get_data_directory(), file_name + ".json")):
+                QMessageBox.warning(self, "Warning", "File already exists in folder:\n" +  FileValidator.get_data_directory())
+                return
+            
+            asyncio.run(ExecuteProgram.run_program(basic_measure_program, file_name))
+            self.accept()
+
+    def cleanUp(self):
+        self.ui.fileName.setText("")
 
     def popUp(self):
-        # await self.onAccept()
+        self.cleanUp()
         self.exec()
