@@ -4,8 +4,9 @@ from PyQt6.QtGui import QTransform
 from src.objects.resource_1 import Ui_MainWindow
 from src.navbar import NavBar
 from src.nodeboard import NodeBoard
+from src.footer import Footer
 
-import qdarktheme
+import qdarktheme, os
 
 
 class MyApp(QMainWindow):
@@ -19,7 +20,7 @@ class MyApp(QMainWindow):
         #QObject
         self.nodeboard = NodeBoard(self.ui)
         self.navbar = NavBar(self.ui)
-        
+        self.footer = Footer(self.ui)
 
         #Calling Methods
         self.nodeboard.generateSquareTiles(self.nodeboard.grid)
@@ -36,6 +37,10 @@ class MyApp(QMainWindow):
             else:
                 self.navbar.measureDialog.popUp()
                 self.sender().setChecked(False)
+
+
+    def HandleConnectionConfigDialog(self):
+        self.footer.connectionConfigDialog.popUp()
 
 
     def HandleCreateWidgetMode(self, selected: bool):
@@ -93,7 +98,22 @@ class MyApp(QMainWindow):
         if tr.m11() >= 0.4 and tr.m22() >= 0.4:
             self.nodeboard.view.setTransform(tr)
 
+
+
+def generate_py_files():
+    for directory in ["objects", "ui"]:
+        for root, dirs, files in os.walk(directory):
+            for file in files:
+                if file.endswith(".ui"):
+                    ui_file = os.path.join(root, file)
+                    py_file = os.path.join("objects/", os.path.splitext(file)[0] + "_1.py")
+                    command = f"pyuic6 -o {py_file} {ui_file}"
+                    os.system(command)
+                    print(f"Generated: {py_file}")
+
 if __name__ == "__main__":
+    generate_py_files()
+
     app = QApplication([])
     app.setStyleSheet(qdarktheme.load_stylesheet("dark"))
 

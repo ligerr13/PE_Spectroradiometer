@@ -1,0 +1,7 @@
+{
+    "baudrate": 9600,
+    "bytesize": 8,
+    "stopbits": 1,
+    "parity": "N",
+    "timeout": 10
+}

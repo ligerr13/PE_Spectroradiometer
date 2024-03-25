@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'ui/measure_dialog.ui'
+# Form implementation generated from reading ui file '.\ui\measure_dialog.ui'
 #
 # Created by: PyQt6 UI code generator 6.6.1
 #
@@ -25,14 +25,37 @@ class Ui_Dialog(object):
         self.widget_3 = QtWidgets.QWidget(parent=self.widget)
         self.widget_3.setObjectName("widget_3")
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.widget_3)
+        self.verticalLayout_3.setContentsMargins(2, 2, 2, 2)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
         self.widget_4 = QtWidgets.QWidget(parent=self.widget_3)
-        self.widget_4.setMaximumSize(QtCore.QSize(16777215, 100))
+        self.widget_4.setMaximumSize(QtCore.QSize(16777215, 90))
         self.widget_4.setSizeIncrement(QtCore.QSize(0, 0))
+        self.widget_4.setStyleSheet("color:white;\n"
+"border-radius: 5px;\n"
+"background-color: rgb(35, 35, 35);")
         self.widget_4.setObjectName("widget_4")
         self.gridLayout = QtWidgets.QGridLayout(self.widget_4)
+        self.gridLayout.setContentsMargins(10, 10, 10, 10)
         self.gridLayout.setObjectName("gridLayout")
+        self.label = QtWidgets.QLabel(parent=self.widget_4)
+        self.label.setMaximumSize(QtCore.QSize(16777215, 20))
+        self.label.setStyleSheet("font: 700 11pt \"Segoe UI\";\n"
+"color: rgb(255, 255, 255);")
+        self.label.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.label.setObjectName("label")
+        self.gridLayout.addWidget(self.label, 0, 0, 1, 1)
+        self.fileName = QtWidgets.QLineEdit(parent=self.widget_4)
+        self.fileName.setMinimumSize(QtCore.QSize(35, 35))
+        self.fileName.setStyleSheet("border: 0px;\n"
+"        font: 700 10pt \"Segoe UI\";\n"
+"         background: rgb(55, 55, 55);\n"
+"        border :3px solid rgb(55, 55, 55);\n"
+"color: rgb(94, 94, 94)")
+        self.fileName.setObjectName("fileName")
+        self.gridLayout.addWidget(self.fileName, 1, 0, 1, 1)
         self.verticalLayout_3.addWidget(self.widget_4)
+        spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        self.verticalLayout_3.addItem(spacerItem)
         self.verticalLayout_2.addWidget(self.widget_3)
         self.widget_7 = QtWidgets.QWidget(parent=self.widget)
         self.widget_7.setMinimumSize(QtCore.QSize(0, 50))
@@ -104,5 +127,7 @@ class Ui_Dialog(object):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
         self.widget.setStyleSheet(_translate("Dialog", "0"))
+        self.label.setText(_translate("Dialog", "Save file"))
+        self.fileName.setPlaceholderText(_translate("Dialog", "File name"))
         self.pushButton_5.setText(_translate("Dialog", "Cancel"))
         self.pushButton_6.setText(_translate("Dialog", "Start"))
