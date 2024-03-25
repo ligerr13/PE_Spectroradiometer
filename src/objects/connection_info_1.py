@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file '.\ui\connection_info.ui'
+# Form implementation generated from reading ui file 'ui/connection_info.ui'
 #
 # Created by: PyQt6 UI code generator 6.6.1
 #
@@ -159,6 +159,8 @@ class Ui_Dialog(object):
         self.verticalLayout_3.addWidget(self.widget_7)
         self.verticalLayout.addWidget(self.widget)
         self.buttonBox = QtWidgets.QDialogButtonBox(parent=Dialog)
+        self.buttonBox.setMaximumSize(QtCore.QSize(200, 16777215))
+        self.buttonBox.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.buttonBox.setStyleSheet("QPushButton {\n"
 "        border: 5px;\n"
 "        color:rgb(255, 255, 255);\n"
