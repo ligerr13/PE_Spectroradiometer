@@ -37,6 +37,7 @@ class Command(ABC):
         """
         pass
         
+
     async def receive_message(self) -> bytes:
 
         """
