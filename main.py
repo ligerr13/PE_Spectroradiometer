@@ -99,21 +99,7 @@ class MyApp(QMainWindow):
             self.nodeboard.view.setTransform(tr)
 
 
-
-def generate_py_files():
-    for directory in ["objects", "ui"]:
-        for root, dirs, files in os.walk(directory):
-            for file in files:
-                if file.endswith(".ui"):
-                    ui_file = os.path.join(root, file)
-                    py_file = os.path.join("objects/", os.path.splitext(file)[0] + "_1.py")
-                    command = f"pyuic6 -o {py_file} {ui_file}"
-                    os.system(command)
-                    print(f"Generated: {py_file}")
-
 if __name__ == "__main__":
-    generate_py_files()
-
     app = QApplication([])
     app.setStyleSheet(qdarktheme.load_stylesheet("dark"))
 
