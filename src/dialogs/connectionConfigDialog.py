@@ -11,7 +11,6 @@ class ConnectionConfigDialog(QDialog):
 
         #Calling Methods
     
-    
     def closeEvent(self, event):
             if self.result() == QDialog.DialogCode.Accepted:
                 print("Dialog accepted")
@@ -21,7 +20,6 @@ class ConnectionConfigDialog(QDialog):
 
     def onAccept(self):
         self.accept()
-
 
     def popUp(self):
         self.exec()
