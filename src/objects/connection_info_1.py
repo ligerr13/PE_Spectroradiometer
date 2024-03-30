@@ -12,162 +12,183 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(568, 681)
+        Dialog.resize(462, 538)
         Dialog.setStyleSheet("background-color: rgb(20, 20, 20); ")
         self.verticalLayout = QtWidgets.QVBoxLayout(Dialog)
         self.verticalLayout.setObjectName("verticalLayout")
+        self.label = QtWidgets.QLabel(parent=Dialog)
+        self.label.setStyleSheet("font: 750 15pt \"Segoe UI\";\n"
+"color: rgb(255, 255, 255);\n"
+"border: 0px;")
+        self.label.setObjectName("label")
+        self.verticalLayout.addWidget(self.label)
         self.widget = QtWidgets.QWidget(parent=Dialog)
-        self.widget.setStyleSheet("QWidget {\n"
-"border-radius: 5px; }")
+        self.widget.setStyleSheet("\n"
+"    color:white;\n"
+"    border-radius: 5px;\n"
+"    background-color: rgb(35, 35, 35);")
         self.widget.setObjectName("widget")
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.widget)
+        self.verticalLayout_3.setContentsMargins(9, 2, 9, 9)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
         self.widget_4 = QtWidgets.QWidget(parent=self.widget)
         self.widget_4.setMaximumSize(QtCore.QSize(16777215, 90))
         self.widget_4.setSizeIncrement(QtCore.QSize(0, 0))
         self.widget_4.setStyleSheet("color:white;\n"
-"border-radius: 5px;\n"
-"background-color: rgb(35, 35, 35);")
+"border-radius: 5px;")
         self.widget_4.setObjectName("widget_4")
         self.gridLayout_3 = QtWidgets.QGridLayout(self.widget_4)
-        self.gridLayout_3.setContentsMargins(10, 10, 10, 10)
+        self.gridLayout_3.setContentsMargins(0, 10, 0, 10)
         self.gridLayout_3.setObjectName("gridLayout_3")
-        self.label_3 = QtWidgets.QLabel(parent=self.widget_4)
-        self.label_3.setMaximumSize(QtCore.QSize(16777215, 20))
-        self.label_3.setStyleSheet("font: 700 11pt \"Segoe UI\";\n"
-"color: rgb(255, 255, 255);")
-        self.label_3.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
-        self.label_3.setObjectName("label_3")
-        self.gridLayout_3.addWidget(self.label_3, 0, 0, 1, 1)
-        self.fileName_3 = QtWidgets.QLineEdit(parent=self.widget_4)
-        self.fileName_3.setMinimumSize(QtCore.QSize(35, 35))
-        self.fileName_3.setStyleSheet("border: 0px;\n"
+        self.baudrateQLineEdit = QtWidgets.QLineEdit(parent=self.widget_4)
+        self.baudrateQLineEdit.setMinimumSize(QtCore.QSize(35, 40))
+        self.baudrateQLineEdit.setStyleSheet("border: 0px;\n"
 "        font: 700 10pt \"Segoe UI\";\n"
 "         background: rgb(55, 55, 55);\n"
 "        border :3px solid rgb(55, 55, 55);\n"
-"color: rgb(94, 94, 94)")
-        self.fileName_3.setObjectName("fileName_3")
-        self.gridLayout_3.addWidget(self.fileName_3, 1, 0, 1, 1)
+"color: rgb(144, 144, 144)")
+        self.baudrateQLineEdit.setObjectName("baudrateQLineEdit")
+        self.gridLayout_3.addWidget(self.baudrateQLineEdit, 1, 0, 1, 2)
+        self.label_3 = QtWidgets.QLabel(parent=self.widget_4)
+        self.label_3.setMaximumSize(QtCore.QSize(16777215, 20))
+        self.label_3.setStyleSheet("font: 700 13pt \"Segoe UI\";\n"
+"color: rgb(200, 200, 200);\n"
+"border: 0px;")
+        self.label_3.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.label_3.setObjectName("label_3")
+        self.gridLayout_3.addWidget(self.label_3, 0, 0, 1, 2)
         self.verticalLayout_3.addWidget(self.widget_4)
         self.widget_9 = QtWidgets.QWidget(parent=self.widget)
         self.widget_9.setMaximumSize(QtCore.QSize(16777215, 90))
         self.widget_9.setSizeIncrement(QtCore.QSize(0, 0))
         self.widget_9.setStyleSheet("color:white;\n"
-"border-radius: 5px;\n"
-"background-color: rgb(35, 35, 35);")
+"border-radius: 5px;")
         self.widget_9.setObjectName("widget_9")
         self.gridLayout_7 = QtWidgets.QGridLayout(self.widget_9)
-        self.gridLayout_7.setContentsMargins(10, 10, 10, 10)
+        self.gridLayout_7.setContentsMargins(0, 10, 0, 10)
         self.gridLayout_7.setObjectName("gridLayout_7")
         self.label_7 = QtWidgets.QLabel(parent=self.widget_9)
         self.label_7.setMaximumSize(QtCore.QSize(16777215, 20))
-        self.label_7.setStyleSheet("font: 700 11pt \"Segoe UI\";\n"
-"color: rgb(255, 255, 255);")
+        self.label_7.setStyleSheet("font: 700 13pt \"Segoe UI\";\n"
+"color: rgb(200, 200, 200);\n"
+"border: 0px;")
         self.label_7.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.label_7.setObjectName("label_7")
         self.gridLayout_7.addWidget(self.label_7, 0, 0, 1, 1)
-        self.fileName_7 = QtWidgets.QLineEdit(parent=self.widget_9)
-        self.fileName_7.setMinimumSize(QtCore.QSize(35, 35))
-        self.fileName_7.setStyleSheet("border: 0px;\n"
+        self.bytesizeQLineEdit = QtWidgets.QLineEdit(parent=self.widget_9)
+        self.bytesizeQLineEdit.setMinimumSize(QtCore.QSize(35, 40))
+        self.bytesizeQLineEdit.setStyleSheet("border: 0px;\n"
 "        font: 700 10pt \"Segoe UI\";\n"
 "         background: rgb(55, 55, 55);\n"
 "        border :3px solid rgb(55, 55, 55);\n"
-"color: rgb(94, 94, 94)")
-        self.fileName_7.setObjectName("fileName_7")
-        self.gridLayout_7.addWidget(self.fileName_7, 1, 0, 1, 1)
+"color: rgb(144, 144, 144)")
+        self.bytesizeQLineEdit.setObjectName("bytesizeQLineEdit")
+        self.gridLayout_7.addWidget(self.bytesizeQLineEdit, 1, 0, 1, 1)
         self.verticalLayout_3.addWidget(self.widget_9)
         self.widget_6 = QtWidgets.QWidget(parent=self.widget)
         self.widget_6.setMaximumSize(QtCore.QSize(16777215, 90))
         self.widget_6.setSizeIncrement(QtCore.QSize(0, 0))
         self.widget_6.setStyleSheet("color:white;\n"
-"border-radius: 5px;\n"
-"background-color: rgb(35, 35, 35);")
+"border-radius: 5px;")
         self.widget_6.setObjectName("widget_6")
         self.gridLayout_4 = QtWidgets.QGridLayout(self.widget_6)
-        self.gridLayout_4.setContentsMargins(10, 10, 10, 10)
+        self.gridLayout_4.setContentsMargins(0, 10, 0, 10)
         self.gridLayout_4.setObjectName("gridLayout_4")
         self.label_4 = QtWidgets.QLabel(parent=self.widget_6)
         self.label_4.setMaximumSize(QtCore.QSize(16777215, 20))
-        self.label_4.setStyleSheet("font: 700 11pt \"Segoe UI\";\n"
-"color: rgb(255, 255, 255);")
+        self.label_4.setStyleSheet("font: 700 13pt \"Segoe UI\";\n"
+"color: rgb(200, 200, 200);\n"
+"border: 0px;")
         self.label_4.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.label_4.setObjectName("label_4")
         self.gridLayout_4.addWidget(self.label_4, 0, 0, 1, 1)
-        self.fileName_4 = QtWidgets.QLineEdit(parent=self.widget_6)
-        self.fileName_4.setMinimumSize(QtCore.QSize(35, 35))
-        self.fileName_4.setStyleSheet("border: 0px;\n"
+        self.stopbitQLineEdit = QtWidgets.QLineEdit(parent=self.widget_6)
+        self.stopbitQLineEdit.setMinimumSize(QtCore.QSize(35, 40))
+        self.stopbitQLineEdit.setStyleSheet("border: 0px;\n"
 "        font: 700 10pt \"Segoe UI\";\n"
 "         background: rgb(55, 55, 55);\n"
 "        border :3px solid rgb(55, 55, 55);\n"
-"color: rgb(94, 94, 94)")
-        self.fileName_4.setObjectName("fileName_4")
-        self.gridLayout_4.addWidget(self.fileName_4, 1, 0, 1, 1)
+"color: rgb(144, 144, 144)")
+        self.stopbitQLineEdit.setObjectName("stopbitQLineEdit")
+        self.gridLayout_4.addWidget(self.stopbitQLineEdit, 1, 0, 1, 1)
         self.verticalLayout_3.addWidget(self.widget_6)
         self.widget_8 = QtWidgets.QWidget(parent=self.widget)
         self.widget_8.setMaximumSize(QtCore.QSize(16777215, 90))
         self.widget_8.setSizeIncrement(QtCore.QSize(0, 0))
         self.widget_8.setStyleSheet("color:white;\n"
-"border-radius: 5px;\n"
-"background-color: rgb(35, 35, 35);")
+"border-radius: 5px;")
         self.widget_8.setObjectName("widget_8")
         self.gridLayout_6 = QtWidgets.QGridLayout(self.widget_8)
-        self.gridLayout_6.setContentsMargins(10, 10, 10, 10)
+        self.gridLayout_6.setContentsMargins(0, 10, 0, 10)
         self.gridLayout_6.setObjectName("gridLayout_6")
         self.label_6 = QtWidgets.QLabel(parent=self.widget_8)
         self.label_6.setMaximumSize(QtCore.QSize(16777215, 20))
-        self.label_6.setStyleSheet("font: 700 11pt \"Segoe UI\";\n"
-"color: rgb(255, 255, 255);")
+        self.label_6.setStyleSheet("font: 700 13pt \"Segoe UI\";\n"
+"color: rgb(200, 200, 200);\n"
+"border: 0px;")
         self.label_6.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.label_6.setObjectName("label_6")
         self.gridLayout_6.addWidget(self.label_6, 0, 0, 1, 1)
-        self.fileName_6 = QtWidgets.QLineEdit(parent=self.widget_8)
-        self.fileName_6.setMinimumSize(QtCore.QSize(35, 35))
-        self.fileName_6.setStyleSheet("border: 0px;\n"
+        self.parityQLineEdit = QtWidgets.QLineEdit(parent=self.widget_8)
+        self.parityQLineEdit.setMinimumSize(QtCore.QSize(35, 40))
+        self.parityQLineEdit.setStyleSheet("border: 0px;\n"
 "        font: 700 10pt \"Segoe UI\";\n"
 "         background: rgb(55, 55, 55);\n"
 "        border :3px solid rgb(55, 55, 55);\n"
-"color: rgb(94, 94, 94)")
-        self.fileName_6.setObjectName("fileName_6")
-        self.gridLayout_6.addWidget(self.fileName_6, 1, 0, 1, 1)
+"color: rgb(144, 144, 144)")
+        self.parityQLineEdit.setObjectName("parityQLineEdit")
+        self.gridLayout_6.addWidget(self.parityQLineEdit, 1, 0, 1, 1)
         self.verticalLayout_3.addWidget(self.widget_8)
         self.widget_7 = QtWidgets.QWidget(parent=self.widget)
         self.widget_7.setMaximumSize(QtCore.QSize(16777215, 90))
         self.widget_7.setSizeIncrement(QtCore.QSize(0, 0))
         self.widget_7.setStyleSheet("color:white;\n"
-"border-radius: 5px;\n"
-"background-color: rgb(35, 35, 35);")
+"border-radius: 5px;")
         self.widget_7.setObjectName("widget_7")
         self.gridLayout_5 = QtWidgets.QGridLayout(self.widget_7)
-        self.gridLayout_5.setContentsMargins(10, 10, 10, 10)
+        self.gridLayout_5.setContentsMargins(0, 10, 0, 10)
         self.gridLayout_5.setObjectName("gridLayout_5")
         self.label_5 = QtWidgets.QLabel(parent=self.widget_7)
         self.label_5.setMaximumSize(QtCore.QSize(16777215, 20))
-        self.label_5.setStyleSheet("font: 700 11pt \"Segoe UI\";\n"
-"color: rgb(255, 255, 255);")
+        self.label_5.setStyleSheet("font: 700 13pt \"Segoe UI\";\n"
+"color: rgb(200, 200, 200);\n"
+"border: 0px;")
         self.label_5.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.label_5.setObjectName("label_5")
         self.gridLayout_5.addWidget(self.label_5, 0, 0, 1, 1)
-        self.fileName_5 = QtWidgets.QLineEdit(parent=self.widget_7)
-        self.fileName_5.setMinimumSize(QtCore.QSize(35, 35))
-        self.fileName_5.setStyleSheet("border: 0px;\n"
+        self.timeoutQLineEdit = QtWidgets.QLineEdit(parent=self.widget_7)
+        self.timeoutQLineEdit.setMinimumSize(QtCore.QSize(35, 40))
+        self.timeoutQLineEdit.setStyleSheet("border: 0px;\n"
 "        font: 700 10pt \"Segoe UI\";\n"
 "         background: rgb(55, 55, 55);\n"
 "        border :3px solid rgb(55, 55, 55);\n"
-"color: rgb(94, 94, 94)")
-        self.fileName_5.setObjectName("fileName_5")
-        self.gridLayout_5.addWidget(self.fileName_5, 1, 0, 1, 1)
+"color: rgb(144, 144, 144)")
+        self.timeoutQLineEdit.setObjectName("timeoutQLineEdit")
+        self.gridLayout_5.addWidget(self.timeoutQLineEdit, 1, 0, 1, 1)
         self.verticalLayout_3.addWidget(self.widget_7)
         self.verticalLayout.addWidget(self.widget)
-        self.buttonBox = QtWidgets.QDialogButtonBox(parent=Dialog)
-        self.buttonBox.setMaximumSize(QtCore.QSize(200, 16777215))
+        self.widget_2 = QtWidgets.QWidget(parent=Dialog)
+        self.widget_2.setMinimumSize(QtCore.QSize(0, 45))
+        self.widget_2.setMaximumSize(QtCore.QSize(16777215, 45))
+        self.widget_2.setStyleSheet("\n"
+"    color:white;\n"
+"    border-radius: 5px;\n"
+"    background-color: rgb(35, 35, 35);")
+        self.widget_2.setObjectName("widget_2")
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.widget_2)
+        self.verticalLayout_2.setContentsMargins(2, 5, 2, 5)
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.buttonBox = QtWidgets.QDialogButtonBox(parent=self.widget_2)
+        self.buttonBox.setMinimumSize(QtCore.QSize(30, 35))
+        self.buttonBox.setMaximumSize(QtCore.QSize(500, 35))
         self.buttonBox.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.buttonBox.setStyleSheet("QPushButton {\n"
 "        border: 5px;\n"
 "        color:rgb(255, 255, 255);\n"
-"        font: 700 10pt \"Segoe UI\";\n"
+"        font: 700 11pt \"Segoe UI\";\n"
 "         background: rgb(55, 55, 55);\n"
-"        border :3px solid rgb(55, 55, 55);\n"
-"        width: 80px;\n"
+"        width: 100px;\n"
+"        height: 35px;\n"
 "        }\n"
 "QPushButton:hover {\n"
 "            background: rgb(43, 81, 235);\n"
@@ -185,23 +206,25 @@ class Ui_Dialog(object):
         self.buttonBox.setOrientation(QtCore.Qt.Orientation.Horizontal)
         self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.StandardButton.Cancel|QtWidgets.QDialogButtonBox.StandardButton.Ok)
         self.buttonBox.setObjectName("buttonBox")
-        self.verticalLayout.addWidget(self.buttonBox)
+        self.verticalLayout_2.addWidget(self.buttonBox)
+        self.verticalLayout.addWidget(self.widget_2)
 
         self.retranslateUi(Dialog)
-        self.buttonBox.accepted.connect(Dialog.accept) # type: ignore
         self.buttonBox.rejected.connect(Dialog.reject) # type: ignore
+        self.buttonBox.accepted.connect(Dialog.onAccept) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
+        self.label.setText(_translate("Dialog", "Connecion Config"))
+        self.baudrateQLineEdit.setPlaceholderText(_translate("Dialog", "Type new baudrate"))
         self.label_3.setText(_translate("Dialog", "Baudrate"))
-        self.fileName_3.setPlaceholderText(_translate("Dialog", "File name"))
         self.label_7.setText(_translate("Dialog", "Byte size"))
-        self.fileName_7.setPlaceholderText(_translate("Dialog", "File name"))
+        self.bytesizeQLineEdit.setPlaceholderText(_translate("Dialog", "Type new byte size"))
         self.label_4.setText(_translate("Dialog", "Stopbits"))
-        self.fileName_4.setPlaceholderText(_translate("Dialog", "File name"))
+        self.stopbitQLineEdit.setPlaceholderText(_translate("Dialog", "Type new stop bits"))
         self.label_6.setText(_translate("Dialog", "Parity"))
-        self.fileName_6.setPlaceholderText(_translate("Dialog", "File name"))
+        self.parityQLineEdit.setPlaceholderText(_translate("Dialog", "Type new parity"))
         self.label_5.setText(_translate("Dialog", "Timout"))
-        self.fileName_5.setPlaceholderText(_translate("Dialog", "File name"))
+        self.timeoutQLineEdit.setPlaceholderText(_translate("Dialog", "Type new timeout"))
