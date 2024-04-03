@@ -1,10 +1,11 @@
 import os, json
-from enum import Enum
+from  src.instrument.config.enums import DataBlockNumber, DataFormat, DataMode, ModeSelect, SpectralRange
 
-class DataMode(Enum):
-    MEASUREMENT_CONDITIONS = 0
-    SPECTRAL_DATA = 1
-    COLORIMETRIC_DATA = 2
+
+# class DataMode(Enum):
+#     MEASUREMENT_CONDITIONS = 0
+#     SPECTRAL_DATA = 1
+#     COLORIMETRIC_DATA = 2
 
 
 class JsonBuilder:
@@ -18,14 +19,16 @@ class JsonBuilder:
         filename = f"{self.file_name}.json"
         file_path = os.path.join(data_folder, filename)
 
+        print(file_path)
+
         if os.path.exists(file_path):
             with open(file_path, 'r') as existing_file:
                 existing_data = json.load(existing_file)
             existing_data.update(json_structure)
             json_structure = existing_data
-
-        with open(file_path, 'w', newline='') as jsonfile:
-            json.dump(json_structure, jsonfile, indent=4)
+        else:
+            with open(file_path, 'w') as jsonfile:
+                json.dump(json_structure, jsonfile, indent=4)
 
 
 class ColorimetricJsonBuilder(JsonBuilder):
@@ -65,4 +68,4 @@ class JsonBuilderFactory:
         elif builder_type == DataMode.SPECTRAL_DATA:
             return SpectralJsonBuilder(file_name, *args, **kwargs)
         else:
-            raise ValueError("Invalid builder type")
+            print("Invalid builder type")

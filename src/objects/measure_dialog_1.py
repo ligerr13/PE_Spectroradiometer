@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file '.\ui\measure_dialog.ui'
+# Form implementation generated from reading ui file 'ui/measure_dialog.ui'
 #
 # Created by: PyQt6 UI code generator 6.6.1
 #

@@ -6,7 +6,7 @@ from src.navbar import NavBar
 from src.nodeboard import NodeBoard
 from src.footer import Footer
 
-import qdarktheme
+import qdarktheme, os
 
 
 class MyApp(QMainWindow):
@@ -97,6 +97,7 @@ class MyApp(QMainWindow):
         tr = self.nodeboard.view.transform() * scale_tr
         if tr.m11() >= 0.4 and tr.m22() >= 0.4:
             self.nodeboard.view.setTransform(tr)
+
 
 if __name__ == "__main__":
     app = QApplication([])
