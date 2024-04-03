@@ -2,8 +2,6 @@ import os
 import json
 from src.instrument.config.enums import DataBlockNumber, DataFormat, DataMode, ModeSelect, SpectralRange
 
-print(DataMode)
-
 class JsonBuilder:
     def __init__(self, file_name: str):
         self.file_name = file_name
