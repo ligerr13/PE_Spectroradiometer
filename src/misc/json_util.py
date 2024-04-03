@@ -1,12 +1,8 @@
-import os, json
-from  src.instrument.config.enums import DataBlockNumber, DataFormat, DataMode, ModeSelect, SpectralRange
+import os
+import json
+from src.instrument.config.enums import DataBlockNumber, DataFormat, DataMode, ModeSelect, SpectralRange
 
-
-# class DataMode(Enum):
-#     MEASUREMENT_CONDITIONS = 0
-#     SPECTRAL_DATA = 1
-#     COLORIMETRIC_DATA = 2
-
+print(DataMode)
 
 class JsonBuilder:
     def __init__(self, file_name: str):
@@ -15,7 +11,7 @@ class JsonBuilder:
 
     def build(self):
         json_structure = {self.__class__.__name__: self.result_data}
-        data_folder = os.path.abspath(os.path.join(os.path.dirname(__file__), '.', 'data'))
+        data_folder = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'instrument/data'))
         filename = f"{self.file_name}.json"
         file_path = os.path.join(data_folder, filename)
 

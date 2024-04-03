@@ -3,7 +3,7 @@ from .message import Message
 from .connection import Connection
 from .config.enums import DataBlockNumber, DataFormat, DataMode, ModeSelect, SpectralRange
 from typing import Union
-from src.misc.json import JsonBuilderFactory
+from src.misc.json_util import JsonBuilderFactory
 
 delimiter = b'\n'
 
@@ -125,7 +125,6 @@ class MEDR(Command):
     def prepare_message(self) -> Message:
         message_content = b'MEDR,' +  bytes(str(self.params["data_mode"].value), 'utf-8') + b','+ bytes(str(self.params["data_format"].value), 'utf-8') + b','
 
-        # print("AAAAA ", type(self.params["data_mode"]), self.params["data_mode"], self.params["data_mode"] == DataMode.SPECTRAL_DATA)
         if self.params["data_mode"] == DataMode.SPECTRAL_DATA and self.params["spectral_range"]:
             message_content += bytes(str(self.params["spectral_range"].value), 'utf-8') + delimiter
 
