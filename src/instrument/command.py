@@ -48,7 +48,9 @@ class Command(ABC):
             bytes: The received message.
         """
         try:
-            return self.connection.readline().decode("utf-8").replace('"OK00,', '').strip('"\n')
+            # raw = self.connection.readline().decode("utf-8").replace('OK00,', '').strip('\n')
+            # print("RAW: ",raw)
+            return self.connection.readline().decode("utf-8").replace('OK00,', '').strip('\n')
         except Exception as err:
             raise Exception("An error occurred while reading data: ", err)
 
@@ -129,7 +131,7 @@ class MEDR(Command):
             message_content += bytes(str(self.params["spectral_range"].value), 'utf-8') + delimiter
 
         elif self.params["data_mode"] == DataMode.COLORIMETRIC_DATA:
-            message_content += bytes(str(DataBlockNumber.COLORIMETRIC_DATA.value).zfill(2), 'utf-8') + delimiter
+            message_content += bytes(str(DataBlockNumber.COLORIMETRIC_DATA.value), 'utf-8') + delimiter
 
         elif self.params["data_mode"] == DataMode.MEASUREMENT_CONDITIONS:
             message_content += bytes(str(DataBlockNumber.MEASUREMENT_CONDITIONS.value), 'utf-8') + delimiter
@@ -157,8 +159,11 @@ class ExecuteProgram:
                     message = command.prepare_message()
                     response = await command.send_message(message)
 
-                    if "data_mode" in command.params.keys() and save_file_name:
+                    # Test
+                    if "data_mode" in command.params.keys() and command.params["data_mode"] == DataMode.COLORIMETRIC_DATA:
+                        print(response)
 
+                    if "data_mode" in command.params.keys() and save_file_name:
                         builder = JsonBuilderFactory.create_builder(command.params["data_mode"], save_file_name, response)
                         builder.build()
 
