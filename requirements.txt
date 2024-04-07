@@ -2,3 +2,4 @@ pyqtdarktheme
 PyQt6
 pyserial
 python-statemachine
+pyqt6rc
