@@ -34,8 +34,6 @@ class ColorimetricJsonBuilder(JsonBuilder):
     def __init__(self, file_name: str, data):
         super().__init__(file_name)
 
-        # print("NOTRAW:",data)
-
         self.colorimetric_keys = [
             "Le", "Lv", "X", "Y", "Z", "x", "y", "u'", "v'", "T", "delta uv", "lambda d", "Pe",
             "X10", "Y10", "Z10", "x10", "y10", "u'10", "v'10", "T10", "delta uv10", "lambda d10", "Pe10",
