@@ -1391,8 +1391,8 @@ border-radius: 50%</string>
                        <rect>
                         <x>0</x>
                         <y>0</y>
-                        <width>18</width>
-                        <height>18</height>
+                        <width>100</width>
+                        <height>30</height>
                        </rect>
                       </property>
                       <layout class="QVBoxLayout" name="verticalLayout_17"/>
@@ -1689,7 +1689,7 @@ QToolTip{
   <slot>HandleConnectionConfigDialog()</slot>
  </slots>
  <buttongroups>
-  <buttongroup name="NavBarbuttonGroup"/>
   <buttongroup name="NodeBoardbuttonGroup"/>
+  <buttongroup name="NavBarbuttonGroup"/>
  </buttongroups>
 </ui>
