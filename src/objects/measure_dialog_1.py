@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file '.\ui\measure_dialog.ui'
+# Form implementation generated from reading ui file 'ui/measure_dialog.ui'
 #
 # Created by: PyQt6 UI code generator 6.6.1
 #
@@ -12,9 +12,10 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(510, 661)
+        Dialog.resize(477, 524)
         Dialog.setStyleSheet("background-color: rgb(20, 20, 20); \n"
-"border-radius: 5px;")
+"border-radius: 5px;\n"
+"border: 0px;")
         self.horizontalLayout = QtWidgets.QHBoxLayout(Dialog)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.widget = QtWidgets.QWidget(parent=Dialog)
@@ -30,6 +31,7 @@ class Ui_Dialog(object):
         self.horizontalLayout_2.setContentsMargins(5, 2, 2, 2)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.label_2 = QtWidgets.QLabel(parent=self.widget_2)
+        self.label_2.setMinimumSize(QtCore.QSize(0, 35))
         self.label_2.setStyleSheet("font: 623 14pt \"Segoe UI\";\n"
 "color: rgb(233, 233, 233);")
         self.label_2.setObjectName("label_2")
@@ -207,14 +209,15 @@ class Ui_Dialog(object):
         self.label_5 = QtWidgets.QLabel(parent=self.widget_8)
         self.label_5.setMaximumSize(QtCore.QSize(20, 20))
         self.label_5.setText("")
-        self.label_5.setPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/save-diskette.png"))
+        self.label_5.setPixmap(QtGui.QPixmap("ui/../../resources/icons/save-diskette.png"))
         self.label_5.setScaledContents(True)
         self.label_5.setObjectName("label_5")
         self.horizontalLayout_5.addWidget(self.label_5)
         self.label = QtWidgets.QLabel(parent=self.widget_8)
         self.label.setMaximumSize(QtCore.QSize(16777215, 20))
         self.label.setStyleSheet("font: 600 11pt \"Segoe UI\";\n"
-"color: rgb(255, 255, 255);")
+"color: rgb(255, 255, 255);\n"
+"border: 0px;")
         self.label.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.label.setObjectName("label")
         self.horizontalLayout_5.addWidget(self.label)
@@ -235,13 +238,14 @@ class Ui_Dialog(object):
         self.label_4 = QtWidgets.QLabel(parent=self.widget_6)
         self.label_4.setMaximumSize(QtCore.QSize(20, 20))
         self.label_4.setText("")
-        self.label_4.setPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/chronometer.png"))
+        self.label_4.setPixmap(QtGui.QPixmap("ui/../../resources/icons/chronometer.png"))
         self.label_4.setScaledContents(True)
         self.label_4.setObjectName("label_4")
         self.horizontalLayout_3.addWidget(self.label_4)
         self.label_3 = QtWidgets.QLabel(parent=self.widget_6)
         self.label_3.setStyleSheet("font: 600 11pt \"Segoe UI\";\n"
-"color: rgb(255, 255, 255);")
+"color: rgb(255, 255, 255);\n"
+"border: 0px;")
         self.label_3.setObjectName("label_3")
         self.horizontalLayout_3.addWidget(self.label_3)
         self.checkBox_5 = QtWidgets.QCheckBox(parent=self.widget_6)
