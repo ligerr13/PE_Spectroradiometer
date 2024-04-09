@@ -159,10 +159,6 @@ class ExecuteProgram:
                     message = command.prepare_message()
                     response = await command.send_message(message)
 
-                    # Test
-                    if "data_mode" in command.params.keys() and command.params["data_mode"] == DataMode.COLORIMETRIC_DATA:
-                        print(response)
-
                     if "data_mode" in command.params.keys() and save_file_name:
                         builder = JsonBuilderFactory.create_builder(command.params["data_mode"], save_file_name, response)
                         builder.build()
