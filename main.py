@@ -6,7 +6,7 @@ from src.navbar import NavBar
 from src.nodeboard import NodeBoard
 from src.footer import Footer
 
-import qdarktheme, os
+import qdarktheme
 
 
 class MyApp(QMainWindow):
@@ -102,6 +102,7 @@ class MyApp(QMainWindow):
 if __name__ == "__main__":
     app = QApplication([])
     app.setStyleSheet(qdarktheme.load_stylesheet("dark"))
+    app.setStyle("Fusion") 
 
     window = MyApp()
     window.show()
