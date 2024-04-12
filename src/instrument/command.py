@@ -127,8 +127,8 @@ class MEDR(Command):
     def prepare_message(self) -> Message:
         message_content = b'MEDR,' +  bytes(str(self.params["data_mode"].value), 'utf-8') + b','+ bytes(str(self.params["data_format"].value), 'utf-8') + b','
 
-        if self.params["data_mode"] == DataMode.SPECTRAL_DATA and self.params["spectral_range"]:
-            message_content += bytes(str(self.params["spectral_range"].value), 'utf-8') + delimiter
+        if self.params["data_mode"] in SpectralRange:
+                    message_content = b'MEDR,' +  bytes(str(1), 'utf-8') + b','+ bytes(str(self.params["data_format"].value), 'utf-8') + b','+ bytes(str(self.params["data_mode"].value), 'utf-8') + delimiter
 
         elif self.params["data_mode"] == DataMode.COLORIMETRIC_DATA:
             message_content += bytes(str(DataBlockNumber.COLORIMETRIC_DATA.value), 'utf-8') + delimiter
@@ -161,6 +161,7 @@ class ExecuteProgram:
 
                     if "data_mode" in command.params.keys() and save_file_name:
                         builder = JsonBuilderFactory.create_builder(command.params["data_mode"], save_file_name, response)
+
                         builder.build()
 
             elif isinstance(program, Command):

@@ -30,20 +30,17 @@ class DataViewTestWidget(QWidget):
         self.setupDataView()
 
     def setupDataView(self):
-        # Modell létrehozása
-        model = QStandardItemModel(4, 3) # 4 sor, 3 oszlop
+        model = QStandardItemModel(4, 3)
 
-        # Adatok hozzáadása a modellhez
         for row in range(4):
             for column in range(3):
                 item = QStandardItem("Sor {} Oszlop {}".format(row, column))
                 model.setItem(row, column, item)
 
-        # Data view létrehozása és modell beállítása
         data_view = QTableView()
         data_view.setModel(model)
 
-        layout = QVBoxLayout(self) # QVBoxLayout a QWidget-en belül
-        layout.addWidget(data_view) # QTableView hozzáadása a QVBoxLayout-hoz
-        layout.setContentsMargins(0, 0, 0, 0) # Marginok beállítása nullára
-        layout.setSpacing(0) # Térköz beállítása nullára
+        layout = QVBoxLayout(self)
+        layout.addWidget(data_view)
+        layout.setContentsMargins(0, 0, 0, 0)
+        layout.setSpacing(0)

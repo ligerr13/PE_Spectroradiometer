@@ -1,0 +1,162 @@
+{
+    "MeasurementJsonBuilder": {
+        "Measurement Conditions": {
+            "Speed mode": {
+                "value": "0",
+                "switch": 0
+            },
+            "Sync mode": {
+                "value": "0",
+                "switch": 0
+            },
+            "Integration time": {
+                "value": "000596000",
+                "switch": 0
+            },
+            "Internal ND filter": {
+                "value": "1",
+                "switch": 0
+            },
+            "Optional close-up lens": {
+                "value": "0",
+                "switch": 0
+            },
+            "Optional external ND filter": {
+                "value": "0",
+                "switch": 0
+            },
+            "Measurement angle": {
+                "value": "0",
+                "switch": 0
+            },
+            "Calibration channel": {
+                "value": "00",
+                "switch": 0
+            }
+        }
+    },
+    "Spectral380To479JsonBuilder": {
+        "Spectral data": {
+            "value": "1.4837e-4,1.4754e-4,1.5162e-4,1.4820e-4,1.6035e-4,1.8170e-4,2.0421e-4,2.2091e-4,2.3963e-4,2.6342e-4,2.9459e-4,3.3013e-4,3.4476e-4,3.4669e-4,3.6149e-4,4.2066e-4,4.7072e-4,5.2868e-4,6.1242e-4,7.0987e-4,8.1961e-4,9.1604e-4,9.8276e-4,1.0446e-3,1.0961e-3,1.1439e-3,1.1875e-3,1.2412e-3,1.3069e-3,1.3666e-3,1.4217e-3,1.4832e-3,1.5393e-3,1.6036e-3,1.6476e-3,1.6689e-3,1.7129e-3,1.7249e-3,1.7301e-3,1.7377e-3,1.7604e-3,1.7901e-3,1.7870e-3,1.7897e-3,1.7675e-3,1.7692e-3,1.7573e-3,1.7427e-3,1.7140e-3,1.6767e-3,1.6264e-3,1.6332e-3,1.6963e-3,1.7872e-3,1.8550e-3,1.9034e-3,1.9492e-3,1.9853e-3,1.9749e-3,1.9543e-3,1.9733e-3,2.0244e-3,2.0856e-3,2.1366e-3,2.1622e-3,2.1640e-3,2.1752e-3,2.2071e-3,2.2525e-3,2.2995e-3,2.3488e-3,2.3684e-3,2.3563e-3,2.3391e-3,2.3293e-3,2.3435e-3,2.3713e-3,2.3963e-3,2.4065e-3,2.4006e-3,2.4042e-3,2.4231e-3,2.4420e-3,2.4445e-3,2.4294e-3,2.4156e-3,2.4057e-3,2.3973e-3,2.3951e-3,2.4043e-3,2.4042e-3,2.4125e-3,2.4298e-3,2.4484e-3,2.4597e-3,2.4606e-3,2.4612e-3,2.4730e-3,2.4912e-3,2.5131e-3",
+            "switch": 0
+        }
+    },
+    "Spectral480To579JsonBuilder": {
+        "Spectral data": {
+            "value": "0.3399,0.3604,191.85",
+            "switch": 0
+        }
+    },
+    "Spectral580To679JsonBuilder": {
+        "Spectral data": {
+            "value": "ER17",
+            "switch": 0
+        }
+    },
+    "Spectral680To780JsonBuilder": {
+        "Spectral data": {
+            "value": "ER17",
+            "switch": 0
+        }
+    },
+    "ColorimetricJsonBuilder": {
+        "Colorimetric Data": {
+            "Le": {
+                "value": "8.6566e-1",
+                "switch": 0
+            },
+            "Lv": {
+                "value": "191.85",
+                "switch": 0
+            },
+            "X": {
+                "value": "1.8093e+2",
+                "switch": 0
+            },
+            "Y": {
+                "value": "1.9185e+2",
+                "switch": 0
+            },
+            "Z": {
+                "value": "1.5952e+2",
+                "switch": 0
+            },
+            "x": {
+                "value": "0.3399",
+                "switch": 0
+            },
+            "y": {
+                "value": "0.3604",
+                "switch": 0
+            },
+            "u'": {
+                "value": "0.2046",
+                "switch": 0
+            },
+            "v'": {
+                "value": "0.4881",
+                "switch": 0
+            },
+            "T": {
+                "value": " 5228",
+                "switch": 0
+            },
+            "delta uv": {
+                "value": "+0.0065",
+                "switch": 0
+            },
+            "lambda d": {
+                "value": "563.40",
+                "switch": 0
+            },
+            "Pe": {
+                "value": "10.150",
+                "switch": 0
+            },
+            "X10": {
+                "value": "1.9780e+2",
+                "switch": 0
+            },
+            "Y10": {
+                "value": "2.0811e+2",
+                "switch": 0
+            },
+            "Z10": {
+                "value": "1.7125e+2",
+                "switch": 0
+            },
+            "x10": {
+                "value": "0.3427",
+                "switch": 0
+            },
+            "y10": {
+                "value": "0.3606",
+                "switch": 0
+            },
+            "u'10": {
+                "value": "0.2064",
+                "switch": 0
+            },
+            "v'10": {
+                "value": "0.4886",
+                "switch": 0
+            },
+            "T10": {
+                "value": " 5176",
+                "switch": 0
+            },
+            "delta uv10": {
+                "value": "+0.0061",
+                "switch": 0
+            },
+            "lambda d10": {
+                "value": "560.64",
+                "switch": 0
+            },
+            "Pe10": {
+                "value": "10.990",
+                "switch": 0
+            }
+        }
+    }
+}

@@ -3,3 +3,5 @@ PyQt6
 pyserial
 python-statemachine
 pyqt6rc
+matplotlib
+numpy

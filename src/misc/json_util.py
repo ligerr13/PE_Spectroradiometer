@@ -57,11 +57,26 @@ class MeasurementJsonBuilder(JsonBuilder):
         for key, value in zip(self.meascon_keys, x):
             self.result_data["Measurement Conditions"][key] = {"value": value, "switch": 0}
 
-class SpectralJsonBuilder(JsonBuilder):
+class Spectral380To479JsonBuilder(JsonBuilder):
     def __init__(self, file_name: str,  data):
         super().__init__(file_name)
-        self.result_data = {"Spectral data": {data}}
-        self.result_data["Spectral data"] = {"value": data, "switch": 0}
+        self.result_data = {"Spectral data": {"value": data, "switch": 0}}
+
+class Spectral480To579JsonBuilder(JsonBuilder):
+    def __init__(self, file_name: str,  data):
+        super().__init__(file_name)
+        self.result_data = {"Spectral data": {"value": data, "switch": 0}}
+
+class Spectral580To679JsonBuilder(JsonBuilder):
+    def __init__(self, file_name: str,  data):
+        super().__init__(file_name)
+        self.result_data = {"Spectral data": {"value": data, "switch": 0}}
+
+class Spectral680To780JsonBuilder(JsonBuilder):
+    def __init__(self, file_name: str,  data):
+        super().__init__(file_name)
+        self.result_data = {"Spectral data": {"value": data, "switch": 0}}
+
 
 
 class JsonBuilderFactory:
@@ -71,7 +86,13 @@ class JsonBuilderFactory:
             return ColorimetricJsonBuilder(file_name, *args, **kwargs)
         elif builder_type == DataMode.MEASUREMENT_CONDITIONS:
             return MeasurementJsonBuilder(file_name, *args, **kwargs)
-        elif builder_type == DataMode.SPECTRAL_DATA:
-            return SpectralJsonBuilder(file_name, *args, **kwargs)
+        elif builder_type == SpectralRange.RANGE_380_TO_479:
+                return Spectral380To479JsonBuilder(file_name, *args, **kwargs)
+        elif builder_type == SpectralRange.RANGE_480_TO_579:
+                return Spectral480To579JsonBuilder(file_name, *args, **kwargs)
+        elif builder_type == SpectralRange.RANGE_580_TO_679:
+                return Spectral580To679JsonBuilder(file_name, *args, **kwargs)
+        elif builder_type == SpectralRange.RANGE_680_TO_780:
+                return Spectral680To780JsonBuilder(file_name, *args, **kwargs)
         else:
-            print("Invalid builder type")
+            print("Invalid spectral range")

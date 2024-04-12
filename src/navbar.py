@@ -1,5 +1,6 @@
 from PyQt6.QtCore import QObject
 from src.dialogs.measureDialog import MeasureDialog
+from src.dialogs.connectionConfigDialog import ConnectionConfigDialog
 
 class NavBar(QObject):
     def __init__(self, resource):
@@ -10,6 +11,7 @@ class NavBar(QObject):
 
         #QDialogs
         self.measureDialog = MeasureDialog()
+        self.connectionConfigDialog = ConnectionConfigDialog()
 
         #Calling Methods
         self.group_buttons_to_pages()

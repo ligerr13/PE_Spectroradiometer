@@ -1,0 +1,70 @@
+{
+    "MeasurementJsonBuilder": {
+        "Measurement Conditions": {
+            "Speed mode": {
+                "value": "0",
+                "switch": 0
+            },
+            "Sync mode": {
+                "value": "0",
+                "switch": 0
+            },
+            "Integration time": {
+                "value": "000633000",
+                "switch": 0
+            },
+            "Internal ND filter": {
+                "value": "1",
+                "switch": 0
+            },
+            "Optional close-up lens": {
+                "value": "0",
+                "switch": 0
+            },
+            "Optional external ND filter": {
+                "value": "0",
+                "switch": 0
+            },
+            "Measurement angle": {
+                "value": "0",
+                "switch": 0
+            },
+            "Calibration channel": {
+                "value": "00",
+                "switch": 0
+            }
+        }
+    },
+    "Spectral380To479JsonBuilder": {
+        "Spectral data": {
+            "value": "",
+            "switch": 0
+        }
+    },
+    "Spectral480To579JsonBuilder": {
+        "Spectral data": {
+            "value": "",
+            "switch": 0
+        }
+    },
+    "Spectral580To679JsonBuilder": {
+        "Spectral data": {
+            "value": "",
+            "switch": 0
+        }
+    },
+    "Spectral680To780JsonBuilder": {
+        "Spectral data": {
+            "value": "",
+            "switch": 0
+        }
+    },
+    "ColorimetricJsonBuilder": {
+        "Colorimetric Data": {
+            "Le": {
+                "value": "ER00",
+                "switch": 0
+            }
+        }
+    }
+}

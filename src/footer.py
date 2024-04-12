@@ -1,11 +1,6 @@
 from PyQt6.QtCore import QObject, Qt, QAbstractTableModel, QVariant, QModelIndex, QTimer
-from PyQt6 import QtCore, QtGui, QtWidgets
-from PyQt6.QtWidgets import QApplication, QDialog, QProgressBar, QHeaderView, QStyleOptionProgressBar
-from src.dialogs.connectionConfigDialog import ConnectionConfigDialog
-from PyQt6 import QtWidgets, QtCore
-from PyQt6.QtWidgets import QStyle, QStyledItemDelegate, QStyleOptionProgressBar,QApplication, QTableView
+from PyQt6.QtWidgets import QApplication,QStyle, QStyledItemDelegate, QStyleOptionProgressBar,QApplication
 from PyQt6.QtGui import QStandardItem, QStandardItemModel
-from PyQt6.QtCore import Qt
 
 data = [("1", "meres1", 10, "2022-04-09"), ("2", "meres2", 23, "2023-04-09"),
         ("3", "meres_lajosnak", 30, "2024-04-09"), ("4", "meres_pistanak_nagyon", 55, "2022-04-03"), 
@@ -36,9 +31,6 @@ class Footer(QObject):
         self.ui = resource
         self.connection_toolbutton = self.ui.toolButton_2
         self.progressTableView = self.ui.progressTableView
-
-        #QDialogs
-        self.connectionConfigDialog = ConnectionConfigDialog()
         
         delegate = ProgressDelegate(self.progressTableView)
         self.progressTableView.setItemDelegateForColumn(3, delegate)

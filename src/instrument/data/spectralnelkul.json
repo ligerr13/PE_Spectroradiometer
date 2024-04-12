@@ -1,0 +1,138 @@
+{
+    "MeasurementJsonBuilder": {
+        "Measurement Conditions": {
+            "Speed mode": {
+                "value": "0",
+                "switch": 0
+            },
+            "Sync mode": {
+                "value": "0",
+                "switch": 0
+            },
+            "Integration time": {
+                "value": "000632000",
+                "switch": 0
+            },
+            "Internal ND filter": {
+                "value": "1",
+                "switch": 0
+            },
+            "Optional close-up lens": {
+                "value": "0",
+                "switch": 0
+            },
+            "Optional external ND filter": {
+                "value": "0",
+                "switch": 0
+            },
+            "Measurement angle": {
+                "value": "0",
+                "switch": 0
+            },
+            "Calibration channel": {
+                "value": "00",
+                "switch": 0
+            }
+        }
+    },
+    "ColorimetricJsonBuilder": {
+        "Colorimetric Data": {
+            "Le": {
+                "value": "8.2032e-1",
+                "switch": 0
+            },
+            "Lv": {
+                "value": "182.09",
+                "switch": 0
+            },
+            "X": {
+                "value": "1.7156e+2",
+                "switch": 0
+            },
+            "Y": {
+                "value": "1.8209e+2",
+                "switch": 0
+            },
+            "Z": {
+                "value": "1.5413e+2",
+                "switch": 0
+            },
+            "x": {
+                "value": "0.3379",
+                "switch": 0
+            },
+            "y": {
+                "value": "0.3586",
+                "switch": 0
+            },
+            "u'": {
+                "value": "0.2039",
+                "switch": 0
+            },
+            "v'": {
+                "value": "0.4870",
+                "switch": 0
+            },
+            "T": {
+                "value": " 5302",
+                "switch": 0
+            },
+            "delta uv": {
+                "value": "+0.0065",
+                "switch": 0
+            },
+            "lambda d": {
+                "value": "561.40",
+                "switch": 0
+            },
+            "Pe": {
+                "value": "9.0000",
+                "switch": 0
+            },
+            "X10": {
+                "value": "1.8763e+2",
+                "switch": 0
+            },
+            "Y10": {
+                "value": "1.9768e+2",
+                "switch": 0
+            },
+            "Z10": {
+                "value": "1.6559e+2",
+                "switch": 0
+            },
+            "x10": {
+                "value": "0.3406",
+                "switch": 0
+            },
+            "y10": {
+                "value": "0.3588",
+                "switch": 0
+            },
+            "u'10": {
+                "value": "0.2056",
+                "switch": 0
+            },
+            "v'10": {
+                "value": "0.4875",
+                "switch": 0
+            },
+            "T10": {
+                "value": " 5250",
+                "switch": 0
+            },
+            "delta uv10": {
+                "value": "+0.0061",
+                "switch": 0
+            },
+            "lambda d10": {
+                "value": "558.86",
+                "switch": 0
+            },
+            "Pe10": {
+                "value": "9.8300",
+                "switch": 0
+            }
+        }
+    }
+}

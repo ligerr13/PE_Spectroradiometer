@@ -7,22 +7,23 @@ import asyncio, os, re
 
 class MeasureProgramBuilder:
     def __init__(self):
-        self.measure_program = []
-
-    def enable_measurement_conditions(self):
-        self.measure_program.append(MEAS(switch=ModeSelect.ENABLED))
+        self.measure_program = []        
 
     def enable_spectral_data(self):
-        self.measure_program.append(MEDR(data_mode=DataMode.SPECTRAL_DATA, data_format=DataFormat.ALPHANUMERIC, spectral_range=SpectralRange.RANGE_380_TO_479))
-        self.measure_program.append(MEDR(data_mode=DataMode.SPECTRAL_DATA, data_format=DataFormat.ALPHANUMERIC, spectral_range=SpectralRange.RANGE_480_TO_579))
-        self.measure_program.append(MEDR(data_mode=DataMode.SPECTRAL_DATA, data_format=DataFormat.ALPHANUMERIC, spectral_range=SpectralRange.RANGE_580_TO_679))
-        self.measure_program.append(MEDR(data_mode=DataMode.SPECTRAL_DATA, data_format=DataFormat.ALPHANUMERIC, spectral_range=SpectralRange.RANGE_680_TO_780))
+        self.measure_program.append(MEDR(data_mode=SpectralRange.RANGE_380_TO_479, data_format=DataFormat.ALPHANUMERIC))
+        self.measure_program.append(MEDR(data_mode=SpectralRange.RANGE_480_TO_579, data_format=DataFormat.ALPHANUMERIC))
+        self.measure_program.append(MEDR(data_mode=SpectralRange.RANGE_580_TO_679, data_format=DataFormat.ALPHANUMERIC))
+        self.measure_program.append(MEDR(data_mode=SpectralRange.RANGE_680_TO_780, data_format=DataFormat.ALPHANUMERIC))
 
     def enable_colorimetric_data(self):
         self.measure_program.append(MEDR(data_mode=DataMode.COLORIMETRIC_DATA, data_format=DataFormat.ALPHANUMERIC))
 
+    def enable_measurement_conditions(self):
+        self.measure_program.append(MEDR(data_mode=DataMode.MEASUREMENT_CONDITIONS, data_format=DataFormat.ALPHANUMERIC))
+
     def build(self):
         self.measure_program.insert(0, RMTS(switch=ModeSelect.ENABLED))
+        self.measure_program.insert(1, MEAS(switch=ModeSelect.ENABLED))
         self.measure_program.append(RMTS(switch=ModeSelect.DISABLED))
         return self.measure_program
 

@@ -40,7 +40,7 @@ class MyApp(QMainWindow):
 
 
     def HandleConnectionConfigDialog(self):
-        self.footer.connectionConfigDialog.popUp()
+        self.navbar.connectionConfigDialog.popUp()
 
 
     def HandleCreateWidgetMode(self, selected: bool):
