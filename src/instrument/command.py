@@ -48,8 +48,6 @@ class Command(ABC):
             bytes: The received message.
         """
         try:
-            # raw = self.connection.readline().decode("utf-8").replace('OK00,', '').strip('\n')
-            # print("RAW: ",raw)
             return self.connection.readline().decode("utf-8").replace('OK00,', '').strip('\n')
         except Exception as err:
             raise Exception("An error occurred while reading data: ", err)

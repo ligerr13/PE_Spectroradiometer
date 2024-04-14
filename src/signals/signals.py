@@ -17,3 +17,13 @@ class NodeBoardSignalBus(QObject):
 
     def onWidgetDeletedSignalEmit(self, widget):
         self.widgetDeletedSignal.emit(widget)
+
+class WorkspaceSignalBus(QObject):
+    closeWorkspace = pyqtSignal()
+
+    def __init__(self):
+        super().__init__()
+
+    def emitCloseWorkspaceSignal(self):
+        print("Signal emited")
+        self.closeWorkspace.emit()
