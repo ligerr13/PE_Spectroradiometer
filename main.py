@@ -36,9 +36,9 @@ class MyApp(QMainWindow):
     #MainWindow Slots
     def HandleMeasureDialog(self, selected: bool):
         if selected is not None:
-            if selected == False:
-                self.navbar.measureDialog.closePopUp()
-            else:
+            # if selected == False:
+            #     self.navbar.measureDialog.closePopUp()
+            # else:
                 self.navbar.measureDialog.popUp()
                 self.sender().setChecked(False)
 
