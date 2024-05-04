@@ -1,46 +1,64 @@
-from PyQt6.QtCore import QObject, QLineF, QPointF, pyqtSignal
-from PyQt6.QtWidgets import QGraphicsScene, QWidget, QGraphicsProxyWidget, QWidget
-from PyQt6.QtGui import QColor, qRgb, QTransform
+from PyQt6.QtCore import QObject, QLineF, QPointF, pyqtSignal, Qt, QSize
+from PyQt6.QtWidgets import QGraphicsScene, QWidget, QGraphicsProxyWidget, QWidget, QTabBar, QPushButton  
+from PyQt6.QtGui import QColor, qRgb, QTransform, QIcon 
+import pickle 
+from src.workspaceTemplate import WorkspaceDesignWidget
+
 
 class TabManager:
     def __init__(self, ui_main_window):
         self.tab_widget = ui_main_window.tabWidget
         self.tab_count = 0
-    
+
     def setup_connections(self, signal_bus):
         signal_bus.closeWorkspace.connect(lambda: self.remove_page(self.get_current_page_index()))
     
     def add_page(self, page_widget, page_name):
         """
-        Új lap hozzáadása a TabWidget-hez.
+        Add a new page to the TabWidget.
 
-        :param page_widget: Az új oldalhoz tartozó QWidget
-        :param page_name: Az új oldal neve
+        :param page_widget: The QWidget associated with the new page
+        :param page_name: The name of the new page
         """
-        self.tab_widget.addTab(page_widget, page_name)
+        
+        index = self.tab_widget.addTab(page_widget, page_name)
+        closeButton = QPushButton()
+        closeButton.setIcon(QIcon("../resources/icons/close-2.png"))
+        closeButton.setIconSize(QSize(10,10))
+        closeButton.clicked.connect(lambda: self.remove_page(index))
+        self.tab_widget.tabBar().setTabButton(index, QTabBar.ButtonPosition.RightSide, closeButton)
         self.tab_count += 1
 
     def remove_page(self, index):
         """
-        Lap eltávolítása a megadott indexű helyről.
+        Remove the page at the specified index.
 
-        :param index: Az eltávolítandó lap indexe
+        :param index: The index of the page to be removed
         """
         self.tab_widget.removeTab(index)
         self.tab_count -= 1
 
     def get_current_page_index(self):
         """
-        Az aktuális oldal indexének lekérdezése.
+        Get the index of the current page.
 
-        :return: Az aktuális oldal indexe
+        :return: The index of the current page
         """
         return self.tab_widget.currentIndex()
 
     def get_current_page_widget(self):
         """
-        Az aktuális oldalhoz tartozó QWidget lekérdezése.
+        Get the QWidget associated with the current page.
 
-        :return: Az aktuális oldalhoz tartozó QWidget
+        :return: The QWidget associated with the current page
         """
         return self.tab_widget.currentWidget()
+    
+    def save_page_to_file(self, wdwObject: WorkspaceDesignWidget, file_name: str):
+        """
+        Save the current page's QWidget to a file using pickle.
+
+        :param filename: The name of the file to save to
+        """
+        with open(file_name + ".pickle", 'wb') as f:
+                pickle.dump(wdwObject, f)
