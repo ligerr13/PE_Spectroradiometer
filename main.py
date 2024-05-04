@@ -14,21 +14,26 @@ class MyApp(QMainWindow):
         #Setup UI
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        self.navbar = NavBar(self.ui)
+        self.tm = TabManager(self.ui)
+
 
         #Signals
         signal_bus = WorkspaceSignalBus()
 
 
         #QObject
-        self.tm = TabManager(self.ui)
-        self.tm.setup_connections(signal_bus)
+        
 
-        self.tm.add_page(WorkspaceDesignWidget(signal_bus), "Test_Workspace    ")
-        self.tm.add_page(WorkspaceDesignWidget(signal_bus), "Test_Workspace2    ")
-
-        self.navbar = NavBar(self.ui)
         #Calling Methods
-                             
+        self.tm.setup_connections(signal_bus)
+        stuff_to_pickle = WorkspaceDesignWidget(signal_bus)
+
+        self.tm.add_page(stuff_to_pickle, "Test_Workspace    ")
+        # self.tm.save_page_to_file(stuff_to_pickle, "Test_Workspace")
+
+        self.tm.add_page(WorkspaceDesignWidget(signal_bus), "Test_Workspace2    ")
+        
         # #Temporary
         self.ui.pushButton_13.setChecked(True)
 
@@ -42,11 +47,8 @@ class MyApp(QMainWindow):
                 self.navbar.measureDialog.popUp()
                 self.sender().setChecked(False)
 
-
     def HandleConnectionConfigDialog(self):
         self.navbar.connectionConfigDialog.popUp()
-
-
 
     def OnNavbarButtonClicked(self, pageId: int):
         # self.ui.stackedWidget.setCurrentIndex(pageId)

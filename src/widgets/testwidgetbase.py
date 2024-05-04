@@ -5,7 +5,6 @@ from src.objects.workspace_1 import Ui_Form
 
 #Test CustomWidget
 class CustomWidget(QWidget):
-
     def __init__(self, parent=None):
         super().__init__(parent)
 

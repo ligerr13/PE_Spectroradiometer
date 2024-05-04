@@ -1,6 +1,7 @@
-from PyQt6.QtWidgets import QWidget, QApplication, QMainWindow, QGraphicsView, QGraphicsProxyWidget, QGraphicsScene
+from PyQt6.QtWidgets import QWidget, QApplication, QMainWindow, QGraphicsView, QGraphicsProxyWidget, QGraphicsScene, QTabBar
 from PyQt6.QtGui import QColor, qRgb, QTransform
 from PyQt6.QtCore import QObject, QLineF, QPointF, pyqtSignal
+
 
 from src.objects.workspaceDesignFomr_1 import Ui_WorkspaceDesignForm
 from src.signals.signals import NodeBoardSignalBus
@@ -16,12 +17,9 @@ class WorkspaceDesignWidget(QWidget):
         self.ui = Ui_WorkspaceDesignForm()
         self.ui.setupUi(self)
         self.grid = self.ui.gridLayout_5
-        self.closebtn = self.ui.CloseWorkspaceButton
         
         # Signal Bus
         self.signal_bus = signal_bus
-        self.closebtn.clicked.connect(self.signal_bus.emitCloseWorkspaceSignal)
-
 
         # Views and Scenes
         self.view = self.ui.graphicsView_2
@@ -53,6 +51,8 @@ class WorkspaceDesignWidget(QWidget):
         self.scene.addWidget(self.test_widget2).setPos(QPointF(400.0, 0.0))
         self.scene.addWidget(self.spectral_test_widget).setPos(QPointF(50.0, 100.0))
         self.scene.addWidget(self.spectral_test_widget_2).setPos(QPointF(650.0, 100.0))
+
+        print(self.scene.extract_widget_data())
         
         
     def groupWorkspaceGroupButtonsToPages(self):
@@ -60,7 +60,10 @@ class WorkspaceDesignWidget(QWidget):
               print(button, i)
               self.ui.WorkspaceMenuButtonGroup.setId(button, i)
 
-              
+    def HandleMenuWidgetVisibility(self, state):
+        if not self.ui.WorkspaceMenuWidget.isVisible():
+            self.ui.WorkspaceMenuWidget.setVisible(state)
+            
 
     def HandleCreateWidgetMode(self, selected: bool):
             if selected is not None:
@@ -161,6 +164,8 @@ class NodeboardGraphicsScene(QGraphicsScene):
         self.nodeboard_signal_bus.widgetDeselectedSignal.connect(self.onDeselectWidget)
         self.nodeboard_signal_bus.widgetDeletedSignal.connect(self.onWidgetDelete)
 
+        #Calling methods
+        print(self.extract_widget_data())
 
     # Setters
     def setSelecteButton(self, button):
@@ -192,17 +197,33 @@ class NodeboardGraphicsScene(QGraphicsScene):
                 self.nodeboard_signal_bus.onWidgetDeselectedSignalEmit(deleted)
                 self.removeItem(deleted)
 
-
     def onSelectWidget(self, selected: QGraphicsProxyWidget):
         if isinstance(selected, QGraphicsProxyWidget):
             selected.widget().setStyleSheet("QWidget {\nbackground-color: rgb(75, 75, 75);\nborder-radius: 5px; }")
-
 
     def onDeselectWidget(self, deselected: QGraphicsProxyWidget):
         if isinstance(deselected, QGraphicsProxyWidget):
             deselected.widget().setStyleSheet("QWidget {\nbackground-color: rgb(45, 45, 45);\nborder-radius: 5px; }")
             self.selectedWidget = None
 
+    def extract_widget_data(self):
+        widget_data = []
+
+        for item in self.items():
+            if isinstance(item, QGraphicsProxyWidget):
+                widget_item = item
+                widget = widget_item.widget()
+
+                if widget:
+                    data = {
+                        "type": type(widget).__name__,
+                        "position": (widget_item.pos().x(), widget_item.pos().y()),
+                        "spectral_data": widget.spectral_data if hasattr(widget, "spectral_data") else None
+                    }
+                    widget_data.append(data)
+                # Más widget típusok kezelése hasonló módon
+
+        return widget_data
 
 
 
