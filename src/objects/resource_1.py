@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file '.\ui\resource.ui'
+# Form implementation generated from reading ui file 'ui/resource.ui'
 #
 # Created by: PyQt6 UI code generator 6.6.1
 #
@@ -14,7 +14,9 @@ class Ui_MainWindow(object):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1276, 923)
         MainWindow.setAcceptDrops(False)
-        MainWindow.setStyleSheet("QPushButton {\n"
+        MainWindow.setStyleSheet("QMainWindow {background-color: rgb(30, 30, 30);}\n"
+"\n"
+"QPushButton {\n"
 "        border: 0px;\n"
 "        }\n"
 "QPushButton:hover {\n"
@@ -47,7 +49,6 @@ class Ui_MainWindow(object):
 "    padding: 15 0 15 15;\n"
 "    font: 700 10pt \"Arial\";\n"
 "    border: 2px;\n"
-"    top:5px;\n"
 "} \n"
 "\n"
 "QTabBar::tab:selected { \n"
@@ -55,9 +56,11 @@ class Ui_MainWindow(object):
 "    border: 1px solid  rgb(51, 51, 51);\n"
 "    color: white;\n"
 "      margin-bottom: -1px;\n"
-"    top:5px;\n"
 "    border-top-right-radius: 2px;\n"
 "    border-top-left-radius: 2px;\n"
+"}\n"
+"QTabWidget::tab-bar  {\n"
+"top: 5px;\n"
 "}")
         self.tabWidget.setTabPosition(QtWidgets.QTabWidget.TabPosition.North)
         self.tabWidget.setTabShape(QtWidgets.QTabWidget.TabShape.Rounded)
@@ -107,7 +110,7 @@ class Ui_MainWindow(object):
 "}")
         self.pushButton.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/vector.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon.addPixmap(QtGui.QPixmap("ui/../../resources/icons/vector.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.pushButton.setIcon(icon)
         self.pushButton.setIconSize(QtCore.QSize(25, 25))
         self.pushButton.setCheckable(True)
@@ -146,7 +149,7 @@ class Ui_MainWindow(object):
 "}")
         self.pushButton_2.setText("")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/workspace.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon1.addPixmap(QtGui.QPixmap("ui/../../resources/icons/workspace.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.pushButton_2.setIcon(icon1)
         self.pushButton_2.setIconSize(QtCore.QSize(25, 25))
         self.pushButton_2.setCheckable(True)
@@ -185,7 +188,7 @@ class Ui_MainWindow(object):
 "}")
         self.pushButton_13.setText("")
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/play-button-arrowhead.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon2.addPixmap(QtGui.QPixmap("ui/../../resources/icons/play-button-arrowhead.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.pushButton_13.setIcon(icon2)
         self.pushButton_13.setIconSize(QtCore.QSize(20, 20))
         self.pushButton_13.setCheckable(True)
@@ -212,7 +215,7 @@ class Ui_MainWindow(object):
 "}")
         self.pushButton_3.setText("")
         icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/setting.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon3.addPixmap(QtGui.QPixmap("ui/../../resources/icons/setting.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.pushButton_3.setIcon(icon3)
         self.pushButton_3.setIconSize(QtCore.QSize(25, 25))
         self.pushButton_3.setCheckable(True)
@@ -237,7 +240,7 @@ class Ui_MainWindow(object):
 "        color: rgb(100, 100, 100);\n"
 "}")
         icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/link.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon4.addPixmap(QtGui.QPixmap("ui/../../resources/icons/link.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.toolButton_2.setIcon(icon4)
         self.toolButton_2.setIconSize(QtCore.QSize(15, 15))
         self.toolButton_2.setToolButtonStyle(QtCore.Qt.ToolButtonStyle.ToolButtonTextBesideIcon)
@@ -246,7 +249,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.addWidget(self.widget_3)
         self.gridLayout_2.addWidget(self.widget, 0, 0, 1, 1)
         icon5 = QtGui.QIcon()
-        icon5.addPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/home.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon5.addPixmap(QtGui.QPixmap("ui/../../resources/icons/home.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.tabWidget.addTab(self.home, icon5, "")
         self.gridLayout.addWidget(self.tabWidget, 1, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)

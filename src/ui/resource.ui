@@ -17,7 +17,9 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QPushButton {
+   <string notr="true">QMainWindow {background-color: rgb(30, 30, 30);}
+
+QPushButton {
 		border: 0px;
         }
 QPushButton:hover {
@@ -69,7 +71,6 @@ QTabBar::tab {
 	padding: 15 0 15 15;
 	font: 700 10pt &quot;Arial&quot;;
 	border: 2px;
-	top:5px;
 } 
 
 QTabBar::tab:selected { 
@@ -77,9 +78,11 @@ QTabBar::tab:selected {
 	border: 1px solid  rgb(51, 51, 51);
 	color: white;
   	margin-bottom: -1px;
-	top:5px;
 	border-top-right-radius: 2px;
 	border-top-left-radius: 2px;
+}
+QTabWidget::tab-bar  {
+top: 5px;
 }</string>
       </property>
       <property name="tabPosition">

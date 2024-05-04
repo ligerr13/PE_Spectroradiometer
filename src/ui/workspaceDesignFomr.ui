@@ -67,7 +67,70 @@ border-top: 0;</string>
       <property name="bottomMargin">
        <number>2</number>
       </property>
-      <item row="0" column="0">
+      <item row="1" column="1">
+       <widget class="QWidget" name="widget" native="true">
+        <property name="styleSheet">
+         <string notr="true">border: 0;</string>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <property name="leftMargin">
+          <number>5</number>
+         </property>
+         <property name="topMargin">
+          <number>5</number>
+         </property>
+         <property name="rightMargin">
+          <number>5</number>
+         </property>
+         <property name="bottomMargin">
+          <number>5</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="pushButton_2">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>../../resources/icons/back.png</normaloff>../../resources/icons/back.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>15</width>
+             <height>15</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="1" column="0">
        <widget class="QStackedWidget" name="stackedWidget">
         <property name="styleSheet">
          <string notr="true">border: 0;</string>
@@ -961,29 +1024,6 @@ QToolTip{
            </property>
           </spacer>
          </item>
-         <item>
-          <widget class="QPushButton" name="CloseWorkspaceButton">
-           <property name="cursor">
-            <cursorShape>PointingHandCursor</cursorShape>
-           </property>
-           <property name="toolTip">
-            <string>Closes the workspace</string>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="icon">
-            <iconset>
-             <normaloff>../../resources/icons/close-button.png</normaloff>../../resources/icons/close-button.png</iconset>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>15</width>
-             <height>15</height>
-            </size>
-           </property>
-          </widget>
-         </item>
         </layout>
        </widget>
       </item>
@@ -1081,8 +1121,8 @@ QToolTip{
    <slot>HandleCreateWidgetMode(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>40</x>
-     <y>87</y>
+     <x>51</x>
+     <y>152</y>
     </hint>
     <hint type="destinationlabel">
      <x>360</x>
@@ -1091,14 +1131,14 @@ QToolTip{
    </hints>
   </connection>
   <connection>
-   <sender>CreateWidgetButton_2</sender>
+   <sender>createMenuButton</sender>
    <signal>clicked(bool)</signal>
    <receiver>WorkspaceDesignForm</receiver>
-   <slot>HandleCreateWidgetMode(bool)</slot>
+   <slot>HandleMenuWidgetVisibility()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>149</x>
-     <y>97</y>
+     <x>94</x>
+     <y>27</y>
     </hint>
     <hint type="destinationlabel">
      <x>627</x>
@@ -1119,6 +1159,38 @@ QToolTip{
     <hint type="destinationlabel">
      <x>69</x>
      <y>97</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_2</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>WorkspaceMenuWidget</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>286</x>
+     <y>75</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>246</x>
+     <y>58</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>allToolsMenuButton</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>WorkspaceDesignForm</receiver>
+   <slot>HandleMenuWidgetVisibility()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>40</x>
+     <y>28</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>627</x>
+     <y>403</y>
     </hint>
    </hints>
   </connection>
