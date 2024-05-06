@@ -1,8 +1,8 @@
-from PyQt6.QtWidgets import QWidget, QApplication, QMainWindow, QGraphicsView, QGraphicsProxyWidget, QGraphicsScene, QTabBar
-from PyQt6.QtGui import QColor, qRgb, QTransform
-from PyQt6.QtCore import QObject, QLineF, QPointF, pyqtSignal
+from PyQt6.QtWidgets import QWidget, QGraphicsView, QGraphicsProxyWidget, QGraphicsScene, QMenu
+from PyQt6.QtGui import QColor, qRgb, QTransform, QCursor
+from PyQt6.QtCore import  QLineF, QPointF, QPoint, QSize
 
-
+from src.objects.editSettingsContextMenu_1 import Ui_Form
 from src.objects.workspaceDesignFomr_1 import Ui_WorkspaceDesignForm
 from src.signals.signals import NodeBoardSignalBus
 from src.dialogs.widgetCreatorDialog import WidgetCreatorDialog
@@ -11,12 +11,24 @@ from src.widgets.testwidgetbase import CustomWidget
 from src.widgets.spectralplottest import SpectralPlotWidget
 from src.signals.signals import WorkspaceSignalBus
 
+class CustomMenu(QMenu):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.cMenu = Ui_Form()
+        self.cMenu.setupUi(self)
+
+        self.addAction(self.cMenu.actionShow_Workspace_Grid)
+
 class WorkspaceDesignWidget(QWidget):
     def __init__(self, signal_bus, parent=None):
         super().__init__(parent)
         self.ui = Ui_WorkspaceDesignForm()
         self.ui.setupUi(self)
         self.grid = self.ui.gridLayout_5
+        self.context_menu = CustomMenu(self)
+        self.context_menu.setMinimumSize(self.context_menu.sizeHint() + QSize(25,5))
+    
+
         
         # Signal Bus
         self.signal_bus = signal_bus
@@ -51,9 +63,13 @@ class WorkspaceDesignWidget(QWidget):
         self.scene.addWidget(self.test_widget2).setPos(QPointF(400.0, 0.0))
         self.scene.addWidget(self.spectral_test_widget).setPos(QPointF(50.0, 100.0))
         self.scene.addWidget(self.spectral_test_widget_2).setPos(QPointF(650.0, 100.0))
-
-        print(self.scene.extract_widget_data())
         
+        
+    def HandleEditSettingsContextMenu(self):
+        sender_button = self.sender()
+        global_pos = sender_button.mapToGlobal(sender_button.pos())
+        global_pos += QPoint(-185, 35)
+        self.context_menu.exec(global_pos)
         
     def groupWorkspaceGroupButtonsToPages(self):
          for i, button in enumerate(self.ui.WorkspaceMenuButtonGroup.buttons()):
@@ -62,8 +78,7 @@ class WorkspaceDesignWidget(QWidget):
 
     def HandleMenuWidgetVisibility(self, state):
         if not self.ui.WorkspaceMenuWidget.isVisible():
-            self.ui.WorkspaceMenuWidget.setVisible(state)
-            
+            self.ui.WorkspaceMenuWidget.setVisible(state)   
 
     def HandleCreateWidgetMode(self, selected: bool):
             if selected is not None:
@@ -113,7 +128,6 @@ class WorkspaceDesignWidget(QWidget):
             if tr.m11() >= 0.4 and tr.m22() >= 0.4:
                 self.view.setTransform(tr)
 
-    
     def generateSquareTiles(self, grid):
         red = QColor(qRgb(50, 50, 50))
         blue = QColor(qRgb(70, 70, 70))
@@ -165,7 +179,6 @@ class NodeboardGraphicsScene(QGraphicsScene):
         self.nodeboard_signal_bus.widgetDeletedSignal.connect(self.onWidgetDelete)
 
         #Calling methods
-        print(self.extract_widget_data())
 
     # Setters
     def setSelecteButton(self, button):
@@ -221,7 +234,6 @@ class NodeboardGraphicsScene(QGraphicsScene):
                         "spectral_data": widget.spectral_data if hasattr(widget, "spectral_data") else None
                     }
                     widget_data.append(data)
-                # Más widget típusok kezelése hasonló módon
 
         return widget_data
 

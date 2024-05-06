@@ -27,8 +27,8 @@ class MyApp(QMainWindow):
 
         #Calling Methods
         self.tm.setup_connections(signal_bus)
+        
         stuff_to_pickle = WorkspaceDesignWidget(signal_bus)
-
         self.tm.add_page(stuff_to_pickle, "Test_Workspace    ")
         # self.tm.save_page_to_file(stuff_to_pickle, "Test_Workspace")
 
@@ -41,11 +41,8 @@ class MyApp(QMainWindow):
     #MainWindow Slots
     def HandleMeasureDialog(self, selected: bool):
         if selected is not None:
-            # if selected == False:
-            #     self.navbar.measureDialog.closePopUp()
-            # else:
-                self.navbar.measureDialog.popUp()
-                self.sender().setChecked(False)
+            self.navbar.measureDialog.popUp()
+            self.sender().setChecked(False)
 
     def HandleConnectionConfigDialog(self):
         self.navbar.connectionConfigDialog.popUp()
