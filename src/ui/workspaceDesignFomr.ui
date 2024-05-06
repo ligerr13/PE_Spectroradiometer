@@ -67,80 +67,24 @@ border-top: 0;</string>
       <property name="bottomMargin">
        <number>2</number>
       </property>
-      <item row="1" column="1">
-       <widget class="QWidget" name="widget" native="true">
-        <property name="styleSheet">
-         <string notr="true">border: 0;</string>
-        </property>
-        <layout class="QVBoxLayout" name="verticalLayout">
-         <property name="leftMargin">
-          <number>5</number>
-         </property>
-         <property name="topMargin">
-          <number>5</number>
-         </property>
-         <property name="rightMargin">
-          <number>5</number>
-         </property>
-         <property name="bottomMargin">
-          <number>5</number>
-         </property>
-         <item>
-          <widget class="QPushButton" name="pushButton_2">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="cursor">
-            <cursorShape>PointingHandCursor</cursorShape>
-           </property>
-           <property name="layoutDirection">
-            <enum>Qt::LeftToRight</enum>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="icon">
-            <iconset>
-             <normaloff>../../resources/icons/back.png</normaloff>../../resources/icons/back.png</iconset>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>15</width>
-             <height>15</height>
-            </size>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="verticalSpacer_3">
-           <property name="orientation">
-            <enum>Qt::Vertical</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>20</width>
-             <height>40</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
-       </widget>
-      </item>
       <item row="1" column="0">
        <widget class="QStackedWidget" name="stackedWidget">
         <property name="styleSheet">
          <string notr="true">border: 0;</string>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>2</number>
         </property>
         <widget class="QWidget" name="page_5">
+         <property name="styleSheet">
+          <string notr="true">	padding: 5 5 5 5;
+	margin: 5 5 5 5;</string>
+         </property>
          <layout class="QGridLayout" name="gridLayout_4">
-          <item row="0" column="0">
+          <property name="topMargin">
+           <number>5</number>
+          </property>
+          <item row="1" column="0">
            <widget class="QWidget" name="widget_3" native="true">
             <property name="minimumSize">
              <size>
@@ -292,10 +236,47 @@ Click to add a new widget.</string>
             </layout>
            </widget>
           </item>
+          <item row="0" column="0">
+           <widget class="QWidget" name="widget_9" native="true">
+            <layout class="QVBoxLayout" name="verticalLayout_4">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="label">
+               <property name="styleSheet">
+                <string notr="true">QLabel {
+	font: 700 10pt &quot;Arial&quot;;
+}</string>
+               </property>
+               <property name="text">
+                <string>All Tools</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
          </layout>
         </widget>
         <widget class="QWidget" name="page_6">
+         <property name="styleSheet">
+          <string notr="true">	padding: 5 5 5 5;
+	margin: 5 5 5 5;</string>
+         </property>
          <layout class="QGridLayout" name="gridLayout_6">
+          <property name="topMargin">
+           <number>5</number>
+          </property>
           <item row="1" column="0">
            <widget class="QWidget" name="widget_7" native="true">
             <property name="styleSheet">
@@ -395,8 +376,224 @@ Click to add a new widget.</string>
             </layout>
            </widget>
           </item>
+          <item row="0" column="0">
+           <widget class="QWidget" name="widget_10" native="true">
+            <layout class="QVBoxLayout" name="verticalLayout_5">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="label_2">
+               <property name="styleSheet">
+                <string notr="true">QLabel {
+	font: 700 10pt &quot;Arial&quot;;
+}</string>
+               </property>
+               <property name="text">
+                <string>Create</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
          </layout>
         </widget>
+        <widget class="QWidget" name="page">
+         <property name="cursor">
+          <cursorShape>ArrowCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">	padding: 5 5 5 5;
+	margin: 5 5 5 5;</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_8">
+          <property name="leftMargin">
+           <number>9</number>
+          </property>
+          <property name="topMargin">
+           <number>5</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <item row="0" column="0">
+           <widget class="QWidget" name="widget_11" native="true">
+            <layout class="QHBoxLayout" name="horizontalLayout">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="label_3">
+               <property name="styleSheet">
+                <string notr="true">QLabel {
+	font: 700 10pt &quot;Arial&quot;;
+}</string>
+               </property>
+               <property name="text">
+                <string>Edit</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="workspaceEditSettingsButton">
+               <property name="maximumSize">
+                <size>
+                 <width>45</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+	margin: 5 5 5 5;
+	padding: 5 5 5 5;
+	border-radius: 3px;
+}
+QPushButton:hover {
+            background: rgb(75, 75, 75);
+}</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>../../resources/icons/setting.png</normaloff>../../resources/icons/setting.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>17</width>
+                 <height>17</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QWidget" name="widget_12" native="true">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>ArrowCursor</cursorShape>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_8"/>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <spacer name="verticalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QWidget" name="widget" native="true">
+        <property name="styleSheet">
+         <string notr="true">border: 0;</string>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>5</number>
+         </property>
+         <property name="rightMargin">
+          <number>5</number>
+         </property>
+         <property name="bottomMargin">
+          <number>5</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="pushButton_2">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+	margin: 5 5 5 5;
+	padding: 5 5 5 5;
+	border-radius: 3px;
+}
+QPushButton:hover {
+            background: rgb(75, 75, 75);
+}</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>../../resources/icons/back.png</normaloff>../../resources/icons/back.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>17</width>
+             <height>17</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
        </widget>
       </item>
      </layout>
@@ -896,7 +1093,7 @@ border-top: 0;</string>
          <string notr="true">QWidget {border: 0;}
 
 QPushButton {
-font: 630 10pt &quot;Arial&quot;;
+font: 630 8pt &quot;Arial&quot;;
 color: 	rgb(190, 190, 190);
 padding: 5 0 5 0;
 margin: 5 5 5 5;
@@ -930,7 +1127,7 @@ QToolTip{
            <property name="styleSheet">
             <string notr="true">
 QPushButton {
-font: 630 10pt &quot;Arial&quot;;
+font: 630 8pt &quot;Arial&quot;;
 color: 	rgb(190, 190, 190);
 padding: 5 0 5 0;
 }
@@ -1004,6 +1201,25 @@ QToolTip{
             <bool>false</bool>
            </property>
            <property name="default">
+            <bool>false</bool>
+           </property>
+           <attribute name="buttonGroup">
+            <string notr="true">WorkspaceMenuButtonGroup</string>
+           </attribute>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="editMenuButton">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string>Edit</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="checked">
             <bool>false</bool>
            </property>
            <attribute name="buttonGroup">
@@ -1121,8 +1337,8 @@ QToolTip{
    <slot>HandleCreateWidgetMode(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>51</x>
-     <y>152</y>
+     <x>62</x>
+     <y>151</y>
     </hint>
     <hint type="destinationlabel">
      <x>360</x>
@@ -1194,6 +1410,38 @@ QToolTip{
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>editMenuButton</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>WorkspaceDesignForm</receiver>
+   <slot>HandleMenuWidgetVisibility()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>147</x>
+     <y>26</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>627</x>
+     <y>403</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>workspaceEditSettingsButton</sender>
+   <signal>clicked()</signal>
+   <receiver>WorkspaceDesignForm</receiver>
+   <slot>HandleEditSettingsContextMenu()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>223</x>
+     <y>80</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>627</x>
+     <y>403</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>HandleDragMode(bool)</slot>
@@ -1203,10 +1451,11 @@ QToolTip{
   <slot>HandleZoomOut()</slot>
   <slot>HandleSelectMode(bool)</slot>
   <slot>HandleMenuWidgetVisibility()</slot>
+  <slot>HandleEditSettingsContextMenu()</slot>
  </slots>
  <buttongroups>
-  <buttongroup name="WorkspaceButtonGroup"/>
   <buttongroup name="WorkspaceToolsButtonGroup"/>
+  <buttongroup name="WorkspaceButtonGroup"/>
   <buttongroup name="WorkspaceMenuButtonGroup">
    <property name="exclusive">
     <bool>true</bool>

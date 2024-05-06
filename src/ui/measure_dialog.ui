@@ -850,8 +850,8 @@ QPushTip{
    <slot>onAccept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>336</x>
-     <y>638</y>
+     <x>460</x>
+     <y>492</y>
     </hint>
     <hint type="destinationlabel">
      <x>258</x>
@@ -866,8 +866,8 @@ QPushTip{
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>90</x>
-     <y>638</y>
+     <x>106</x>
+     <y>492</y>
     </hint>
     <hint type="destinationlabel">
      <x>258</x>
@@ -882,8 +882,8 @@ QPushTip{
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>485</x>
-     <y>343</y>
+     <x>452</x>
+     <y>344</y>
     </hint>
     <hint type="destinationlabel">
      <x>336</x>

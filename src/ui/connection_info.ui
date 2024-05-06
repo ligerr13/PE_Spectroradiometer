@@ -599,8 +599,8 @@ QPushTip{
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>316</x>
-     <y>260</y>
+     <x>327</x>
+     <y>632</y>
     </hint>
     <hint type="destinationlabel">
      <x>286</x>
@@ -615,8 +615,8 @@ QPushTip{
    <slot>onAccept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>108</x>
-     <y>662</y>
+     <x>119</x>
+     <y>632</y>
     </hint>
     <hint type="destinationlabel">
      <x>283</x>
