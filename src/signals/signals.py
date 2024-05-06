@@ -25,5 +25,4 @@ class WorkspaceSignalBus(QObject):
         super().__init__()
 
     def emitCloseWorkspaceSignal(self):
-        print("Signal emited")
         self.closeWorkspace.emit()

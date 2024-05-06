@@ -1,6 +1,6 @@
-from PyQt6.QtCore import QObject, QLineF, QPointF, pyqtSignal, Qt, QSize
-from PyQt6.QtWidgets import QGraphicsScene, QWidget, QGraphicsProxyWidget, QWidget, QTabBar, QPushButton  
-from PyQt6.QtGui import QColor, qRgb, QTransform, QIcon 
+from PyQt6.QtCore import  QSize
+from PyQt6.QtWidgets import QTabBar, QPushButton  
+from PyQt6.QtGui import QIcon 
 import pickle 
 from src.workspaceTemplate import WorkspaceDesignWidget
 
@@ -54,7 +54,8 @@ class TabManager:
         """
         return self.tab_widget.currentWidget()
     
-    def save_page_to_file(self, wdwObject: WorkspaceDesignWidget, file_name: str):
+    #NOT POSSIBLE 
+    def save_page_to_file(self, wdwObject: WorkspaceDesignWidget, file_name: str): 
         """
         Save the current page's QWidget to a file using pickle.
 

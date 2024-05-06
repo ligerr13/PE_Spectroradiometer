@@ -68,6 +68,7 @@ class MeasureDialog(QDialog):
             QMessageBox.warning(self, "Warning", "File already exists in folder:\n" +  FileValidator.get_data_directory())
             return
         
+        #DOGSHIT
         measure_program_builder = MeasureProgramBuilder()
         if self.measurement_conditions_checkBox.isChecked():
             measure_program_builder.enable_measurement_conditions()

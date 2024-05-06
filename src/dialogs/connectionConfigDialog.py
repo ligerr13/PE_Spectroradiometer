@@ -46,7 +46,6 @@ class ConnectionConfigDialog(QDialog):
             event.accept()
 
     def onAccept(self):
-        print("asd")
         self.update_serial_settings()
         self.accept()
 
