@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file '.\ui\editSettingsContextMenu.ui'
+# Form implementation generated from reading ui file 'ui/editSettingsContextMenu.ui'
 #
 # Created by: PyQt6 UI code generator 6.6.1
 #
@@ -30,8 +30,8 @@ class Ui_Form(object):
         self.actionShow_Workspace_Grid = QtGui.QAction(parent=Form)
         self.actionShow_Workspace_Grid.setCheckable(True)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/toggle-button-off.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        icon.addPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/toggle-button-on.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
+        icon.addPixmap(QtGui.QPixmap("ui/../../resources/icons/toggle-button-off.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon.addPixmap(QtGui.QPixmap("ui/../../resources/icons/toggle-button-on.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
         self.actionShow_Workspace_Grid.setIcon(icon)
         self.actionShow_Workspace_Grid.setObjectName("actionShow_Workspace_Grid")
 

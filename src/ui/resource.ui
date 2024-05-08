@@ -171,67 +171,6 @@ border-radius: 5px;</string>
                <number>0</number>
               </property>
               <item>
-               <widget class="QPushButton" name="pushButton">
-                <property name="minimumSize">
-                 <size>
-                  <width>50</width>
-                  <height>50</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>45</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="cursor">
-                 <cursorShape>PointingHandCursor</cursorShape>
-                </property>
-                <property name="toolTip">
-                 <string>Nodeboard</string>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QPushButton {
-		border: 0px;
-		font: 12pt;
-        }
-QPushButton:hover {
-            background: rgb(55, 55, 55);
-        }
-QPushButton:checked  {
-		border: 0px;
-		background-color: rgb(63, 101, 255);
-}
-QToolTip{ 
-		font: 12pt;
-		color: rgb(100, 100, 100);
-}</string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="icon">
-                 <iconset>
-                  <normaloff>../../resources/icons/vector.png</normaloff>../../resources/icons/vector.png</iconset>
-                </property>
-                <property name="iconSize">
-                 <size>
-                  <width>25</width>
-                  <height>25</height>
-                 </size>
-                </property>
-                <property name="checkable">
-                 <bool>true</bool>
-                </property>
-                <property name="checked">
-                 <bool>true</bool>
-                </property>
-                <attribute name="buttonGroup">
-                 <string notr="true">NavBarbuttonGroup</string>
-                </attribute>
-               </widget>
-              </item>
-              <item>
                <widget class="Line" name="line_3">
                 <property name="styleSheet">
                  <string notr="true">background-color: rgba(129, 129, 129, 50);
@@ -241,67 +180,6 @@ border-radius: 50%</string>
                 <property name="orientation">
                  <enum>Qt::Horizontal</enum>
                 </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="pushButton_2">
-                <property name="minimumSize">
-                 <size>
-                  <width>50</width>
-                  <height>50</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>45</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="cursor">
-                 <cursorShape>PointingHandCursor</cursorShape>
-                </property>
-                <property name="toolTip">
-                 <string>Workspaces</string>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QPushButton {
-		border: 0px;
-		font: 12pt;
-        }
-QPushButton:hover {
-            background: rgb(55, 55, 55);
-        }
-QPushButton:checked  {
-		border: 0px;
-		background-color: rgb(63, 101, 255);
-}
-QToolTip{ 
-		font: 12pt;
-		color: rgb(100, 100, 100);
-}</string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="icon">
-                 <iconset>
-                  <normaloff>../../resources/icons/workspace.png</normaloff>../../resources/icons/workspace.png</iconset>
-                </property>
-                <property name="iconSize">
-                 <size>
-                  <width>25</width>
-                  <height>25</height>
-                 </size>
-                </property>
-                <property name="checkable">
-                 <bool>true</bool>
-                </property>
-                <property name="checked">
-                 <bool>false</bool>
-                </property>
-                <attribute name="buttonGroup">
-                 <string notr="true">NavBarbuttonGroup</string>
-                </attribute>
                </widget>
               </item>
               <item>
@@ -385,67 +263,6 @@ QToolTip{
                </widget>
               </item>
               <item>
-               <widget class="QPushButton" name="pushButton_3">
-                <property name="minimumSize">
-                 <size>
-                  <width>50</width>
-                  <height>50</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>45</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="cursor">
-                 <cursorShape>PointingHandCursor</cursorShape>
-                </property>
-                <property name="toolTip">
-                 <string>Settings</string>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QPushButton {
-		border: 0px;
-		font: 12pt;
-        }
-QPushButton:hover {
-            background: rgb(55, 55, 55);
-        }
-QPushButton:checked  {
-		border: 0px;
-		background-color: rgb(63, 101, 255);
-}
-QToolTip{ 
-		font: 12pt;
-		color: rgb(100, 100, 100);
-}</string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="icon">
-                 <iconset>
-                  <normaloff>../../resources/icons/setting.png</normaloff>../../resources/icons/setting.png</iconset>
-                </property>
-                <property name="iconSize">
-                 <size>
-                  <width>25</width>
-                  <height>25</height>
-                 </size>
-                </property>
-                <property name="checkable">
-                 <bool>true</bool>
-                </property>
-                <property name="checked">
-                 <bool>false</bool>
-                </property>
-                <attribute name="buttonGroup">
-                 <string notr="true">NavBarbuttonGroup</string>
-                </attribute>
-               </widget>
-              </item>
-              <item>
                <widget class="QToolButton" name="toolButton_2">
                 <property name="minimumSize">
                  <size>
@@ -513,22 +330,6 @@ QToolTip{
  </widget>
  <resources/>
  <connections>
-  <connection>
-   <sender>NavBarbuttonGroup</sender>
-   <signal>idClicked(int)</signal>
-   <receiver>MainWindow</receiver>
-   <slot>OnNavbarButtonClicked(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>424</x>
-     <y>370</y>
-    </hint>
-   </hints>
-  </connection>
   <connection>
    <sender>pushButton_13</sender>
    <signal>clicked(bool)</signal>

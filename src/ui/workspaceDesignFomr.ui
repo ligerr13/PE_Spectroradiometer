@@ -73,7 +73,7 @@ border-top: 0;</string>
          <string notr="true">border: 0;</string>
         </property>
         <property name="currentIndex">
-         <number>2</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="page_5">
          <property name="styleSheet">
@@ -464,14 +464,27 @@ Click to add a new widget.</string>
                <property name="cursor">
                 <cursorShape>PointingHandCursor</cursorShape>
                </property>
+               <property name="tabletTracking">
+                <bool>false</bool>
+               </property>
+               <property name="focusPolicy">
+                <enum>Qt::StrongFocus</enum>
+               </property>
                <property name="styleSheet">
                 <string notr="true">QPushButton {
 	margin: 5 5 5 5;
 	padding: 5 5 5 5;
 	border-radius: 3px;
+	background: transparent;
 }
 QPushButton:hover {
             background: rgb(75, 75, 75);
+}
+QPushButton:focus {
+            background: rgb(75, 75, 75);
+}
+QPushButton:!focus {
+            background: transparent;
 }</string>
                </property>
                <property name="text">
@@ -486,6 +499,9 @@ QPushButton:hover {
                  <width>17</width>
                  <height>17</height>
                 </size>
+               </property>
+               <property name="checkable">
+                <bool>false</bool>
                </property>
               </widget>
              </item>
@@ -542,7 +558,7 @@ QPushButton:hover {
           <number>5</number>
          </property>
          <item>
-          <widget class="QPushButton" name="pushButton_2">
+          <widget class="QPushButton" name="hideLeftSideTabButton">
            <property name="minimumSize">
             <size>
              <width>0</width>
@@ -1124,33 +1140,6 @@ QToolTip{
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
            </property>
-           <property name="styleSheet">
-            <string notr="true">
-QPushButton {
-font: 630 8pt &quot;Arial&quot;;
-color: 	rgb(190, 190, 190);
-padding: 5 0 5 0;
-}
-QPushButton:hover {
-            background: rgb(55, 55, 55);
-			color: white;
-        }
-QPushButton:checked  {
-		border: 0px;
-		border-radius: 0px;
-		border-bottom: 1px solid white;
-		color: white;
-}
-QPushButton:unchecked  {
-		border: 0px;
-		background-color: transparent;
-		color: 	rgb(171, 171, 171);
-}
-QToolTip{ 
-		font: 12pt;
-		color: rgb(100, 100, 100);
-}</string>
-           </property>
            <property name="text">
             <string> All Tools</string>
            </property>
@@ -1337,8 +1326,8 @@ QToolTip{
    <slot>HandleCreateWidgetMode(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>62</x>
-     <y>151</y>
+     <x>73</x>
+     <y>145</y>
     </hint>
     <hint type="destinationlabel">
      <x>360</x>
@@ -1379,22 +1368,6 @@ QToolTip{
    </hints>
   </connection>
   <connection>
-   <sender>pushButton_2</sender>
-   <signal>clicked(bool)</signal>
-   <receiver>WorkspaceMenuWidget</receiver>
-   <slot>setVisible(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>286</x>
-     <y>75</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>246</x>
-     <y>58</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>allToolsMenuButton</sender>
    <signal>clicked(bool)</signal>
    <receiver>WorkspaceDesignForm</receiver>
@@ -1417,8 +1390,8 @@ QToolTip{
    <slot>HandleMenuWidgetVisibility()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>147</x>
-     <y>26</y>
+     <x>132</x>
+     <y>37</y>
     </hint>
     <hint type="destinationlabel">
      <x>627</x>
@@ -1442,6 +1415,38 @@ QToolTip{
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>CreateWidgetButton_2</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>WorkspaceDesignForm</receiver>
+   <slot>HandleCreateWidgetMode(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>123</x>
+     <y>125</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>627</x>
+     <y>403</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>hideLeftSideTabButton</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>WorkspaceDesignForm</receiver>
+   <slot>SetLeftMenuTabbVisibility(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>272</x>
+     <y>77</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>627</x>
+     <y>403</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>HandleDragMode(bool)</slot>
@@ -1452,14 +1457,15 @@ QToolTip{
   <slot>HandleSelectMode(bool)</slot>
   <slot>HandleMenuWidgetVisibility()</slot>
   <slot>HandleEditSettingsContextMenu()</slot>
+  <slot>SetLeftMenuTabbVisibility(bool)</slot>
  </slots>
  <buttongroups>
   <buttongroup name="WorkspaceToolsButtonGroup"/>
-  <buttongroup name="WorkspaceButtonGroup"/>
   <buttongroup name="WorkspaceMenuButtonGroup">
    <property name="exclusive">
     <bool>true</bool>
    </property>
   </buttongroup>
+  <buttongroup name="WorkspaceButtonGroup"/>
  </buttongroups>
 </ui>

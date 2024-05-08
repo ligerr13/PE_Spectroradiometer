@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file '.\ui\workspaceDesignFomr.ui'
+# Form implementation generated from reading ui file 'ui/workspaceDesignFomr.ui'
 #
 # Created by: PyQt6 UI code generator 6.6.1
 #
@@ -85,7 +85,7 @@ class Ui_WorkspaceDesignForm(object):
         self.CreateWidgetButton.setContextMenuPolicy(QtCore.Qt.ContextMenuPolicy.DefaultContextMenu)
         self.CreateWidgetButton.setStyleSheet("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/widget.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon.addPixmap(QtGui.QPixmap("ui/../../resources/icons/widget.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.CreateWidgetButton.setIcon(icon)
         self.CreateWidgetButton.setIconSize(QtCore.QSize(18, 19))
         self.CreateWidgetButton.setCheckable(True)
@@ -99,7 +99,7 @@ class Ui_WorkspaceDesignForm(object):
         self.pushButton.setMaximumSize(QtCore.QSize(16777215, 40))
         self.pushButton.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/pdf.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon1.addPixmap(QtGui.QPixmap("ui/../../resources/icons/pdf.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.pushButton.setIcon(icon1)
         self.pushButton.setIconSize(QtCore.QSize(18, 19))
         self.pushButton.setCheckable(True)
@@ -213,19 +213,29 @@ class Ui_WorkspaceDesignForm(object):
         self.workspaceEditSettingsButton = QtWidgets.QPushButton(parent=self.widget_11)
         self.workspaceEditSettingsButton.setMaximumSize(QtCore.QSize(45, 16777215))
         self.workspaceEditSettingsButton.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        self.workspaceEditSettingsButton.setTabletTracking(False)
+        self.workspaceEditSettingsButton.setFocusPolicy(QtCore.Qt.FocusPolicy.StrongFocus)
         self.workspaceEditSettingsButton.setStyleSheet("QPushButton {\n"
 "    margin: 5 5 5 5;\n"
 "    padding: 5 5 5 5;\n"
 "    border-radius: 3px;\n"
+"    background: transparent;\n"
 "}\n"
 "QPushButton:hover {\n"
 "            background: rgb(75, 75, 75);\n"
+"}\n"
+"QPushButton:focus {\n"
+"            background: rgb(75, 75, 75);\n"
+"}\n"
+"QPushButton:!focus {\n"
+"            background: transparent;\n"
 "}")
         self.workspaceEditSettingsButton.setText("")
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/setting.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon2.addPixmap(QtGui.QPixmap("ui/../../resources/icons/setting.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.workspaceEditSettingsButton.setIcon(icon2)
         self.workspaceEditSettingsButton.setIconSize(QtCore.QSize(17, 17))
+        self.workspaceEditSettingsButton.setCheckable(False)
         self.workspaceEditSettingsButton.setObjectName("workspaceEditSettingsButton")
         self.horizontalLayout.addWidget(self.workspaceEditSettingsButton)
         self.gridLayout_8.addWidget(self.widget_11, 0, 0, 1, 1)
@@ -246,11 +256,11 @@ class Ui_WorkspaceDesignForm(object):
         self.verticalLayout = QtWidgets.QVBoxLayout(self.widget)
         self.verticalLayout.setContentsMargins(0, 5, 5, 5)
         self.verticalLayout.setObjectName("verticalLayout")
-        self.pushButton_2 = QtWidgets.QPushButton(parent=self.widget)
-        self.pushButton_2.setMinimumSize(QtCore.QSize(0, 0))
-        self.pushButton_2.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
-        self.pushButton_2.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
-        self.pushButton_2.setStyleSheet("QPushButton {\n"
+        self.hideLeftSideTabButton = QtWidgets.QPushButton(parent=self.widget)
+        self.hideLeftSideTabButton.setMinimumSize(QtCore.QSize(0, 0))
+        self.hideLeftSideTabButton.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        self.hideLeftSideTabButton.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
+        self.hideLeftSideTabButton.setStyleSheet("QPushButton {\n"
 "    margin: 5 5 5 5;\n"
 "    padding: 5 5 5 5;\n"
 "    border-radius: 3px;\n"
@@ -258,13 +268,13 @@ class Ui_WorkspaceDesignForm(object):
 "QPushButton:hover {\n"
 "            background: rgb(75, 75, 75);\n"
 "}")
-        self.pushButton_2.setText("")
+        self.hideLeftSideTabButton.setText("")
         icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/back.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButton_2.setIcon(icon3)
-        self.pushButton_2.setIconSize(QtCore.QSize(17, 17))
-        self.pushButton_2.setObjectName("pushButton_2")
-        self.verticalLayout.addWidget(self.pushButton_2)
+        icon3.addPixmap(QtGui.QPixmap("ui/../../resources/icons/back.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.hideLeftSideTabButton.setIcon(icon3)
+        self.hideLeftSideTabButton.setIconSize(QtCore.QSize(17, 17))
+        self.hideLeftSideTabButton.setObjectName("hideLeftSideTabButton")
+        self.verticalLayout.addWidget(self.hideLeftSideTabButton)
         spacerItem3 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
         self.verticalLayout.addItem(spacerItem3)
         self.gridLayout_2.addWidget(self.widget, 1, 1, 1, 1)
@@ -323,7 +333,7 @@ class Ui_WorkspaceDesignForm(object):
 "}")
         self.SelectButton.setText("")
         icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/cursor.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon4.addPixmap(QtGui.QPixmap("ui/../../resources/icons/cursor.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.SelectButton.setIcon(icon4)
         self.SelectButton.setCheckable(True)
         self.SelectButton.setChecked(False)
@@ -362,7 +372,7 @@ class Ui_WorkspaceDesignForm(object):
 "}")
         self.DeleteWidgetButton.setText("")
         icon5 = QtGui.QIcon()
-        icon5.addPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/delete.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon5.addPixmap(QtGui.QPixmap("ui/../../resources/icons/delete.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.DeleteWidgetButton.setIcon(icon5)
         self.DeleteWidgetButton.setIconSize(QtCore.QSize(15, 15))
         self.DeleteWidgetButton.setCheckable(True)
@@ -401,7 +411,7 @@ class Ui_WorkspaceDesignForm(object):
 "}")
         self.DragOnGWButton.setText("")
         icon6 = QtGui.QIcon()
-        icon6.addPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/move.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon6.addPixmap(QtGui.QPixmap("ui/../../resources/icons/move.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.DragOnGWButton.setIcon(icon6)
         self.DragOnGWButton.setIconSize(QtCore.QSize(15, 15))
         self.DragOnGWButton.setCheckable(True)
@@ -427,7 +437,7 @@ class Ui_WorkspaceDesignForm(object):
 "}")
         self.ZoomInButton.setText("")
         icon7 = QtGui.QIcon()
-        icon7.addPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/magnifying-glass-2.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon7.addPixmap(QtGui.QPixmap("ui/../../resources/icons/magnifying-glass-2.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.ZoomInButton.setIcon(icon7)
         self.ZoomInButton.setIconSize(QtCore.QSize(17, 17))
         self.ZoomInButton.setObjectName("ZoomInButton")
@@ -449,7 +459,7 @@ class Ui_WorkspaceDesignForm(object):
 "}")
         self.ZoomOutButton.setText("")
         icon8 = QtGui.QIcon()
-        icon8.addPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/magnifying-glass.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon8.addPixmap(QtGui.QPixmap("ui/../../resources/icons/magnifying-glass.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.ZoomOutButton.setIcon(icon8)
         self.ZoomOutButton.setIconSize(QtCore.QSize(17, 17))
         self.ZoomOutButton.setObjectName("ZoomOutButton")
@@ -519,31 +529,6 @@ class Ui_WorkspaceDesignForm(object):
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.allToolsMenuButton = QtWidgets.QPushButton(parent=self.widget_6)
         self.allToolsMenuButton.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
-        self.allToolsMenuButton.setStyleSheet("\n"
-"QPushButton {\n"
-"font: 630 8pt \"Arial\";\n"
-"color:     rgb(190, 190, 190);\n"
-"padding: 5 0 5 0;\n"
-"}\n"
-"QPushButton:hover {\n"
-"            background: rgb(55, 55, 55);\n"
-"            color: white;\n"
-"        }\n"
-"QPushButton:checked  {\n"
-"        border: 0px;\n"
-"        border-radius: 0px;\n"
-"        border-bottom: 1px solid white;\n"
-"        color: white;\n"
-"}\n"
-"QPushButton:unchecked  {\n"
-"        border: 0px;\n"
-"        background-color: transparent;\n"
-"        color:     rgb(171, 171, 171);\n"
-"}\n"
-"QToolTip{ \n"
-"        font: 12pt;\n"
-"        color: rgb(100, 100, 100);\n"
-"}")
         self.allToolsMenuButton.setIconSize(QtCore.QSize(25, 25))
         self.allToolsMenuButton.setCheckable(True)
         self.allToolsMenuButton.setChecked(True)
@@ -578,7 +563,7 @@ class Ui_WorkspaceDesignForm(object):
         self.gridLayout.addWidget(self.widget_5, 0, 0, 1, 2)
 
         self.retranslateUi(WorkspaceDesignForm)
-        self.stackedWidget.setCurrentIndex(2)
+        self.stackedWidget.setCurrentIndex(0)
         self.SelectButton.clicked['bool'].connect(WorkspaceDesignForm.HandleSelectMode) # type: ignore
         self.DeleteWidgetButton.toggled['bool'].connect(WorkspaceDesignForm.HandleDeleteMode) # type: ignore
         self.ZoomInButton.clicked.connect(WorkspaceDesignForm.HandleZoomIn) # type: ignore
@@ -587,10 +572,11 @@ class Ui_WorkspaceDesignForm(object):
         self.CreateWidgetButton.clicked['bool'].connect(WorkspaceDesignForm.HandleCreateWidgetMode) # type: ignore
         self.createMenuButton.clicked['bool'].connect(WorkspaceDesignForm.HandleMenuWidgetVisibility) # type: ignore
         self.WorkspaceMenuButtonGroup.idToggled['int','bool'].connect(self.stackedWidget.setCurrentIndex) # type: ignore
-        self.pushButton_2.clicked['bool'].connect(self.WorkspaceMenuWidget.setVisible) # type: ignore
         self.allToolsMenuButton.clicked['bool'].connect(WorkspaceDesignForm.HandleMenuWidgetVisibility) # type: ignore
         self.editMenuButton.clicked['bool'].connect(WorkspaceDesignForm.HandleMenuWidgetVisibility) # type: ignore
         self.workspaceEditSettingsButton.clicked.connect(WorkspaceDesignForm.HandleEditSettingsContextMenu) # type: ignore
+        self.CreateWidgetButton_2.clicked['bool'].connect(WorkspaceDesignForm.HandleCreateWidgetMode) # type: ignore
+        self.hideLeftSideTabButton.clicked['bool'].connect(WorkspaceDesignForm.SetLeftMenuTabbVisibility) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(WorkspaceDesignForm)
 
     def retranslateUi(self, WorkspaceDesignForm):

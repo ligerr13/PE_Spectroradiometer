@@ -89,37 +89,6 @@ class Ui_MainWindow(object):
         self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.widget_3)
         self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_4.setObjectName("verticalLayout_4")
-        self.pushButton = QtWidgets.QPushButton(parent=self.widget_3)
-        self.pushButton.setMinimumSize(QtCore.QSize(50, 50))
-        self.pushButton.setMaximumSize(QtCore.QSize(45, 16777215))
-        self.pushButton.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
-        self.pushButton.setStyleSheet("QPushButton {\n"
-"        border: 0px;\n"
-"        font: 12pt;\n"
-"        }\n"
-"QPushButton:hover {\n"
-"            background: rgb(55, 55, 55);\n"
-"        }\n"
-"QPushButton:checked  {\n"
-"        border: 0px;\n"
-"        background-color: rgb(63, 101, 255);\n"
-"}\n"
-"QToolTip{ \n"
-"        font: 12pt;\n"
-"        color: rgb(100, 100, 100);\n"
-"}")
-        self.pushButton.setText("")
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("ui/../../resources/icons/vector.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButton.setIcon(icon)
-        self.pushButton.setIconSize(QtCore.QSize(25, 25))
-        self.pushButton.setCheckable(True)
-        self.pushButton.setChecked(True)
-        self.pushButton.setObjectName("pushButton")
-        self.NavBarbuttonGroup = QtWidgets.QButtonGroup(MainWindow)
-        self.NavBarbuttonGroup.setObjectName("NavBarbuttonGroup")
-        self.NavBarbuttonGroup.addButton(self.pushButton)
-        self.verticalLayout_4.addWidget(self.pushButton)
         self.line_3 = QtWidgets.QFrame(parent=self.widget_3)
         self.line_3.setStyleSheet("background-color: rgba(129, 129, 129, 50);\n"
 "border: 0px;\n"
@@ -128,35 +97,6 @@ class Ui_MainWindow(object):
         self.line_3.setFrameShadow(QtWidgets.QFrame.Shadow.Sunken)
         self.line_3.setObjectName("line_3")
         self.verticalLayout_4.addWidget(self.line_3)
-        self.pushButton_2 = QtWidgets.QPushButton(parent=self.widget_3)
-        self.pushButton_2.setMinimumSize(QtCore.QSize(50, 50))
-        self.pushButton_2.setMaximumSize(QtCore.QSize(45, 16777215))
-        self.pushButton_2.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
-        self.pushButton_2.setStyleSheet("QPushButton {\n"
-"        border: 0px;\n"
-"        font: 12pt;\n"
-"        }\n"
-"QPushButton:hover {\n"
-"            background: rgb(55, 55, 55);\n"
-"        }\n"
-"QPushButton:checked  {\n"
-"        border: 0px;\n"
-"        background-color: rgb(63, 101, 255);\n"
-"}\n"
-"QToolTip{ \n"
-"        font: 12pt;\n"
-"        color: rgb(100, 100, 100);\n"
-"}")
-        self.pushButton_2.setText("")
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("ui/../../resources/icons/workspace.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButton_2.setIcon(icon1)
-        self.pushButton_2.setIconSize(QtCore.QSize(25, 25))
-        self.pushButton_2.setCheckable(True)
-        self.pushButton_2.setChecked(False)
-        self.pushButton_2.setObjectName("pushButton_2")
-        self.NavBarbuttonGroup.addButton(self.pushButton_2)
-        self.verticalLayout_4.addWidget(self.pushButton_2)
         spacerItem = QtWidgets.QSpacerItem(20, 411, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
         self.verticalLayout_4.addItem(spacerItem)
         self.line = QtWidgets.QFrame(parent=self.widget_3)
@@ -187,42 +127,13 @@ class Ui_MainWindow(object):
 "        color: rgb(100, 100, 100);\n"
 "}")
         self.pushButton_13.setText("")
-        icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("ui/../../resources/icons/play-button-arrowhead.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButton_13.setIcon(icon2)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("ui/../../resources/icons/play-button-arrowhead.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.pushButton_13.setIcon(icon)
         self.pushButton_13.setIconSize(QtCore.QSize(20, 20))
         self.pushButton_13.setCheckable(True)
         self.pushButton_13.setObjectName("pushButton_13")
         self.verticalLayout_4.addWidget(self.pushButton_13)
-        self.pushButton_3 = QtWidgets.QPushButton(parent=self.widget_3)
-        self.pushButton_3.setMinimumSize(QtCore.QSize(50, 50))
-        self.pushButton_3.setMaximumSize(QtCore.QSize(45, 16777215))
-        self.pushButton_3.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
-        self.pushButton_3.setStyleSheet("QPushButton {\n"
-"        border: 0px;\n"
-"        font: 12pt;\n"
-"        }\n"
-"QPushButton:hover {\n"
-"            background: rgb(55, 55, 55);\n"
-"        }\n"
-"QPushButton:checked  {\n"
-"        border: 0px;\n"
-"        background-color: rgb(63, 101, 255);\n"
-"}\n"
-"QToolTip{ \n"
-"        font: 12pt;\n"
-"        color: rgb(100, 100, 100);\n"
-"}")
-        self.pushButton_3.setText("")
-        icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap("ui/../../resources/icons/setting.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButton_3.setIcon(icon3)
-        self.pushButton_3.setIconSize(QtCore.QSize(25, 25))
-        self.pushButton_3.setCheckable(True)
-        self.pushButton_3.setChecked(False)
-        self.pushButton_3.setObjectName("pushButton_3")
-        self.NavBarbuttonGroup.addButton(self.pushButton_3)
-        self.verticalLayout_4.addWidget(self.pushButton_3)
         self.toolButton_2 = QtWidgets.QToolButton(parent=self.widget_3)
         self.toolButton_2.setMinimumSize(QtCore.QSize(0, 35))
         self.toolButton_2.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
@@ -239,18 +150,18 @@ class Ui_MainWindow(object):
 "        font: 12pt;\n"
 "        color: rgb(100, 100, 100);\n"
 "}")
-        icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap("ui/../../resources/icons/link.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.toolButton_2.setIcon(icon4)
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap("ui/../../resources/icons/link.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.toolButton_2.setIcon(icon1)
         self.toolButton_2.setIconSize(QtCore.QSize(15, 15))
         self.toolButton_2.setToolButtonStyle(QtCore.Qt.ToolButtonStyle.ToolButtonTextBesideIcon)
         self.toolButton_2.setObjectName("toolButton_2")
         self.verticalLayout_4.addWidget(self.toolButton_2)
         self.verticalLayout_3.addWidget(self.widget_3)
         self.gridLayout_2.addWidget(self.widget, 0, 0, 1, 1)
-        icon5 = QtGui.QIcon()
-        icon5.addPixmap(QtGui.QPixmap("ui/../../resources/icons/home.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.tabWidget.addTab(self.home, icon5, "")
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap("ui/../../resources/icons/home.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.tabWidget.addTab(self.home, icon2, "")
         self.gridLayout.addWidget(self.tabWidget, 1, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(parent=MainWindow)
@@ -261,7 +172,6 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.tabWidget.setCurrentIndex(0)
-        self.NavBarbuttonGroup.idClicked['int'].connect(MainWindow.OnNavbarButtonClicked) # type: ignore
         self.pushButton_13.clicked['bool'].connect(MainWindow.HandleMeasureDialog) # type: ignore
         self.toolButton_2.clicked.connect(MainWindow.HandleConnectionConfigDialog) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -269,10 +179,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.pushButton.setToolTip(_translate("MainWindow", "Nodeboard"))
-        self.pushButton_2.setToolTip(_translate("MainWindow", "Workspaces"))
         self.pushButton_13.setToolTip(_translate("MainWindow", "Measure"))
-        self.pushButton_3.setToolTip(_translate("MainWindow", "Settings"))
         self.toolButton_2.setToolTip(_translate("MainWindow", "None"))
         self.toolButton_2.setText(_translate("MainWindow", "  Connection status"))
         self.actionExit_Aplication.setText(_translate("MainWindow", "Exit Aplication"))
