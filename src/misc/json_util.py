@@ -24,7 +24,6 @@ class JsonBuilder:
 
                 with open(file_path, 'w') as jsonfile:
                     json.dump(json_structudict_3, jsonfile, indent=4)
-    
         else:
             with open(file_path, 'w') as jsonfile:
                 json.dump(json_structure, jsonfile, indent=4, )
