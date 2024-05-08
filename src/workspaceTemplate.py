@@ -27,8 +27,6 @@ class WorkspaceDesignWidget(QWidget):
         self.grid = self.ui.gridLayout_5
         self.context_menu = CustomMenu(self)
         self.context_menu.setMinimumSize(self.context_menu.sizeHint() + QSize(25,5))
-    
-
         
         # Signal Bus
         self.signal_bus = signal_bus
@@ -70,15 +68,73 @@ class WorkspaceDesignWidget(QWidget):
         global_pos = sender_button.mapToGlobal(sender_button.pos())
         global_pos += QPoint(-185, 35)
         self.context_menu.exec(global_pos)
+        self.ui.workspaceEditSettingsButton.clearFocus()
         
     def groupWorkspaceGroupButtonsToPages(self):
          for i, button in enumerate(self.ui.WorkspaceMenuButtonGroup.buttons()):
-              print(button, i)
               self.ui.WorkspaceMenuButtonGroup.setId(button, i)
+    
+    #Not the most elegant way to solve this.. has to be a better way to change the style.
+    def SetLeftMenuTabbVisibility(self, state):
+         self.ui.WorkspaceMenuWidget.setVisible(state)
+         self.ui.widget_6.setStyleSheet("""QWidget {border: 0;}
+                QPushButton {
+                font: 630 8pt "Arial";
+                color: 	rgb(190, 190, 190);
+                padding: 5 0 5 0;
+                margin: 5 5 5 5;
+                }
+                QPushButton:hover {
+                            background: rgb(55, 55, 55);
+                            color: white;
+                        }
+                QPushButton:checked  {
+                        border: 0px;
+                        border-radius: 0px;
+                        border-bottom: 0px;
+                        color: rgb(190, 190, 190);
+                }
+                QPushButton:unchecked  {
+                        border: 0px;
+                        background-color: transparent;
+                        color: 	rgb(171, 171, 171);
+                }
+                QToolTip{ 
+                        font: 12pt;
+                        color: rgb(100, 100, 100);
+                }""") 
+
 
     def HandleMenuWidgetVisibility(self, state):
         if not self.ui.WorkspaceMenuWidget.isVisible():
-            self.ui.WorkspaceMenuWidget.setVisible(state)   
+            self.ui.WorkspaceMenuWidget.setVisible(state)
+            self.ui.widget_6.setStyleSheet("""QWidget {border: 0;}
+                QPushButton {
+                font: 630 8pt "Arial";
+                color: 	rgb(190, 190, 190);
+                padding: 5 0 5 0;
+                margin: 5 5 5 5;
+                }
+                QPushButton:hover {
+                            background: rgb(55, 55, 55);
+                            color: white;
+                        }
+                QPushButton:checked  {
+                        border: 0px;
+                        border-radius: 0px;
+                        border-bottom: 1px solid white;
+                        color: white;
+                }
+                QPushButton:unchecked  {
+                        border: 0px;
+                        background-color: transparent;
+                        color: 	rgb(171, 171, 171);
+                }
+                QToolTip{ 
+                        font: 12pt;
+                        color: rgb(100, 100, 100);
+                }""") 
+            
 
     def HandleCreateWidgetMode(self, selected: bool):
             if selected is not None:
