@@ -14,9 +14,4 @@ class NavBar(QObject):
         self.connectionConfigDialog = ConnectionConfigDialog()
 
         #Calling Methods
-        self.group_buttons_to_pages()
-
-
-    def group_buttons_to_pages(self):
-        for i, button in enumerate(self.ui.NavBarbuttonGroup.buttons()):
-            self.ui.NavBarbuttonGroup.setId(button,i)
+        
