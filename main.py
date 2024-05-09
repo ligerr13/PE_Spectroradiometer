@@ -1,5 +1,5 @@
 from PyQt6.QtWidgets import QApplication, QMainWindow, QGraphicsView
-from PyQt6.QtGui import QTransform
+from PyQt6.QtGui import QTransform, QGuiApplication
 
 from src.objects.resource_1 import Ui_MainWindow
 from src.navbar import NavBar
@@ -51,6 +51,13 @@ class MyApp(QMainWindow):
         # self.ui.stackedWidget.setCurrentIndex(pageId)
         pass
 
+    def center(self):
+        qr = self.frameGeometry()           
+        cp = QGuiApplication.primaryScreen().availableGeometry().center()
+        qr.moveCenter(cp)
+        self.move(qr.topLeft())
+
+
 
 
 if __name__ == "__main__":
@@ -58,5 +65,6 @@ if __name__ == "__main__":
     app.setStyle("Fusion")
 
     window = MyApp()
+    window.center()
     window.show()
     app.exec()
