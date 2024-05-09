@@ -25,7 +25,8 @@ class TabManager:
         closeButton = QPushButton()
         closeButton.setIcon(QIcon("../resources/icons/close-2.png"))
         closeButton.setIconSize(QSize(10,10))
-        closeButton.clicked.connect(lambda: self.remove_page(index))
+        closeButton.clicked.connect(lambda checked, page_widget=page_widget: self.remove_page(self.tab_widget.indexOf(page_widget)))
+        page_widget.ui.closeWorkspaceButton.clicked.connect(lambda checked, index=index:self.remove_page(self.tab_widget.indexOf(page_widget)))
         self.tab_widget.tabBar().setTabButton(index, QTabBar.ButtonPosition.RightSide, closeButton)
         self.tab_count += 1
 
