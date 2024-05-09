@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>300</height>
+    <height>357</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -15,6 +15,9 @@
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
+  </property>
+  <property name="cursor">
+   <cursorShape>PointingHandCursor</cursorShape>
   </property>
   <property name="contextMenuPolicy">
    <enum>Qt::ActionsContextMenu</enum>
@@ -26,15 +29,37 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QMenu::item { 
-font-size: 16px; }
-QAction {
-icon-size: 17px;
+   <string notr="true">QMenu {
+	font: 10pt &quot;Consolas&quot;;
+    background-color: rgb(51, 51, 51);
+    border: 1px solid  grey;
+	border-radius: 3px;
+    color:rgb(190, 190, 190);
+	padding: 3 3 3 3;
+	icon-size: 20px;
+}
+
+QMenu::item {
+    spacing: 1px;
+    padding: 5 20 5 20;
+    background: transparent;
+}
+QMenu:item:selected {
+    background-color:  rgb(63, 101, 255);
+	border-radius: 3px;
+	color: rgb(230,230,230)
 }</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout_2"/>
+  <layout class="QGridLayout" name="gridLayout_2">
+   <property name="sizeConstraint">
+    <enum>QLayout::SetDefaultConstraint</enum>
+   </property>
+  </layout>
   <action name="actionShow_Workspace_Grid">
    <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
     <bool>true</bool>
    </property>
    <property name="icon">
@@ -44,6 +69,49 @@ icon-size: 17px;
    </property>
    <property name="text">
     <string>Show Workspace Grid</string>
+   </property>
+  </action>
+  <action name="actionChange_Theme">
+   <property name="text">
+    <string>Change Theme</string>
+   </property>
+   <property name="toolTip">
+    <string>Change Theme</string>
+   </property>
+  </action>
+  <action name="actionLight">
+   <property name="text">
+    <string>Light</string>
+   </property>
+  </action>
+  <action name="actionDark">
+   <property name="text">
+    <string>Dark</string>
+   </property>
+  </action>
+  <action name="actionUndo">
+   <property name="text">
+    <string>Undo</string>
+   </property>
+  </action>
+  <action name="actionRedo">
+   <property name="text">
+    <string>Redo</string>
+   </property>
+  </action>
+  <action name="actionPaste">
+   <property name="text">
+    <string>Paste</string>
+   </property>
+  </action>
+  <action name="actionCopy">
+   <property name="text">
+    <string>Copy</string>
+   </property>
+  </action>
+  <action name="actionCut">
+   <property name="text">
+    <string>Cut</string>
    </property>
   </action>
  </widget>

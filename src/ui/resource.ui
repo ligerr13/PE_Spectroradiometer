@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
+  <property name="windowModality">
+   <enum>Qt::NonModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -29,6 +32,9 @@ QPushButton:checked  {
 		border: 0px;
 		background-color: rgb(63, 101, 255);
 }</string>
+  </property>
+  <property name="toolButtonStyle">
+   <enum>Qt::ToolButtonTextBesideIcon</enum>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
@@ -69,7 +75,7 @@ QTabWidget::pane {
 QTabBar::tab {
 	color: grey;
 	padding: 15 0 15 15;
-	font: 700 10pt &quot;Arial&quot;;
+	font: 700 10pt &quot;Consolas&quot;;
 	border: 2px;
 } 
 
@@ -374,7 +380,4 @@ QToolTip{
   <slot>HandleMeasureDialog(bool)</slot>
   <slot>HandleConnectionConfigDialog()</slot>
  </slots>
- <buttongroups>
-  <buttongroup name="NavBarbuttonGroup"/>
- </buttongroups>
 </ui>

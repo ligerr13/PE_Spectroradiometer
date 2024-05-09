@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'ui/resource.ui'
+# Form implementation generated from reading ui file '.\ui\resource.ui'
 #
 # Created by: PyQt6 UI code generator 6.6.1
 #
@@ -12,6 +12,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
+        MainWindow.setWindowModality(QtCore.Qt.WindowModality.NonModal)
         MainWindow.resize(1276, 923)
         MainWindow.setAcceptDrops(False)
         MainWindow.setStyleSheet("QMainWindow {background-color: rgb(30, 30, 30);}\n"
@@ -26,6 +27,7 @@ class Ui_MainWindow(object):
 "        border: 0px;\n"
 "        background-color: rgb(63, 101, 255);\n"
 "}")
+        MainWindow.setToolButtonStyle(QtCore.Qt.ToolButtonStyle.ToolButtonTextBesideIcon)
         self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
@@ -47,7 +49,7 @@ class Ui_MainWindow(object):
 "QTabBar::tab {\n"
 "    color: grey;\n"
 "    padding: 15 0 15 15;\n"
-"    font: 700 10pt \"Arial\";\n"
+"    font: 700 10pt \"Consolas\";\n"
 "    border: 2px;\n"
 "} \n"
 "\n"
@@ -128,7 +130,7 @@ class Ui_MainWindow(object):
 "}")
         self.pushButton_13.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("ui/../../resources/icons/play-button-arrowhead.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon.addPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/play-button-arrowhead.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.pushButton_13.setIcon(icon)
         self.pushButton_13.setIconSize(QtCore.QSize(20, 20))
         self.pushButton_13.setCheckable(True)
@@ -151,7 +153,7 @@ class Ui_MainWindow(object):
 "        color: rgb(100, 100, 100);\n"
 "}")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("ui/../../resources/icons/link.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon1.addPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/link.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.toolButton_2.setIcon(icon1)
         self.toolButton_2.setIconSize(QtCore.QSize(15, 15))
         self.toolButton_2.setToolButtonStyle(QtCore.Qt.ToolButtonStyle.ToolButtonTextBesideIcon)
@@ -160,7 +162,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.addWidget(self.widget_3)
         self.gridLayout_2.addWidget(self.widget, 0, 0, 1, 1)
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("ui/../../resources/icons/home.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon2.addPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/home.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.tabWidget.addTab(self.home, icon2, "")
         self.gridLayout.addWidget(self.tabWidget, 1, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)

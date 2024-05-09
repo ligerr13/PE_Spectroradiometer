@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'ui/editSettingsContextMenu.ui'
+# Form implementation generated from reading ui file '.\ui\editSettingsContextMenu.ui'
 #
 # Created by: PyQt6 UI code generator 6.6.1
 #
@@ -12,28 +12,62 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(400, 300)
+        Form.resize(400, 357)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(Form.sizePolicy().hasHeightForWidth())
         Form.setSizePolicy(sizePolicy)
+        Form.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         Form.setContextMenuPolicy(QtCore.Qt.ContextMenuPolicy.ActionsContextMenu)
         Form.setAcceptDrops(False)
-        Form.setStyleSheet("QMenu::item { \n"
-"font-size: 16px; }\n"
-"QAction {\n"
-"icon-size: 17px;\n"
+        Form.setStyleSheet("QMenu {\n"
+"    font: 10pt \"Consolas\";\n"
+"    background-color: rgb(51, 51, 51);\n"
+"    border: 1px solid  grey;\n"
+"    border-radius: 3px;\n"
+"    color:rgb(190, 190, 190);\n"
+"    padding: 3 3 3 3;\n"
+"    icon-size: 20px;\n"
+"}\n"
+"\n"
+"QMenu::item {\n"
+"    spacing: 1px;\n"
+"    padding: 5 20 5 20;\n"
+"    background: transparent;\n"
+"}\n"
+"QMenu:item:selected {\n"
+"    background-color:  rgb(63, 101, 255);\n"
+"    border-radius: 3px;\n"
+"    color: rgb(230,230,230)\n"
 "}")
         self.gridLayout_2 = QtWidgets.QGridLayout(Form)
+        self.gridLayout_2.setSizeConstraint(QtWidgets.QLayout.SizeConstraint.SetDefaultConstraint)
         self.gridLayout_2.setObjectName("gridLayout_2")
         self.actionShow_Workspace_Grid = QtGui.QAction(parent=Form)
         self.actionShow_Workspace_Grid.setCheckable(True)
+        self.actionShow_Workspace_Grid.setChecked(True)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("ui/../../resources/icons/toggle-button-off.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        icon.addPixmap(QtGui.QPixmap("ui/../../resources/icons/toggle-button-on.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
+        icon.addPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/toggle-button-off.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon.addPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/toggle-button-on.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
         self.actionShow_Workspace_Grid.setIcon(icon)
         self.actionShow_Workspace_Grid.setObjectName("actionShow_Workspace_Grid")
+        self.actionChange_Theme = QtGui.QAction(parent=Form)
+        self.actionChange_Theme.setObjectName("actionChange_Theme")
+        self.actionLight = QtGui.QAction(parent=Form)
+        self.actionLight.setObjectName("actionLight")
+        self.actionDark = QtGui.QAction(parent=Form)
+        self.actionDark.setObjectName("actionDark")
+        self.actionUndo = QtGui.QAction(parent=Form)
+        self.actionUndo.setObjectName("actionUndo")
+        self.actionRedo = QtGui.QAction(parent=Form)
+        self.actionRedo.setObjectName("actionRedo")
+        self.actionPaste = QtGui.QAction(parent=Form)
+        self.actionPaste.setObjectName("actionPaste")
+        self.actionCopy = QtGui.QAction(parent=Form)
+        self.actionCopy.setObjectName("actionCopy")
+        self.actionCut = QtGui.QAction(parent=Form)
+        self.actionCut.setObjectName("actionCut")
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -42,3 +76,12 @@ class Ui_Form(object):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
         self.actionShow_Workspace_Grid.setText(_translate("Form", "Show Workspace Grid"))
+        self.actionChange_Theme.setText(_translate("Form", "Change Theme"))
+        self.actionChange_Theme.setToolTip(_translate("Form", "Change Theme"))
+        self.actionLight.setText(_translate("Form", "Light"))
+        self.actionDark.setText(_translate("Form", "Dark"))
+        self.actionUndo.setText(_translate("Form", "Undo"))
+        self.actionRedo.setText(_translate("Form", "Redo"))
+        self.actionPaste.setText(_translate("Form", "Paste"))
+        self.actionCopy.setText(_translate("Form", "Copy"))
+        self.actionCut.setText(_translate("Form", "Cut"))

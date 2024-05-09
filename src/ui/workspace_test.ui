@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">font: 9pt &quot;Consolas&quot;;</string>
+  </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <widget class="QWidget" name="widget_2" native="true">
@@ -127,12 +130,15 @@ background-color: rgb(35, 35, 35);</string>
               <widget class="QLabel" name="label_2">
                <property name="font">
                 <font>
-                 <pointsize>14</pointsize>
-                 <bold>true</bold>
+                 <family>Consolas</family>
+                 <pointsize>13</pointsize>
+                 <italic>false</italic>
+                 <bold>false</bold>
                 </font>
                </property>
                <property name="styleSheet">
-                <string notr="true">color: white</string>
+                <string notr="true">color: white;
+font: 13pt &quot;Consolas&quot;;</string>
                </property>
                <property name="text">
                 <string>Workspace: #991013A</string>
@@ -860,8 +866,10 @@ border-radius: 50%</string>
                     </property>
                     <property name="font">
                      <font>
-                      <family>Arial</family>
-                      <bold>true</bold>
+                      <family>Consolas</family>
+                      <pointsize>9</pointsize>
+                      <italic>false</italic>
+                      <bold>false</bold>
                      </font>
                     </property>
                     <property name="cursor">
@@ -984,8 +992,10 @@ color: white</string>
                    <widget class="QLabel" name="label">
                     <property name="font">
                      <font>
-                      <pointsize>14</pointsize>
-                      <bold>true</bold>
+                      <family>Consolas</family>
+                      <pointsize>9</pointsize>
+                      <italic>false</italic>
+                      <bold>false</bold>
                      </font>
                     </property>
                     <property name="styleSheet">

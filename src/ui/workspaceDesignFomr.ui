@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1256</width>
-    <height>808</height>
+    <width>1334</width>
+    <height>837</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -67,478 +67,6 @@ border-top: 0;</string>
       <property name="bottomMargin">
        <number>2</number>
       </property>
-      <item row="1" column="0">
-       <widget class="QStackedWidget" name="stackedWidget">
-        <property name="styleSheet">
-         <string notr="true">border: 0;</string>
-        </property>
-        <property name="currentIndex">
-         <number>0</number>
-        </property>
-        <widget class="QWidget" name="page_5">
-         <property name="styleSheet">
-          <string notr="true">	padding: 5 5 5 5;
-	margin: 5 5 5 5;</string>
-         </property>
-         <layout class="QGridLayout" name="gridLayout_4">
-          <property name="topMargin">
-           <number>5</number>
-          </property>
-          <item row="1" column="0">
-           <widget class="QWidget" name="widget_3" native="true">
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="sizeIncrement">
-             <size>
-              <width>0</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QPushButton {
-		border: 0px;
-		font: 500 10pt &quot;Arial&quot;;
-		height: 40px;
-		text-align:left;
-		padding: 5 5 5 5;
-		color: 	rgb(190, 190, 190)
-}
-QPushButton:hover {
-            background: rgb(55, 55, 55);
-			color: white;
-        }
-QPushButton:checked  {
-		border: 0px;
-		border-radius: 0px;
-		border-left: 5px solid rgb(63, 101, 255);
-		color: white;
-}
-QPushButton:unchecked  {
-		border: 0px;
-		background-color: transparent;
-		color: 	rgb(171, 171, 171);
-}
-QToolTip{ 
-		font: 12pt;
-		color: rgb(100, 100, 100);
-}
-QWidget {
-border: 0;
-}</string>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayout_2">
-             <item>
-              <widget class="QPushButton" name="CreateWidgetButton">
-               <property name="minimumSize">
-                <size>
-                 <width>40</width>
-                 <height>40</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>9999</width>
-                 <height>40</height>
-                </size>
-               </property>
-               <property name="cursor">
-                <cursorShape>PointingHandCursor</cursorShape>
-               </property>
-               <property name="contextMenuPolicy">
-                <enum>Qt::DefaultContextMenu</enum>
-               </property>
-               <property name="toolTip">
-                <string>New:
-Click to add a new widget.</string>
-               </property>
-               <property name="styleSheet">
-                <string notr="true"/>
-               </property>
-               <property name="text">
-                <string>  Create New Widget</string>
-               </property>
-               <property name="icon">
-                <iconset>
-                 <normaloff>../../resources/icons/widget.png</normaloff>../../resources/icons/widget.png</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>18</width>
-                 <height>19</height>
-                </size>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-               <property name="flat">
-                <bool>true</bool>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">WorkspaceToolsButtonGroup</string>
-               </attribute>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="pushButton">
-               <property name="maximumSize">
-                <size>
-                 <width>16777215</width>
-                 <height>40</height>
-                </size>
-               </property>
-               <property name="cursor">
-                <cursorShape>PointingHandCursor</cursorShape>
-               </property>
-               <property name="text">
-                <string>  Create PDF</string>
-               </property>
-               <property name="icon">
-                <iconset>
-                 <normaloff>../../resources/icons/pdf.png</normaloff>../../resources/icons/pdf.png</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>18</width>
-                 <height>19</height>
-                </size>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">WorkspaceToolsButtonGroup</string>
-               </attribute>
-              </widget>
-             </item>
-             <item>
-              <spacer name="verticalSpacer">
-               <property name="orientation">
-                <enum>Qt::Vertical</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>20</width>
-                 <height>40</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item row="0" column="0">
-           <widget class="QWidget" name="widget_9" native="true">
-            <layout class="QVBoxLayout" name="verticalLayout_4">
-             <property name="leftMargin">
-              <number>0</number>
-             </property>
-             <property name="topMargin">
-              <number>0</number>
-             </property>
-             <property name="rightMargin">
-              <number>0</number>
-             </property>
-             <property name="bottomMargin">
-              <number>0</number>
-             </property>
-             <item>
-              <widget class="QLabel" name="label">
-               <property name="styleSheet">
-                <string notr="true">QLabel {
-	font: 700 10pt &quot;Arial&quot;;
-}</string>
-               </property>
-               <property name="text">
-                <string>All Tools</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-        <widget class="QWidget" name="page_6">
-         <property name="styleSheet">
-          <string notr="true">	padding: 5 5 5 5;
-	margin: 5 5 5 5;</string>
-         </property>
-         <layout class="QGridLayout" name="gridLayout_6">
-          <property name="topMargin">
-           <number>5</number>
-          </property>
-          <item row="1" column="0">
-           <widget class="QWidget" name="widget_7" native="true">
-            <property name="styleSheet">
-             <string notr="true">QPushButton {
-		border: 0px;
-		font: 500 10pt &quot;Arial&quot;;
-		height: 40px;
-		text-align:left;
-		padding: 5 5 5 5;
-		color: 	rgb(190, 190, 190)
-}
-QPushButton:hover {
-            background: rgb(55, 55, 55);
-			color: white;
-        }
-QPushButton:checked  {
-		border: 0px;
-		border-radius: 0px;
-		border-left: 5px solid rgb(63, 101, 255);
-		color: white;
-}
-QPushButton:unchecked  {
-		border: 0px;
-		background-color: transparent;
-		color: 	rgb(171, 171, 171);
-}
-QToolTip{ 
-		font: 12pt;
-		color: rgb(100, 100, 100);
-}
-QWidget {
-border: 0;
-}</string>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayout_3">
-             <item>
-              <widget class="QPushButton" name="CreateWidgetButton_2">
-               <property name="minimumSize">
-                <size>
-                 <width>40</width>
-                 <height>40</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>9999</width>
-                 <height>40</height>
-                </size>
-               </property>
-               <property name="cursor">
-                <cursorShape>PointingHandCursor</cursorShape>
-               </property>
-               <property name="contextMenuPolicy">
-                <enum>Qt::DefaultContextMenu</enum>
-               </property>
-               <property name="toolTip">
-                <string>New:
-Click to add a new widget.</string>
-               </property>
-               <property name="styleSheet">
-                <string notr="true"/>
-               </property>
-               <property name="text">
-                <string>  Create New Widget</string>
-               </property>
-               <property name="icon">
-                <iconset>
-                 <normaloff>../../resources/icons/widget.png</normaloff>../../resources/icons/widget.png</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>18</width>
-                 <height>19</height>
-                </size>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-               <property name="flat">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <spacer name="verticalSpacer_2">
-               <property name="orientation">
-                <enum>Qt::Vertical</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>20</width>
-                 <height>40</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item row="0" column="0">
-           <widget class="QWidget" name="widget_10" native="true">
-            <layout class="QVBoxLayout" name="verticalLayout_5">
-             <property name="leftMargin">
-              <number>0</number>
-             </property>
-             <property name="topMargin">
-              <number>0</number>
-             </property>
-             <property name="rightMargin">
-              <number>0</number>
-             </property>
-             <property name="bottomMargin">
-              <number>0</number>
-             </property>
-             <item>
-              <widget class="QLabel" name="label_2">
-               <property name="styleSheet">
-                <string notr="true">QLabel {
-	font: 700 10pt &quot;Arial&quot;;
-}</string>
-               </property>
-               <property name="text">
-                <string>Create</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-        <widget class="QWidget" name="page">
-         <property name="cursor">
-          <cursorShape>ArrowCursor</cursorShape>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">	padding: 5 5 5 5;
-	margin: 5 5 5 5;</string>
-         </property>
-         <layout class="QGridLayout" name="gridLayout_8">
-          <property name="leftMargin">
-           <number>9</number>
-          </property>
-          <property name="topMargin">
-           <number>5</number>
-          </property>
-          <property name="rightMargin">
-           <number>0</number>
-          </property>
-          <item row="0" column="0">
-           <widget class="QWidget" name="widget_11" native="true">
-            <layout class="QHBoxLayout" name="horizontalLayout">
-             <property name="leftMargin">
-              <number>0</number>
-             </property>
-             <property name="topMargin">
-              <number>0</number>
-             </property>
-             <property name="rightMargin">
-              <number>0</number>
-             </property>
-             <property name="bottomMargin">
-              <number>0</number>
-             </property>
-             <item>
-              <widget class="QLabel" name="label_3">
-               <property name="styleSheet">
-                <string notr="true">QLabel {
-	font: 700 10pt &quot;Arial&quot;;
-}</string>
-               </property>
-               <property name="text">
-                <string>Edit</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="workspaceEditSettingsButton">
-               <property name="maximumSize">
-                <size>
-                 <width>45</width>
-                 <height>16777215</height>
-                </size>
-               </property>
-               <property name="cursor">
-                <cursorShape>PointingHandCursor</cursorShape>
-               </property>
-               <property name="tabletTracking">
-                <bool>false</bool>
-               </property>
-               <property name="focusPolicy">
-                <enum>Qt::StrongFocus</enum>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">QPushButton {
-	margin: 5 5 5 5;
-	padding: 5 5 5 5;
-	border-radius: 3px;
-	background: transparent;
-}
-QPushButton:hover {
-            background: rgb(75, 75, 75);
-}
-QPushButton:focus {
-            background: rgb(75, 75, 75);
-}
-QPushButton:!focus {
-            background: transparent;
-}</string>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-               <property name="icon">
-                <iconset>
-                 <normaloff>../../resources/icons/setting.png</normaloff>../../resources/icons/setting.png</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>17</width>
-                 <height>17</height>
-                </size>
-               </property>
-               <property name="checkable">
-                <bool>false</bool>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QWidget" name="widget_12" native="true">
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="cursor">
-             <cursorShape>ArrowCursor</cursorShape>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayout_8"/>
-           </widget>
-          </item>
-          <item row="2" column="0">
-           <spacer name="verticalSpacer_4">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>40</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-         </layout>
-        </widget>
-       </widget>
-      </item>
       <item row="1" column="1">
        <widget class="QWidget" name="widget" native="true">
         <property name="styleSheet">
@@ -612,6 +140,698 @@ QPushButton:hover {
         </layout>
        </widget>
       </item>
+      <item row="1" column="0">
+       <widget class="QStackedWidget" name="stackedWidget">
+        <property name="styleSheet">
+         <string notr="true">border: 0;</string>
+        </property>
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
+        <widget class="QWidget" name="page_5">
+         <property name="styleSheet">
+          <string notr="true">	padding: 5 5 5 5;
+	margin: 5 5 5 5;</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_4">
+          <property name="topMargin">
+           <number>5</number>
+          </property>
+          <item row="1" column="0">
+           <widget class="QWidget" name="widget_3" native="true">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="sizeIncrement">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+		border: 0px;
+		font: 500 10pt &quot;Consolas&quot;;
+		height: 40px;
+		text-align:left;
+		padding: 5 5 5 5;
+		color: 	rgb(190, 190, 190)
+}
+QPushButton:hover {
+            background: rgb(55, 55, 55);
+			color: white;
+        }
+QPushButton:checked  {
+		border: 0px;
+		border-radius: 0px;
+		border-left: 3px solid rgb(63, 101, 255);
+		color: white;
+}
+QPushButton:unchecked  {
+		border: 0px;
+		background-color: transparent;
+		color: 	rgb(171, 171, 171);
+}
+QToolTip{ 
+		font: 12pt;
+		color: rgb(100, 100, 100);
+}
+QWidget {
+border: 0;
+}</string>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_2">
+             <property name="leftMargin">
+              <number>15</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QPushButton" name="CreateWidgetButton">
+               <property name="minimumSize">
+                <size>
+                 <width>40</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>9999</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="contextMenuPolicy">
+                <enum>Qt::DefaultContextMenu</enum>
+               </property>
+               <property name="toolTip">
+                <string>New:
+Click to add a new widget.</string>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
+               <property name="text">
+                <string> Create New Widget</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>../../resources/icons/widget.png</normaloff>../../resources/icons/widget.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>18</width>
+                 <height>19</height>
+                </size>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+               <property name="flat">
+                <bool>true</bool>
+               </property>
+               <attribute name="buttonGroup">
+                <string notr="true">WorkspaceToolsButtonGroup</string>
+               </attribute>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton">
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="text">
+                <string> Create PDF</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>../../resources/icons/pdf.png</normaloff>../../resources/icons/pdf.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>18</width>
+                 <height>19</height>
+                </size>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+               <attribute name="buttonGroup">
+                <string notr="true">WorkspaceToolsButtonGroup</string>
+               </attribute>
+              </widget>
+             </item>
+             <item>
+              <spacer name="verticalSpacer">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QWidget" name="widget_9" native="true">
+            <layout class="QVBoxLayout" name="verticalLayout_4">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="label">
+               <property name="styleSheet">
+                <string notr="true">QLabel {
+	font: 700 13pt &quot;Consolas&quot;;
+}</string>
+               </property>
+               <property name="text">
+                <string>All Tools</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="page_6">
+         <property name="styleSheet">
+          <string notr="true">	padding: 5 5 5 5;
+	margin: 5 5 5 5;</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_6">
+          <property name="topMargin">
+           <number>5</number>
+          </property>
+          <item row="1" column="0">
+           <widget class="QWidget" name="widget_7" native="true">
+            <property name="styleSheet">
+             <string notr="true">QLabel {font: 700 10pt &quot;Consolas&quot;;color: 	rgb(190, 190, 190);}</string>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_3">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="label_5">
+               <property name="text">
+                <string>ADD CONTENT</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QWidget" name="widget_14" native="true">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+		border: 0px;
+		font: 500 10pt &quot;Consolas&quot;;
+		text-align:left;
+		padding: 5 5 5 5;
+		color: 	rgb(190, 190, 190)
+}
+QPushButton:hover {
+            background: rgb(55, 55, 55);
+			color: white;
+        }
+QPushButton:checked  {
+		border: 0px;
+		border-radius: 0px;
+		border-left: 3px solid rgb(63, 101, 255);
+		color: white;
+}
+QPushButton:unchecked  {
+		border: 0px;
+		background-color: transparent;
+		color: 	rgb(171, 171, 171);
+}
+QToolTip{ 
+		font: 12pt;
+		color: rgb(100, 100, 100);
+}
+QWidget {
+border: 0;
+}</string>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_9">
+                <property name="leftMargin">
+                 <number>15</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QPushButton" name="CreateWidgetButton_2">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>9999</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="contextMenuPolicy">
+                   <enum>Qt::DefaultContextMenu</enum>
+                  </property>
+                  <property name="toolTip">
+                   <string>New:
+Click to add a new widget.</string>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">font: 9pt &quot;Consolas&quot;;</string>
+                  </property>
+                  <property name="text">
+                   <string> Create New Widget</string>
+                  </property>
+                  <property name="icon">
+                   <iconset>
+                    <normaloff>../../resources/icons/widget.png</normaloff>../../resources/icons/widget.png</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>18</width>
+                    <height>18</height>
+                   </size>
+                  </property>
+                  <property name="checkable">
+                   <bool>true</bool>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QWidget" name="widget_10" native="true">
+            <layout class="QVBoxLayout" name="verticalLayout_5">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="label_2">
+               <property name="styleSheet">
+                <string notr="true">QLabel {
+	font: 700 13pt &quot;Consolas&quot;;
+}</string>
+               </property>
+               <property name="text">
+                <string>Create</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <spacer name="verticalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="page">
+         <property name="cursor">
+          <cursorShape>ArrowCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">	padding: 5 5 5 5;
+	margin: 5 5 5 5;</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_8">
+          <property name="leftMargin">
+           <number>9</number>
+          </property>
+          <property name="topMargin">
+           <number>5</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <item row="0" column="0">
+           <widget class="QWidget" name="widget_11" native="true">
+            <layout class="QHBoxLayout" name="horizontalLayout">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="label_3">
+               <property name="font">
+                <font>
+                 <family>Consolas</family>
+                 <pointsize>13</pointsize>
+                 <italic>false</italic>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QLabel {
+	font: 700 13pt &quot;Consolas&quot;;
+}</string>
+               </property>
+               <property name="text">
+                <string>Edit</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="workspaceEditSettingsButton">
+               <property name="maximumSize">
+                <size>
+                 <width>45</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="tabletTracking">
+                <bool>false</bool>
+               </property>
+               <property name="focusPolicy">
+                <enum>Qt::StrongFocus</enum>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+	margin: 5 5 5 5;
+	padding: 5 5 5 5;
+	border-radius: 3px;
+	background: transparent;
+}
+QPushButton:hover {
+            background: rgb(72, 75, 75);
+}
+QPushButton:focus {
+            background: rgb(75, 75, 75);
+}</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>../../resources/icons/setting.png</normaloff>../../resources/icons/setting.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>17</width>
+                 <height>17</height>
+                </size>
+               </property>
+               <property name="checkable">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QWidget" name="widget_12" native="true">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>ArrowCursor</cursorShape>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel {font: 700 10pt &quot;Consolas&quot;;color: 	rgb(190, 190, 190);}</string>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_8">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="label_4">
+               <property name="text">
+                <string>ADD CONTENT</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QWidget" name="widget_13" native="true">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>100</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+		border: 0px;
+		font: 500 10pt &quot;Consolas&quot;;
+		text-align:left;
+		padding: 5 5 5 5;
+		color: 	rgb(190, 190, 190)
+}
+QPushButton:hover {
+            background: rgb(55, 55, 55);
+			color: white;
+        }
+QPushButton:checked  {
+		border: 0px;
+		border-radius: 0px;
+		border-left: 3px solid rgb(63, 101, 255);
+		color: white;
+}
+QPushButton:unchecked  {
+		border: 0px;
+		background-color: transparent;
+		color: 	rgb(171, 171, 171);
+}
+QToolTip{ 
+		font: 12pt;
+		color: rgb(100, 100, 100);
+}
+QWidget {
+border: 0;
+}</string>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_6">
+                <property name="leftMargin">
+                 <number>15</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QPushButton" name="pushButton_2">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Consolas</family>
+                    <pointsize>9</pointsize>
+                    <italic>false</italic>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">font: 9pt &quot;Consolas&quot;;</string>
+                  </property>
+                  <property name="text">
+                   <string> Add Text</string>
+                  </property>
+                  <property name="icon">
+                   <iconset>
+                    <normaloff>../../resources/icons/edit.png</normaloff>../../resources/icons/edit.png</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>18</width>
+                    <height>18</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="pushButton_4">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Consolas</family>
+                    <pointsize>9</pointsize>
+                    <italic>false</italic>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">font: 9pt &quot;Consolas&quot;;</string>
+                  </property>
+                  <property name="text">
+                   <string> Add Image</string>
+                  </property>
+                  <property name="icon">
+                   <iconset>
+                    <normaloff>../../resources/icons/add-image.png</normaloff>../../resources/icons/add-image.png</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>18</width>
+                    <height>18</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <spacer name="verticalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>
@@ -677,12 +897,12 @@ QPushButton:hover {
            <property name="maximumSize">
             <size>
              <width>55</width>
-             <height>210</height>
+             <height>205</height>
             </size>
            </property>
            <property name="styleSheet">
             <string notr="true">background-color: rgb(35, 35, 35);
-border: 0px;</string>
+border-radius: 2px;</string>
            </property>
            <layout class="QHBoxLayout" name="horizontalLayout_3">
             <property name="leftMargin">
@@ -739,7 +959,7 @@ Enable to select widgets.</string>
                  <string notr="true">QPushButton {
 		border: 0px;
 		font: 12pt;
-        }
+        }	
 QPushButton:hover {
             background: rgb(55, 55, 55);
         }
@@ -1065,7 +1285,7 @@ QToolTip{
    <item row="0" column="0" colspan="2">
     <widget class="QWidget" name="widget_5" native="true">
      <property name="sizePolicy">
-      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -1073,7 +1293,7 @@ QToolTip{
      <property name="maximumSize">
       <size>
        <width>16777215</width>
-       <height>100</height>
+       <height>70</height>
       </size>
      </property>
      <property name="styleSheet">
@@ -1105,13 +1325,19 @@ border-top: 0;</string>
           <height>0</height>
          </size>
         </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>70</height>
+         </size>
+        </property>
         <property name="styleSheet">
          <string notr="true">QWidget {border: 0;}
 
 QPushButton {
-font: 630 8pt &quot;Arial&quot;;
+font: 630 8pt &quot;Consolas&quot;;
 color: 	rgb(190, 190, 190);
-padding: 5 0 5 0;
+padding: 5 5 5 5;
 margin: 5 5 5 5;
 }
 QPushButton:hover {
@@ -1121,7 +1347,7 @@ QPushButton:hover {
 QPushButton:checked  {
 		border: 0px;
 		border-radius: 0px;
-		border-bottom: 1px solid white;
+		border-bottom: 2px solid  rgb(63, 101, 255);
 		color: white;
 }
 QPushButton:unchecked  {
@@ -1137,6 +1363,18 @@ QToolTip{
         <layout class="QHBoxLayout" name="horizontalLayout_2">
          <item>
           <widget class="QPushButton" name="allToolsMenuButton">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>70</width>
+             <height>0</height>
+            </size>
+           </property>
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
            </property>
@@ -1171,6 +1409,18 @@ QToolTip{
          </item>
          <item>
           <widget class="QPushButton" name="createMenuButton">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>70</width>
+             <height>0</height>
+            </size>
+           </property>
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
            </property>
@@ -1199,6 +1449,18 @@ QToolTip{
          </item>
          <item>
           <widget class="QPushButton" name="editMenuButton">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>70</width>
+             <height>0</height>
+            </size>
+           </property>
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
            </property>
@@ -1224,10 +1486,44 @@ QToolTip{
            <property name="sizeHint" stdset="0">
             <size>
              <width>40</width>
-             <height>20</height>
+             <height>60</height>
             </size>
            </property>
           </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="closeWorkspaceButton">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>70</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+	border: 1px solid rgb(150, 150, 150);
+	border-radius: 4px;
+	margin: 5 5 5 5;
+	padding: 5 5 5 5;
+}
+QPushButton:hover {
+            background:rgb(150, 150, 150);
+			color: rgb(51,51,51);
+}</string>
+           </property>
+           <property name="text">
+            <string>Close</string>
+           </property>
+          </widget>
          </item>
         </layout>
        </widget>
@@ -1390,8 +1686,8 @@ QToolTip{
    <slot>HandleMenuWidgetVisibility()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>132</x>
-     <y>37</y>
+     <x>162</x>
+     <y>42</y>
     </hint>
     <hint type="destinationlabel">
      <x>627</x>
@@ -1458,6 +1754,7 @@ QToolTip{
   <slot>HandleMenuWidgetVisibility()</slot>
   <slot>HandleEditSettingsContextMenu()</slot>
   <slot>SetLeftMenuTabbVisibility(bool)</slot>
+  <slot>HandleCloseCurrentWorkspace()</slot>
  </slots>
  <buttongroups>
   <buttongroup name="WorkspaceToolsButtonGroup"/>
