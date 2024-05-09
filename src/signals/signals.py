@@ -1,4 +1,5 @@
 from PyQt6.QtCore import QObject, pyqtSignal
+from PyQt6.QtGui import QAction
 from PyQt6.QtWidgets import QGraphicsProxyWidget
 
 class NodeBoardSignalBus(QObject):
@@ -20,7 +21,7 @@ class NodeBoardSignalBus(QObject):
 
 class WorkspaceSignalBus(QObject):
     closeWorkspace = pyqtSignal()
-
+    
     def __init__(self):
         super().__init__()
 
