@@ -1,11 +1,13 @@
 from PyQt6.QtWidgets import QApplication, QMainWindow, QGraphicsView
 from PyQt6.QtGui import QTransform, QGuiApplication
 
+
 from src.objects.resource_1 import Ui_MainWindow
 from src.navbar import NavBar
-from src.tabmanager import TabManager
-from src.workspaceTemplate import WorkspaceDesignWidget
+from src.tab_manager import TabManager
+from src.workspace_template import Workspace
 from src.signals.signals import WorkspaceSignalBus
+from src.workspace_landing_page import WorkSpaceLandingPage
 
 class MyApp(QMainWindow):
     def __init__(self):
@@ -17,26 +19,18 @@ class MyApp(QMainWindow):
         self.navbar = NavBar(self.ui)
         self.tm = TabManager(self.ui)
 
-
         #Signals
-        signal_bus = WorkspaceSignalBus()
+        self.signal_bus = WorkspaceSignalBus()
 
-
-        #QObject
+        # Connect the plusClicked signal to add_page method
+        self.tm.plusClicked.connect(lambda: self.tm.add_page(WorkSpaceLandingPage(self.signal_bus), "New Workspace"))
         
+        self.workspace_page = WorkSpaceLandingPage(self.signal_bus)
+        self.signal_bus.newWorkspaceCreated.connect(self.handleNewWorkspaceCreation)
 
-        #Calling Methods
-        self.tm.setup_connections(signal_bus)
-        
-        stuff_to_pickle = WorkspaceDesignWidget(signal_bus)
-        self.tm.add_page(stuff_to_pickle, "Test_Workspace    ")
-        # self.tm.save_page_to_file(stuff_to_pickle, "Test_Workspace")
-
-        self.tm.add_page(WorkspaceDesignWidget(signal_bus), "Test_Workspace2    ")
-        
-        # #Temporary
-        self.ui.pushButton_13.setChecked(True)
-
+    def handleNewWorkspaceCreation(self, tag):
+        self.tm.remove_page(self.tm.get_current_page_index())
+        self.tm.add_page(Workspace(self.signal_bus), tag)
 
     #MainWindow Slots
     def HandleMeasureDialog(self, selected: bool):

@@ -21,9 +21,13 @@ class NodeBoardSignalBus(QObject):
 
 class WorkspaceSignalBus(QObject):
     closeWorkspace = pyqtSignal()
-    
+    newWorkspaceCreated = pyqtSignal(str)
+
     def __init__(self):
         super().__init__()
 
     def emitCloseWorkspaceSignal(self):
         self.closeWorkspace.emit()
+
+    def emitNewWorkspaceCreatedSignal(self, tag):
+        self.newWorkspaceCreated.emit(tag)
