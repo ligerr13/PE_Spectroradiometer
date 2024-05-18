@@ -68,6 +68,8 @@ class Ui_Form(object):
         self.actionCopy.setObjectName("actionCopy")
         self.actionCut = QtGui.QAction(parent=Form)
         self.actionCut.setObjectName("actionCut")
+        self.actionSelect_All = QtGui.QAction(parent=Form)
+        self.actionSelect_All.setObjectName("actionSelect_All")
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -85,3 +87,4 @@ class Ui_Form(object):
         self.actionPaste.setText(_translate("Form", "Paste"))
         self.actionCopy.setText(_translate("Form", "Copy"))
         self.actionCut.setText(_translate("Form", "Cut"))
+        self.actionSelect_All.setText(_translate("Form", "Select All"))

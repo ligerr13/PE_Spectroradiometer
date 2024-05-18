@@ -114,6 +114,11 @@ QMenu:item:selected {
     <string>Cut</string>
    </property>
   </action>
+  <action name="actionSelect_All">
+   <property name="text">
+    <string>Select All</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

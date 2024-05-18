@@ -24,8 +24,9 @@ class SpectralPlotWidget(QWidget):
             self.plot_data()
 
     def plot_data(self):
-        wavelengths = np.arange(380, 481, 1)
         intensities = [float(value) for value in self.spectral_data.split(",")]
+        wavelengths = np.arange(380, 380 + int(len(intensities)), 1)
+        
 
 
         self.plot_canvas.axes.plot(wavelengths, intensities, color="black")
@@ -35,7 +36,7 @@ class SpectralPlotWidget(QWidget):
 
         self.plot_canvas.axes.set_xlabel('Wavelength (nm)')
         self.plot_canvas.axes.set_ylabel('Intensity')
-        self.plot_canvas.axes.set_title('Spectral Data')
+        self.plot_canvas.axes.set_title(f'Spectral Data 380 - {380 + int(len(intensities))}')
         self.plot_canvas.draw()
 
 class MplCanvas(FigureCanvasQTAgg):
