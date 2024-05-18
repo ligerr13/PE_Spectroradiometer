@@ -112,7 +112,7 @@ class WorkspaceDesignWidget(QWidget):
          self.ui.WorkspaceMenuWidget.setVisible(state)
          self.ui.widget_6.setStyleSheet("""QWidget {border: 0;}
                  QPushButton {
-                font: 630 8pt "Arial";
+                font: 630 12pt "Consolas";
                 color: 	rgb(190, 190, 190);
                 padding: 5 5 5 5;
                 margin: 5 5 5 5;
@@ -143,7 +143,7 @@ class WorkspaceDesignWidget(QWidget):
             self.ui.WorkspaceMenuWidget.setVisible(state)
             self.ui.widget_6.setStyleSheet("""QWidget {border: 0;}
                 QPushButton {
-                font: 630 8pt "Arial";
+                font: 630 12pt "Consolas";
                 color: 	rgb(190, 190, 190);
                 padding: 5 5 5 5;
                 margin: 5 5 5 5;
