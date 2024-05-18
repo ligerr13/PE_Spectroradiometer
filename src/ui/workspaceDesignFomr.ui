@@ -146,7 +146,7 @@ QPushButton:hover {
          <string notr="true">border: 0;</string>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="page_5">
          <property name="styleSheet">
@@ -154,8 +154,14 @@ QPushButton:hover {
 	margin: 5 5 5 5;</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_4">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
           <property name="topMargin">
            <number>5</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
           </property>
           <item row="1" column="0">
            <widget class="QWidget" name="widget_3" native="true">
@@ -380,7 +386,7 @@ Click to add a new widget.</string>
               <widget class="QLabel" name="label">
                <property name="styleSheet">
                 <string notr="true">QLabel {
-	font: 700 13pt &quot;Consolas&quot;;
+	font: 700 11pt &quot;Consolas&quot;;
 }</string>
                </property>
                <property name="text">
@@ -399,8 +405,14 @@ Click to add a new widget.</string>
 	margin: 5 5 5 5;</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_6">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
           <property name="topMargin">
            <number>5</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
           </property>
           <item row="1" column="0">
            <widget class="QWidget" name="widget_7" native="true">
@@ -558,7 +570,7 @@ Click to add a new widget.</string>
               <widget class="QLabel" name="label_2">
                <property name="styleSheet">
                 <string notr="true">QLabel {
-	font: 700 13pt &quot;Consolas&quot;;
+	font: 700 11pt &quot;Consolas&quot;;
 }</string>
                </property>
                <property name="text">
@@ -594,7 +606,7 @@ Click to add a new widget.</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_8">
           <property name="leftMargin">
-           <number>9</number>
+           <number>0</number>
           </property>
           <property name="topMargin">
            <number>5</number>
@@ -622,14 +634,14 @@ Click to add a new widget.</string>
                <property name="font">
                 <font>
                  <family>Consolas</family>
-                 <pointsize>13</pointsize>
+                 <pointsize>11</pointsize>
                  <italic>false</italic>
                  <bold>true</bold>
                 </font>
                </property>
                <property name="styleSheet">
                 <string notr="true">QLabel {
-	font: 700 13pt &quot;Consolas&quot;;
+	font: 700 11pt &quot;Consolas&quot;;
 }</string>
                </property>
                <property name="text">
@@ -1346,7 +1358,7 @@ border-top: 0;</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_7">
       <property name="leftMargin">
-       <number>5</number>
+       <number>0</number>
       </property>
       <property name="topMargin">
        <number>2</number>
@@ -1375,19 +1387,18 @@ border-top: 0;</string>
          <string notr="true">QWidget {border: 0;}
 
 QPushButton {
-font: 630 12pt &quot;Consolas&quot;;
+font: 570 10pt &quot;Consolas&quot;;
 color: 	rgb(190, 190, 190);
 padding: 5 5 5 5;
-margin: 5 5 5 5;
+margin: 0 0 -1 0;
 }
 QPushButton:hover {
-            background: rgb(55, 55, 55);
 			color: white;
         }
 QPushButton:checked  {
 		border: 0px;
 		border-radius: 0px;
-		border-bottom: 2px solid  rgb(63, 101, 255);
+		border-bottom: 5px solid  rgb(63, 101, 255);
 		color: white;
 }
 QPushButton:unchecked  {
@@ -1401,6 +1412,18 @@ QToolTip{
 }</string>
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>5</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
          <item>
           <widget class="QPushButton" name="allToolsMenuButton">
            <property name="sizePolicy">
@@ -1417,6 +1440,9 @@ QToolTip{
            </property>
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="styleSheet">
+            <string notr="true"/>
            </property>
            <property name="text">
             <string> All Tools</string>
@@ -1464,6 +1490,9 @@ QToolTip{
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
            </property>
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
            <property name="text">
             <string>Create</string>
            </property>
@@ -1504,6 +1533,9 @@ QToolTip{
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
            </property>
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
            <property name="text">
             <string>Edit</string>
            </property>
@@ -1530,40 +1562,6 @@ QToolTip{
             </size>
            </property>
           </spacer>
-         </item>
-         <item>
-          <widget class="QPushButton" name="closeWorkspaceButton">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>70</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="cursor">
-            <cursorShape>PointingHandCursor</cursorShape>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QPushButton {
-	border: 1px solid rgb(150, 150, 150);
-	border-radius: 4px;
-	margin: 5 5 5 5;
-	padding: 5 5 5 5;
-}
-QPushButton:hover {
-            background:rgb(150, 150, 150);
-			color: rgb(51,51,51);
-}</string>
-           </property>
-           <property name="text">
-            <string>Close</string>
-           </property>
-          </widget>
          </item>
         </layout>
        </widget>
@@ -1797,12 +1795,12 @@ QPushButton:hover {
   <slot>HandleCloseCurrentWorkspace()</slot>
  </slots>
  <buttongroups>
+  <buttongroup name="WorkspaceToolsButtonGroup"/>
+  <buttongroup name="WorkspaceButtonGroup"/>
   <buttongroup name="WorkspaceMenuButtonGroup">
    <property name="exclusive">
     <bool>true</bool>
    </property>
   </buttongroup>
-  <buttongroup name="WorkspaceToolsButtonGroup"/>
-  <buttongroup name="WorkspaceButtonGroup"/>
  </buttongroups>
 </ui>
