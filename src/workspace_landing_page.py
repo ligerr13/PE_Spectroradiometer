@@ -5,7 +5,6 @@ from src.objects.workspace_landing_page_1 import Ui_Form
 
 
 class WorkSpaceLandingPage(QWidget):
-    newWorkspaceCreated = pyqtSignal(str)
     def __init__(self, signal_bus, parent=None):
         super().__init__(parent)
         self.ui = Ui_Form()
@@ -14,6 +13,7 @@ class WorkSpaceLandingPage(QWidget):
         # Signal Bus
         self.signal_bus = signal_bus
         
+        # Signals
         self.ui.createWSButton.clicked.connect(self.createWS)
 
     def createWS(self):
