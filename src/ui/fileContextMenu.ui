@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>470</width>
+    <height>428</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMenu {
+	font: 10pt &quot;Consolas&quot;;
+    background-color: rgb(51, 51, 51);
+    border: 1px solid  grey;
+	border-radius: 3px;
+    color:rgb(190, 190, 190);
+	padding: 3 3 3 3;
+	icon-size: 20px;
+}
+
+QMenu::item {
+    spacing: 1px;
+    padding: 5 20 5 20;
+    background: transparent;
+}
+QMenu:item:selected {
+    background-color:  rgb(63, 101, 255);
+	border-radius: 3px;
+	color: rgb(230,230,230)
+}</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_2"/>
+  <action name="actionSave">
+   <property name="text">
+    <string>Save</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actionClose_Workspace">
+   <property name="text">
+    <string>Close Workspace</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+W</string>
+   </property>
+  </action>
+  <action name="actionClose_Window">
+   <property name="text">
+    <string>Close Window</string>
+   </property>
+  </action>
+  <action name="actionNew_Workspace">
+   <property name="text">
+    <string>New Workspace</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+  </action>
+  <action name="actionSave_All">
+   <property name="text">
+    <string>Save All</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+S</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

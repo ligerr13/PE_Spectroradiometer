@@ -14,52 +14,13 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(51, 51, 51);
-</string>
-  </property>
-  <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0">
-    <widget class="QWidget" name="widget" native="true">
-     <property name="maximumSize">
-      <size>
-       <width>210</width>
-       <height>100</height>
-      </size>
-     </property>
-     <layout class="QGridLayout" name="gridLayout_3">
-      <item row="0" column="0">
-       <widget class="QLineEdit" name="lineEdit">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>35</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QLabel {
-	font: 700 11pt &quot;Consolas&quot;;
-	color: white;
-}</string>
-        </property>
-        <property name="placeholderText">
-         <string>Type the name of your Workspace</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QPushButton" name="createWSButton">
-        <property name="maximumSize">
-         <size>
-          <width>70</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="cursor">
-         <cursorShape>PointingHandCursor</cursorShape>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QWidget {border: 0;}
-
+   <string notr="true">QWidget {background-color: rgb(51, 51, 51);}
+QLineEdit {
+border: 1px solid: grey;
+border-radius: 3px;
+selection-color: yellow;
+selection-background-color: blue;
+}
 QPushButton {
 font: 570 10pt &quot;Consolas&quot;;
 color: 	rgb(190, 190, 190);
@@ -84,9 +45,65 @@ QToolTip{
 		font: 12pt;
 		color: rgb(100, 100, 100);
 }</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QWidget" name="widget" native="true">
+     <property name="maximumSize">
+      <size>
+       <width>210</width>
+       <height>100</height>
+      </size>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="1" column="0">
+       <widget class="QWidget" name="widget_2" native="true">
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QPushButton" name="closeButton">
+           <property name="text">
+            <string>Close</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="createWSButton">
+           <property name="maximumSize">
+            <size>
+             <width>70</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+           <property name="text">
+            <string>Create</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLineEdit" name="lineEdit">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>35</height>
+         </size>
         </property>
-        <property name="text">
-         <string>Create</string>
+        <property name="styleSheet">
+         <string notr="true">QLabel {
+	font: 700 11pt &quot;Consolas&quot;;
+	color: white;
+}</string>
+        </property>
+        <property name="placeholderText">
+         <string>Type the name of your Workspace</string>
         </property>
        </widget>
       </item>

@@ -13,28 +13,13 @@ class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
         Form.resize(400, 300)
-        Form.setStyleSheet("background-color: rgb(51, 51, 51);\n"
-"")
-        self.gridLayout = QtWidgets.QGridLayout(Form)
-        self.gridLayout.setObjectName("gridLayout")
-        self.widget = QtWidgets.QWidget(parent=Form)
-        self.widget.setMaximumSize(QtCore.QSize(210, 100))
-        self.widget.setObjectName("widget")
-        self.gridLayout_3 = QtWidgets.QGridLayout(self.widget)
-        self.gridLayout_3.setObjectName("gridLayout_3")
-        self.lineEdit = QtWidgets.QLineEdit(parent=self.widget)
-        self.lineEdit.setMinimumSize(QtCore.QSize(0, 35))
-        self.lineEdit.setStyleSheet("QLabel {\n"
-"    font: 700 11pt \"Consolas\";\n"
-"    color: white;\n"
-"}")
-        self.lineEdit.setObjectName("lineEdit")
-        self.gridLayout_3.addWidget(self.lineEdit, 0, 0, 1, 1)
-        self.createWSButton = QtWidgets.QPushButton(parent=self.widget)
-        self.createWSButton.setMaximumSize(QtCore.QSize(70, 30))
-        self.createWSButton.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
-        self.createWSButton.setStyleSheet("QWidget {border: 0;}\n"
-"\n"
+        Form.setStyleSheet("QWidget {background-color: rgb(51, 51, 51);}\n"
+"QLineEdit {\n"
+"border: 1px solid: grey;\n"
+"border-radius: 3px;\n"
+"selection-color: yellow;\n"
+"selection-background-color: blue;\n"
+"}\n"
 "QPushButton {\n"
 "font: 570 10pt \"Consolas\";\n"
 "color:     rgb(190, 190, 190);\n"
@@ -59,8 +44,35 @@ class Ui_Form(object):
 "        font: 12pt;\n"
 "        color: rgb(100, 100, 100);\n"
 "}")
+        self.gridLayout = QtWidgets.QGridLayout(Form)
+        self.gridLayout.setObjectName("gridLayout")
+        self.widget = QtWidgets.QWidget(parent=Form)
+        self.widget.setMaximumSize(QtCore.QSize(210, 100))
+        self.widget.setObjectName("widget")
+        self.gridLayout_3 = QtWidgets.QGridLayout(self.widget)
+        self.gridLayout_3.setObjectName("gridLayout_3")
+        self.widget_2 = QtWidgets.QWidget(parent=self.widget)
+        self.widget_2.setObjectName("widget_2")
+        self.horizontalLayout = QtWidgets.QHBoxLayout(self.widget_2)
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.closeButton = QtWidgets.QPushButton(parent=self.widget_2)
+        self.closeButton.setObjectName("closeButton")
+        self.horizontalLayout.addWidget(self.closeButton)
+        self.createWSButton = QtWidgets.QPushButton(parent=self.widget_2)
+        self.createWSButton.setMaximumSize(QtCore.QSize(70, 30))
+        self.createWSButton.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        self.createWSButton.setStyleSheet("")
         self.createWSButton.setObjectName("createWSButton")
-        self.gridLayout_3.addWidget(self.createWSButton, 1, 0, 1, 1)
+        self.horizontalLayout.addWidget(self.createWSButton)
+        self.gridLayout_3.addWidget(self.widget_2, 1, 0, 1, 1)
+        self.lineEdit = QtWidgets.QLineEdit(parent=self.widget)
+        self.lineEdit.setMinimumSize(QtCore.QSize(0, 35))
+        self.lineEdit.setStyleSheet("QLabel {\n"
+"    font: 700 11pt \"Consolas\";\n"
+"    color: white;\n"
+"}")
+        self.lineEdit.setObjectName("lineEdit")
+        self.gridLayout_3.addWidget(self.lineEdit, 0, 0, 1, 1)
         self.gridLayout.addWidget(self.widget, 0, 0, 1, 1)
 
         self.retranslateUi(Form)
@@ -69,5 +81,6 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
-        self.lineEdit.setPlaceholderText(_translate("Form", "Type the name of your Workspace"))
+        self.closeButton.setText(_translate("Form", "Close"))
         self.createWSButton.setText(_translate("Form", "Create"))
+        self.lineEdit.setPlaceholderText(_translate("Form", "Type the name of your Workspace"))

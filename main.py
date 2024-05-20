@@ -1,6 +1,6 @@
 from PyQt6.QtWidgets import QApplication, QMainWindow, QGraphicsView
-from PyQt6.QtGui import QTransform, QGuiApplication
-
+from PyQt6.QtGui import QGuiApplication
+from PyQt6.QtCore import  QCoreApplication
 
 from src.objects.resource_1 import Ui_MainWindow
 from src.navbar import NavBar
@@ -19,14 +19,19 @@ class MyApp(QMainWindow):
         self.navbar = NavBar(self.ui)
         self.tm = TabManager(self.ui)
 
-        #Signals
+        # Signal Bus
         self.signal_bus = WorkspaceSignalBus()
 
-        # Connect the plusClicked signal to add_page method
+        # Signals
         self.tm.plusClicked.connect(lambda: self.tm.add_page(WorkSpaceLandingPage(self.signal_bus), "New Workspace"))
+        self.tm.fcu.file_context_menu.actionNew_Workspace.triggered.connect(lambda: self.tm.add_page(WorkSpaceLandingPage(self.signal_bus), "New Workspace"))
+        self.tm.fcu.file_context_menu.actionClose_Window.triggered.connect(lambda: QCoreApplication.quit()) #TODO: Call handler check unsaved ws and then quit. 
         
-        self.workspace_page = WorkSpaceLandingPage(self.signal_bus)
         self.signal_bus.newWorkspaceCreated.connect(self.handleNewWorkspaceCreation)
+
+        #Calling Methods
+        self.tm.add_page(Workspace(self.signal_bus), "Test Workspace")
+        
 
     def handleNewWorkspaceCreation(self, tag):
         self.tm.remove_page(self.tm.get_current_page_index())

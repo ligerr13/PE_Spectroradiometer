@@ -346,46 +346,46 @@ class Ui_WorkspaceDesignForm(object):
         self.verticalLayout_6 = QtWidgets.QVBoxLayout(self.widget_13)
         self.verticalLayout_6.setContentsMargins(15, 0, 0, 0)
         self.verticalLayout_6.setObjectName("verticalLayout_6")
-        self.pushButton_2 = QtWidgets.QPushButton(parent=self.widget_13)
+        self.add_text_to_scene_button = QtWidgets.QPushButton(parent=self.widget_13)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.pushButton_2.sizePolicy().hasHeightForWidth())
-        self.pushButton_2.setSizePolicy(sizePolicy)
+        sizePolicy.setHeightForWidth(self.add_text_to_scene_button.sizePolicy().hasHeightForWidth())
+        self.add_text_to_scene_button.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
         font.setFamily("Consolas")
         font.setPointSize(11)
         font.setBold(False)
         font.setItalic(False)
-        self.pushButton_2.setFont(font)
-        self.pushButton_2.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
-        self.pushButton_2.setStyleSheet("font: 500 11pt \"Consolas\";")
+        self.add_text_to_scene_button.setFont(font)
+        self.add_text_to_scene_button.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        self.add_text_to_scene_button.setStyleSheet("font: 500 11pt \"Consolas\";")
         icon4 = QtGui.QIcon()
         icon4.addPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/edit.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButton_2.setIcon(icon4)
-        self.pushButton_2.setIconSize(QtCore.QSize(18, 18))
-        self.pushButton_2.setObjectName("pushButton_2")
-        self.verticalLayout_6.addWidget(self.pushButton_2)
-        self.pushButton_4 = QtWidgets.QPushButton(parent=self.widget_13)
+        self.add_text_to_scene_button.setIcon(icon4)
+        self.add_text_to_scene_button.setIconSize(QtCore.QSize(18, 18))
+        self.add_text_to_scene_button.setObjectName("add_text_to_scene_button")
+        self.verticalLayout_6.addWidget(self.add_text_to_scene_button)
+        self.add_img_to_scene_button = QtWidgets.QPushButton(parent=self.widget_13)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.pushButton_4.sizePolicy().hasHeightForWidth())
-        self.pushButton_4.setSizePolicy(sizePolicy)
+        sizePolicy.setHeightForWidth(self.add_img_to_scene_button.sizePolicy().hasHeightForWidth())
+        self.add_img_to_scene_button.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
         font.setFamily("Consolas")
         font.setPointSize(11)
         font.setBold(False)
         font.setItalic(False)
-        self.pushButton_4.setFont(font)
-        self.pushButton_4.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
-        self.pushButton_4.setStyleSheet("font: 500 11pt \"Consolas\";")
+        self.add_img_to_scene_button.setFont(font)
+        self.add_img_to_scene_button.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        self.add_img_to_scene_button.setStyleSheet("font: 500 11pt \"Consolas\";")
         icon5 = QtGui.QIcon()
         icon5.addPixmap(QtGui.QPixmap(".\\ui\\../../resources/icons/add-image.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButton_4.setIcon(icon5)
-        self.pushButton_4.setIconSize(QtCore.QSize(18, 18))
-        self.pushButton_4.setObjectName("pushButton_4")
-        self.verticalLayout_6.addWidget(self.pushButton_4)
+        self.add_img_to_scene_button.setIcon(icon5)
+        self.add_img_to_scene_button.setIconSize(QtCore.QSize(18, 18))
+        self.add_img_to_scene_button.setObjectName("add_img_to_scene_button")
+        self.verticalLayout_6.addWidget(self.add_img_to_scene_button)
         self.verticalLayout_8.addWidget(self.widget_13)
         self.gridLayout_8.addWidget(self.widget_12, 1, 0, 1, 1)
         spacerItem3 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
@@ -626,7 +626,7 @@ class Ui_WorkspaceDesignForm(object):
 "QPushButton:checked  {\n"
 "        border: 0px;\n"
 "        border-radius: 0px;\n"
-"        border-bottom: 5px solid  rgb(63, 101, 255);\n"
+"        border-bottom: 3px solid  rgb(63, 101, 255);\n"
 "        color: white;\n"
 "}\n"
 "QPushButton:unchecked  {\n"
@@ -699,20 +699,22 @@ class Ui_WorkspaceDesignForm(object):
         self.gridLayout.addWidget(self.widget_5, 0, 0, 1, 2)
 
         self.retranslateUi(WorkspaceDesignForm)
-        self.stackedWidget.setCurrentIndex(1)
-        self.SelectButton.clicked['bool'].connect(WorkspaceDesignForm.HandleSelectMode) # type: ignore
-        self.DeleteWidgetButton.toggled['bool'].connect(WorkspaceDesignForm.HandleDeleteMode) # type: ignore
-        self.ZoomInButton.clicked.connect(WorkspaceDesignForm.HandleZoomIn) # type: ignore
-        self.DragOnGWButton.toggled['bool'].connect(WorkspaceDesignForm.HandleDragMode) # type: ignore
-        self.ZoomOutButton.clicked.connect(WorkspaceDesignForm.HandleZoomOut) # type: ignore
-        self.CreateWidgetButton.clicked['bool'].connect(WorkspaceDesignForm.HandleCreateWidgetMode) # type: ignore
-        self.createMenuButton.clicked['bool'].connect(WorkspaceDesignForm.HandleMenuWidgetVisibility) # type: ignore
+        self.stackedWidget.setCurrentIndex(2)
+        self.SelectButton.clicked['bool'].connect(WorkspaceDesignForm.handle_scene_select_mode) # type: ignore
+        self.DeleteWidgetButton.toggled['bool'].connect(WorkspaceDesignForm.handle_scene_delete_mode) # type: ignore
+        self.ZoomInButton.clicked.connect(WorkspaceDesignForm.handle_scene_zoom_in) # type: ignore
+        self.DragOnGWButton.toggled['bool'].connect(WorkspaceDesignForm.handle_scene_drag_mode) # type: ignore
+        self.ZoomOutButton.clicked.connect(WorkspaceDesignForm.handle_scene_zoom_out) # type: ignore
+        self.CreateWidgetButton.clicked['bool'].connect(WorkspaceDesignForm.handle_create_widget_on_scene) # type: ignore
+        self.createMenuButton.clicked['bool'].connect(WorkspaceDesignForm.handle_menu_widget_visibility) # type: ignore
         self.WorkspaceMenuButtonGroup.idToggled['int','bool'].connect(self.stackedWidget.setCurrentIndex) # type: ignore
-        self.allToolsMenuButton.clicked['bool'].connect(WorkspaceDesignForm.HandleMenuWidgetVisibility) # type: ignore
-        self.editMenuButton.clicked['bool'].connect(WorkspaceDesignForm.HandleMenuWidgetVisibility) # type: ignore
-        self.workspaceEditSettingsButton.clicked.connect(WorkspaceDesignForm.HandleEditSettingsContextMenu) # type: ignore
-        self.CreateWidgetButton_2.clicked['bool'].connect(WorkspaceDesignForm.HandleCreateWidgetMode) # type: ignore
-        self.hideLeftSideTabButton.clicked['bool'].connect(WorkspaceDesignForm.SetLeftMenuTabbVisibility) # type: ignore
+        self.allToolsMenuButton.clicked['bool'].connect(WorkspaceDesignForm.handle_menu_widget_visibility) # type: ignore
+        self.editMenuButton.clicked['bool'].connect(WorkspaceDesignForm.handle_menu_widget_visibility) # type: ignore
+        self.workspaceEditSettingsButton.clicked.connect(WorkspaceDesignForm.handle_edit_settings_context_menu) # type: ignore
+        self.CreateWidgetButton_2.clicked['bool'].connect(WorkspaceDesignForm.handle_create_widget_on_scene) # type: ignore
+        self.hideLeftSideTabButton.clicked['bool'].connect(WorkspaceDesignForm.handle_left_menu_tab_visibility) # type: ignore
+        self.add_text_to_scene_button.clicked.connect(WorkspaceDesignForm.handle_add_text_to_scene) # type: ignore
+        self.add_img_to_scene_button.clicked.connect(WorkspaceDesignForm.handle_add_image_to_scene) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(WorkspaceDesignForm)
 
     def retranslateUi(self, WorkspaceDesignForm):
@@ -731,8 +733,8 @@ class Ui_WorkspaceDesignForm(object):
         self.label_2.setText(_translate("WorkspaceDesignForm", "Create"))
         self.label_3.setText(_translate("WorkspaceDesignForm", "Edit"))
         self.label_4.setText(_translate("WorkspaceDesignForm", "ADD CONTENT"))
-        self.pushButton_2.setText(_translate("WorkspaceDesignForm", " Add Text"))
-        self.pushButton_4.setText(_translate("WorkspaceDesignForm", " Add Image"))
+        self.add_text_to_scene_button.setText(_translate("WorkspaceDesignForm", " Add Text"))
+        self.add_img_to_scene_button.setText(_translate("WorkspaceDesignForm", " Add Image"))
         self.SelectButton.setToolTip(_translate("WorkspaceDesignForm", "Select:\n"
 "Enable to select widgets."))
         self.DeleteWidgetButton.setToolTip(_translate("WorkspaceDesignForm", "Delete:\n"

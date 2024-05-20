@@ -146,7 +146,7 @@ QPushButton:hover {
          <string notr="true">border: 0;</string>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="page_5">
          <property name="styleSheet">
@@ -788,7 +788,7 @@ border: 0;
                  <number>0</number>
                 </property>
                 <item>
-                 <widget class="QPushButton" name="pushButton_2">
+                 <widget class="QPushButton" name="add_text_to_scene_button">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                     <horstretch>0</horstretch>
@@ -825,7 +825,7 @@ border: 0;
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="pushButton_4">
+                 <widget class="QPushButton" name="add_img_to_scene_button">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                     <horstretch>0</horstretch>
@@ -1398,7 +1398,7 @@ QPushButton:hover {
 QPushButton:checked  {
 		border: 0px;
 		border-radius: 0px;
-		border-bottom: 5px solid  rgb(63, 101, 255);
+		border-bottom: 3px solid  rgb(63, 101, 255);
 		color: white;
 }
 QPushButton:unchecked  {
@@ -1577,7 +1577,7 @@ QToolTip{
    <sender>SelectButton</sender>
    <signal>clicked(bool)</signal>
    <receiver>WorkspaceDesignForm</receiver>
-   <slot>HandleSelectMode(bool)</slot>
+   <slot>handle_scene_select_mode(bool)</slot>
    <hints>
     <hint type="sourcelabel">
      <x>319</x>
@@ -1593,7 +1593,7 @@ QToolTip{
    <sender>DeleteWidgetButton</sender>
    <signal>toggled(bool)</signal>
    <receiver>WorkspaceDesignForm</receiver>
-   <slot>HandleDeleteMode(bool)</slot>
+   <slot>handle_scene_delete_mode(bool)</slot>
    <hints>
     <hint type="sourcelabel">
      <x>319</x>
@@ -1609,7 +1609,7 @@ QToolTip{
    <sender>ZoomInButton</sender>
    <signal>clicked()</signal>
    <receiver>WorkspaceDesignForm</receiver>
-   <slot>HandleZoomIn()</slot>
+   <slot>handle_scene_zoom_in()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>319</x>
@@ -1625,7 +1625,7 @@ QToolTip{
    <sender>DragOnGWButton</sender>
    <signal>toggled(bool)</signal>
    <receiver>WorkspaceDesignForm</receiver>
-   <slot>HandleDragMode(bool)</slot>
+   <slot>handle_scene_drag_mode(bool)</slot>
    <hints>
     <hint type="sourcelabel">
      <x>319</x>
@@ -1641,7 +1641,7 @@ QToolTip{
    <sender>ZoomOutButton</sender>
    <signal>clicked()</signal>
    <receiver>WorkspaceDesignForm</receiver>
-   <slot>HandleZoomOut()</slot>
+   <slot>handle_scene_zoom_out()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>319</x>
@@ -1657,7 +1657,7 @@ QToolTip{
    <sender>CreateWidgetButton</sender>
    <signal>clicked(bool)</signal>
    <receiver>WorkspaceDesignForm</receiver>
-   <slot>HandleCreateWidgetMode(bool)</slot>
+   <slot>handle_create_widget_on_scene(bool)</slot>
    <hints>
     <hint type="sourcelabel">
      <x>73</x>
@@ -1673,7 +1673,7 @@ QToolTip{
    <sender>createMenuButton</sender>
    <signal>clicked(bool)</signal>
    <receiver>WorkspaceDesignForm</receiver>
-   <slot>HandleMenuWidgetVisibility()</slot>
+   <slot>handle_menu_widget_visibility(bool)</slot>
    <hints>
     <hint type="sourcelabel">
      <x>94</x>
@@ -1705,7 +1705,7 @@ QToolTip{
    <sender>allToolsMenuButton</sender>
    <signal>clicked(bool)</signal>
    <receiver>WorkspaceDesignForm</receiver>
-   <slot>HandleMenuWidgetVisibility()</slot>
+   <slot>handle_menu_widget_visibility(bool)</slot>
    <hints>
     <hint type="sourcelabel">
      <x>40</x>
@@ -1721,7 +1721,7 @@ QToolTip{
    <sender>editMenuButton</sender>
    <signal>clicked(bool)</signal>
    <receiver>WorkspaceDesignForm</receiver>
-   <slot>HandleMenuWidgetVisibility()</slot>
+   <slot>handle_menu_widget_visibility(bool)</slot>
    <hints>
     <hint type="sourcelabel">
      <x>162</x>
@@ -1737,7 +1737,7 @@ QToolTip{
    <sender>workspaceEditSettingsButton</sender>
    <signal>clicked()</signal>
    <receiver>WorkspaceDesignForm</receiver>
-   <slot>HandleEditSettingsContextMenu()</slot>
+   <slot>handle_edit_settings_context_menu()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>223</x>
@@ -1753,7 +1753,7 @@ QToolTip{
    <sender>CreateWidgetButton_2</sender>
    <signal>clicked(bool)</signal>
    <receiver>WorkspaceDesignForm</receiver>
-   <slot>HandleCreateWidgetMode(bool)</slot>
+   <slot>handle_create_widget_on_scene(bool)</slot>
    <hints>
     <hint type="sourcelabel">
      <x>123</x>
@@ -1769,7 +1769,7 @@ QToolTip{
    <sender>hideLeftSideTabButton</sender>
    <signal>clicked(bool)</signal>
    <receiver>WorkspaceDesignForm</receiver>
-   <slot>SetLeftMenuTabbVisibility(bool)</slot>
+   <slot>handle_left_menu_tab_visibility(bool)</slot>
    <hints>
     <hint type="sourcelabel">
      <x>272</x>
@@ -1781,22 +1781,56 @@ QToolTip{
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>add_text_to_scene_button</sender>
+   <signal>clicked()</signal>
+   <receiver>WorkspaceDesignForm</receiver>
+   <slot>handle_add_text_to_scene()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>131</x>
+     <y>171</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>666</x>
+     <y>418</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>add_img_to_scene_button</sender>
+   <signal>clicked()</signal>
+   <receiver>WorkspaceDesignForm</receiver>
+   <slot>handle_add_image_to_scene()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>131</x>
+     <y>221</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>666</x>
+     <y>418</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
-  <slot>HandleDragMode(bool)</slot>
-  <slot>HandleCreateWidgetMode(bool)</slot>
-  <slot>HandleDeleteMode(bool)</slot>
-  <slot>HandleZoomIn()</slot>
-  <slot>HandleZoomOut()</slot>
-  <slot>HandleSelectMode(bool)</slot>
-  <slot>HandleMenuWidgetVisibility()</slot>
-  <slot>HandleEditSettingsContextMenu()</slot>
-  <slot>SetLeftMenuTabbVisibility(bool)</slot>
+  <slot>handle_scene_drag_mode(bool)</slot>
+  <slot>handle_create_widget_on_scene(bool)</slot>
+  <slot>handle_scene_delete_mode(bool)</slot>
+  <slot>handle_scene_zoom_in()</slot>
+  <slot>handle_scene_zoom_out()</slot>
+  <slot>handle_scene_select_mode(bool)</slot>
+  <slot>handle_menu_widget_visibility(bool)</slot>
+  <slot>handle_edit_settings_context_menu()</slot>
+  <slot>handle_left_menu_tab_visibility(bool)</slot>
   <slot>HandleCloseCurrentWorkspace()</slot>
+  <slot>handle_add_text_to_scene()</slot>
+  <slot>handle_add_image_to_scene()</slot>
  </slots>
  <buttongroups>
-  <buttongroup name="WorkspaceToolsButtonGroup"/>
   <buttongroup name="WorkspaceButtonGroup"/>
+  <buttongroup name="WorkspaceToolsButtonGroup"/>
   <buttongroup name="WorkspaceMenuButtonGroup">
    <property name="exclusive">
     <bool>true</bool>
