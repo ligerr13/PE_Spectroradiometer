@@ -16,3 +16,7 @@
 
 5/18/2024
 ![imgonline-com-ua-twotoone-cNWCLs66YumBKE](https://github.com/ligerr13/PE_Spectroradiometer/assets/126343507/1d598dee-ce3f-4ef3-96c3-94c1c6470dcb)
+
+5/21/2024
+![python3 12_C6Ma7bwfwb](https://github.com/ligerr13/PE_Spectroradiometer/assets/126343507/f264b150-e535-456e-bf2d-1a550aea2a32)
+
