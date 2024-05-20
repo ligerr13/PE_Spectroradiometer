@@ -10,6 +10,7 @@ from src.widgets.dataviewwidgetbase import DataViewTestWidget
 from src.widgets.testwidgetbase import CustomWidget
 from src.widgets.spectralplottest import SpectralPlotWidget
 from src.signals.signals import WorkspaceSignalBus
+from src.dialogs.textToSceneDialog import TextToSceneDialog
 
 class CustomMenu(QMenu):
     def __init__(self, parent=None):
@@ -34,6 +35,7 @@ class CustomMenu(QMenu):
         self.submenu.addAction(self.cMenu.actionDark)
         self.submenu.addAction(self.cMenu.actionLight)
 
+        # Separators
         self.insertSeparator(self.cMenu.actionUndo)
         self.insertSeparator(self.cMenu.actionPaste)
         self.insertSeparator(self.cMenu.actionSelect_All)
@@ -46,51 +48,55 @@ class Workspace(QWidget):
         self.ui.setupUi(self)
         self.grid = self.ui.gridLayout_5
         self.context_menu = CustomMenu(self)
-        self.context_menu.setMinimumSize(self.context_menu.sizeHint())
         self.viewScalefactor = 1.2
-        self.HandleMenuWidgetVisibility(False)
-
-        
-        # Signal Bus
-        self.signal_bus = signal_bus
-
-        # Signals
-        self.context_menu.cMenu.actionShow_Workspace_Grid.triggered.connect(self.testActionTriggered)
+        # Need some config setup func or something 
 
         # Views and Scenes
         self.view = self.ui.graphicsView_2
         self.scene = NodeboardGraphicsScene()
 
+        # Signal Bus
+        self.signal_bus = signal_bus
+
+        # Signals
+        self.context_menu.cMenu.actionShow_Workspace_Grid.triggered.connect(self.handle_grid_visibility)
+        self.scene.changed.connect(self._scene_changed)
+
         # QDialogs
         self.widgetCreator = WidgetCreatorDialog()
+        self.textCreateToScene = TextToSceneDialog()
 
         # Calling Methods
-        self.groupWorkspaceGroupButtonsToPages()
+        self.group_workspace_group_buttons_to_pages()
         self.view.setScene(self.scene)
-        self.generateSquareTiles(self.grid)
+        self.generate_grid_tiles_for_scene(self.grid)
+        self.context_menu.setMinimumSize(self.context_menu.sizeHint())
+
 
     
-    def testActionTriggered(self, state):
+    def _scene_changed(self):
+        print(f"Scene changed in workspace: {self}")
+
+    def handle_grid_visibility(self, state):
         if not state:
             for gridLines in self.scene.items():
                 if isinstance(gridLines, QGraphicsLineItem):
                     self.scene.removeItem(gridLines)
         else:
-            self.generateSquareTiles(self.grid)
+            self.generate_grid_tiles_for_scene(self.grid)
         
-    def HandleEditSettingsContextMenu(self):
+    def handle_edit_settings_context_menu(self):
         sender_button = self.sender()
         global_pos = sender_button.mapToGlobal(sender_button.pos())
         global_pos += QPoint(-195, 35)
         self.context_menu.exec(global_pos)
         self.ui.workspaceEditSettingsButton.clearFocus()
         
-    def groupWorkspaceGroupButtonsToPages(self):
+    def group_workspace_group_buttons_to_pages(self):
          for i, button in enumerate(self.ui.WorkspaceMenuButtonGroup.buttons()):
               self.ui.WorkspaceMenuButtonGroup.setId(button, i)
-    
     #Not the most elegant way to solve this.. has to be a better way to change the style.
-    def SetLeftMenuTabbVisibility(self, state):
+    def handle_left_menu_tab_visibility(self, state):
          self.ui.WorkspaceMenuWidget.setVisible(state)
          self.ui.widget_6.setStyleSheet("""QWidget {border: 0;}
                 QPushButton {
@@ -118,8 +124,7 @@ class Workspace(QWidget):
                         color: rgb(100, 100, 100);
                 }""") 
 
-
-    def HandleMenuWidgetVisibility(self, state):
+    def handle_menu_widget_visibility(self, state):
         if not self.ui.WorkspaceMenuWidget.isVisible():
             self.ui.WorkspaceMenuWidget.setVisible(state)
             self.ui.widget_6.setStyleSheet("""QWidget {border: 0;}
@@ -130,13 +135,12 @@ class Workspace(QWidget):
                 margin: 0 -1 0 0;
                 }
                 QPushButton:hover {
-                            background: rgb(55, 55, 55);
                             color: white;
                         }
                 QPushButton:checked  {
                         border: 0px;
                         border-radius: 0px;
-                        border-bottom: 5px solid  rgb(63, 101, 255);
+                        border-bottom: 3px solid  rgb(63, 101, 255);
                         color: white;
                 }
                 QPushButton:unchecked  {
@@ -149,8 +153,7 @@ class Workspace(QWidget):
                         color: rgb(100, 100, 100);
                 }""") 
             
-
-    def HandleCreateWidgetMode(self, selected: bool):
+    def handle_create_widget_on_scene(self, selected: bool):
             if selected is not None:
                 if  selected == False:
                     self.widgetCreator.closePopUp()
@@ -158,14 +161,14 @@ class Workspace(QWidget):
                     self.widgetCreator.popUp()
                     self.ui.CreateWidgetButton.setChecked(True)
 
-    def HandleDragMode(self, selected: bool):
+    def handle_scene_drag_mode(self, selected: bool):
             if selected is not None:
                 if  selected == False:
                     self.view.setDragMode(QGraphicsView.DragMode.NoDrag)
                 else:
                     self.view.setDragMode(QGraphicsView.DragMode.ScrollHandDrag)
 
-    def HandleSelectMode(self, selected: bool):
+    def handle_scene_select_mode(self, selected: bool):
             try:
                 if selected is not None:
                     if selected == False:
@@ -175,14 +178,14 @@ class Workspace(QWidget):
             except AttributeError as e:
                 print("An AttributeError occurred:", e)
 
-    def HandleDeleteMode(self, selected: bool):
+    def handle_scene_delete_mode(self, selected: bool):
             if selected is not None:
                 if  selected == False:
                     self.scene.setDeleteButton(None)
                 else:
                     self.scene.setDeleteButton(self.sender())
 
-    def HandleZoomIn(self):
+    def handle_scene_zoom_in(self):
             scale_tr = QTransform()
             scale_tr.scale(self.viewScalefactor, self.viewScalefactor)
 
@@ -190,7 +193,7 @@ class Workspace(QWidget):
             if tr.m11() <= 2.0 and tr.m22() <= 2.0:
                 self.view.setTransform(tr)
 
-    def HandleZoomOut(self):
+    def handle_scene_zoom_out(self):
             scale_tr = QTransform()
             scale_tr.scale(1 / self.viewScalefactor, 1 / self.viewScalefactor)
 
@@ -198,7 +201,7 @@ class Workspace(QWidget):
             if tr.m11() >= 0.4 and tr.m22() >= 0.4:
                 self.view.setTransform(tr)
 
-    def generateSquareTiles(self, grid):
+    def generate_grid_tiles_for_scene(self, grid):
         colorH = QColor(qRgb(50, 50, 50))
         colorV = QColor(qRgb(70, 70, 70))
         vLines = 100
@@ -226,7 +229,12 @@ class Workspace(QWidget):
 
         grid.addWidget(self.view, 0, 1, 1, 1)
 
-
+    def handle_add_text_to_scene(self):
+        print("Opening text dialog or widget...")
+        self.textCreateToScene.popUp()
+    
+    def handle_add_image_to_scene(self):
+        print("Opening image dialog or widget...")
 
 
 class NodeboardGraphicsScene(QGraphicsScene):
