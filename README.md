@@ -20,7 +20,7 @@
 5/21/2024
 ![python3 12_C6Ma7bwfwb](https://github.com/ligerr13/PE_Spectroradiometer/assets/126343507/f264b150-e535-456e-bf2d-1a550aea2a32)
 
-5/22/2024
-![python3 12_eF9mMIl1ZA](https://github.com/ligerr13/PE_Spectroradiometer/assets/126343507/2e7adf31-ea33-4a3b-84ea-efc6e36f2628)
+5/23/2024
+![python3 12_cTaIzAar9N](https://github.com/ligerr13/PE_Spectroradiometer/assets/126343507/aa5c5ecf-3521-411a-af02-35531fda14a5)
 
 
