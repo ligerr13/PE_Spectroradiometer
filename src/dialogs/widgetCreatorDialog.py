@@ -1,5 +1,5 @@
 from PyQt6.QtWidgets import QDialog
-from src.objects.widget_creater_dialog_1 import Ui_Dialog
+from src.objects.widget_creater_dialog import Ui_Dialog
 
 class WidgetCreatorDialog(QDialog):
     def __init__(self):

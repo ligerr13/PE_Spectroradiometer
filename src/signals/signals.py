@@ -1,6 +1,7 @@
 from PyQt6.QtCore import QObject, pyqtSignal
+from PyQt6 import QtCore, QtWidgets
 from PyQt6.QtGui import QAction
-from PyQt6.QtWidgets import QGraphicsProxyWidget
+from PyQt6.QtWidgets import QGraphicsProxyWidget, QWidget
 
 class NodeBoardSignalBus(QObject):
     widgetSelectedSignal = pyqtSignal(QGraphicsProxyWidget)
@@ -20,8 +21,18 @@ class NodeBoardSignalBus(QObject):
         self.widgetDeletedSignal.emit(widget)
 
 class WorkspaceSignalBus(QObject):
+    _instance = None
+
+    @classmethod
+    def instance(cls):
+        if cls._instance is None:
+            cls._instance = cls()
+        return cls._instance
+    
     closeWorkspace = pyqtSignal()
     newWorkspaceCreated = pyqtSignal(str)
+
+    widgetDataToPorpertyEditor = pyqtSignal(QWidget)
 
     def __init__(self):
         super().__init__()
@@ -31,3 +42,6 @@ class WorkspaceSignalBus(QObject):
 
     def emitNewWorkspaceCreatedSignal(self, tag):
         self.newWorkspaceCreated.emit(tag)
+
+    def emitWidgetDataToPorpertyEditor(self, property_holder):
+        self.widgetDataToPorpertyEditor.emit(property_holder)

@@ -10,6 +10,12 @@
     <height>428</height>
    </rect>
   </property>
+  <property name="focusPolicy">
+   <enum>Qt::NoFocus</enum>
+  </property>
+  <property name="contextMenuPolicy">
+   <enum>Qt::ActionsContextMenu</enum>
+  </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
@@ -71,6 +77,16 @@ QMenu:item:selected {
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+S</string>
+   </property>
+  </action>
+  <action name="actionHome_Page">
+   <property name="text">
+    <string>Home Page</string>
+   </property>
+  </action>
+  <action name="actionClose_All_Workspace">
+   <property name="text">
+    <string>Close All Workspace</string>
    </property>
   </action>
  </widget>

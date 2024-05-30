@@ -1,5 +1,5 @@
 from PyQt6.QtWidgets import QWidget
-from src.objects.workspace_1 import Ui_Form
+from src.objects.workspace import Ui_Form
 
 
 

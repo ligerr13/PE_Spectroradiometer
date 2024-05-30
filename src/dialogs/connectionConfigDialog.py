@@ -1,5 +1,5 @@
 from PyQt6.QtWidgets import QDialog, QMessageBox, QLineEdit
-from src.objects.connection_info_1 import Ui_Dialog
+from src.objects.connection_info import Ui_Dialog
 import json 
 
 class ConnectionConfigDialog(QDialog):

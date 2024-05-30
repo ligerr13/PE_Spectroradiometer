@@ -1,16 +1,19 @@
 from PyQt6.QtWidgets import QWidget, QVBoxLayout
+from PyQt6 import QtCore
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg
 from matplotlib.figure import Figure
 from matplotlib import cm
+from .scenewidget import SceneWidget
 
-plt.style.use('dark_background')
 
-class SpectralPlotWidget(QWidget):
+class SpectralPlotWidget(SceneWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.spectral_data = None
+        self.plt = plt
+        self.plt.style.use('dark_background')
         self.init_ui()
 
     def init_ui(self):
@@ -19,15 +22,13 @@ class SpectralPlotWidget(QWidget):
         self.plot_canvas = MplCanvas(self)
         layout.addWidget(self.plot_canvas)
 
-    def set_spectral_data(self, data):
+    def setSpectralData(self, data):
             self.spectral_data = data
             self.plot_data()
 
     def plot_data(self):
         intensities = [float(value) for value in self.spectral_data.split(",")]
         wavelengths = np.arange(380, 380 + int(len(intensities)), 1)
-        
-
 
         self.plot_canvas.axes.plot(wavelengths, intensities, color="black")
         colors = cm.nipy_spectral(np.linspace(0, 1 - ((780 - (380+len(intensities))) / 400), len(intensities)))
@@ -40,7 +41,7 @@ class SpectralPlotWidget(QWidget):
         self.plot_canvas.draw()
 
 class MplCanvas(FigureCanvasQTAgg):
-    def __init__(self, parent=None, width=5, height=5, dpi=100):
+    def __init__(self, parent=None, width=3, height=3, dpi=100):
         fig = Figure(figsize=(width, height), dpi=dpi)
         self.axes = fig.add_subplot(111)
         super(MplCanvas, self).__init__(fig)

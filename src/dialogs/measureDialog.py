@@ -1,5 +1,5 @@
 from PyQt6.QtWidgets import QDialog, QMessageBox
-from src.objects.measure_dialog_1 import Ui_Dialog
+from src.objects.measure_dialog import Ui_Dialog
 from src.instrument.command import ExecuteProgram, RMTS, MSWE, MEAS, MEDR
 from src.instrument.command import DataMode, DataFormat, ModeSelect, SpectralRange
 import asyncio, os, re

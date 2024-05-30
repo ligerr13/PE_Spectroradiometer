@@ -1,7 +1,7 @@
 from PyQt6.QtCore import QObject, pyqtSignal
 from PyQt6.QtWidgets import QWidget
 from PyQt6.QtGui import QColor
-from src.objects.workspace_landing_page_1 import Ui_Form
+from src.objects.workspace_landing_page import Ui_Form
 
 
 class WorkSpaceLandingPage(QWidget):
@@ -15,6 +15,10 @@ class WorkSpaceLandingPage(QWidget):
         
         # Signals
         self.ui.createWSButton.clicked.connect(self.createWS)
+
+        # Actions
+        self.addAction(self.ui.actioncreate_on_enter)
+        self.ui.actioncreate_on_enter.triggered.connect(lambda: self.createWS())
 
     def createWS(self):
         tag = self.ui.lineEdit.text()

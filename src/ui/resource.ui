@@ -9,9 +9,27 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1276</width>
-    <height>923</height>
+    <width>1475</width>
+    <height>950</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>832</width>
+    <height>624</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>16777215</width>
+    <height>16777215</height>
+   </size>
+  </property>
+  <property name="focusPolicy">
+   <enum>Qt::TabFocus</enum>
+  </property>
+  <property name="contextMenuPolicy">
+   <enum>Qt::ActionsContextMenu</enum>
   </property>
   <property name="acceptDrops">
    <bool>false</bool>
@@ -19,8 +37,12 @@
   <property name="windowTitle">
    <string>SpectroApp</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../../resources/icons/prism.png</normaloff>../../resources/icons/prism.png</iconset>
+  </property>
   <property name="styleSheet">
-   <string notr="true">QMainWindow {background-color: rgb(30, 30, 30);}
+   <string notr="true">QMainWindow {background-color: rgb(20, 20, 20);border-top: 1px solid rgba(129,129,129,50);}
 
 QPushButton {
 		border: 0px;
@@ -37,6 +59,9 @@ QPushButton:checked  {
    <enum>Qt::ToolButtonTextBesideIcon</enum>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">border: 0px;</string>
+   </property>
    <layout class="QGridLayout" name="gridLayout">
     <property name="leftMargin">
      <number>0</number>
@@ -61,15 +86,20 @@ QPushButton:checked  {
       <property name="cursor">
        <cursorShape>ArrowCursor</cursorShape>
       </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="contextMenuPolicy">
+       <enum>Qt::DefaultContextMenu</enum>
+      </property>
       <property name="styleSheet">
        <string notr="true">QTabWidget
 {
   	background: rgb(51, 51, 51);
 }
 QTabWidget::pane {
-	border:0px;
-  	background: rgb(51, 51, 51);
-	top: 5px;
+	border-top: 1px solid rgba(129,129,129,50);
+	top: 4px;
 } 
 
 QTabBar::tab {
@@ -77,28 +107,28 @@ QTabBar::tab {
 	padding: 15 0 15 15;
 	font: 700 10pt &quot;Consolas&quot;;
 	border: 2px;
-  	background: rgb(37, 37, 37);
-	border-top-right-radius: 2px;
-	border-top-left-radius: 2px;
+	border-top-right-radius: 1px;
+	border-top-left-radius: 1px;
 } 
 
 QTabBar::tab:selected { 
-  	background: rgb(51, 51, 51);
-	border: 1px solid  rgb(51, 51, 51);
+	background-color: rgb(31, 31, 31);
+	border-top: 2px solid   rgb(0, 150, 255);
+	border-bottom: 1px solid rgb(31,31,31);
 	color: white;
   	margin-bottom: -1px;
-	border-top-right-radius: 2px;
-	border-top-left-radius: 2px;
+	border-top-right-radius: 1px;
+	border-top-left-radius: 1px;
 }
-QTabBar::tab:selected:hover {
-background: rgb(51, 51, 51);
+QTabBar::tab:selected:hover{
+background-color: rgb(31, 31, 31);
 }
 QTabBar::tab:hover { 
   	background: rgb(45, 45, 45);
 }
 QTabWidget::tab-bar  {
 top: 5px;
-left: 50px;
+left: 55px;
 }</string>
       </property>
       <property name="tabPosition">
@@ -127,7 +157,7 @@ left: 50px;
       </property>
       <widget class="QWidget" name="home">
        <property name="styleSheet">
-        <string notr="true">background: rgb(51, 51, 51);</string>
+        <string notr="true">background: rgb(20, 20, 20);</string>
        </property>
        <attribute name="icon">
         <iconset>
@@ -155,8 +185,7 @@ left: 50px;
            </size>
           </property>
           <property name="styleSheet">
-           <string notr="true">background-color: rgb(51, 51, 51);
-border-radius: 5px;</string>
+           <string notr="true">background-color: rgb(51, 51, 51);border-radius: 5px;</string>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_3">
            <property name="leftMargin">

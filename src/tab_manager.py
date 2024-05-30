@@ -1,33 +1,8 @@
-from PyQt6.QtCore import  QSize, pyqtSignal, QObject, QPoint
-from PyQt6.QtWidgets import QTabBar, QPushButton, QMenu
+from PyQt6.QtCore import  QSize, pyqtSignal, QObject, QPoint, Qt
+from PyQt6.QtWidgets import QTabBar, QPushButton, QMenu, QMenuBar
 from PyQt6.QtGui import QIcon, QKeySequence
 from PyQt6 import QtCore
 
-from src.objects.fileContextMenu import Ui_Form
-from src.workspace_landing_page import WorkSpaceLandingPage
-
-
-
-class FileContextMenu(QMenu):
-    def __init__(self, parent=None):
-        super().__init__(parent)
-        self.file_context_menu = Ui_Form()
-        self.file_context_menu.setupUi(self)
-
-        # Submenu for Theme Change
-
-
-        # Adding actions to submenu
-        self.addAction(self.file_context_menu.actionNew_Workspace)
-        self.addAction(self.file_context_menu.actionSave)
-        self.addAction(self.file_context_menu.actionSave_All)
-        self.addAction(self.file_context_menu.actionClose_Workspace)
-        self.addAction(self.file_context_menu.actionClose_Window)
-        self.file_context_menu.actionClose_Window.setShortcut(QKeySequence("Alt+f4"))
-
-        # Separators
-        self.insertSeparator(self.file_context_menu.actionClose_Workspace)
-        self.insertSeparator(self.file_context_menu.actionSave)
 
 
 class TabManager(QObject):
@@ -39,12 +14,10 @@ class TabManager(QObject):
         self.tab_count = 0
         self.plusButton = QPushButton()
         self.file_menu_button = QPushButton()
-        self.fcu = FileContextMenu()
+        
         
         # Signals
         self.plusButton.clicked.connect(self.plusClicked.emit)
-        self.file_menu_button.clicked.connect(self.handle_file_context_menu)
-        self.fcu.file_context_menu.actionClose_Workspace.triggered.connect(lambda: self.remove_page(self.get_current_page_index()))
         
         #Calling Methods
         self.setupPlusButton()
@@ -55,18 +28,19 @@ class TabManager(QObject):
         Setups the file menu Button.
         """
         self.file_menu_button.setParent(self.tabWidget)
-        self.file_menu_button.setFixedSize(40, 40)
+        self.file_menu_button.setFixedSize(43, 43)
         self.file_menu_button.setStyleSheet(""" QPushButton 
             {
-                border-radius: 3px;
-                padding: 5 5 5 5;
+                border-radius: 2px;
+            }
+            QPushButton:hover {
+                background-color: rgb(31,31,31);
             }""")
         self.file_menu_button.setToolTip("File")
-        self.file_menu_button.setIcon(QIcon("../resources/icons/menu.png"))
-        self.file_menu_button.move(5, 10)
+        self.file_menu_button.setIcon(QIcon("./resources/icons/menu.png"))
+        self.file_menu_button.move(5, 7)
         self.file_menu_button.setIconSize(QSize(25,25))
         self.file_menu_button.setCursor(QtCore.Qt.CursorShape.PointingHandCursor)
-
 
     def setupPlusButton(self):
         """
@@ -83,7 +57,7 @@ class TabManager(QObject):
             padding: 5 5 5 5;
         }""")
         self.plusButton.setToolTip("New tab")
-        self.plusButton.setIcon(QIcon("../resources/icons/plus-symbol-button.png"))
+        self.plusButton.setIcon(QIcon("./resources/icons/plus-symbol-button.png"))
         self.file_menu_button.setIconSize(QSize(25,25))
         self.plusButton.setCursor(QtCore.Qt.CursorShape.PointingHandCursor)
 
@@ -91,13 +65,6 @@ class TabManager(QObject):
 
     def setup_connections(self, signal_bus):
         signal_bus.closeWorkspace.connect(lambda: self.remove_page(self.get_current_page_index()))
-    
-    def handle_file_context_menu(self):
-        sender_button = self.sender()
-        global_pos = sender_button.mapToGlobal(sender_button.pos())
-        global_pos += QPoint(-5, 32)
-        self.fcu.exec(global_pos)
-        self.file_menu_button.clearFocus()
 
     def add_page(self, workspace, page_name):
         """
@@ -119,7 +86,7 @@ class TabManager(QObject):
         self.tabWidget.setTabToolTip(index, page_name)
         
         closeButton = QPushButton()
-        closeButton.setIcon(QIcon("../resources/icons/close-2.png"))
+        closeButton.setIcon(QIcon("./resources/icons/close-2.png"))
         closeButton.setIconSize(QSize(10, 10))
         closeButton.clicked.connect(lambda checked, workspace=workspace: self.remove_page(self.tabWidget.indexOf(workspace)))
         
@@ -131,6 +98,7 @@ class TabManager(QObject):
         self.tabWidget.setCurrentWidget(workspace)
 
         self._move_plus_button()
+        
 
     def remove_page(self, index):
         """
@@ -158,14 +126,14 @@ class TabManager(QObject):
         """
         return self.tabWidget.currentWidget()
     
-    def __sizeHint(self):
+    def _sizeHint(self):
         """
         Return the size of the TabBar with increased width for the plus button.
         """
         sizeHint = QTabBar.sizeHint(self.tabWidget.tabBar()) 
         width = sizeHint.width()
         height = sizeHint.height()
-        return QSize(width + 60, height)
+        return QSize(width + 65, height)
 
     def resizeEvent(self, event):
         """
@@ -190,8 +158,8 @@ class TabManager(QObject):
         h = self.tabWidget.geometry().top() + 10
         w = self.tabWidget.width()
 
-        if self.__sizeHint().width() >= w:
-            self.plusButton.move(self.__sizeHint().width() + 15, h)
+        if self._sizeHint().width() >= w:
+            self.plusButton.move(self._sizeHint().width() + 20, h)
         else:
-            self.plusButton.move(self.__sizeHint().width(), h)
+            self.plusButton.move(self._sizeHint().width(), h)
         
