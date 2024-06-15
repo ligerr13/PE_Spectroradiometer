@@ -49,41 +49,41 @@ class SceneWidget(QWidget):
     def width(self):
         return self.property("width")
 
-    # @width.setter
-    # def width(self, value):
-    #     self.resize(self._width, self._height)
+    @width.setter
+    def width(self, width, height):
+        self.resize(width , height)
 
     @property
     def height(self):
         return self.property("height")
 
-    # @height.setter
-    # def height(self, value):
-    #     self.resize(self._width, self._height)
+    @height.setter
+    def height(self, width, height):
+        self.resize(width, height)
 
     @property
     def x(self):
         return self.property("x")
 
-    # @x.setter
-    # def x(self, value):
-    #     self.move(self._x, self._y)
+    @x.setter
+    def x(self, value):
+        self.move(value, self.y)
 
     @property
     def y(self):
         return self.property("y")
 
-    # @y.setter
-    # def y(self, value):
-    #     self.move(self._x, self._y)
+    @y.setter
+    def y(self, value):
+        self.move(self.x, value)
 
     @property
     def stylesheet(self):
-        return self._stylesheet
+        return self.styleSheet()
 
-    # @stylesheet.setter
-    # def stylesheet(self, value):
-    #     self.setStyleSheet(value)
+    @stylesheet.setter
+    def stylesheet(self, value):
+        self.setStyleSheet(value)
 
     def setGeometryProperties(self, x, y, width, height):
         self.setGeometry(QtCore.QRect(x, y, width, height))

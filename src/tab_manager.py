@@ -38,7 +38,7 @@ class TabManager(QObject):
             }""")
         self.file_menu_button.setToolTip("File")
         self.file_menu_button.setIcon(QIcon("./resources/icons/menu.png"))
-        self.file_menu_button.move(5, 7)
+        self.file_menu_button.move(5, 5)
         self.file_menu_button.setIconSize(QSize(25,25))
         self.file_menu_button.setCursor(QtCore.Qt.CursorShape.PointingHandCursor)
 
@@ -133,7 +133,7 @@ class TabManager(QObject):
         sizeHint = QTabBar.sizeHint(self.tabWidget.tabBar()) 
         width = sizeHint.width()
         height = sizeHint.height()
-        return QSize(width + 65, height)
+        return QSize(width + 60, height)
 
     def resizeEvent(self, event):
         """
@@ -155,7 +155,7 @@ class TabManager(QObject):
         Move the plus button to the correct location.
         """
 
-        h = self.tabWidget.geometry().top() + 10
+        h = self.tabWidget.geometry().top() + 6
         w = self.tabWidget.width()
 
         if self._sizeHint().width() >= w:

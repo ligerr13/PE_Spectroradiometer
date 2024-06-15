@@ -59,12 +59,12 @@ class MyApp(QMainWindow):
         ])
 
         ## Signal Bus
-        self.signal_bus = WorkspaceSignalBus()
+        self.signal_bus = WorkspaceSignalBus.instance()
 
         ## Signals
         self.tm.file_menu_button.clicked.connect(self.handle_file_context_menu)
-        self.tm.plusClicked.connect(lambda: self.tm.add_page(WorkSpaceLandingPage(self.signal_bus), "New Workspace"))
-        self.fcu.file_context_menu.actionNew_Workspace.triggered.connect(lambda: self.tm.add_page(WorkSpaceLandingPage(self.signal_bus), "New Workspace"))
+        self.tm.plusClicked.connect(lambda: self.tm.add_page(WorkSpaceLandingPage(), "New Workspace"))
+        self.fcu.file_context_menu.actionNew_Workspace.triggered.connect(lambda: self.tm.add_page(WorkSpaceLandingPage(), "New Workspace"))
         self.fcu.file_context_menu.actionClose_Window.triggered.connect(lambda: QCoreApplication.quit()) ##TODO: Call handler check unsaved ws and then quit. 
         self.fcu.file_context_menu.actionClose_Workspace.triggered.connect(lambda: self.tm.remove_page(self.tm.get_current_page_index())) ##TODO: Call handler check unsaved ws and then quit.
         self.signal_bus.newWorkspaceCreated.connect(self.handleNewWorkspaceCreation)
@@ -72,7 +72,7 @@ class MyApp(QMainWindow):
 
 
         ##Calling Methods
-        self.tm.add_page(Workspace(self.signal_bus), "Test Workspace")
+        self.tm.add_page(Workspace(),"Test Workspace")
     
     def handle_file_context_menu(self):
         sender_button = self.sender()
@@ -83,7 +83,7 @@ class MyApp(QMainWindow):
 
     def handleNewWorkspaceCreation(self, tag):
         self.tm.remove_page(self.tm.get_current_page_index())
-        self.tm.add_page(Workspace(self.signal_bus), tag)
+        self.tm.add_page(Workspace(), tag)
 
     def HandleMeasureDialog(self, selected: bool):
         if selected is not None:

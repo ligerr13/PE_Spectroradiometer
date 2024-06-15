@@ -2,6 +2,7 @@ from PyQt6.QtWidgets import QWidget, QGraphicsView, QGraphicsProxyWidget, QGraph
 from PyQt6.QtGui import QColor, qRgb, QTransform, QCursor, QStandardItem
 from PyQt6.QtCore import  QLineF, QPointF, QPoint, QSize, QObject, Qt
 from PyQt6 import QtCore
+import re
 
 from src.objects.editSettingsContextMenu import Ui_Form
 from src.objects.workspaceDesignFomr import Ui_WorkspaceDesignForm
@@ -44,7 +45,7 @@ class CustomMenu(QMenu):
 
 
 class Workspace(QWidget):
-    def __init__(self, signal_bus, parent=None):
+    def __init__(self, parent=None):
         super().__init__(parent)
         self.ui = Ui_WorkspaceDesignForm()
         self.ui.setupUi(self)
@@ -99,7 +100,7 @@ class Workspace(QWidget):
         self.handle_menu_widget_visibility(True)
         self.handle_left_menu_tab_visibility(False)
         self.handle_properties_widget_visibility(False)
-        self.update_explorer() #Should be called when the scene changes
+        self.update_explorer()
 
     def resizeEvent(self, event):
         self.update_test_button_on_view()
@@ -132,12 +133,9 @@ class Workspace(QWidget):
         pass
 
     def handle_grid_visibility(self, state):
-        if not state:
             for gridLines in self.scene.items():
                 if isinstance(gridLines, QGraphicsLineItem):
-                    self.scene.removeItem(gridLines)
-        else:
-            self.generate_grid_tiles_for_scene(self.grid)
+                    gridLines.setVisible(state)
         
     def handle_edit_settings_context_menu(self):
         sender_button = self.sender()
@@ -152,7 +150,6 @@ class Workspace(QWidget):
 
     def handle_properties_widget_visibility(self, state):
         self.ui.properties_right_panel.setVisible(state)
-
     #Not the most elegant way to solve this.. has to be a better way to change the style.
     def handle_left_menu_tab_visibility(self, state):
         self.ui.WorkspaceMenuWidget.setVisible(state)
@@ -269,24 +266,35 @@ class Workspace(QWidget):
         hor = 0
         ver = 0
         subdiv = 100
-        leftX,leftY = 0, 0
-        rightX, rightY = subdiv*side, 0
-        bottomX, bottomY= 0, 0
-        topX, topY = 0, subdiv*side
+        leftX, leftY = 0, 0
+        rightX, rightY = subdiv * side, 0
+        bottomX, bottomY = 0, 0
+        topX, topY = 0, subdiv * side
 
         while ver < vLines:
-            ver = ver + 1
+            ver += 1
+            # if ver == 1:
+            #     bottomX += side
+            #     topX += side
+            #     continue
             vLine = QLineF(bottomX, bottomY, topX, topY)
-            bottomX, topX = bottomX + side, topX + side
+            bottomX += side
+            topX += side
             self.scene.addLine(vLine, colorH).setZValue(-1)
 
         while hor < hLines:
-            hor = hor + 1
+            hor += 1
+            if hor == 1:  # Skip the first horizontal line
+                leftY += side
+                rightY += side
+                continue
             hLine = QLineF(leftX, leftY, rightX, rightY)
-            leftY, rightY = leftY + side, rightY + side
+            leftY += side
+            rightY += side
             self.scene.addLine(hLine, colorV).setZValue(-1)
 
         grid.addWidget(self.view, 0, 1, 1, 1)
+
 
     def handle_add_text_to_scene(self):
         print("Opening text dialog or widget...")
@@ -294,6 +302,27 @@ class Workspace(QWidget):
     
     def handle_add_image_to_scene(self):
         print("Opening image dialog or widget...")
+    
+    def validate_qss(self,widget, qss):
+        try:
+            widget.stylesheet = qss
+        except Exception as e:
+            print(f"Hiba a QSS-fájlban: {str(e)}")
+        
+    def format_stylesheet(self, stylesheet):
+        lines = stylesheet.split('\n')
+        formatted_lines = []
+        for line in lines:
+            line = re.sub(r'\b(Q\w*)\b', r'<span style="color: deepskyblue; font-weight: bold;">\1</span>', line)
+            line = re.sub(r'({)', r'<br><span style="color: grey; font-weight: bold;">\1</span>', line)
+            line = re.sub(r'(})', r'<br><span style="color: grey; font-weight: bold;">\1</span>', line)
+            line = re.sub(r'(rgb\((.*?)\))', r'<span style="color:\1; font-weight: bold;">\1</span>', line)
+            line = re.sub(r'(rgba\((.*?)\))', r'<span style="color:\1; font-weight: bold;">\1</span>', line)
+            
+            formatted_lines.append(f'\t{line}')
+        
+        formatted_stylesheet = '<br>'.join(formatted_lines)
+        return formatted_stylesheet
 
     def update_properties_panel_date(self, property_holder):
         #FOR TESTING ITS FINE FOR NOW
@@ -302,10 +331,15 @@ class Workspace(QWidget):
         self.ui.y_lineEdit.setText(str(property_holder.y))
         self.ui.lineEdit.setText(str(property_holder.width))
         self.ui.lineEdit_2.setText(str(property_holder.height))
-        self.ui.lineEdit_3.setText(str(property_holder.minimumWidth))
-        self.ui.lineEdit_4.setText(str(property_holder.minimumHeight))
-        self.ui.lineEdit_6.setText(str(property_holder.maximumWidth))
-        self.ui.lineEdit_5.setText(str(property_holder.maximumHeight))
+
+        formatted_stylesheet = self.format_stylesheet(str(property_holder.stylesheet))
+        self.ui.textEdit.setHtml(formatted_stylesheet)
+
+
+        # Validator 
+        # https://github.com/KDABLabs/qsslint
+
+
 
 class NodeboardGraphicsScene(QGraphicsScene):
     def __init__(self, parent=None):
