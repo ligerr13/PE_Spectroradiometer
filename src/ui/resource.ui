@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1475</width>
+    <width>1829</width>
     <height>950</height>
    </rect>
   </property>
@@ -42,7 +42,7 @@
     <normaloff>../../resources/icons/prism.png</normaloff>../../resources/icons/prism.png</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">QMainWindow {background-color: rgb(20, 20, 20);border-top: 1px solid rgba(129,129,129,50);}
+   <string notr="true">QMainWindow {background-color: rgb(31, 31, 31);border-top: 1px solid rgba(129,129,129,50);}
 
 QPushButton {
 		border: 0px;
@@ -75,7 +75,7 @@ QPushButton:checked  {
     <property name="bottomMargin">
      <number>0</number>
     </property>
-    <item row="1" column="0">
+    <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="minimumSize">
        <size>
@@ -99,7 +99,7 @@ QPushButton:checked  {
 }
 QTabWidget::pane {
 	border-top: 1px solid rgba(129,129,129,50);
-	top: 4px;
+	top: 1px;
 } 
 
 QTabBar::tab {
@@ -107,28 +107,25 @@ QTabBar::tab {
 	padding: 15 0 15 15;
 	font: 700 10pt &quot;Consolas&quot;;
 	border: 2px;
-	border-top-right-radius: 1px;
-	border-top-left-radius: 1px;
+	/*border-top-right-radius: 1px;
+	border-top-left-radius: 1px;*/
 } 
 
 QTabBar::tab:selected { 
-	background-color: rgb(31, 31, 31);
-	border-top: 2px solid   rgb(0, 150, 255);
-	border-bottom: 1px solid rgb(31,31,31);
+	background-color: rgb(45, 45, 45);
+	border-bottom: 2px solid   rgb(0, 150, 255);
+	/*border-bottom: 1px solid rgb(31,31,31);*/
 	color: white;
-  	margin-bottom: -1px;
-	border-top-right-radius: 1px;
-	border-top-left-radius: 1px;
 }
 QTabBar::tab:selected:hover{
-background-color: rgb(31, 31, 31);
+	background-color: rgb(45, 45, 45);
 }
 QTabBar::tab:hover { 
   	background: rgb(45, 45, 45);
 }
 QTabWidget::tab-bar  {
-top: 5px;
 left: 55px;
+top: 1px;
 }</string>
       </property>
       <property name="tabPosition">

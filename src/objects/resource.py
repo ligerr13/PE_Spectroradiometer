@@ -14,7 +14,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.setWindowModality(QtCore.Qt.WindowModality.NonModal)
-        MainWindow.resize(1475, 950)
+        MainWindow.resize(1829, 950)
         MainWindow.setMinimumSize(QtCore.QSize(832, 624))
         MainWindow.setMaximumSize(QtCore.QSize(16777215, 16777215))
         MainWindow.setFocusPolicy(QtCore.Qt.FocusPolicy.TabFocus)
@@ -23,7 +23,7 @@ class Ui_MainWindow(object):
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(".\\src\\ui\\../../resources/icons/prism.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         MainWindow.setWindowIcon(icon)
-        MainWindow.setStyleSheet("QMainWindow {background-color: rgb(20, 20, 20);border-top: 1px solid rgba(129,129,129,50);}\n"
+        MainWindow.setStyleSheet("QMainWindow {background-color: rgb(31, 31, 31);border-top: 1px solid rgba(129,129,129,50);}\n"
 "\n"
 "QPushButton {\n"
 "        border: 0px;\n"
@@ -53,7 +53,7 @@ class Ui_MainWindow(object):
 "}\n"
 "QTabWidget::pane {\n"
 "    border-top: 1px solid rgba(129,129,129,50);\n"
-"    top: 4px;\n"
+"    top: 1px;\n"
 "} \n"
 "\n"
 "QTabBar::tab {\n"
@@ -61,28 +61,25 @@ class Ui_MainWindow(object):
 "    padding: 15 0 15 15;\n"
 "    font: 700 10pt \"Consolas\";\n"
 "    border: 2px;\n"
-"    border-top-right-radius: 1px;\n"
-"    border-top-left-radius: 1px;\n"
+"    /*border-top-right-radius: 1px;\n"
+"    border-top-left-radius: 1px;*/\n"
 "} \n"
 "\n"
 "QTabBar::tab:selected { \n"
-"    background-color: rgb(31, 31, 31);\n"
-"    border-top: 2px solid   rgb(0, 150, 255);\n"
-"    border-bottom: 1px solid rgb(31,31,31);\n"
+"    background-color: rgb(45, 45, 45);\n"
+"    border-bottom: 2px solid   rgb(0, 150, 255);\n"
+"    /*border-bottom: 1px solid rgb(31,31,31);*/\n"
 "    color: white;\n"
-"      margin-bottom: -1px;\n"
-"    border-top-right-radius: 1px;\n"
-"    border-top-left-radius: 1px;\n"
 "}\n"
 "QTabBar::tab:selected:hover{\n"
-"background-color: rgb(31, 31, 31);\n"
+"    background-color: rgb(45, 45, 45);\n"
 "}\n"
 "QTabBar::tab:hover { \n"
 "      background: rgb(45, 45, 45);\n"
 "}\n"
 "QTabWidget::tab-bar  {\n"
-"top: 5px;\n"
 "left: 55px;\n"
+"top: 1px;\n"
 "}")
         self.tabWidget.setTabPosition(QtWidgets.QTabWidget.TabPosition.North)
         self.tabWidget.setTabShape(QtWidgets.QTabWidget.TabShape.Rounded)
@@ -183,7 +180,7 @@ class Ui_MainWindow(object):
         icon3 = QtGui.QIcon()
         icon3.addPixmap(QtGui.QPixmap(".\\src\\ui\\../../resources/icons/home.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.tabWidget.addTab(self.home, icon3, "")
-        self.gridLayout.addWidget(self.tabWidget, 1, 0, 1, 1)
+        self.gridLayout.addWidget(self.tabWidget, 0, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(parent=MainWindow)
         self.statusbar.setObjectName("statusbar")
