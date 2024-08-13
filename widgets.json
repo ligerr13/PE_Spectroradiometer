@@ -1,13 +1,13 @@
 {
-    "workspace": "C:/Users/liger/OneDrive/Dokumentumok/PE_Spectroradiometer/PE_Spectroradiometer/widgets_copy.json",
+    "workspace": "C:/Users/liger/OneDrive/Dokumentumok/PE_Spectroradiometer/PE_Spectroradiometer/widgets.json",
     "widgets": [
         {
             "id": "SpectralData Widget",
             "type": "SceneWidget",
             "uniqe_name": "Hagymas Widget",
             "geometry": {
-                "x": 430,
-                "y": 275,
+                "x": 53,
+                "y": 29,
                 "width": 330,
                 "height": 330
             },
@@ -18,8 +18,8 @@
             "type": "SceneWidget",
             "uniqe_name": "Sajtos Widget",
             "geometry": {
-                "x": 30,
-                "y": 40,
+                "x": 70,
+                "y": 388,
                 "width": 230,
                 "height": 230
             },
