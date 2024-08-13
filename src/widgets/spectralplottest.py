@@ -11,7 +11,7 @@ from .scenewidget import SceneWidget
 class SpectralPlotWidget(SceneWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.spectral_data = None
+        self.data = None
         self.plt = plt
         self.plt.style.use('dark_background')
         self.init_ui()
@@ -23,11 +23,11 @@ class SpectralPlotWidget(SceneWidget):
         layout.addWidget(self.plot_canvas)
 
     def setSpectralData(self, data):
-            self.spectral_data = data
+            self.data = data
             self.plot_data()
 
     def plot_data(self):
-        intensities = [float(value) for value in self.spectral_data.split(",")]
+        intensities = [float(value) for value in self.data.split(",")]
         wavelengths = np.arange(380, 380 + int(len(intensities)), 1)
 
         self.plot_canvas.axes.plot(wavelengths, intensities, color="black")

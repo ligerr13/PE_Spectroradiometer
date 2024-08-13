@@ -48,7 +48,7 @@ class TabManager(QObject):
         """
 
         self.plusButton.setParent(self.tabWidget)
-        self.plusButton.setFixedSize(40, 40)
+        self.plusButton.setFixedSize(35, 35)
         self.plusButton.setStyleSheet("""
         QPushButton { 
             background: rgb(25, 25, 25);
@@ -144,7 +144,6 @@ class TabManager(QObject):
     def tabLayoutChange(self):
         """
         This virtual handler is called whenever the tab layout changes.
-        If anything changes make sure the plus button is in the correct location.
         """
         super().tabLayoutChange()
 
@@ -155,7 +154,7 @@ class TabManager(QObject):
         Move the plus button to the correct location.
         """
 
-        h = self.tabWidget.geometry().top() + 6
+        h = self.tabWidget.geometry().top() + 10
         w = self.tabWidget.width()
 
         if self._sizeHint().width() >= w:

@@ -2,7 +2,7 @@ from PyQt6.QtWidgets import QWidget, QGraphicsView, QGraphicsProxyWidget, QGraph
 from PyQt6.QtGui import QColor, qRgb, QTransform, QCursor, QStandardItem
 from PyQt6.QtCore import  QLineF, QPointF, QPoint, QSize, QObject, Qt
 from PyQt6 import QtCore
-import re
+import json
 
 from src.objects.editSettingsContextMenu import Ui_Form
 from src.objects.workspaceDesignFomr import Ui_WorkspaceDesignForm
@@ -12,6 +12,9 @@ from src.widgets.testwidgetbase import CustomWidget
 from src.widgets.spectralplottest import SpectralPlotWidget
 from src.signals.signals import WorkspaceSignalBus
 from src.dialogs.textToSceneDialog import TextToSceneDialog
+
+from src.globals.utils import show_toast
+from src.globals.enum import ToastType
 
 
 
@@ -43,13 +46,13 @@ class CustomMenu(QMenu):
         self.insertSeparator(self.cMenu.actionPaste)
         self.insertSeparator(self.cMenu.actionSelect_All)
 
-
 class Workspace(QWidget):
-    def __init__(self, parent=None):
+    def __init__(self, workspace_name, parent=None):
         super().__init__(parent)
         self.ui = Ui_WorkspaceDesignForm()
         self.ui.setupUi(self)
-
+        
+        self.workspace_name = workspace_name
         self.explorer = self.ui.treeWidget
         self.grid = self.ui.gridLayout_5
         self.context_menu = CustomMenu(self)
@@ -60,37 +63,20 @@ class Workspace(QWidget):
         # Views and Scenes
         self.view = self.ui.graphicsView_2
         self.scene = NodeboardGraphicsScene()
-        self.button = QPushButton(parent=self.view, text="asd")
+        self.button = QPushButton(parent=self.view, text="")
 
         # Signal Bus
         # self.signal_bus = signal_bus
         self.signal_bus =  WorkspaceSignalBus.instance()
 
-
         # Signals
         self.context_menu.cMenu.actionShow_Workspace_Grid.triggered.connect(self.handle_grid_visibility)
         self.scene.changed.connect(self._scene_changed)
-        self.signal_bus.widgetDataToPorpertyEditor.connect(self.update_properties_panel_date)
+        self.signal_bus.update_explorer.connect(self.update_explorer)
 
         # QDialogs
         self.widgetCreator = WidgetCreatorDialog()
         self.textCreateToScene = TextToSceneDialog()
-
-
-        # Hardcoded stuff for testing
-        self.spectral_test_widget = SpectralPlotWidget()
-        self.spectral_test_widget_2 = SpectralPlotWidget()
-        self.spectral_test_widget.setObjectName("Sajtos Widget")
-        self.spectral_test_widget_2.setObjectName("Kekszes Widget")
-        self.spectral_test_widget.setGeometryProperties(30,40,230,230)
-        self.spectral_test_widget_2.setGeometryProperties(30,275,350,350)
-        self.spectral_data = "1.0139e-4,1.0178e-4,1.0552e-4,1.0520e-4,1.1489e-4,1.2348e-4,1.4203e-4,1.5488e-4,1.6706e-4,1.8255e-4,2.0662e-4,2.3010e-4,2.3899e-4,2.4023e-4,2.5990e-4,2.9615e-4,3.2849e-4,3.7248e-4,4.3627e-4,5.0280e-4,5.8398e-4,6.4691e-4,6.9608e-4,7.3879e-4,7.7700e-4,8.1145e-4,8.4110e-4,8.8335e-4,9.2982e-4,9.7476e-4,1.0142e-3,1.0564e-3,1.0961e-3,1.1395e-3,1.1695e-3,1.1887e-3,1.2104e-3,1.2219e-3,1.2310e-3,1.2357e-3,1.2468e-3,1.2655e-3,1.2694e-3,1.2723e-3,1.2581e-3,1.2578e-3,1.2541e-3,1.2401e-3,1.2227e-3,1.1893e-3,1.1593e-3,1.1539e-3,1.1985e-3,1.2683e-3,1.3158e-3,1.3427e-3,1.3755e-3"
-        self.spectral_data_2 = "1.0139e-4,1.0178e-4,1.0552e-4,1.0520e-4,1.1489e-4,1.2348e-4,1.4203e-4,1.5488e-4,1.6706e-4"
-        self.spectral_test_widget.setSpectralData(self.spectral_data_2)
-        self.spectral_test_widget_2.setSpectralData(self.spectral_data)
-        self.scene.addWidget(self.spectral_test_widget)
-        self.scene.addWidget(self.spectral_test_widget_2)
-
 
         # Calling Methods
         self.group_workspace_group_buttons_to_pages()
@@ -101,6 +87,13 @@ class Workspace(QWidget):
         self.handle_left_menu_tab_visibility(False)
         self.handle_properties_widget_visibility(False)
         self.update_explorer()
+
+
+    def set_workspace_name(self, workspace_name: str):
+        self.workspace_name = workspace_name
+
+    def get_workspace_name(self) -> str:
+        return self.workspace_name
 
     def resizeEvent(self, event):
         self.update_test_button_on_view()
@@ -117,16 +110,25 @@ class Workspace(QWidget):
         self.button.setText(f"{self.view.viewport().width()}x{self.view.viewport().height()}") 
         # print(f"{self.view.viewport().width()}x{self.view.viewport().height()}") 
     
-    #Prototype update_explorer
     def update_explorer(self):
         widget_items = self.explorer.findItems("Widget", Qt.MatchFlag.MatchExactly | Qt.MatchFlag.MatchRecursive)
         
         if widget_items:
             for item in widget_items:
-                widget_data = self.scene.extract_widget_data()
+                WIDGET_DATA = self.scene.extract_widget_data()
 
-                for objName in widget_data:
-                    item.addChild(QTreeWidgetItem([objName]))
+                current_items = {item.child(i).text(0) for i in range(item.childCount())}
+                
+                new_items = {widget.objectName for widget in WIDGET_DATA}
+
+                for i in reversed(range(item.childCount())):
+                    child = item.child(i)
+                    if child.text(0) not in new_items:
+                        item.removeChild(child)
+                
+                for objName in new_items:
+                    if objName not in current_items:
+                        item.addChild(QTreeWidgetItem([objName]))
 
     def _scene_changed(self): #This one called too many times, something isnt working the way i thought.
         # print(f"Scene changed in workspace: {self.objectName()}")
@@ -273,10 +275,6 @@ class Workspace(QWidget):
 
         while ver < vLines:
             ver += 1
-            # if ver == 1:
-            #     bottomX += side
-            #     topX += side
-            #     continue
             vLine = QLineF(bottomX, bottomY, topX, topY)
             bottomX += side
             topX += side
@@ -284,7 +282,7 @@ class Workspace(QWidget):
 
         while hor < hLines:
             hor += 1
-            if hor == 1:  # Skip the first horizontal line
+            if hor == 1:
                 leftY += side
                 rightY += side
                 continue
@@ -295,50 +293,62 @@ class Workspace(QWidget):
 
         grid.addWidget(self.view, 0, 1, 1, 1)
 
-
     def handle_add_text_to_scene(self):
         print("Opening text dialog or widget...")
         self.textCreateToScene.popUp()
     
     def handle_add_image_to_scene(self):
         print("Opening image dialog or widget...")
+
+    def save_workspace(self, file_name: str):
+        WIDGET_DATA = self.scene.extract_widget_data()
+        
+        DATA = [widget.get_widget_data() for widget in WIDGET_DATA]
+        
+        WORKSAPCE_DATA = {
+        "workspace": self.workspace_name,
+        "widgets": DATA }
+
+        with open(f'{file_name}', 'w') as file:
+            json.dump(WORKSAPCE_DATA, file, indent=4)
+        
+        show_toast("Workscape Saved!", 3000, ToastType.SUCCESS, self)
     
-    def validate_qss(self,widget, qss):
+    def load_workspace(self, file_name: str):
         try:
-            widget.stylesheet = qss
+            with open(f'{file_name}', 'r') as file:
+                LOADED = json.load(file)
+
+            if isinstance(LOADED, dict):
+                WIDGETS_DATA = LOADED.get('widgets', [])
+                
+                if isinstance(WIDGETS_DATA, list):
+                    for WIDGET in WIDGETS_DATA:
+                        if isinstance(WIDGET, dict) and WIDGET.get('type') == 'SceneWidget':
+                            widget = SpectralPlotWidget()
+                            
+                            widget.setObjectName(WIDGET.get('uniqe_name', 'DefaultID'))
+                            widget.setSpectralData(WIDGET.get('data', ''))
+                            
+                            geometry = WIDGET.get('geometry', {})
+                            x: float = geometry.get('x', 0)
+                            y: float = geometry.get('y', 0)
+                            width: float = geometry.get('width', 100)
+                            height: float = geometry.get('height', 100)
+                            
+                            widget.setGeometryProperties(x, y, width, height)
+                            
+                            self.scene.addWidget(widget)
+            show_toast("Workspace loaded successfully", 3000, ToastType.SUCCESS, self)
+            self.update_explorer()
+
+        except FileNotFoundError:
+            show_toast("Error: $ffile_name}'' file not found.",3000,ToastType.ERROR, self)
+        except json.JSONDecodeError:
+            show_toast("Error: Failed to decode JSON.",3000,ToastType.ERROR, self)
+
         except Exception as e:
-            print(f"Hiba a QSS-fájlban: {str(e)}")
-        
-    def format_stylesheet(self, stylesheet):
-        lines = stylesheet.split('\n')
-        formatted_lines = []
-        for line in lines:
-            line = re.sub(r'\b(Q\w*)\b', r'<span style="color: deepskyblue; font-weight: bold;">\1</span>', line)
-            line = re.sub(r'({)', r'<br><span style="color: grey; font-weight: bold;">\1</span>', line)
-            line = re.sub(r'(})', r'<br><span style="color: grey; font-weight: bold;">\1</span>', line)
-            line = re.sub(r'(rgb\((.*?)\))', r'<span style="color:\1; font-weight: bold;">\1</span>', line)
-            line = re.sub(r'(rgba\((.*?)\))', r'<span style="color:\1; font-weight: bold;">\1</span>', line)
-            
-            formatted_lines.append(f'\t{line}')
-        
-        formatted_stylesheet = '<br>'.join(formatted_lines)
-        return formatted_stylesheet
-
-    def update_properties_panel_date(self, property_holder):
-        #FOR TESTING ITS FINE FOR NOW
-        self.ui.lineEdit_7.setText(str(property_holder.objectName))
-        self.ui.x_lineEdit.setText(str(property_holder.x))
-        self.ui.y_lineEdit.setText(str(property_holder.y))
-        self.ui.lineEdit.setText(str(property_holder.width))
-        self.ui.lineEdit_2.setText(str(property_holder.height))
-
-        formatted_stylesheet = self.format_stylesheet(str(property_holder.stylesheet))
-        self.ui.textEdit.setHtml(formatted_stylesheet)
-
-
-        # Validator 
-        # https://github.com/KDABLabs/qsslint
-
+            show_toast(f"Unexpected error: {e}",3000,ToastType.ERROR, self)
 
 
 class NodeboardGraphicsScene(QGraphicsScene):
@@ -347,7 +357,6 @@ class NodeboardGraphicsScene(QGraphicsScene):
         # Signalbus
         self.nodeboard_signal_bus = NodeBoardSignalBus()
         self.signal_bus =  WorkspaceSignalBus.instance()
-
 
         # Buttons
         self.SelectButton = None
@@ -363,7 +372,6 @@ class NodeboardGraphicsScene(QGraphicsScene):
         self.nodeboard_signal_bus.widgetDeletedSignal.connect(self.onWidgetDelete)
         #Calling methods
 
-
     # Setters
     def setSelecteButton(self, button):
         self.SelectButton = button
@@ -373,7 +381,6 @@ class NodeboardGraphicsScene(QGraphicsScene):
         if button and button.isChecked() and self.selectedWidget:
             self.nodeboard_signal_bus.onWidgetDeletedSignalEmit(self.selectedWidget)
     
-    # Overwriten mousePressEvent
     def mousePressEvent(self, event):
         if self.SelectButton and self.SelectButton.isChecked():
             item = self.itemAt(event.scenePos(), QTransform())
@@ -393,6 +400,8 @@ class NodeboardGraphicsScene(QGraphicsScene):
         if isinstance(deleted, QGraphicsProxyWidget):
                 self.nodeboard_signal_bus.onWidgetDeselectedSignalEmit(deleted)
                 self.removeItem(deleted)
+                self.signal_bus.emitUpdateExplorer()
+                
 
     def onSelectWidget(self, selected: QGraphicsProxyWidget):
         if isinstance(selected, QGraphicsProxyWidget):
@@ -414,6 +423,6 @@ class NodeboardGraphicsScene(QGraphicsScene):
                 widget = widget_item.widget()
 
                 if widget:
-                    widget_data.append(widget.objectName)
+                    widget_data.append(widget)
 
         return widget_data

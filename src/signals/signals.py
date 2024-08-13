@@ -34,6 +34,8 @@ class WorkspaceSignalBus(QObject):
 
     widgetDataToPorpertyEditor = pyqtSignal(QWidget)
 
+    update_explorer = pyqtSignal()
+
     def __init__(self):
         super().__init__()
 
@@ -45,3 +47,6 @@ class WorkspaceSignalBus(QObject):
 
     def emitWidgetDataToPorpertyEditor(self, property_holder):
         self.widgetDataToPorpertyEditor.emit(property_holder)
+
+    def emitUpdateExplorer(self):
+        self.update_explorer.emit()
