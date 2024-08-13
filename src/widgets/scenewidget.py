@@ -1,7 +1,7 @@
 from PyQt6.QtGui import QMouseEvent
 from PyQt6.QtWidgets import QWidget
 from PyQt6 import QtCore
-from PyQt6.QtCore import pyqtSignal, Qt
+from PyQt6.QtCore import pyqtSignal, Qt, QPointF
 
 from .serializable_widget import SerializableWidget
 
@@ -11,6 +11,26 @@ class SceneWidget(SerializableWidget):
     def __init__(self, parent=None):
         super().__init__(widget_id="SpectralData Widget", widget_type="SceneWidget", data=None)
         self.setObjectName("SpectralData Widget")
+        self.oldPos = None
+
+    def mousePressEvent(self, evt: QMouseEvent):
+        self.oldPos = evt.globalPosition()
+        evt.accept()
+
+    def mouseMoveEvent(self, evt: QMouseEvent):
+        if self.oldPos is None:
+            return 
+
+        delta = QPointF(evt.globalPosition() - self.oldPos)
+        
+        self.move(int(self.x + delta.x()), int(self.y + delta.y()))
+        
+        self.oldPos = evt.globalPosition()
+        evt.accept()
+
+    def mouseReleaseEvent(self, evt: QMouseEvent):
+        self.oldPos = None
+        evt.accept()
 
     @property
     def objectName(self):
@@ -94,8 +114,3 @@ class SceneWidget(SerializableWidget):
 
     def setGeometryProperties(self, x, y, width, height):
         self.setGeometry(QtCore.QRect(x, y, width, height))
-
-    def mousePressEvent(self, event: QMouseEvent):
-        if event.button() == Qt.MouseButton.LeftButton:
-            self.clicked.emit()
-        super().mousePressEvent(event)

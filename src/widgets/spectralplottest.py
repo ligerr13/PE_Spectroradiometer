@@ -1,5 +1,6 @@
 from PyQt6.QtWidgets import QWidget, QVBoxLayout
-from PyQt6 import QtCore
+from PyQt6.QtCore import QPoint
+from PyQt6.QtGui import QMouseEvent
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg
