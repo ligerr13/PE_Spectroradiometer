@@ -38,8 +38,8 @@ class Ui_Form(object):
 "}")
         self.gridLayout_2 = QtWidgets.QGridLayout(Form)
         self.gridLayout_2.setObjectName("gridLayout_2")
-        self.actionSave = QtGui.QAction(parent=Form)
-        self.actionSave.setObjectName("actionSave")
+        self.actionSaveAs = QtGui.QAction(parent=Form)
+        self.actionSaveAs.setObjectName("actionSaveAs")
         self.actionClose_Workspace = QtGui.QAction(parent=Form)
         self.actionClose_Workspace.setObjectName("actionClose_Workspace")
         self.actionClose_Window = QtGui.QAction(parent=Form)
@@ -52,6 +52,8 @@ class Ui_Form(object):
         self.actionHome_Page.setObjectName("actionHome_Page")
         self.actionClose_All_Workspace = QtGui.QAction(parent=Form)
         self.actionClose_All_Workspace.setObjectName("actionClose_All_Workspace")
+        self.actionopen_workspace_form_file = QtGui.QAction(parent=Form)
+        self.actionopen_workspace_form_file.setObjectName("actionopen_workspace_form_file")
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -59,8 +61,8 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
-        self.actionSave.setText(_translate("Form", "Save"))
-        self.actionSave.setShortcut(_translate("Form", "Ctrl+S"))
+        self.actionSaveAs.setText(_translate("Form", "Save As"))
+        self.actionSaveAs.setShortcut(_translate("Form", "Ctrl+S"))
         self.actionClose_Workspace.setText(_translate("Form", "Close Workspace"))
         self.actionClose_Workspace.setShortcut(_translate("Form", "Ctrl+W"))
         self.actionClose_Window.setText(_translate("Form", "Close Window"))
@@ -70,4 +72,5 @@ class Ui_Form(object):
         self.actionSave_All.setShortcut(_translate("Form", "Ctrl+Shift+S"))
         self.actionHome_Page.setText(_translate("Form", "Home Page"))
         self.actionClose_All_Workspace.setText(_translate("Form", "Close All Workspace"))
+        self.actionopen_workspace_form_file.setText(_translate("Form", "Open Workspace From File"))
 

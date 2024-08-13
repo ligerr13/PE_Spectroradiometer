@@ -13,67 +13,162 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(506, 541)
+        Dialog.resize(609, 743)
         Dialog.setStyleSheet("background-color: rgb(20, 20, 20); \n"
-"border-radius: 5px;")
+"border-radius: 0px;")
         self.horizontalLayout = QtWidgets.QHBoxLayout(Dialog)
+        self.horizontalLayout.setContentsMargins(1, 1, 1, 2)
+        self.horizontalLayout.setSpacing(1)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.widget = QtWidgets.QWidget(parent=Dialog)
+        self.widget.setStyleSheet("")
         self.widget.setObjectName("widget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.widget)
-        self.verticalLayout.setContentsMargins(2, 2, 2, 2)
+        self.verticalLayout.setContentsMargins(2, 2, 2, 0)
+        self.verticalLayout.setSpacing(1)
         self.verticalLayout.setObjectName("verticalLayout")
         self.widget_2 = QtWidgets.QWidget(parent=self.widget)
         self.widget_2.setObjectName("widget_2")
-        self.verticalLayout.addWidget(self.widget_2)
-        self.widget_6 = QtWidgets.QWidget(parent=self.widget)
-        self.widget_6.setMinimumSize(QtCore.QSize(0, 50))
-        self.widget_6.setMaximumSize(QtCore.QSize(16777215, 50))
-        self.widget_6.setStyleSheet("color:white;\n"
-"border-radius: 5px;\n"
-"background-color: rgb(35, 35, 35);")
-        self.widget_6.setObjectName("widget_6")
-        self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.widget_6)
-        self.horizontalLayout_3.setContentsMargins(5, 5, 5, 5)
-        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        self.pushButton = QtWidgets.QPushButton(parent=self.widget_6)
-        self.pushButton.setMinimumSize(QtCore.QSize(0, 35))
-        self.pushButton.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
-        self.pushButton.setStyleSheet("QPushButton {\n"
+        self.gridLayout = QtWidgets.QGridLayout(self.widget_2)
+        self.gridLayout.setContentsMargins(1, 1, 1, 1)
+        self.gridLayout.setObjectName("gridLayout")
+        self.widget_4 = QtWidgets.QWidget(parent=self.widget_2)
+        self.widget_4.setObjectName("widget_4")
+        self.gridLayout_2 = QtWidgets.QGridLayout(self.widget_4)
+        self.gridLayout_2.setContentsMargins(5, 5, 5, 5)
+        self.gridLayout_2.setObjectName("gridLayout_2")
+        self.widget_5 = QtWidgets.QWidget(parent=self.widget_4)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Maximum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.widget_5.sizePolicy().hasHeightForWidth())
+        self.widget_5.setSizePolicy(sizePolicy)
+        self.widget_5.setStyleSheet("QPushButton {\n"
 "        border: 0px;\n"
 "        font: 700 10pt \"Segoe UI\";\n"
-"        color: rgb(43, 81, 235);\n"
-"        background-color: rgb(0, 33, 71);\n"
+"         background: rgb(55, 55, 55);\n"
+"        border :1px solid rgb(55, 55, 55);\n"
 "        }\n"
 "QPushButton:hover {\n"
-"          background-color: rgb(10, 43, 81);\n"
+"            background: rgb(43, 81, 235);\n"
+"            border :1px solid rgb(63, 101, 255);\n"
 "        }\n"
 "QPushButton:checked  {\n"
 "        border: 0px;\n"
+"        background: rgb(43, 81, 235);\n"
+"        border :1px solid rgb(63, 101, 255);\n"
 "}\n"
 "QPushTip{ \n"
 "        font: 12pt;\n"
 "        color: rgb(100, 100, 100);\n"
 "}")
+        self.widget_5.setObjectName("widget_5")
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.widget_5)
+        self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_2.setSpacing(5)
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.widget_8 = QtWidgets.QWidget(parent=self.widget_5)
+        self.widget_8.setMinimumSize(QtCore.QSize(150, 150))
+        self.widget_8.setMaximumSize(QtCore.QSize(150, 150))
+        self.widget_8.setStyleSheet("QWidget {\n"
+"background-color: rgb(31,31,31);\n"
+"}")
+        self.widget_8.setObjectName("widget_8")
+        self.gridLayout_3 = QtWidgets.QGridLayout(self.widget_8)
+        self.gridLayout_3.setContentsMargins(3, 3, 3, 3)
+        self.gridLayout_3.setHorizontalSpacing(2)
+        self.gridLayout_3.setVerticalSpacing(1)
+        self.gridLayout_3.setObjectName("gridLayout_3")
+        self.widget_9 = QtWidgets.QWidget(parent=self.widget_8)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.widget_9.sizePolicy().hasHeightForWidth())
+        self.widget_9.setSizePolicy(sizePolicy)
+        self.widget_9.setStyleSheet("QLabel {\n"
+"    color: rgb(255, 255, 255);\n"
+"    font: 700 10pt \"Segoe UI\";\n"
+"}\n"
+"QWidget {\n"
+"    background-color: rgb(31, 31, 31);\n"
+"}")
+        self.widget_9.setObjectName("widget_9")
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.widget_9)
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.label = QtWidgets.QLabel(parent=self.widget_9)
+        self.label.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.label.setObjectName("label")
+        self.verticalLayout_2.addWidget(self.label)
+        self.gridLayout_3.addWidget(self.widget_9, 0, 0, 1, 1)
+        self.widget_10 = QtWidgets.QWidget(parent=self.widget_8)
+        self.widget_10.setStyleSheet("QPushButton {\n"
+"border-radius: 1px;\n"
+"background-color: rgb(0, 150, 255);\n"
+"}")
+        self.widget_10.setObjectName("widget_10")
+        self.gridLayout_4 = QtWidgets.QGridLayout(self.widget_10)
+        self.gridLayout_4.setContentsMargins(1, 1, 1, 1)
+        self.gridLayout_4.setSpacing(1)
+        self.gridLayout_4.setObjectName("gridLayout_4")
+        self.pushButton = QtWidgets.QPushButton(parent=self.widget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.pushButton.sizePolicy().hasHeightForWidth())
+        self.pushButton.setSizePolicy(sizePolicy)
+        self.pushButton.setMinimumSize(QtCore.QSize(90, 90))
+        self.pushButton.setMaximumSize(QtCore.QSize(90, 90))
+        self.pushButton.setStyleSheet("")
+        self.pushButton.setText("")
         self.pushButton.setObjectName("pushButton")
-        self.horizontalLayout_3.addWidget(self.pushButton)
-        spacerItem = QtWidgets.QSpacerItem(100, 20, QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.horizontalLayout_3.addItem(spacerItem)
+        self.gridLayout_4.addWidget(self.pushButton, 0, 0, 1, 1)
+        self.gridLayout_3.addWidget(self.widget_10, 1, 0, 1, 1)
+        self.horizontalLayout_2.addWidget(self.widget_8)
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem)
+        self.gridLayout_2.addWidget(self.widget_5, 0, 0, 1, 1)
+        self.widget_7 = QtWidgets.QWidget(parent=self.widget_4)
+        self.widget_7.setObjectName("widget_7")
+        self.gridLayout_2.addWidget(self.widget_7, 1, 0, 1, 1)
+        self.gridLayout.addWidget(self.widget_4, 0, 0, 1, 2)
+        self.widget_3 = QtWidgets.QWidget(parent=self.widget_2)
+        self.widget_3.setObjectName("widget_3")
+        self.gridLayout.addWidget(self.widget_3, 1, 0, 1, 2)
+        self.verticalLayout.addWidget(self.widget_2)
+        self.widget_6 = QtWidgets.QWidget(parent=self.widget)
+        self.widget_6.setMinimumSize(QtCore.QSize(0, 50))
+        self.widget_6.setMaximumSize(QtCore.QSize(16777215, 50))
+        self.widget_6.setStyleSheet("color:white;\n"
+"border-radius: 1px;\n"
+"background-color: rgb(35, 35, 35);")
+        self.widget_6.setObjectName("widget_6")
+        self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.widget_6)
+        self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_3.setSpacing(2)
+        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         self.pushButton_2 = QtWidgets.QPushButton(parent=self.widget_6)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.pushButton_2.sizePolicy().hasHeightForWidth())
+        self.pushButton_2.setSizePolicy(sizePolicy)
         self.pushButton_2.setMinimumSize(QtCore.QSize(0, 35))
         self.pushButton_2.setMaximumSize(QtCore.QSize(150, 16777215))
         self.pushButton_2.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.pushButton_2.setStyleSheet("QPushButton {\n"
 "        border: 0px;\n"
 "        font: 700 10pt \"Segoe UI\";\n"
-"        border :1.5px solid rgb(55, 55, 55);\n"
+"         background: rgb(55, 55, 55);\n"
+"        border :1px solid rgb(55, 55, 55);\n"
 "        }\n"
 "QPushButton:hover {\n"
-"            background: rgb(55, 55, 55);\n"
+"            background: rgb(43, 81, 235);\n"
+"            border :1px solid rgb(63, 101, 255);\n"
 "        }\n"
 "QPushButton:checked  {\n"
 "        border: 0px;\n"
-"        background-color: rgb(45, 45, 45);\n"
+"        background: rgb(43, 81, 235);\n"
+"        border :1px solid rgb(63, 101, 255);\n"
 "}\n"
 "QPushTip{ \n"
 "        font: 12pt;\n"
@@ -86,22 +181,27 @@ class Ui_Dialog(object):
         self.buttonGroup_2.addButton(self.pushButton_2)
         self.horizontalLayout_3.addWidget(self.pushButton_2)
         self.pushButton_3 = QtWidgets.QPushButton(parent=self.widget_6)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.pushButton_3.sizePolicy().hasHeightForWidth())
+        self.pushButton_3.setSizePolicy(sizePolicy)
         self.pushButton_3.setMinimumSize(QtCore.QSize(0, 35))
         self.pushButton_3.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.pushButton_3.setStyleSheet("QPushButton {\n"
 "        border: 0px;\n"
 "        font: 700 10pt \"Segoe UI\";\n"
 "         background: rgb(55, 55, 55);\n"
-"        border :3px solid rgb(55, 55, 55);\n"
+"        border :1px solid rgb(55, 55, 55);\n"
 "        }\n"
 "QPushButton:hover {\n"
 "            background: rgb(43, 81, 235);\n"
-"            border :3px solid rgb(63, 101, 255);\n"
+"            border :1px solid rgb(63, 101, 255);\n"
 "        }\n"
 "QPushButton:checked  {\n"
 "        border: 0px;\n"
 "        background: rgb(43, 81, 235);\n"
-"        border :3px solid rgb(63, 101, 255);\n"
+"        border :1px solid rgb(63, 101, 255);\n"
 "}\n"
 "QPushTip{ \n"
 "        font: 12pt;\n"
@@ -122,8 +222,7 @@ class Ui_Dialog(object):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.widget.setStyleSheet(_translate("Dialog", "0"))
-        self.pushButton.setText(_translate("Dialog", "Preview"))
+        self.label.setText(_translate("Dialog", "PLOTA"))
         self.pushButton_2.setText(_translate("Dialog", "Cancel"))
         self.pushButton_3.setText(_translate("Dialog", "Create"))
 

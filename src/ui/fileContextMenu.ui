@@ -42,9 +42,9 @@ QMenu:item:selected {
 }</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_2"/>
-  <action name="actionSave">
+  <action name="actionSaveAs">
    <property name="text">
-    <string>Save</string>
+    <string>Save As</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+S</string>
@@ -87,6 +87,11 @@ QMenu:item:selected {
   <action name="actionClose_All_Workspace">
    <property name="text">
     <string>Close All Workspace</string>
+   </property>
+  </action>
+  <action name="actionopen_workspace_form_file">
+   <property name="text">
+    <string>Open Workspace From File</string>
    </property>
   </action>
  </widget>
