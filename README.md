@@ -28,6 +28,7 @@
 ![python3 12_SbLlt9e5jE](https://github.com/ligerr13/PE_Spectroradiometer/assets/126343507/404f3ba1-47ad-4124-bf0f-68f73c5a0a33)
 
 8/13/2024
+BASIC SAVE / LOAD SYSTEM
 https://github.com/user-attachments/assets/6bce14bc-126c-425a-8bb1-50f3fd689e66
 
 
