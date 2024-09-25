@@ -1,3 +1,5 @@
+import os
+
 from PyQt6.QtWidgets import QApplication, QMainWindow, QGraphicsView, QMenu, QFileDialog
 from PyQt6.QtGui import QGuiApplication, QKeySequence
 from PyQt6.QtCore import  QCoreApplication, QPoint, pyqtSlot
@@ -9,6 +11,7 @@ from src.workspace_template import Workspace
 from src.signals.signals import WorkspaceSignalBus
 from src.workspace_landing_page import WorkSpaceLandingPage
 from src.objects.fileContextMenu import Ui_Form
+from src.globals.utils import show_toast, ToastType
 
 class FileContextMenu(QMenu):
     def __init__(self):
@@ -33,19 +36,23 @@ class FileContextMenu(QMenu):
 
         ## Calling Methods 
         self.file_context_menu.actionClose_Window.setShortcut(QKeySequence("Ctrl+Q"))
+        self.file_context_menu.actionHome_Page.setShortcut(QKeySequence("Ctrl+H"))
+
+from PyQt6.QtWidgets import QMainWindow, QMessageBox
+from src.globals.utils import show_toast
 
 class MyApp(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        ## Setup UI
+        # Setup UI
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.navbar = NavBar(self.ui)
         self.tm = TabManager(self.ui)
         self.fcu = FileContextMenu()
 
-        ## Actions
+        # Actions
         self.addActions([
             self.fcu.file_context_menu.actionHome_Page,
             self.fcu.file_context_menu.actionNew_Workspace,
@@ -56,24 +63,23 @@ class MyApp(QMainWindow):
             self.fcu.file_context_menu.actionClose_Window
         ])
 
-        ## Signal Bus
+        # Signal Bus
         self.signal_bus = WorkspaceSignalBus.instance()
 
-        ## Signals
+        # Signals
         self.tm.file_menu_button.clicked.connect(self.handle_file_context_menu)
-
         self.tm.plusClicked.connect(lambda: self.tm.add_page(WorkSpaceLandingPage(), "New Workspace"))
         self.fcu.file_context_menu.actionNew_Workspace.triggered.connect(lambda: self.tm.add_page(WorkSpaceLandingPage(), "New Workspace"))
-
-        self.fcu.file_context_menu.actionClose_Window.triggered.connect(lambda: QCoreApplication.quit()) ##TODO: Call handler check unsaved ws and then quit. 
-        self.fcu.file_context_menu.actionClose_Workspace.triggered.connect(lambda: self.tm.remove_page(self.tm.get_current_page_index())) ##TODO: Call handler check unsaved ws and then quit.
+        self.fcu.file_context_menu.actionClose_Window.triggered.connect(lambda: QCoreApplication.quit())
+        self.fcu.file_context_menu.actionClose_Workspace.triggered.connect(lambda: self.tm.remove_page(self.tm.get_current_page_index()))
+        self.fcu.file_context_menu.actionHome_Page.triggered.connect(lambda: self.tm.tabWidget.setCurrentIndex(self.tm.get_page_by_tabname("home")))
         
         self.fcu.file_context_menu.actionopen_workspace_form_file.triggered.connect(self.open_dialog_and_create_workspace)
         self.fcu.file_context_menu.actionSaveAs.triggered.connect(self.save_current_workspace)
         self.signal_bus.newWorkspaceCreated.connect(self.handleNewWorkspaceCreation)
 
-        ##Calling Methods
-        self.tm.add_page(Workspace("Test Workspace"),"Test Workspace")
+        # Calling Methods
+        self.tm.add_page(Workspace("Default"), "Default")
 
     @pyqtSlot()
     def open_dialog_and_create_workspace(self):
@@ -84,9 +90,13 @@ class MyApp(QMainWindow):
                 "JSON Files (*.json)",
         )
         
-        if not fname: return
+        file_name = os.path.basename(fname)
+        if not fname: 
+            show_toast("No file selected.", 3000, ToastType.ERROR, self)
+            return
 
-        self.new_page(fname)
+        self.new_page(file_name)
+        show_toast(f"Opened workspace: {file_name}", 3000, ToastType.SUCCESS, self)
             
     @pyqtSlot()
     def save_current_workspace(self):
@@ -97,18 +107,21 @@ class MyApp(QMainWindow):
                 "JSON Files (*.json)"
         )
 
-        if not fname:
+        if not fname: 
+            show_toast("No file selected for saving.", 3000, ToastType.ERROR, self) 
             return
 
         if not fname.endswith('.json'):
             fname += '.json'
 
+        file_name = os.path.basename(fname)
         wk_id = self.tm.get_current_page_widget()
-        if not wk_id:
+        if not wk_id: 
+            show_toast("No workspace to save.", 3000, ToastType.ERROR, self)
             return
 
-        wk_id.save_workspace(fname)
-
+        wk_id.save_workspace(file_name)
+        show_toast(f"Saved workspace: {file_name}", 3000, ToastType.SUCCESS, self)
 
     def handle_file_context_menu(self):
         sender_button = self.sender()
@@ -120,6 +133,7 @@ class MyApp(QMainWindow):
     def handleNewWorkspaceCreation(self, tag):
         self.tm.remove_page(self.tm.get_current_page_index())
         self.tm.add_page(Workspace(tag), tag)
+        show_toast(f"Created new workspace: {tag}", 3000, ToastType.SUCCESS, self)
 
     def new_page(self, tag):
         wk = Workspace(tag)

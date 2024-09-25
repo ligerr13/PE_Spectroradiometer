@@ -1,6 +1,7 @@
 from PyQt6.QtWidgets import QWidget, QVBoxLayout
-from PyQt6.QtCore import QPoint
+from PyQt6.QtCore import QPoint, Qt
 from PyQt6.QtGui import QMouseEvent
+from PyQt6 import QtGui
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg
@@ -15,6 +16,7 @@ class SpectralPlotWidget(SceneWidget):
         self.data = None
         self.plt = plt
         self.plt.style.use('dark_background')
+
         self.init_ui()
 
     def init_ui(self):
@@ -42,7 +44,9 @@ class SpectralPlotWidget(SceneWidget):
         self.plot_canvas.draw()
 
 class MplCanvas(FigureCanvasQTAgg):
-    def __init__(self, parent=None, width=3, height=3, dpi=100):
+    def __init__(self, parent=None, width= int(300 / 96), height=int(300 / 96), dpi=300 / int(300 / 96)):
         fig = Figure(figsize=(width, height), dpi=dpi)
         self.axes = fig.add_subplot(111)
         super(MplCanvas, self).__init__(fig)
+        self.setCursor(QtGui.QCursor(Qt.CursorShape.ArrowCursor)) 
+        

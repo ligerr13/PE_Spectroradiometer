@@ -1,7 +1,8 @@
 from PyQt6.QtCore import  QSize, pyqtSignal, QObject, QPoint, Qt
-from PyQt6.QtWidgets import QTabBar, QPushButton, QMenu, QMenuBar
+from PyQt6.QtWidgets import QTabBar, QPushButton, QMenu, QMenuBar, QWidget
 from PyQt6.QtGui import QIcon, QKeySequence
 from PyQt6 import QtCore
+from src.globals.utils import show_toast, ToastType
 
 
 
@@ -162,3 +163,12 @@ class TabManager(QObject):
         else:
             self.plusButton.move(self._sizeHint().width(), h)
         
+    def get_page_by_tabname(self, tab_name: str) -> int:
+        try:
+            index = self.tabWidget.indexOf(self.tabWidget.findChild(QWidget, tab_name))
+            print(index)
+            return index
+        except Exception as e:
+            message = f"Error finding page: \n{e}"
+            show_toast(message, 7000, ToastType.ERROR)
+            return -1

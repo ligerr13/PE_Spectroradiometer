@@ -13,8 +13,7 @@ from src.widgets.spectralplottest import SpectralPlotWidget
 from src.signals.signals import WorkspaceSignalBus
 from src.dialogs.textToSceneDialog import TextToSceneDialog
 
-from src.globals.utils import show_toast
-from src.globals.enum import ToastType
+from src.globals.utils import show_toast, ToastType
 
 
 
@@ -108,7 +107,6 @@ class Workspace(QWidget):
                                   font: 570 10pt "Consolas";
         """)
         self.button.setText(f"{self.view.viewport().width()}x{self.view.viewport().height()}") 
-        # print(f"{self.view.viewport().width()}x{self.view.viewport().height()}") 
     
     def update_explorer(self):
         widget_items = self.explorer.findItems("Widget", Qt.MatchFlag.MatchExactly | Qt.MatchFlag.MatchRecursive)
@@ -220,11 +218,16 @@ class Workspace(QWidget):
                     self.ui.CreateWidgetButton.setChecked(True)
 
     def handle_scene_drag_mode(self, selected: bool):
-            if selected is not None:
-                if  selected == False:
-                    self.view.setDragMode(QGraphicsView.DragMode.NoDrag)
-                else:
-                    self.view.setDragMode(QGraphicsView.DragMode.ScrollHandDrag)
+        if selected:
+            self.view.setDragMode(QGraphicsView.DragMode.ScrollHandDrag)
+            WIDGET_DATA = self.scene.extract_widget_data()
+            for widget in WIDGET_DATA:
+                widget.enableMovementSignal.emit(True)
+        else:
+            self.view.setDragMode(QGraphicsView.DragMode.NoDrag)
+            WIDGET_DATA = self.scene.extract_widget_data()
+            for widget in WIDGET_DATA:
+                widget.enableMovementSignal.emit(False) 
 
     def handle_scene_select_mode(self, selected: bool):
             try:
@@ -312,44 +315,66 @@ class Workspace(QWidget):
         with open(f'{file_name}', 'w') as file:
             json.dump(WORKSAPCE_DATA, file, indent=4)
         
-        show_toast("Workscape Saved!", 3000, ToastType.SUCCESS, self)
+        # show_toast("Workscape Saved!", 3000, ToastType.SUCCESS)
     
     def load_workspace(self, file_name: str):
         try:
-            with open(f'{file_name}', 'r') as file:
+            with open(file_name, 'r') as file:
                 LOADED = json.load(file)
-
-            if isinstance(LOADED, dict):
-                WIDGETS_DATA = LOADED.get('widgets', [])
+            
+            if not isinstance(LOADED, dict):
+                raise ValueError("Loaded data is not a valid dictionary.")
+            
+            workspace_name = LOADED.get('workspace')
+            if not workspace_name:
+                raise ValueError("Workspace name is missing or invalid.")
+            
+            WIDGETS_DATA = LOADED.get('widgets', [])
+            
+            if not isinstance(WIDGETS_DATA, list):
+                raise ValueError("Widgets data is not a valid list.")
+            
+            for WIDGET in WIDGETS_DATA:
+                if not isinstance(WIDGET, dict):
+                    continue
                 
-                if isinstance(WIDGETS_DATA, list):
-                    for WIDGET in WIDGETS_DATA:
-                        if isinstance(WIDGET, dict) and WIDGET.get('type') == 'SceneWidget':
-                            widget = SpectralPlotWidget()
-                            
-                            widget.setObjectName(WIDGET.get('uniqe_name', 'DefaultID'))
-                            widget.setSpectralData(WIDGET.get('data', ''))
-                            
-                            geometry = WIDGET.get('geometry', {})
-                            x: float = geometry.get('x', 0)
-                            y: float = geometry.get('y', 0)
-                            width: float = geometry.get('width', 100)
-                            height: float = geometry.get('height', 100)
-                            
-                            widget.setGeometryProperties(x, y, width, height)
-                            
-                            self.scene.addWidget(widget)
-            show_toast("Workspace loaded successfully", 3000, ToastType.SUCCESS, self)
+                if WIDGET.get('type') == 'SceneWidget':
+                    widget = SpectralPlotWidget()
+                    try:
+                        widget.setObjectName(WIDGET.get('uniqe_name', 'DefaultID'))
+                        widget.setSpectralData(WIDGET.get('data', ''))
+                        
+                        geometry = WIDGET.get('geometry', {})
+                        x = geometry.get('x')
+                        y = geometry.get('y')
+                        width = geometry.get('width')
+                        height = geometry.get('height')
+
+                        if not isinstance(x, (int, float)) or not isinstance(y, (int, float)) or not isinstance(width, (int, float)) or not isinstance(height, (int, float)):
+                            raise ValueError(f"Invalid geometry values")
+
+                        widget.setGeometryProperties(x, y, width, height)
+                        
+                        self.scene.addWidget(widget)
+                    except Exception as widget_error:
+                        # show_toast(f"Error processing widget: \n{widget_error}", 3000, ToastType.ERROR)
+                        pass
+            
             self.update_explorer()
+            # show_toast("Workspace loaded successfully", 3000, ToastType.SUCCESS)
 
-        except FileNotFoundError:
-            show_toast("Error: $ffile_name}'' file not found.",3000,ToastType.ERROR, self)
+        except FileNotFoundError as fnf_error:
+            # show_toast(f"Error: \n{fnf_error}", 3000, ToastType.ERROR)
+            pass
         except json.JSONDecodeError:
-            show_toast("Error: Failed to decode JSON.",3000,ToastType.ERROR, self)
-
+            # show_toast("Error: \nFailed to decode JSON.", 3000, ToastType.ERROR)
+            pass
+        except ValueError as ve:
+            # show_toast(f"Error: \n{ve}", 3000, ToastType.ERROR)
+            pass
         except Exception as e:
-            show_toast(f"Unexpected error: {e}",3000,ToastType.ERROR, self)
-
+            # show_toast(f"Unexpected error: \n{e}", 3000, ToastType.ERROR)
+            pass
 
 class NodeboardGraphicsScene(QGraphicsScene):
     def __init__(self, parent=None):

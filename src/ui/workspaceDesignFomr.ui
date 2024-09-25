@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1190</width>
-    <height>722</height>
+    <height>883</height>
    </rect>
   </property>
   <property name="cursor">
@@ -221,12 +221,12 @@ border-left: 0;
          <string notr="true">border: 0; margin: 0 0 0 0;</string>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="page_5">
          <property name="styleSheet">
-          <string notr="true">	padding: 5 5 5 5;
-	margin: 5 5 5 5;</string>
+          <string notr="true">padding: 5 5 5 5;
+margin: 5 5 5 5;</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_4">
           <property name="leftMargin">
@@ -237,6 +237,9 @@ border-left: 0;
           </property>
           <property name="rightMargin">
            <number>0</number>
+          </property>
+          <property name="spacing">
+           <number>5</number>
           </property>
           <item row="0" column="0">
            <widget class="QWidget" name="widget_9" native="true">
@@ -338,9 +341,12 @@ QPushButton:focus {
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true"/>
+             <string notr="true">padding: 15 0 0 0;</string>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_2">
+             <property name="spacing">
+              <number>5</number>
+             </property>
              <property name="leftMargin">
               <number>0</number>
              </property>
@@ -364,21 +370,28 @@ QPushButton:focus {
               </widget>
              </item>
              <item>
-              <widget class="QWidget" name="widget_15" native="true">
+              <widget class="QFrame" name="frame_15">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>100</height>
+                 <height>0</height>
                 </size>
                </property>
                <property name="styleSheet">
-                <string notr="true">QPushButton {
+                <string notr="true">QFrame {
+	margin: 0 0 0 0;
+	padding: 10 0 0 0;
+	border: 0 0 0 0;
+}
+QPushButton {
 		border: 0px;
-		font: 500 10pt &quot;Consolas&quot;;
-		height: 40px;
+		font: 550 11pt &quot;Consolas&quot;;
 		text-align:left;
-		padding: 5 5 5 5;
-		color: 	rgb(190, 190, 190)
+		color: 	rgb(190, 190, 190);
+		background:  rgb(40, 40, 40);
+		margin: 0 0 0 0;
+		border: 0px;
+		padding: 5 10 5 10;
 }
 QPushButton:hover {
             background: rgb(55, 55, 55);
@@ -387,7 +400,7 @@ QPushButton:hover {
 QPushButton:checked  {
 		border: 0px;
 		border-radius: 0px;
-		border-left: 3px solid rgb(63, 101, 255);
+		border-left: 3px solid rgb(0, 150, 255);
 		color: white;
 }
 QPushButton:unchecked  {
@@ -398,14 +411,14 @@ QPushButton:unchecked  {
 QToolTip{ 
 		font: 12pt;
 		color: rgb(100, 100, 100);
-}
-QWidget {
-border: 0;
 }</string>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_10">
+                <property name="spacing">
+                 <number>2</number>
+                </property>
                 <property name="leftMargin">
-                 <number>15</number>
+                 <number>0</number>
                 </property>
                 <property name="topMargin">
                  <number>0</number>
@@ -441,7 +454,7 @@ border: 0;
 Click to add a new widget.</string>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">font: 500 11pt &quot;Consolas&quot;;</string>
+                   <string notr="true"/>
                   </property>
                   <property name="text">
                    <string> Create New Widget</string>
@@ -469,6 +482,12 @@ Click to add a new widget.</string>
                 </item>
                 <item>
                  <widget class="QPushButton" name="pushButton">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>40</height>
+                   </size>
+                  </property>
                   <property name="maximumSize">
                    <size>
                     <width>16777215</width>
@@ -479,7 +498,7 @@ Click to add a new widget.</string>
                    <cursorShape>PointingHandCursor</cursorShape>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">font: 500 11pt &quot;Consolas&quot;;</string>
+                   <string notr="true"/>
                   </property>
                   <property name="text">
                    <string> Create PDF</string>
@@ -1043,7 +1062,7 @@ QLabel {
          <string notr="true">border:0px;</string>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="page_12">
          <property name="styleSheet">
@@ -2442,22 +2461,6 @@ Click here to zoom out.</string>
    </hints>
   </connection>
   <connection>
-   <sender>CreateWidgetButton</sender>
-   <signal>clicked(bool)</signal>
-   <receiver>WorkspaceDesignForm</receiver>
-   <slot>handle_create_widget_on_scene(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>275</x>
-     <y>134</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>627</x>
-     <y>403</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>widget_properites_panel_button</sender>
    <signal>clicked(bool)</signal>
    <receiver>WorkspaceDesignForm</receiver>
@@ -2521,6 +2524,22 @@ Click here to zoom out.</string>
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>CreateWidgetButton</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>WorkspaceDesignForm</receiver>
+   <slot>handle_create_widget_on_scene(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>197</x>
+     <y>123</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>594</x>
+     <y>441</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>handle_scene_drag_mode(bool)</slot>
@@ -2539,11 +2558,11 @@ Click here to zoom out.</string>
  </slots>
  <buttongroups>
   <buttongroup name="WorkspaceButtonGroup"/>
+  <buttongroup name="WorkspaceToolsButtonGroup"/>
   <buttongroup name="WorkspaceMenuButtonGroup">
    <property name="exclusive">
     <bool>true</bool>
    </property>
   </buttongroup>
-  <buttongroup name="WorkspaceToolsButtonGroup"/>
  </buttongroups>
 </ui>

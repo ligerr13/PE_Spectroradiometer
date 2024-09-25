@@ -13,7 +13,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_WorkspaceDesignForm(object):
     def setupUi(self, WorkspaceDesignForm):
         WorkspaceDesignForm.setObjectName("WorkspaceDesignForm")
-        WorkspaceDesignForm.resize(1190, 722)
+        WorkspaceDesignForm.resize(1190, 883)
         WorkspaceDesignForm.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.ArrowCursor))
         WorkspaceDesignForm.setStyleSheet("margin: 0 0 0 0;")
         self.gridLayout = QtWidgets.QGridLayout(WorkspaceDesignForm)
@@ -102,11 +102,12 @@ class Ui_WorkspaceDesignForm(object):
         self.stackedWidget.setStyleSheet("border: 0; margin: 0 0 0 0;")
         self.stackedWidget.setObjectName("stackedWidget")
         self.page_5 = QtWidgets.QWidget()
-        self.page_5.setStyleSheet("    padding: 5 5 5 5;\n"
-"    margin: 5 5 5 5;")
+        self.page_5.setStyleSheet("padding: 5 5 5 5;\n"
+"margin: 5 5 5 5;")
         self.page_5.setObjectName("page_5")
         self.gridLayout_4 = QtWidgets.QGridLayout(self.page_5)
         self.gridLayout_4.setContentsMargins(0, 5, 0, -1)
+        self.gridLayout_4.setSpacing(5)
         self.gridLayout_4.setObjectName("gridLayout_4")
         self.widget_9 = QtWidgets.QWidget(parent=self.page_5)
         self.widget_9.setObjectName("widget_9")
@@ -149,24 +150,32 @@ class Ui_WorkspaceDesignForm(object):
         self.widget_3.setMinimumSize(QtCore.QSize(0, 0))
         self.widget_3.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.widget_3.setSizeIncrement(QtCore.QSize(0, 0))
-        self.widget_3.setStyleSheet("")
+        self.widget_3.setStyleSheet("padding: 15 0 0 0;")
         self.widget_3.setObjectName("widget_3")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.widget_3)
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_2.setSpacing(5)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.label_6 = QtWidgets.QLabel(parent=self.widget_3)
         self.label_6.setStyleSheet("QLabel {font: 700 10pt \"Consolas\";color:     rgb(190, 190, 190);}")
         self.label_6.setObjectName("label_6")
         self.verticalLayout_2.addWidget(self.label_6)
-        self.widget_15 = QtWidgets.QWidget(parent=self.widget_3)
-        self.widget_15.setMinimumSize(QtCore.QSize(0, 100))
-        self.widget_15.setStyleSheet("QPushButton {\n"
+        self.frame_15 = QtWidgets.QFrame(parent=self.widget_3)
+        self.frame_15.setMinimumSize(QtCore.QSize(0, 0))
+        self.frame_15.setStyleSheet("QFrame {\n"
+"    margin: 0 0 0 0;\n"
+"    padding: 10 0 0 0;\n"
+"    border: 0 0 0 0;\n"
+"}\n"
+"QPushButton {\n"
 "        border: 0px;\n"
-"        font: 500 10pt \"Consolas\";\n"
-"        height: 40px;\n"
+"        font: 550 11pt \"Consolas\";\n"
 "        text-align:left;\n"
-"        padding: 5 5 5 5;\n"
-"        color:     rgb(190, 190, 190)\n"
+"        color:     rgb(190, 190, 190);\n"
+"        background:  rgb(40, 40, 40);\n"
+"        margin: 0 0 0 0;\n"
+"        border: 0px;\n"
+"        padding: 5 10 5 10;\n"
 "}\n"
 "QPushButton:hover {\n"
 "            background: rgb(55, 55, 55);\n"
@@ -175,7 +184,7 @@ class Ui_WorkspaceDesignForm(object):
 "QPushButton:checked  {\n"
 "        border: 0px;\n"
 "        border-radius: 0px;\n"
-"        border-left: 3px solid rgb(63, 101, 255);\n"
+"        border-left: 3px solid rgb(0, 150, 255);\n"
 "        color: white;\n"
 "}\n"
 "QPushButton:unchecked  {\n"
@@ -186,20 +195,18 @@ class Ui_WorkspaceDesignForm(object):
 "QToolTip{ \n"
 "        font: 12pt;\n"
 "        color: rgb(100, 100, 100);\n"
-"}\n"
-"QWidget {\n"
-"border: 0;\n"
 "}")
-        self.widget_15.setObjectName("widget_15")
-        self.verticalLayout_10 = QtWidgets.QVBoxLayout(self.widget_15)
-        self.verticalLayout_10.setContentsMargins(15, 0, 0, 0)
+        self.frame_15.setObjectName("frame_15")
+        self.verticalLayout_10 = QtWidgets.QVBoxLayout(self.frame_15)
+        self.verticalLayout_10.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_10.setSpacing(2)
         self.verticalLayout_10.setObjectName("verticalLayout_10")
-        self.CreateWidgetButton = QtWidgets.QPushButton(parent=self.widget_15)
+        self.CreateWidgetButton = QtWidgets.QPushButton(parent=self.frame_15)
         self.CreateWidgetButton.setMinimumSize(QtCore.QSize(40, 40))
         self.CreateWidgetButton.setMaximumSize(QtCore.QSize(9999, 40))
         self.CreateWidgetButton.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.CreateWidgetButton.setContextMenuPolicy(QtCore.Qt.ContextMenuPolicy.DefaultContextMenu)
-        self.CreateWidgetButton.setStyleSheet("font: 500 11pt \"Consolas\";")
+        self.CreateWidgetButton.setStyleSheet("")
         icon2 = QtGui.QIcon()
         icon2.addPixmap(QtGui.QPixmap(".\\src\\ui\\../../resources/icons/widget.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.CreateWidgetButton.setIcon(icon2)
@@ -211,10 +218,11 @@ class Ui_WorkspaceDesignForm(object):
         self.WorkspaceToolsButtonGroup.setObjectName("WorkspaceToolsButtonGroup")
         self.WorkspaceToolsButtonGroup.addButton(self.CreateWidgetButton)
         self.verticalLayout_10.addWidget(self.CreateWidgetButton)
-        self.pushButton = QtWidgets.QPushButton(parent=self.widget_15)
+        self.pushButton = QtWidgets.QPushButton(parent=self.frame_15)
+        self.pushButton.setMinimumSize(QtCore.QSize(0, 40))
         self.pushButton.setMaximumSize(QtCore.QSize(16777215, 40))
         self.pushButton.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
-        self.pushButton.setStyleSheet("font: 500 11pt \"Consolas\";")
+        self.pushButton.setStyleSheet("")
         icon3 = QtGui.QIcon()
         icon3.addPixmap(QtGui.QPixmap(".\\src\\ui\\../../resources/icons/pdf.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.pushButton.setIcon(icon3)
@@ -223,7 +231,7 @@ class Ui_WorkspaceDesignForm(object):
         self.pushButton.setObjectName("pushButton")
         self.WorkspaceToolsButtonGroup.addButton(self.pushButton)
         self.verticalLayout_10.addWidget(self.pushButton)
-        self.verticalLayout_2.addWidget(self.widget_15)
+        self.verticalLayout_2.addWidget(self.frame_15)
         spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
         self.verticalLayout_2.addItem(spacerItem1)
         self.gridLayout_4.addWidget(self.widget_3, 1, 0, 1, 1)
@@ -954,8 +962,8 @@ class Ui_WorkspaceDesignForm(object):
         self.gridLayout.addWidget(self.scene_widget, 1, 2, 1, 1)
 
         self.retranslateUi(WorkspaceDesignForm)
-        self.stackedWidget.setCurrentIndex(1)
-        self.stackedWidget_2.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget_2.setCurrentIndex(0)
         self.SelectButton.clicked['bool'].connect(WorkspaceDesignForm.handle_scene_select_mode) # type: ignore
         self.DeleteWidgetButton.toggled['bool'].connect(WorkspaceDesignForm.handle_scene_delete_mode) # type: ignore
         self.ZoomInButton.clicked.connect(WorkspaceDesignForm.handle_scene_zoom_in) # type: ignore
@@ -966,11 +974,11 @@ class Ui_WorkspaceDesignForm(object):
         self.WorkspaceMenuButtonGroup.idToggled['int','bool'].connect(self.stackedWidget.setCurrentIndex) # type: ignore
         self.allToolsMenuButton.clicked['bool'].connect(WorkspaceDesignForm.handle_menu_widget_visibility) # type: ignore
         self.widgetListMenuButton.clicked['bool'].connect(WorkspaceDesignForm.handle_menu_widget_visibility) # type: ignore
-        self.CreateWidgetButton.clicked['bool'].connect(WorkspaceDesignForm.handle_create_widget_on_scene) # type: ignore
         self.widget_properites_panel_button.clicked['bool'].connect(WorkspaceDesignForm.handle_properties_widget_visibility) # type: ignore
         self.pushButton_2.toggled['bool'].connect(self.widget_13.setVisible) # type: ignore
         self.pushButton_3.toggled['bool'].connect(self.widget_14.setVisible) # type: ignore
         self.pushButton_4.toggled['bool'].connect(self.widget_5.setVisible) # type: ignore
+        self.CreateWidgetButton.clicked['bool'].connect(WorkspaceDesignForm.handle_create_widget_on_scene) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(WorkspaceDesignForm)
 
     def retranslateUi(self, WorkspaceDesignForm):

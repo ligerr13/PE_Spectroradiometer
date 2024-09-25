@@ -14,7 +14,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.setWindowModality(QtCore.Qt.WindowModality.NonModal)
-        MainWindow.resize(1829, 950)
+        MainWindow.resize(1507, 934)
         MainWindow.setMinimumSize(QtCore.QSize(832, 624))
         MainWindow.setMaximumSize(QtCore.QSize(16777215, 16777215))
         MainWindow.setFocusPolicy(QtCore.Qt.FocusPolicy.TabFocus)

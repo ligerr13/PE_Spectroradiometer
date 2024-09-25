@@ -10,19 +10,19 @@ class WidgetCreatorDialog(QDialog):
         self.ui.setupUi(self)
 
         #Calling Methods
-    
-    
-    def closeEvent(self, event):
-            if self.result() == QDialog.DialogCode.Accepted:
-                print("Dialog accepted")
-            else:
-                print("Dialog rejected")
-            event.accept()
 
-    def onAccept(self):
+    def onCustomWidgetClicked(self):
+        self.ui.stackedWidget.setCurrentIndex(0)
+    
+    def onCustomWidget2Clicked(self):
+        self.ui.stackedWidget.setCurrentIndex(1)
+        
+    def onCreateWidget(self):
         print("Creating Widget")
         self.accept()
 
+    def onCancel(self):
+        self.reject()
 
     def popUp(self):
         self.exec()

@@ -19,13 +19,22 @@ class ToastWidget(QWidget):
         self.setLayout(layout)
         self.adjustSize()
         
-        if parent:
-            parent_geometry = parent.geometry()
+        if parent is None:
+            app_instance = QApplication.instance()
+            main_window = app_instance.activeWindow() if app_instance else None
+            
+            if main_window:
+                self.setParent(main_window)
+            
             screen_geometry = QApplication.primaryScreen().availableGeometry()
-            self.move(screen_geometry.x() + (screen_geometry.width() - self.width()) // 2,screen_geometry.y() + 150)
+            self.move((screen_geometry.x() + (screen_geometry.width() - self.width())) // 4, 100)
         else:
+            
+            self.setParent(parent)
+            
             screen_geometry = QApplication.primaryScreen().availableGeometry()
-            self.move((screen_geometry.width() - self.width()) // 2,150 )
+            self.move((screen_geometry.x() + (screen_geometry.width() - self.width())) // 2, 150)
+
 
         QTimer.singleShot(duration, self.close)
 

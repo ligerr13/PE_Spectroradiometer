@@ -1,4 +1,5 @@
 from PyQt6.QtGui import QMouseEvent
+from PyQt6 import QtGui
 from PyQt6.QtWidgets import QWidget
 from PyQt6 import QtCore
 from PyQt6.QtCore import pyqtSignal, Qt, QPointF
@@ -6,20 +7,31 @@ from PyQt6.QtCore import pyqtSignal, Qt, QPointF
 from .serializable_widget import SerializableWidget
 
 class SceneWidget(SerializableWidget):
-    clicked = pyqtSignal()
+    enableMovementSignal = pyqtSignal(bool)
 
     def __init__(self, parent=None):
         super().__init__(widget_id="SpectralData Widget", widget_type="SceneWidget", data=None)
         self.setObjectName("SpectralData Widget")
         self.oldPos = None
-
+        self.moveable = False
+        self.enableMovementSignal.connect(self.enable_movement)
+    
+    def enable_movement(self, value: bool = True):
+        self.moveable = value
+        if self.moveable:
+            self.setCursor(QtGui.QCursor(Qt.CursorShape.CrossCursor))
+        else:
+            self.setCursor(QtGui.QCursor(Qt.CursorShape.ArrowCursor)) 
+    
     def mousePressEvent(self, evt: QMouseEvent):
+        if not self.moveable: return
+        
         self.oldPos = evt.globalPosition()
         evt.accept()
 
     def mouseMoveEvent(self, evt: QMouseEvent):
-        if self.oldPos is None:
-            return 
+        if self.oldPos is None: return 
+        if not self.moveable: return
 
         delta = QPointF(evt.globalPosition() - self.oldPos)
         
