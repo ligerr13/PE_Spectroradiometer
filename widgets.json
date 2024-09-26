@@ -6,8 +6,8 @@
             "type": "SceneWidget",
             "uniqe_name": "Kekszes Widget",
             "geometry": {
-                "x": 105,
-                "y": 127,
+                "x": 14,
+                "y": 45,
                 "width": 350,
                 "height": 350
             },

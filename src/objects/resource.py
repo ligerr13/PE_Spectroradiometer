@@ -61,8 +61,8 @@ class Ui_MainWindow(object):
 "    padding: 15 0 15 15;\n"
 "    font: 700 10pt \"Consolas\";\n"
 "    border: 2px;\n"
-"    /*border-top-right-radius: 1px;\n"
-"    border-top-left-radius: 1px;*/\n"
+"    /*border-top-right-radius: 1px;*/\n"
+"    border-left: 1px solid rgba(129, 129, 129, 50);\n"
 "} \n"
 "\n"
 "QTabBar::tab:selected { \n"
@@ -78,7 +78,7 @@ class Ui_MainWindow(object):
 "      background: rgb(45, 45, 45);\n"
 "}\n"
 "QTabWidget::tab-bar  {\n"
-"left: 55px;\n"
+"left: 54px;\n"
 "top: 1px;\n"
 "}")
         self.tabWidget.setTabPosition(QtWidgets.QTabWidget.TabPosition.North)

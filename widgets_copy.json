@@ -6,8 +6,8 @@
             "type": "SceneWidget",
             "uniqe_name": "Sajtos Widget",
             "geometry": {
-                "x": 17,
-                "y": 37,
+                "x": 15,
+                "y": 54,
                 "width": 230,
                 "height": 230
             },
@@ -18,8 +18,8 @@
             "type": "SceneWidget",
             "uniqe_name": "Hagymas Widget",
             "geometry": {
-                "x": 255,
-                "y": 37,
+                "x": 536,
+                "y": 179,
                 "width": 330,
                 "height": 330
             },

@@ -509,7 +509,7 @@ class Ui_Dialog(object):
         self.horizontalLayout.addWidget(self.page_selector_widget)
 
         self.retranslateUi(Dialog)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(1)
         self.CreateWidgetPushButton.clicked.connect(Dialog.onCreateWidget) # type: ignore
         self.CancelCreateWidget.clicked.connect(Dialog.onCancel) # type: ignore
         self.custom_widget_button.clicked.connect(Dialog.onCustomWidgetClicked) # type: ignore

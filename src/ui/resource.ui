@@ -107,8 +107,8 @@ QTabBar::tab {
 	padding: 15 0 15 15;
 	font: 700 10pt &quot;Consolas&quot;;
 	border: 2px;
-	/*border-top-right-radius: 1px;
-	border-top-left-radius: 1px;*/
+	/*border-top-right-radius: 1px;*/
+	border-left: 1px solid rgba(129, 129, 129, 50);
 } 
 
 QTabBar::tab:selected { 
@@ -124,7 +124,7 @@ QTabBar::tab:hover {
   	background: rgb(45, 45, 45);
 }
 QTabWidget::tab-bar  {
-left: 55px;
+left: 54px;
 top: 1px;
 }</string>
       </property>

@@ -289,8 +289,10 @@ margin: 5 5 5 5;</string>
                 <string notr="true">QPushButton {
 	margin: 5 5 5 5;
 	padding: 5 5 5 5;
-	border-radius: 3px;
+	border-radius: 2px;
 	background: transparent;
+	/*background: rgb(25, 25, 25);*/
+    /*border: 2px solid  rgb(35, 35, 35);*/
 }
 QPushButton:hover {
             background: rgb(72, 75, 75);
@@ -2557,8 +2559,8 @@ Click here to zoom out.</string>
   <slot>handle_properties_widget_visibility(bool)</slot>
  </slots>
  <buttongroups>
-  <buttongroup name="WorkspaceButtonGroup"/>
   <buttongroup name="WorkspaceToolsButtonGroup"/>
+  <buttongroup name="WorkspaceButtonGroup"/>
   <buttongroup name="WorkspaceMenuButtonGroup">
    <property name="exclusive">
     <bool>true</bool>

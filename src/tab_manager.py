@@ -100,7 +100,6 @@ class TabManager(QObject):
 
         self._move_plus_button()
         
-
     def remove_page(self, index):
         """
         Remove the page at the specified index.
@@ -166,7 +165,6 @@ class TabManager(QObject):
     def get_page_by_tabname(self, tab_name: str) -> int:
         try:
             index = self.tabWidget.indexOf(self.tabWidget.findChild(QWidget, tab_name))
-            print(index)
             return index
         except Exception as e:
             message = f"Error finding page: \n{e}"

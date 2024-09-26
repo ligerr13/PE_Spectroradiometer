@@ -361,19 +361,14 @@ class Workspace(QWidget):
                         pass
             
             self.update_explorer()
-            # show_toast("Workspace loaded successfully", 3000, ToastType.SUCCESS)
 
         except FileNotFoundError as fnf_error:
-            # show_toast(f"Error: \n{fnf_error}", 3000, ToastType.ERROR)
             pass
         except json.JSONDecodeError:
-            # show_toast("Error: \nFailed to decode JSON.", 3000, ToastType.ERROR)
             pass
         except ValueError as ve:
-            # show_toast(f"Error: \n{ve}", 3000, ToastType.ERROR)
             pass
         except Exception as e:
-            # show_toast(f"Unexpected error: \n{e}", 3000, ToastType.ERROR)
             pass
 
 class NodeboardGraphicsScene(QGraphicsScene):
@@ -420,7 +415,6 @@ class NodeboardGraphicsScene(QGraphicsScene):
             self.nodeboard_signal_bus.onWidgetDeselectedSignalEmit(self.selectedWidget)
         super().mousePressEvent(event)
 
-    # Connected Methods
     def onWidgetDelete(self, deleted: QGraphicsProxyWidget):
         if isinstance(deleted, QGraphicsProxyWidget):
                 self.nodeboard_signal_bus.onWidgetDeselectedSignalEmit(deleted)
