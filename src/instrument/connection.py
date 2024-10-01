@@ -1,9 +1,12 @@
 import serial, platform, json
 from PyQt6.QtWidgets import QMessageBox
+from PyQt6.QtCore import pyqtSignal
+from src.globals.enum import ToastType
 
 class Connection:
     _shared_connection = None
-    
+    connection = pyqtSignal()
+
     @classmethod
     def get_shared_connection(cls):
         if not cls._shared_connection:

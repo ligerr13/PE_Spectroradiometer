@@ -13,7 +13,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(350, 60)
+        Form.resize(350, 66)
         Form.setMinimumSize(QtCore.QSize(350, 0))
         Form.setStyleSheet("")
         self.gridLayout = QtWidgets.QGridLayout(Form)

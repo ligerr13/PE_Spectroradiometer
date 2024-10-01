@@ -1,6 +1,6 @@
-from PyQt6.QtWidgets import QWidget, QGraphicsView, QGraphicsProxyWidget, QGraphicsScene, QMenu, QGraphicsLineItem, QTreeWidgetItem, QPushButton
+from PyQt6.QtWidgets import QWidget, QSplitterHandle,QGraphicsView, QGraphicsProxyWidget, QGraphicsScene, QMenu, QGraphicsLineItem, QTreeWidgetItem, QPushButton
 from PyQt6.QtGui import QColor, qRgb, QTransform, QCursor, QStandardItem
-from PyQt6.QtCore import  QLineF, QPointF, QPoint, QSize, QObject, Qt
+from PyQt6.QtCore import  Qt, QLineF, QPointF, QPoint, QSize, QObject, Qt, pyqtSignal, pyqtSlot
 from PyQt6 import QtCore
 import json
 
@@ -13,9 +13,85 @@ from src.widgets.spectralplottest import SpectralPlotWidget
 from src.signals.signals import WorkspaceSignalBus
 from src.dialogs.textToSceneDialog import TextToSceneDialog
 
+from PyQt6.QtWidgets import (
+    QApplication, QWidget, QVBoxLayout, QSplitter, QLabel, QTableWidget, QTableWidgetItem
+)
 from src.globals.utils import show_toast, ToastType
 
 
+class WorkspaceTableSplitterHandle(QSplitterHandle):
+
+    handleRelease = pyqtSignal()
+
+    def __init__(self, orientation, parent=None):
+        super().__init__(orientation, parent)
+        self.is_pressed = False
+        self.default_height = 5
+        self.pressed_height = 8
+
+    def mousePressEvent(self, event):
+        """When handle is pressed, increase its size."""
+        
+        self.is_pressed == True
+        self.setFixedHeight(self.pressed_height)
+        super().mousePressEvent(event)
+
+    def mouseReleaseEvent(self, event):
+        """When the mouse is released, reset the handle size."""
+        
+        self.is_pressed == True
+        self.setFixedHeight(self.default_height)
+        self.handleRelease.emit()
+        super().mouseReleaseEvent(event)
+
+class WorkspaceTableSplitter(QSplitter):
+    toggleButton = pyqtSignal(QWidget, bool)
+
+    def __init__(self, orientation):
+        super().__init__(orientation)
+        self.splitterMoved.connect(self.onSplitterMoved)
+        
+        self.rest_anchor = 0
+        self.is_hidden = False
+
+        self.setStyle()
+        self.setHandleWidth(3)
+
+    def setRestaAnchor(self):
+        """Set the rest anchor if the widget is visible."""
+        if self.is_hidden == False:
+            self.rest_anchor = self.sizes()[0]
+
+    def onSplitterMoved(self, pos: int, index: int):
+        """This will check if a widget is hidden and emit a signal."""
+        widget = self.widget(index)
+        if widget:
+            self.is_hidden = widget.visibleRegion().isEmpty()
+            self.toggleButton.emit(widget, self.is_hidden)
+
+    def toggleWidget(self, index: int, toggle: bool):
+        """Toggles a widget's visibility by resizing the splitter."""
+        if toggle:
+            self.moveSplitter(self.rest_anchor, index)
+        else:
+            self.moveSplitter(9999, index)
+
+    def createHandle(self):
+        """Override createHandle to return an instance of WorkspaceTableSplitterHandle."""
+        handle = WorkspaceTableSplitterHandle(self.orientation(), self)
+        handle.handleRelease.connect(self.setRestaAnchor)
+        return handle
+
+
+    def setStyle(self):
+        self.setStyleSheet("""
+                    QSplitter::handle {
+                        background-color: rgb(53, 53, 53);
+                    }
+                    QSplitter::handle:hover {
+                        background-color: rgb(0, 150, 255);
+                    }
+                """)
 
 class CustomMenu(QMenu):
     def __init__(self, parent=None):
@@ -58,6 +134,12 @@ class Workspace(QWidget):
         self.viewScalefactor = 1.15
         
         # Need some config setup func or something 
+        self.splitter = WorkspaceTableSplitter(Qt.Orientation.Vertical)
+
+        self.splitter.addWidget(self.ui.workspace_container)
+        self.splitter.addWidget(self.ui.table_widget_container)
+
+        self.ui.gridLayout_3.addWidget(self.splitter)
 
         # Views and Scenes
         self.view = self.ui.graphicsView_2
@@ -70,8 +152,8 @@ class Workspace(QWidget):
 
         # Signals
         self.context_menu.cMenu.actionShow_Workspace_Grid.triggered.connect(self.handle_grid_visibility)
-        self.scene.changed.connect(self._scene_changed)
         self.signal_bus.update_explorer.connect(self.update_explorer)
+        self.splitter.toggleButton.connect(self.toggle_splitter_buttons)
 
         # QDialogs
         self.widgetCreator = WidgetCreatorDialog()
@@ -87,6 +169,19 @@ class Workspace(QWidget):
         self.handle_properties_widget_visibility(False)
         self.update_explorer()
 
+    def toggle_splitter_buttons(self, sender: QWidget, is_hidden: bool):
+        """Update button state based on splitter movement."""
+        if is_hidden:
+            self.ui.pushButton_5.setChecked(False)
+        else:
+            self.ui.pushButton_5.setChecked(True)
+
+
+    @pyqtSlot(bool)
+    def toggle_bottom_panel(self, value: bool):
+        """Toggle the bottom panel based on button press."""
+        index = 1
+        self.splitter.toggleWidget(index, value)
 
     def set_workspace_name(self, workspace_name: str):
         self.workspace_name = workspace_name
@@ -127,10 +222,6 @@ class Workspace(QWidget):
                 for objName in new_items:
                     if objName not in current_items:
                         item.addChild(QTreeWidgetItem([objName]))
-
-    def _scene_changed(self): #This one called too many times, something isnt working the way i thought.
-        # print(f"Scene changed in workspace: {self.objectName()}")
-        pass
 
     def handle_grid_visibility(self, state):
             for gridLines in self.scene.items():

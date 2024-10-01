@@ -74,6 +74,8 @@ class MyApp(QMainWindow):
         self.fcu.file_context_menu.actionClose_Workspace.triggered.connect(lambda: self.tm.remove_page(self.tm.get_current_page_index()))
         self.fcu.file_context_menu.actionHome_Page.triggered.connect(lambda: self.tm.tabWidget.setCurrentIndex(self.tm.get_page_by_tabname("home")))
         
+        self.navbar.connectionConfigDialog.serial_settings_has_changed.connect(self.onUpdateSerialSettings)
+
         self.fcu.file_context_menu.actionopen_workspace_form_file.triggered.connect(self.open_dialog_and_create_workspace)
         self.fcu.file_context_menu.actionSaveAs.triggered.connect(self.save_current_workspace)
         self.signal_bus.newWorkspaceCreated.connect(self.handleNewWorkspaceCreation)
@@ -126,7 +128,7 @@ class MyApp(QMainWindow):
     def handle_file_context_menu(self):
         sender_button = self.sender()
         global_pos = sender_button.mapToGlobal(sender_button.pos())
-        global_pos += QPoint(-5, 32)
+        global_pos += QPoint(-5, 46)
         self.fcu.exec(global_pos)
         self.tm.file_menu_button.clearFocus()
 
@@ -153,3 +155,6 @@ class MyApp(QMainWindow):
         cp = QGuiApplication.primaryScreen().availableGeometry().center()
         qr.moveCenter(cp)
         self.move(qr.topLeft())
+
+    def onUpdateSerialSettings(self, state: ToastType, message: str):
+        show_toast(f"Connection: {message}", 3000, state, self)

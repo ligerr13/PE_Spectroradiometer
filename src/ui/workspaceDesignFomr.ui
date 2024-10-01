@@ -35,76 +35,75 @@
    <property name="spacing">
     <number>0</number>
    </property>
-   <item row="1" column="4">
-    <widget class="QWidget" name="widget" native="true">
+   <item row="1" column="2">
+    <widget class="QWidget" name="scene_widget" native="true">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="minimumSize">
       <size>
-       <width>55</width>
-       <height>0</height>
+       <width>495</width>
+       <height>800</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>55</width>
+       <width>16777215</width>
        <height>16777215</height>
       </size>
      </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
      <property name="styleSheet">
-      <string notr="true">color:white;
-background-color: rgb(31, 31, 31);
-margin: 0 0 0 0;
-padding: 0 0 0 0;
-border-left:  1px solid rgba(129, 129, 129, 50);
-border-right: 0;
+      <string notr="true">background-color: rgb(20, 20, 20); 
 /*border-top: 1px solid rgba(129, 129, 129, 50);*/</string>
      </property>
-     <layout class="QGridLayout" name="gridLayout_12">
+     <layout class="QGridLayout" name="gridLayout_3">
       <property name="leftMargin">
        <number>1</number>
       </property>
       <property name="topMargin">
-       <number>0</number>
-      </property>
-      <property name="rightMargin">
-       <number>0</number>
-      </property>
-      <property name="bottomMargin">
        <number>1</number>
       </property>
-      <item row="0" column="0">
-       <widget class="QWidget" name="widget_18" native="true">
-        <property name="styleSheet">
-         <string notr="true">QWidget {border: 0;margin: 0 0 0 0;}
-
-QPushButton {
-font: 570 10pt &quot;Consolas&quot;;
-color: 	rgb(190, 190, 190);
-margin: 0 0 0 0;
-padding: 5,5,5,5;
-}
-QPushButton:hover {
-			color: white;
-			background:   rgb(40, 40, 40);
-        }
-QPushButton:checked  {
-		border-right: 4px solid rgb(0, 150, 255);
-		border-radius: 0px;
-		color: white;
-		background:  rgb(40, 40, 40);
-}
-QPushButton:unchecked  {
-		border: 0px;
-		background-color: transparent;
-		color: 	rgb(171, 171, 171);
-}
-QToolTip{ 
-		font: 12pt;
-		color: rgb(100, 100, 100);
-}</string>
+      <property name="rightMargin">
+       <number>1</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <property name="horizontalSpacing">
+       <number>0</number>
+      </property>
+      <property name="verticalSpacing">
+       <number>2</number>
+      </property>
+      <item row="1" column="0">
+       <widget class="QWidget" name="workspace_container" native="true">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
         </property>
-        <layout class="QVBoxLayout" name="verticalLayout">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border: 0px;</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_5">
          <property name="leftMargin">
-          <number>0</number>
+          <number>5</number>
          </property>
          <property name="topMargin">
           <number>0</number>
@@ -115,62 +114,380 @@ QToolTip{
          <property name="bottomMargin">
           <number>0</number>
          </property>
-         <item>
-          <widget class="QPushButton" name="widget_properites_panel_button">
-           <property name="enabled">
-            <bool>true</bool>
+         <item row="0" column="0">
+          <widget class="QWidget" name="widget_8" native="true">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
            </property>
            <property name="minimumSize">
             <size>
-             <width>54</width>
-             <height>54</height>
+             <width>0</width>
+             <height>0</height>
             </size>
            </property>
            <property name="maximumSize">
             <size>
-             <width>54</width>
-             <height>54</height>
+             <width>55</width>
+             <height>205</height>
             </size>
-           </property>
-           <property name="cursor">
-            <cursorShape>PointingHandCursor</cursorShape>
            </property>
            <property name="styleSheet">
-            <string notr="true"/>
+            <string notr="true">QWidget {
+background-color: rgb(35, 35, 35);
+border-radius: 2px;
+}
+
+
+QPushButton {
+		border: 0px;
+		font: 12pt;
+        }
+QPushButton:hover {
+            background: rgb(55, 55, 55);
+        }
+QPushButton:checked  {
+		border: 0px;
+		background-color : rgb(0, 150, 255);;
+}
+QToolTip{ 
+		font: 12pt;
+		color: rgb(100, 100, 100);
+}</string>
            </property>
-           <property name="text">
-            <string/>
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_7">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>3</number>
+              </property>
+              <item>
+               <widget class="QPushButton" name="SelectButton">
+                <property name="minimumSize">
+                 <size>
+                  <width>40</width>
+                  <height>40</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>40</width>
+                  <height>40</height>
+                 </size>
+                </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="toolTip">
+                 <string>Select:
+Enable to select widgets.</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset>
+                  <normaloff>../../resources/icons/cursor.png</normaloff>../../resources/icons/cursor.png</iconset>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <property name="checked">
+                 <bool>false</bool>
+                </property>
+                <property name="autoExclusive">
+                 <bool>true</bool>
+                </property>
+                <attribute name="buttonGroup">
+                 <string notr="true">WorkspaceButtonGroup</string>
+                </attribute>
+               </widget>
+              </item>
+              <item>
+               <widget class="Line" name="line">
+                <property name="styleSheet">
+                 <string notr="true">background: rgba(129, 129, 129, 50);</string>
+                </property>
+                <property name="midLineWidth">
+                 <number>0</number>
+                </property>
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="DeleteWidgetButton">
+                <property name="minimumSize">
+                 <size>
+                  <width>40</width>
+                  <height>40</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>40</width>
+                  <height>40</height>
+                 </size>
+                </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="toolTip">
+                 <string>Delete:
+Click to delete the selected widget.</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset>
+                  <normaloff>../../resources/icons/delete.png</normaloff>../../resources/icons/delete.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>15</width>
+                  <height>15</height>
+                 </size>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <property name="checked">
+                 <bool>false</bool>
+                </property>
+                <attribute name="buttonGroup">
+                 <string notr="true">WorkspaceButtonGroup</string>
+                </attribute>
+               </widget>
+              </item>
+              <item>
+               <widget class="Line" name="line_2">
+                <property name="styleSheet">
+                 <string notr="true">background: rgba(129, 129, 129, 50);</string>
+                </property>
+                <property name="midLineWidth">
+                 <number>0</number>
+                </property>
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="DragOnGWButton">
+                <property name="enabled">
+                 <bool>true</bool>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>40</width>
+                  <height>40</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>40</width>
+                  <height>40</height>
+                 </size>
+                </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="toolTip">
+                 <string>Move:
+Click to navigate within the scene</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset>
+                  <normaloff>../../resources/icons/move.png</normaloff>../../resources/icons/move.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>15</width>
+                  <height>15</height>
+                 </size>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <property name="checked">
+                 <bool>false</bool>
+                </property>
+                <property name="clickCounter" stdset="0">
+                 <number>0</number>
+                </property>
+                <attribute name="buttonGroup">
+                 <string notr="true">WorkspaceButtonGroup</string>
+                </attribute>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="ZoomInButton">
+                <property name="minimumSize">
+                 <size>
+                  <width>40</width>
+                  <height>40</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>40</width>
+                  <height>40</height>
+                 </size>
+                </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="toolTip">
+                 <string>Zoom in
+Click here to zoom in.</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset>
+                  <normaloff>../../resources/icons/magnifying-glass-2.png</normaloff>../../resources/icons/magnifying-glass-2.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>17</width>
+                  <height>17</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="ZoomOutButton">
+                <property name="minimumSize">
+                 <size>
+                  <width>40</width>
+                  <height>40</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>40</width>
+                  <height>40</height>
+                 </size>
+                </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="toolTip">
+                 <string>Zoom out
+Click here to zoom out.</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset>
+                  <normaloff>../../resources/icons/magnifying-glass.png</normaloff>../../resources/icons/magnifying-glass.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>17</width>
+                  <height>17</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QGraphicsView" name="graphicsView_2">
+           <property name="styleSheet">
+            <string notr="true">border:0px;
+</string>
            </property>
-           <property name="icon">
-            <iconset>
-             <normaloff>../../resources/icons/properties.png</normaloff>../../resources/icons/properties.png</iconset>
+           <property name="verticalScrollBarPolicy">
+            <enum>Qt::ScrollBarAlwaysOff</enum>
            </property>
-           <property name="iconSize">
-            <size>
-             <width>30</width>
-             <height>30</height>
-            </size>
+           <property name="horizontalScrollBarPolicy">
+            <enum>Qt::ScrollBarAlwaysOff</enum>
            </property>
-           <property name="checkable">
-            <bool>true</bool>
+           <property name="sizeAdjustPolicy">
+            <enum>QAbstractScrollArea::AdjustToContents</enum>
            </property>
-           <property name="checked">
-            <bool>false</bool>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing</set>
+           </property>
+           <property name="resizeAnchor">
+            <enum>QGraphicsView::AnchorViewCenter</enum>
+           </property>
+           <property name="viewportUpdateMode">
+            <enum>QGraphicsView::MinimalViewportUpdate</enum>
            </property>
           </widget>
          </item>
-         <item>
-          <spacer name="verticalSpacer_2">
-           <property name="orientation">
-            <enum>Qt::Vertical</enum>
+        </layout>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QWidget" name="table_widget_container" native="true">
+        <layout class="QGridLayout" name="gridLayout_24">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>5</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <property name="horizontalSpacing">
+          <number>0</number>
+         </property>
+         <property name="verticalSpacing">
+          <number>2</number>
+         </property>
+         <item row="0" column="0">
+          <widget class="QTableWidget" name="tableWidget">
+           <property name="styleSheet">
+            <string notr="true">QTableWidget {
+color:white;
+background-color: rgb(20,20,20);
+border: 0;
+}</string>
            </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>20</width>
-             <height>40</height>
-            </size>
-           </property>
-          </spacer>
+          </widget>
          </item>
         </layout>
        </widget>
@@ -1064,7 +1381,7 @@ QLabel {
          <string notr="true">border:0px;</string>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="page_12">
          <property name="styleSheet">
@@ -1882,66 +2199,76 @@ QLabel {font: 700 10pt &quot;Consolas&quot;;color: 	rgb(190, 190, 190); padding:
      </layout>
     </widget>
    </item>
-   <item row="1" column="2">
-    <widget class="QWidget" name="scene_widget" native="true">
-     <property name="enabled">
-      <bool>true</bool>
-     </property>
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
+   <item row="1" column="4">
+    <widget class="QWidget" name="widget" native="true">
      <property name="minimumSize">
       <size>
-       <width>495</width>
-       <height>601</height>
+       <width>55</width>
+       <height>0</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>16777215</width>
+       <width>55</width>
        <height>16777215</height>
       </size>
      </property>
-     <property name="autoFillBackground">
-      <bool>false</bool>
-     </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(20, 20, 20); 
+      <string notr="true">color:white;
+background-color: rgb(31, 31, 31);
+margin: 0 0 0 0;
+padding: 0 0 0 0;
+border-left:  1px solid rgba(129, 129, 129, 50);
+border-right: 0;
 /*border-top: 1px solid rgba(129, 129, 129, 50);*/</string>
      </property>
-     <layout class="QGridLayout" name="gridLayout_3">
+     <layout class="QGridLayout" name="gridLayout_12">
       <property name="leftMargin">
        <number>1</number>
       </property>
       <property name="topMargin">
-       <number>1</number>
+       <number>0</number>
       </property>
       <property name="rightMargin">
-       <number>1</number>
+       <number>0</number>
       </property>
       <property name="bottomMargin">
-       <number>0</number>
+       <number>1</number>
       </property>
-      <property name="spacing">
-       <number>0</number>
-      </property>
-      <item row="1" column="0">
-       <widget class="QWidget" name="widget_4" native="true">
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>16777215</height>
-         </size>
-        </property>
+      <item row="0" column="0">
+       <widget class="QWidget" name="widget_18" native="true">
         <property name="styleSheet">
-         <string notr="true">border: 0px;</string>
+         <string notr="true">QWidget {border: 0;margin: 0 0 0 0;}
+
+QPushButton {
+font: 570 10pt &quot;Consolas&quot;;
+color: 	rgb(190, 190, 190);
+margin: 0 0 0 0;
+padding: 5,5,5,5;
+}
+QPushButton:hover {
+			color: white;
+			background:   rgb(40, 40, 40);
+        }
+QPushButton:checked  {
+		border-right: 4px solid rgb(0, 150, 255);
+		border-radius: 0px;
+		color: white;
+		background:  rgb(40, 40, 40);
+}
+QPushButton:unchecked  {
+		border: 0px;
+		background-color: transparent;
+		color: 	rgb(171, 171, 171);
+}
+QToolTip{ 
+		font: 12pt;
+		color: rgb(100, 100, 100);
+}</string>
         </property>
-        <layout class="QGridLayout" name="gridLayout_5">
+        <layout class="QVBoxLayout" name="verticalLayout">
          <property name="leftMargin">
-          <number>5</number>
+          <number>0</number>
          </property>
          <property name="topMargin">
           <number>0</number>
@@ -1952,343 +2279,105 @@ QLabel {font: 700 10pt &quot;Consolas&quot;;color: 	rgb(190, 190, 190); padding:
          <property name="bottomMargin">
           <number>0</number>
          </property>
-         <item row="0" column="0">
-          <widget class="QWidget" name="widget_8" native="true">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
+         <item>
+          <widget class="QPushButton" name="widget_properites_panel_button">
+           <property name="enabled">
+            <bool>true</bool>
            </property>
            <property name="minimumSize">
             <size>
-             <width>0</width>
-             <height>0</height>
+             <width>54</width>
+             <height>54</height>
             </size>
            </property>
            <property name="maximumSize">
             <size>
-             <width>55</width>
-             <height>205</height>
+             <width>54</width>
+             <height>54</height>
             </size>
            </property>
-           <property name="styleSheet">
-            <string notr="true">QWidget {
-background-color: rgb(35, 35, 35);
-border-radius: 2px;
-}
-
-
-QPushButton {
-		border: 0px;
-		font: 12pt;
-        }
-QPushButton:hover {
-            background: rgb(55, 55, 55);
-        }
-QPushButton:checked  {
-		border: 0px;
-		background-color : rgb(0, 150, 255);;
-}
-QToolTip{ 
-		font: 12pt;
-		color: rgb(100, 100, 100);
-}</string>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
            </property>
-           <layout class="QHBoxLayout" name="horizontalLayout_3">
-            <property name="leftMargin">
-             <number>0</number>
-            </property>
-            <property name="topMargin">
-             <number>0</number>
-            </property>
-            <property name="rightMargin">
-             <number>0</number>
-            </property>
-            <property name="bottomMargin">
-             <number>0</number>
-            </property>
-            <item>
-             <layout class="QVBoxLayout" name="verticalLayout_7">
-              <property name="spacing">
-               <number>0</number>
-              </property>
-              <property name="leftMargin">
-               <number>0</number>
-              </property>
-              <property name="topMargin">
-               <number>0</number>
-              </property>
-              <property name="rightMargin">
-               <number>0</number>
-              </property>
-              <property name="bottomMargin">
-               <number>3</number>
-              </property>
-              <item>
-               <widget class="QPushButton" name="SelectButton">
-                <property name="minimumSize">
-                 <size>
-                  <width>40</width>
-                  <height>40</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>40</width>
-                  <height>40</height>
-                 </size>
-                </property>
-                <property name="cursor">
-                 <cursorShape>PointingHandCursor</cursorShape>
-                </property>
-                <property name="toolTip">
-                 <string>Select:
-Enable to select widgets.</string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="icon">
-                 <iconset>
-                  <normaloff>../../resources/icons/cursor.png</normaloff>../../resources/icons/cursor.png</iconset>
-                </property>
-                <property name="checkable">
-                 <bool>true</bool>
-                </property>
-                <property name="checked">
-                 <bool>false</bool>
-                </property>
-                <property name="autoExclusive">
-                 <bool>true</bool>
-                </property>
-                <attribute name="buttonGroup">
-                 <string notr="true">WorkspaceButtonGroup</string>
-                </attribute>
-               </widget>
-              </item>
-              <item>
-               <widget class="Line" name="line">
-                <property name="styleSheet">
-                 <string notr="true">background: rgba(129, 129, 129, 50);</string>
-                </property>
-                <property name="midLineWidth">
-                 <number>0</number>
-                </property>
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="DeleteWidgetButton">
-                <property name="minimumSize">
-                 <size>
-                  <width>40</width>
-                  <height>40</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>40</width>
-                  <height>40</height>
-                 </size>
-                </property>
-                <property name="cursor">
-                 <cursorShape>PointingHandCursor</cursorShape>
-                </property>
-                <property name="toolTip">
-                 <string>Delete:
-Click to delete the selected widget.</string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="icon">
-                 <iconset>
-                  <normaloff>../../resources/icons/delete.png</normaloff>../../resources/icons/delete.png</iconset>
-                </property>
-                <property name="iconSize">
-                 <size>
-                  <width>15</width>
-                  <height>15</height>
-                 </size>
-                </property>
-                <property name="checkable">
-                 <bool>true</bool>
-                </property>
-                <property name="checked">
-                 <bool>false</bool>
-                </property>
-                <attribute name="buttonGroup">
-                 <string notr="true">WorkspaceButtonGroup</string>
-                </attribute>
-               </widget>
-              </item>
-              <item>
-               <widget class="Line" name="line_2">
-                <property name="styleSheet">
-                 <string notr="true">background: rgba(129, 129, 129, 50);</string>
-                </property>
-                <property name="midLineWidth">
-                 <number>0</number>
-                </property>
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="DragOnGWButton">
-                <property name="enabled">
-                 <bool>true</bool>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>40</width>
-                  <height>40</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>40</width>
-                  <height>40</height>
-                 </size>
-                </property>
-                <property name="cursor">
-                 <cursorShape>PointingHandCursor</cursorShape>
-                </property>
-                <property name="toolTip">
-                 <string>Move:
-Click to navigate within the scene</string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="icon">
-                 <iconset>
-                  <normaloff>../../resources/icons/move.png</normaloff>../../resources/icons/move.png</iconset>
-                </property>
-                <property name="iconSize">
-                 <size>
-                  <width>15</width>
-                  <height>15</height>
-                 </size>
-                </property>
-                <property name="checkable">
-                 <bool>true</bool>
-                </property>
-                <property name="checked">
-                 <bool>false</bool>
-                </property>
-                <property name="clickCounter" stdset="0">
-                 <number>0</number>
-                </property>
-                <attribute name="buttonGroup">
-                 <string notr="true">WorkspaceButtonGroup</string>
-                </attribute>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="ZoomInButton">
-                <property name="minimumSize">
-                 <size>
-                  <width>40</width>
-                  <height>40</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>40</width>
-                  <height>40</height>
-                 </size>
-                </property>
-                <property name="cursor">
-                 <cursorShape>PointingHandCursor</cursorShape>
-                </property>
-                <property name="toolTip">
-                 <string>Zoom in
-Click here to zoom in.</string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="icon">
-                 <iconset>
-                  <normaloff>../../resources/icons/magnifying-glass-2.png</normaloff>../../resources/icons/magnifying-glass-2.png</iconset>
-                </property>
-                <property name="iconSize">
-                 <size>
-                  <width>17</width>
-                  <height>17</height>
-                 </size>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="ZoomOutButton">
-                <property name="minimumSize">
-                 <size>
-                  <width>40</width>
-                  <height>40</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>40</width>
-                  <height>40</height>
-                 </size>
-                </property>
-                <property name="cursor">
-                 <cursorShape>PointingHandCursor</cursorShape>
-                </property>
-                <property name="toolTip">
-                 <string>Zoom out
-Click here to zoom out.</string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="icon">
-                 <iconset>
-                  <normaloff>../../resources/icons/magnifying-glass.png</normaloff>../../resources/icons/magnifying-glass.png</iconset>
-                </property>
-                <property name="iconSize">
-                 <size>
-                  <width>17</width>
-                  <height>17</height>
-                 </size>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-           </layout>
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>../../resources/icons/properties.png</normaloff>../../resources/icons/properties.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>30</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="checked">
+            <bool>false</bool>
+           </property>
           </widget>
          </item>
-         <item row="0" column="1">
-          <widget class="QGraphicsView" name="graphicsView_2">
+         <item>
+          <spacer name="verticalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_5">
+           <property name="minimumSize">
+            <size>
+             <width>54</width>
+             <height>54</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>54</width>
+             <height>54</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="toolTip">
+            <string>Toggle Bottom Panel</string>
+           </property>
            <property name="styleSheet">
-            <string notr="true">border:0px;
-</string>
+            <string notr="true"/>
            </property>
-           <property name="verticalScrollBarPolicy">
-            <enum>Qt::ScrollBarAlwaysOff</enum>
+           <property name="text">
+            <string/>
            </property>
-           <property name="horizontalScrollBarPolicy">
-            <enum>Qt::ScrollBarAlwaysOff</enum>
+           <property name="icon">
+            <iconset>
+             <normaloff>../../resources/icons/layout_bottom.png</normaloff>
+             <normalon>../../resources/icons/layout_filled_bottom.png</normalon>../../resources/icons/layout_bottom.png</iconset>
            </property>
-           <property name="sizeAdjustPolicy">
-            <enum>QAbstractScrollArea::AdjustToContents</enum>
+           <property name="iconSize">
+            <size>
+             <width>25</width>
+             <height>25</height>
+            </size>
            </property>
-           <property name="alignment">
-            <set>Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing</set>
+           <property name="checkable">
+            <bool>true</bool>
            </property>
-           <property name="resizeAnchor">
-            <enum>QGraphicsView::AnchorViewCenter</enum>
-           </property>
-           <property name="viewportUpdateMode">
-            <enum>QGraphicsView::MinimalViewportUpdate</enum>
+           <property name="checked">
+            <bool>true</bool>
            </property>
           </widget>
          </item>
@@ -2542,6 +2631,22 @@ Click here to zoom out.</string>
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>pushButton_5</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>WorkspaceDesignForm</receiver>
+   <slot>toggle_bottom_panel(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1162</x>
+     <y>854</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>594</x>
+     <y>441</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>handle_scene_drag_mode(bool)</slot>
@@ -2557,14 +2662,15 @@ Click here to zoom out.</string>
   <slot>handle_add_text_to_scene()</slot>
   <slot>handle_add_image_to_scene()</slot>
   <slot>handle_properties_widget_visibility(bool)</slot>
+  <slot>toggle_bottom_panel(bool)</slot>
  </slots>
  <buttongroups>
-  <buttongroup name="WorkspaceToolsButtonGroup"/>
   <buttongroup name="WorkspaceButtonGroup"/>
   <buttongroup name="WorkspaceMenuButtonGroup">
    <property name="exclusive">
     <bool>true</bool>
    </property>
   </buttongroup>
+  <buttongroup name="WorkspaceToolsButtonGroup"/>
  </buttongroups>
 </ui>
