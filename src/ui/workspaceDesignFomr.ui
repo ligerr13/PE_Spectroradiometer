@@ -67,13 +67,13 @@
      </property>
      <layout class="QGridLayout" name="gridLayout_3">
       <property name="leftMargin">
-       <number>1</number>
+       <number>0</number>
       </property>
       <property name="topMargin">
-       <number>1</number>
+       <number>0</number>
       </property>
       <property name="rightMargin">
-       <number>1</number>
+       <number>0</number>
       </property>
       <property name="bottomMargin">
        <number>0</number>
@@ -430,6 +430,9 @@ Click here to zoom out.</string>
          </item>
          <item row="0" column="1">
           <widget class="QGraphicsView" name="graphicsView_2">
+           <property name="cursor" stdset="0">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
            <property name="styleSheet">
             <string notr="true">border:0px;
 </string>
@@ -459,12 +462,15 @@ Click here to zoom out.</string>
       </item>
       <item row="2" column="0">
        <widget class="QWidget" name="table_widget_container" native="true">
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
         <layout class="QGridLayout" name="gridLayout_24">
          <property name="leftMargin">
           <number>0</number>
          </property>
          <property name="topMargin">
-          <number>5</number>
+          <number>0</number>
          </property>
          <property name="rightMargin">
           <number>0</number>
@@ -479,14 +485,458 @@ Click here to zoom out.</string>
           <number>2</number>
          </property>
          <item row="0" column="0">
-          <widget class="QTableWidget" name="tableWidget">
-           <property name="styleSheet">
-            <string notr="true">QTableWidget {
-color:white;
-background-color: rgb(20,20,20);
-border: 0;
-}</string>
+          <widget class="QWidget" name="widget_4" native="true">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>200</height>
+            </size>
            </property>
+           <layout class="QGridLayout" name="gridLayout_25">
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <property name="spacing">
+             <number>2</number>
+            </property>
+            <item row="0" column="0">
+             <widget class="QWidget" name="table_menu_container" native="true">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>55</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>55</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QWidget {
+/*background-color: rgb(31,31,31);*/
+/*border-bottom: 1px solid rgba(129, 129, 129, 50);*/
+}</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_26">
+               <property name="leftMargin">
+                <number>5</number>
+               </property>
+               <property name="topMargin">
+                <number>5</number>
+               </property>
+               <property name="rightMargin">
+                <number>5</number>
+               </property>
+               <property name="bottomMargin">
+                <number>5</number>
+               </property>
+               <item row="0" column="0">
+                <widget class="QWidget" name="widget_12" native="true">
+                 <property name="styleSheet">
+                  <string notr="true">border: 0px;</string>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_2">
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
+                  <item>
+                   <spacer name="horizontalSpacer">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="pushButton_6">
+                    <property name="minimumSize">
+                     <size>
+                      <width>40</width>
+                      <height>40</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>40</width>
+                      <height>40</height>
+                     </size>
+                    </property>
+                    <property name="cursor">
+                     <cursorShape>PointingHandCursor</cursorShape>
+                    </property>
+                    <property name="toolTip">
+                     <string>Import data</string>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QPushButton {
+	font: 570 10pt &quot;Consolas&quot;;
+	background: transparent;
+	border: 2px solid  transparent;
+	border-radius: 3px;
+	padding: 5 5 5 5;
+}
+QToolTip{ 
+	font: 12pt;
+	color: rgb(100, 100, 100);
+}
+QPushButton:hover {
+			color: white;
+			background:   rgb(40, 40, 40);
+        }</string>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="icon">
+                     <iconset>
+                      <normaloff>../../resources/icons/import.png</normaloff>../../resources/icons/import.png</iconset>
+                    </property>
+                    <property name="iconSize">
+                     <size>
+                      <width>17</width>
+                      <height>17</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QWidget" name="table_container" native="true">
+              <property name="toolTip">
+               <string/>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_27">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+               <item row="0" column="0">
+                <widget class="QScrollArea" name="scrollArea">
+                 <property name="styleSheet">
+                  <string notr="true">QScrollBar:horizontal
+{
+    height: 15px;
+    margin: 3px 3px 3px 3px;
+    border: 1px transparent #2A2929;
+    border-radius: 4px;
+    background-color: transparent; /* Átlátszó alapértelmezett */
+}
+
+QScrollBar::handle:horizontal
+{
+    background-color: transparent;  /* Átlátszó alapértelmezett */
+    min-width: 5px;
+    border-radius: 4px;
+}
+
+QScrollBar::handle:horizontal:hover, QScrollBar::handle:horizontal:pressed, QScrollBar::handle:horizontal:movable
+{
+    background-color: blue;         /* Kék, amikor mozgatjuk vagy ráhúzzuk az egeret */
+}
+
+QScrollBar::add-line:horizontal
+{
+    margin: 0px 3px 0px 3px;
+    border-image: url(:/qss_icons/rc/right_arrow_disabled.png);
+    width: 10px;
+    height: 10px;
+    subcontrol-position: right;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::sub-line:horizontal
+{
+    margin: 0px 3px 0px 3px;
+    border-image: url(:/qss_icons/rc/left_arrow_disabled.png);
+    height: 10px;
+    width: 10px;
+    subcontrol-position: left;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::add-line:horizontal:hover, QScrollBar::add-line:horizontal:on
+{
+    border-image: url(:/qss_icons/rc/right_arrow.png);
+    height: 10px;
+    width: 10px;
+    subcontrol-position: right;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::sub-line:horizontal:hover, QScrollBar::sub-line:horizontal:on
+{
+    border-image: url(:/qss_icons/rc/left_arrow.png);
+    height: 10px;
+    width: 10px;
+    subcontrol-position: left;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal
+{
+    background: none;
+}
+
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
+{
+    background: none;
+}
+
+/* Vertikális scroll bar */
+QScrollBar:vertical
+{
+    background-color: transparent; /* Átlátszó alapértelmezett */
+    width: 15px;
+    margin: 0px 0px 0px 0px;
+    border: 1px transparent #2A2929;
+    border-radius: 0px;
+}
+
+QScrollBar::handle:vertical
+{
+    background-color: rgb(31,31,31); 
+    min-height: 5px;
+    border-radius: 0px;
+}
+
+QScrollBar::handle:vertical:hover, QScrollBar::handle:vertical:pressed, QScrollBar::handle:vertical:movable
+{
+    background-color: rgb(0,150,255);
+}
+
+QScrollBar::sub-line:vertical
+{
+    margin: 3px 0px 3px 0px;
+    border-image: url(:/qss_icons/rc/up_arrow_disabled.png);
+    height: 10px;
+    width: 10px;
+    subcontrol-position: top;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::add-line:vertical
+{
+    margin: 3px 0px 3px 0px;
+    border-image: url(:/qss_icons/rc/down_arrow_disabled.png);
+    height: 10px;
+    width: 10px;
+    subcontrol-position: bottom;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::sub-line:vertical:hover, QScrollBar::sub-line:vertical:on
+{
+    border-image: url(:/qss_icons/rc/up_arrow.png);
+    height: 10px;
+    width: 10px;
+    subcontrol-position: top;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::add-line:vertical:hover, QScrollBar::add-line:vertical:on
+{
+    border-image: url(:/qss_icons/rc/down_arrow.png);
+    height: 10px;
+    width: 10px;
+    subcontrol-position: bottom;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical
+{
+    background: none;
+}
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical
+{
+    background: none;
+}
+</string>
+                 </property>
+                 <property name="widgetResizable">
+                  <bool>true</bool>
+                 </property>
+                 <widget class="QWidget" name="scrollAreaWidgetContents">
+                  <property name="geometry">
+                   <rect>
+                    <x>0</x>
+                    <y>0</y>
+                    <width>476</width>
+                    <height>1628</height>
+                   </rect>
+                  </property>
+                  <layout class="QVBoxLayout" name="verticalLayout_4">
+                   <property name="leftMargin">
+                    <number>5</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>5</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>5</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>5</number>
+                   </property>
+                   <item>
+                    <widget class="QWidget" name="widget_22" native="true">
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>400</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background: grey;</string>
+                     </property>
+                     <layout class="QGridLayout" name="gridLayout_28">
+                      <item row="0" column="0">
+                       <widget class="QTableWidget" name="tableWidget">
+                        <row>
+                         <property name="text">
+                          <string>X</string>
+                         </property>
+                        </row>
+                        <row>
+                         <property name="text">
+                          <string>1</string>
+                         </property>
+                        </row>
+                        <row>
+                         <property name="text">
+                          <string>2</string>
+                         </property>
+                        </row>
+                        <column>
+                         <property name="text">
+                          <string>Name</string>
+                         </property>
+                        </column>
+                        <column>
+                         <property name="text">
+                          <string>Value</string>
+                         </property>
+                        </column>
+                        <item row="0" column="0">
+                         <property name="text">
+                          <string>X</string>
+                         </property>
+                        </item>
+                        <item row="0" column="1">
+                         <property name="text">
+                          <string>1.34</string>
+                         </property>
+                        </item>
+                        <item row="1" column="0">
+                         <property name="text">
+                          <string>Y</string>
+                         </property>
+                        </item>
+                        <item row="1" column="1">
+                         <property name="text">
+                          <string>0.23</string>
+                         </property>
+                        </item>
+                        <item row="2" column="0">
+                         <property name="text">
+                          <string>X'</string>
+                         </property>
+                        </item>
+                        <item row="2" column="1">
+                         <property name="text">
+                          <string>12.4</string>
+                         </property>
+                        </item>
+                       </widget>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QWidget" name="widget_21" native="true">
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>400</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background: yellow;</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QWidget" name="widget_20" native="true">
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>400</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background: blue;</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QWidget" name="widget_15" native="true">
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>400</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background: red;</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
           </widget>
          </item>
         </layout>
@@ -2647,6 +3097,22 @@ QToolTip{
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>pushButton_6</sender>
+   <signal>clicked()</signal>
+   <receiver>WorkspaceDesignForm</receiver>
+   <slot>import_measurements_to_workspace_table()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>809</x>
+     <y>709</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>594</x>
+     <y>441</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>handle_scene_drag_mode(bool)</slot>
@@ -2663,14 +3129,15 @@ QToolTip{
   <slot>handle_add_image_to_scene()</slot>
   <slot>handle_properties_widget_visibility(bool)</slot>
   <slot>toggle_bottom_panel(bool)</slot>
+  <slot>import_measurements_to_workspace_table()</slot>
  </slots>
  <buttongroups>
-  <buttongroup name="WorkspaceButtonGroup"/>
   <buttongroup name="WorkspaceMenuButtonGroup">
    <property name="exclusive">
     <bool>true</bool>
    </property>
   </buttongroup>
+  <buttongroup name="WorkspaceButtonGroup"/>
   <buttongroup name="WorkspaceToolsButtonGroup"/>
  </buttongroups>
 </ui>

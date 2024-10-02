@@ -13,6 +13,9 @@ from src.widgets.spectralplottest import SpectralPlotWidget
 from src.signals.signals import WorkspaceSignalBus
 from src.dialogs.textToSceneDialog import TextToSceneDialog
 
+from src.globals.utils import open_dialog
+
+
 from PyQt6.QtWidgets import (
     QApplication, QWidget, QVBoxLayout, QSplitter, QLabel, QTableWidget, QTableWidgetItem
 )
@@ -28,6 +31,8 @@ class WorkspaceTableSplitterHandle(QSplitterHandle):
         self.is_pressed = False
         self.default_height = 5
         self.pressed_height = 8
+
+        self.setCursor(Qt.CursorShape.SizeVerCursor)
 
     def mousePressEvent(self, event):
         """When handle is pressed, increase its size."""
@@ -82,7 +87,6 @@ class WorkspaceTableSplitter(QSplitter):
         handle.handleRelease.connect(self.setRestaAnchor)
         return handle
 
-
     def setStyle(self):
         self.setStyleSheet("""
                     QSplitter::handle {
@@ -126,6 +130,7 @@ class Workspace(QWidget):
         super().__init__(parent)
         self.ui = Ui_WorkspaceDesignForm()
         self.ui.setupUi(self)
+        self.toast_msg_anchor = parent
         
         self.workspace_name = workspace_name
         self.explorer = self.ui.treeWidget
@@ -175,7 +180,11 @@ class Workspace(QWidget):
             self.ui.pushButton_5.setChecked(False)
         else:
             self.ui.pushButton_5.setChecked(True)
-
+    
+    def import_measurements_to_workspace_table(self):
+        show_toast("Opening Stuff", 3000, ToastType.SUCCESS, self.toast_msg_anchor)
+        open_dialog(self.toast_msg_anchor, direction = "src/instrument/data")
+        pass
 
     @pyqtSlot(bool)
     def toggle_bottom_panel(self, value: bool):

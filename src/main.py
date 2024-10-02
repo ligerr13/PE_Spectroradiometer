@@ -81,7 +81,7 @@ class MyApp(QMainWindow):
         self.signal_bus.newWorkspaceCreated.connect(self.handleNewWorkspaceCreation)
 
         # Calling Methods
-        self.tm.add_page(Workspace("Default"), "Default")
+        self.tm.add_page(Workspace("Default", self), "Default")
 
     @pyqtSlot()
     def open_dialog_and_create_workspace(self):
@@ -134,13 +134,13 @@ class MyApp(QMainWindow):
 
     def handleNewWorkspaceCreation(self, tag):
         self.tm.remove_page(self.tm.get_current_page_index())
-        self.tm.add_page(Workspace(tag), tag)
+        self.tm.add_page(Workspace(tag, self), tag)
         show_toast(f"Created new workspace: {tag}", 3000, ToastType.SUCCESS, self)
 
     def new_page(self, tag):
-        wk = Workspace(tag)
+        wk = Workspace(tag, self)
         self.tm.add_page(wk, tag)
-        wk.load_workspace(tag)
+        wk.load_workspace(tag, self)
 
     def HandleMeasureDialog(self, selected: bool):
         if selected is not None:
