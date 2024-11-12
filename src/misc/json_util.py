@@ -1,6 +1,6 @@
 import os
 import json
-from src.instrument.config.enums import DataBlockNumber, DataFormat, DataMode, ModeSelect, SpectralRange
+from src.instrument.config.enums import DataMode, SpectralRange
 
 class JsonBuilder:
     def __init__(self, file_name: str):
@@ -43,7 +43,7 @@ class ColorimetricJsonBuilder(JsonBuilder):
         for key, value in zip(self.colorimetric_keys, x):
             self.result_data["Colorimetric Data"][key] = {"value": value, "switch": 0}
 
-class MeasurementJsonBuilder(JsonBuilder):
+class MeasurementConditionsJsonBuilder(JsonBuilder):
     def __init__(self, file_name: str, data):
         super().__init__(file_name)
 
@@ -77,14 +77,13 @@ class Spectral680To780JsonBuilder(JsonBuilder):
         self.result_data = {"Spectral data": {"value": data, "switch": 0}}
 
 
-
 class JsonBuilderFactory:
     @staticmethod
     def create_builder(builder_type, file_name, *args, **kwargs):
         if builder_type == DataMode.COLORIMETRIC_DATA:
             return ColorimetricJsonBuilder(file_name, *args, **kwargs)
         elif builder_type == DataMode.MEASUREMENT_CONDITIONS:
-            return MeasurementJsonBuilder(file_name, *args, **kwargs)
+            return MeasurementConditionsJsonBuilder(file_name, *args, **kwargs)
         elif builder_type == SpectralRange.RANGE_380_TO_479:
                 return Spectral380To479JsonBuilder(file_name, *args, **kwargs)
         elif builder_type == SpectralRange.RANGE_480_TO_579:

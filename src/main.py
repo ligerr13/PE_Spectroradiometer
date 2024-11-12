@@ -63,7 +63,7 @@ class MyApp(QMainWindow):
             self.fcu.file_context_menu.actionClose_Window
         ])
 
-        # Signal Bus
+        # Signal
         self.signal_bus = WorkspaceSignalBus.instance()
 
         # Signals
@@ -140,7 +140,7 @@ class MyApp(QMainWindow):
     def new_page(self, tag):
         wk = Workspace(tag, self)
         self.tm.add_page(wk, tag)
-        wk.load_workspace(tag, self)
+        wk.load_workspace(tag)
 
     def HandleMeasureDialog(self, selected: bool):
         if selected is not None:

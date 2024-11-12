@@ -22,7 +22,6 @@ class Connection:
             QMessageBox.critical(None, "Error", f"Error loading JSON connection config file 'connection_config.json': {e}")
             return None
         
-            
     @staticmethod
     def open():
         try:
@@ -36,6 +35,7 @@ class Connection:
             else:
                 print("Port is not available.")
         except serial.SerialException as e:
+            QMessageBox.critical(None, "Error", f"Error occurred while opening the port:  {str(e)}")
             print("Error occurred while opening the port:", str(e))
 
     @staticmethod
@@ -46,6 +46,7 @@ class Connection:
             elif platform.system() == "Windows":
                 return 'COM3'
             else:
+                QMessageBox.critical(None, "Error", f"Unsupported platform {platform.system()}")
                 print("Unsupported platform:", platform.system())
                 return None
         except Exception as e:

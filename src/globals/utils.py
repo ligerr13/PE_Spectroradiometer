@@ -4,6 +4,13 @@ from src.globals.enum import ToastType
 import os
 from PyQt6.QtWidgets import QFileDialog
 
+
+class FileValidator:
+    @classmethod
+    def get_data_directory(cls):
+        script_dir = os.path.dirname(__file__)
+        return os.path.abspath(os.path.join(script_dir, '..', 'instrument', 'data'))
+    
 def show_toast(message, duration=3000, success=None , parent=None):
     toast = ToastWidget(message, duration, success, parent)
     toast.showToast()

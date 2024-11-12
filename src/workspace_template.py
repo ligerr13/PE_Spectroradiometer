@@ -1,5 +1,5 @@
-from PyQt6.QtWidgets import QWidget, QSplitterHandle,QGraphicsView, QGraphicsProxyWidget, QGraphicsScene, QMenu, QGraphicsLineItem, QTreeWidgetItem, QPushButton
-from PyQt6.QtGui import QColor, qRgb, QTransform, QCursor, QStandardItem
+from PyQt6.QtWidgets import QWidget, QGridLayout, QSplitterHandle,QGraphicsView, QGraphicsProxyWidget, QGraphicsScene, QMenu, QGraphicsLineItem, QTreeWidgetItem, QPushButton, QSizePolicy, QHeaderView, QStyledItemDelegate, QStyle
+from PyQt6.QtGui import QColor, qRgb, QTransform, QCursor, QStandardItem, QIcon
 from PyQt6.QtCore import  Qt, QLineF, QPointF, QPoint, QSize, QObject, Qt, pyqtSignal, pyqtSlot
 from PyQt6 import QtCore
 import json
@@ -8,7 +8,6 @@ from src.objects.editSettingsContextMenu import Ui_Form
 from src.objects.workspaceDesignFomr import Ui_WorkspaceDesignForm
 from src.signals.signals import NodeBoardSignalBus
 from src.dialogs.widgetCreatorDialog import WidgetCreatorDialog
-from src.widgets.testwidgetbase import CustomWidget
 from src.widgets.spectralplottest import SpectralPlotWidget
 from src.signals.signals import WorkspaceSignalBus
 from src.dialogs.textToSceneDialog import TextToSceneDialog
@@ -22,7 +21,90 @@ from PyQt6.QtWidgets import (
 from src.globals.utils import show_toast, ToastType
 
 
+from PyQt5.QtWidgets import QWidget, QGridLayout, QLabel, QPushButton, QSizePolicy
+from PyQt5.QtGui import QIcon
+from PyQt5 import QtCore
+
+class TableContainerWidget(QWidget):
+    def __init__(self, table_name: str):
+        super().__init__()
+
+        main_layout = QGridLayout(self)
+        main_layout.setContentsMargins(15, 15, 15, 15)
+        title_label = QLabel(f"{table_name}")
+        title_label.setFixedHeight(40)
+        title_label.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeft)
+        main_layout.addWidget(title_label, 0, 1, QtCore.Qt.AlignmentFlag.AlignLeft)
+
+        btn = QPushButton('', self)
+        btn.setCursor(QtCore.Qt.CursorShape.PointingHandCursor)
+        # btn.setIcon(QIcon("resources/icons/plus-symbol-button.png"))
+        btn.clicked.connect(lambda: print(self, "Clicked!"))
+            
+        btn.setFixedWidth(40)
+
+        main_layout.addWidget(btn, 0, 0, QtCore.Qt.AlignmentFlag.AlignLeft)
+
+        
+        table = WorkspaceTable()
+        main_layout.addWidget(table, 1, 0, 1, 2, QtCore.Qt.AlignmentFlag.AlignTop)
+
+        self.setStyleSheet("""
+            QWidget {
+                background-color: rgb(31,31,31);
+            }
+            QLabel {
+                padding: 1px;
+                font-size: 16px; 
+                font-weight: bold;
+            }
+        """)
+
+        self.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Fixed)
+
+
+    def insert_data(self, data):
+        pass
+
+class WorkspaceTable(QTableWidget):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.setRowCount(1)
+        self.setColumnCount(3)
+        self.setHorizontalHeaderLabels(['', 'Key', 'Value'])
+        self.verticalHeader().hide()
+
+        self.setShowGrid(True)
+        self.setGridStyle(QtCore.Qt.PenStyle.NoPen)
+        self.setStyleSheet("""
+                QTableWidget {
+                    background-color: transparent;
+                }
+            """)
+        for index in range(self.rowCount()):
+            btn = QPushButton('', self)
+            btn.setCursor(QtCore.Qt.CursorShape.PointingHandCursor)
+            # btn.setIcon(QIcon("resources/icons/delete.png"))
+            btn.clicked.connect(lambda: print(self, "Clicked!"))
+            
+            btn.setFixedWidth(40)
+            self.setCellWidget(index, 0, btn)
+            self.setRowHeight(index, 40)
+
+            btn.setStyleSheet("""
+                QPushButton {background-color: rgb(210,39,48);} 
+            """)
+
+        self.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeMode.Fixed)
+        self.horizontalHeader().resizeSection(0, 40)
+
+        for i in range(2, self.columnCount()):
+            self.horizontalHeader().setSectionResizeMode(i, QHeaderView.ResizeMode.Stretch)
+
+        self.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Fixed)
+    
 class WorkspaceTableSplitterHandle(QSplitterHandle):
+
 
     handleRelease = pyqtSignal()
 
@@ -138,7 +220,23 @@ class Workspace(QWidget):
         self.context_menu = CustomMenu(self)
         self.viewScalefactor = 1.15
         
-        # Need some config setup func or something 
+        # AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        
+        container = QWidget()
+        vbox_layout = QVBoxLayout(container)
+        vbox_layout.setAlignment(Qt.AlignmentFlag.AlignTop)
+        vbox_layout.setSpacing(10)
+        # vbox_layout.setContentsMargins(0, 0, 0, 0)
+
+        # table1 = TableContainerWidget("Fos")
+        # table1.insert_data("asd")
+        
+        # vbox_layout.addWidget(table1)
+        self.ui.gridLayout_28.addWidget(container, 0, 0)
+
+        # AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+
         self.splitter = WorkspaceTableSplitter(Qt.Orientation.Vertical)
 
         self.splitter.addWidget(self.ui.workspace_container)
