@@ -1,12 +1,17 @@
 from PyQt6.QtWidgets import QApplication
 from src.main import MyApp
-import sys
+import traceback
 
 if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    app.setStyle("Fusion")
+    try:
+        app = QApplication([])
+        app.setStyle("Fusion")
 
-    window = MyApp()
-    window.center()
-    window.show()
-    app.exec()
+        window = MyApp()
+        window.center()
+        window.show()
+
+        app.exec()
+
+    except Exception as e:
+        traceback.print_exc()

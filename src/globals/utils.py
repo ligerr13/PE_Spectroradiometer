@@ -29,4 +29,4 @@ def open_dialog(parent, direction: str = ""):
         
     file_name = os.path.basename(fname)
 
-    print(file_name)
+    return file_name

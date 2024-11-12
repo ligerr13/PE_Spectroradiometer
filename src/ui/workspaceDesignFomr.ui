@@ -804,6 +804,9 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical
                    </rect>
                   </property>
                   <layout class="QVBoxLayout" name="verticalLayout_4">
+                   <property name="spacing">
+                    <number>0</number>
+                   </property>
                    <property name="leftMargin">
                     <number>0</number>
                    </property>
@@ -844,6 +847,9 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical
                        <number>0</number>
                       </property>
                       <property name="bottomMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="spacing">
                        <number>0</number>
                       </property>
                      </layout>

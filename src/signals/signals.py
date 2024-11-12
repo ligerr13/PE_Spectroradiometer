@@ -36,6 +36,8 @@ class WorkspaceSignalBus(QObject):
 
     update_explorer = pyqtSignal()
 
+    update_options = pyqtSignal(str, int)
+
     def __init__(self):
         super().__init__()
 
@@ -50,3 +52,6 @@ class WorkspaceSignalBus(QObject):
 
     def emitUpdateExplorer(self):
         self.update_explorer.emit()
+
+    def emitUpdateOptions(self, key: str, row: int):
+        self.update_options.emit(key, row)
