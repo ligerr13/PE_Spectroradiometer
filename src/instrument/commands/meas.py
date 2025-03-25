@@ -7,7 +7,7 @@ class MEAS(Command):
     def __init__(self, switch: ModeSelect = ModeSelect.ENABLED):
         super().__init__(params={"switch": switch})
 
-    def prepare_message(self) -> Message:
+    def prepare_message(self) ->  Message:
         message_content = b'MEAS,' + bytes(str(self.params["switch"].value), 'utf-8') + Command.DELIMITER
         return Message(params=self.params, message=message_content)
 

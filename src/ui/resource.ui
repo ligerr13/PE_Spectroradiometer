@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>1507</width>
-    <height>880</height>
+    <height>873</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -74,6 +74,9 @@ QPushButton:checked  {
     </property>
     <property name="bottomMargin">
      <number>0</number>
+    </property>
+    <property name="spacing">
+     <number>1</number>
     </property>
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
@@ -154,7 +157,8 @@ top: 1px;
       </property>
       <widget class="QWidget" name="home">
        <property name="styleSheet">
-        <string notr="true">background: rgb(20, 20, 20);</string>
+        <string notr="true">background: rgb(20, 20, 20);
+border: 0;</string>
        </property>
        <attribute name="icon">
         <iconset>
@@ -164,42 +168,95 @@ top: 1px;
         <string/>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_2">
-        <property name="horizontalSpacing">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <property name="spacing">
          <number>0</number>
         </property>
         <item row="0" column="0">
-         <widget class="QWidget" name="widget" native="true">
+         <widget class="QWidget" name="left_navbar" native="true">
           <property name="minimumSize">
            <size>
-            <width>60</width>
+            <width>55</width>
             <height>0</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>18</width>
+            <width>55</width>
             <height>16777215</height>
            </size>
           </property>
           <property name="styleSheet">
-           <string notr="true">background-color: rgb(51, 51, 51);border-radius: 5px;</string>
+           <string notr="true">color:white;
+background-color: rgb(31, 31, 31);
+margin: 0 0 0 0;
+padding: 0 0 0 0;
+border-right:  1px solid rgba(129, 129, 129, 50);
+border-left: 0;</string>
           </property>
-          <layout class="QVBoxLayout" name="verticalLayout_3">
+          <layout class="QVBoxLayout" name="verticalLayout_11">
+           <property name="spacing">
+            <number>0</number>
+           </property>
            <property name="leftMargin">
-            <number>5</number>
+            <number>1</number>
            </property>
            <property name="topMargin">
-            <number>5</number>
+            <number>1</number>
            </property>
            <property name="rightMargin">
-            <number>5</number>
+            <number>1</number>
            </property>
            <property name="bottomMargin">
-            <number>5</number>
+            <number>1</number>
            </property>
            <item>
-            <widget class="QWidget" name="widget_3" native="true">
-             <layout class="QVBoxLayout" name="verticalLayout_4">
+            <widget class="QWidget" name="widget_17" native="true">
+             <property name="styleSheet">
+              <string notr="true">QWidget {border: 0;margin: 0 0 0 0;}
+
+QPushButton {
+font: 570 10pt &quot;Consolas&quot;;
+color: 	rgb(190, 190, 190);
+margin: 0 0 0 0;
+padding: 5,5,5,5;
+border-bottom: 1px solid rgba(129, 129, 129, 50);
+}
+QPushButton:hover {
+			color: white;
+			background:   rgb(40, 40, 40);
+        }
+QPushButton:checked  {
+		border-left: 3px solid rgb(0, 150, 255);
+		border-radius: 0px;
+		color: white;
+		background:  rgb(40, 40, 40);
+}
+QPushButton:unchecked  {
+		border: 0px;
+		background-color: transparent;
+		color: 	rgb(171, 171, 171);
+}
+QToolTip{ 
+		font: 12pt;
+		color: rgb(100, 100, 100);
+}</string>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_12">
+              <property name="spacing">
+               <number>0</number>
+              </property>
               <property name="leftMargin">
                <number>0</number>
               </property>
@@ -213,54 +270,17 @@ top: 1px;
                <number>0</number>
               </property>
               <item>
-               <widget class="Line" name="line_3">
-                <property name="styleSheet">
-                 <string notr="true">background-color: rgba(129, 129, 129, 50);
-border: 0px;
-border-radius: 50%</string>
-                </property>
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <spacer name="verticalSpacer">
-                <property name="orientation">
-                 <enum>Qt::Vertical</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>20</width>
-                  <height>411</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
-               <widget class="Line" name="line">
-                <property name="styleSheet">
-                 <string notr="true">background-color: rgba(129, 129, 129, 50);
-border: 0px;
-border-radius: 50%</string>
-                </property>
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-               </widget>
-              </item>
-              <item>
                <widget class="QPushButton" name="pushButton_13">
                 <property name="minimumSize">
                  <size>
-                  <width>50</width>
-                  <height>50</height>
+                  <width>54</width>
+                  <height>54</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>45</width>
-                  <height>16777215</height>
+                  <width>54</width>
+                  <height>54</height>
                  </size>
                 </property>
                 <property name="cursor">
@@ -269,29 +289,12 @@ border-radius: 50%</string>
                 <property name="toolTip">
                  <string>Measure</string>
                 </property>
-                <property name="styleSheet">
-                 <string notr="true">QPushButton {
-		border: 0px;
-		font: 12pt;
-        }
-QPushButton:hover {
-            background: rgb(55, 55, 55);
-        }
-QPushButton:checked  {
-		border: 0px;
-		background: rgb(55, 55, 55);
-}
-QToolTip{ 
-		font: 12pt;
-		color: rgb(100, 100, 100);
-}</string>
-                </property>
                 <property name="text">
                  <string/>
                 </property>
                 <property name="icon">
                  <iconset>
-                  <normaloff>../../resources/icons/play-button-arrowhead.png</normaloff>../../resources/icons/play-button-arrowhead.png</iconset>
+                  <normaloff>../../resources/icons/play-button.png</normaloff>../../resources/icons/play-button.png</iconset>
                 </property>
                 <property name="iconSize">
                  <size>
@@ -302,14 +305,23 @@ QToolTip{
                 <property name="checkable">
                  <bool>true</bool>
                 </property>
+                <property name="flat">
+                 <bool>false</bool>
+                </property>
                </widget>
               </item>
               <item>
-               <widget class="QToolButton" name="toolButton_2">
+               <widget class="QPushButton" name="pushButton_2">
                 <property name="minimumSize">
                  <size>
-                  <width>0</width>
-                  <height>35</height>
+                  <width>54</width>
+                  <height>54</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>54</width>
+                  <height>54</height>
                  </size>
                 </property>
                 <property name="cursor">
@@ -346,15 +358,38 @@ QToolTip{
                   <height>15</height>
                  </size>
                 </property>
-                <property name="toolButtonStyle">
-                 <enum>Qt::ToolButtonTextBesideIcon</enum>
-                </property>
                </widget>
+              </item>
+              <item>
+               <spacer name="verticalSpacer_5">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+                <property name="sizeType">
+                 <enum>QSizePolicy::MinimumExpanding</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>0</width>
+                  <height>0</height>
+                 </size>
+                </property>
+               </spacer>
               </item>
              </layout>
             </widget>
            </item>
           </layout>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QWidget" name="widget_2" native="true">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>16777215</height>
+           </size>
+          </property>
          </widget>
         </item>
        </layout>
@@ -389,18 +424,18 @@ QToolTip{
    </hints>
   </connection>
   <connection>
-   <sender>toolButton_2</sender>
+   <sender>pushButton_2</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
    <slot>HandleConnectionConfigDialog()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>662</x>
-     <y>887</y>
+     <x>27</x>
+     <y>135</y>
     </hint>
     <hint type="destinationlabel">
-     <x>487</x>
-     <y>438</y>
+     <x>753</x>
+     <y>439</y>
     </hint>
    </hints>
   </connection>

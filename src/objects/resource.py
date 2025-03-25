@@ -40,6 +40,7 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout.setSpacing(1)
         self.gridLayout.setObjectName("gridLayout")
         self.tabWidget = QtWidgets.QTabWidget(parent=self.centralwidget)
         self.tabWidget.setMinimumSize(QtCore.QSize(40, 40))
@@ -88,73 +89,79 @@ class Ui_MainWindow(object):
         self.tabWidget.setTabBarAutoHide(False)
         self.tabWidget.setObjectName("tabWidget")
         self.home = QtWidgets.QWidget()
-        self.home.setStyleSheet("background: rgb(20, 20, 20);")
+        self.home.setStyleSheet("background: rgb(20, 20, 20);\n"
+"border: 0;")
         self.home.setObjectName("home")
         self.gridLayout_2 = QtWidgets.QGridLayout(self.home)
-        self.gridLayout_2.setHorizontalSpacing(0)
+        self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout_2.setSpacing(0)
         self.gridLayout_2.setObjectName("gridLayout_2")
-        self.widget = QtWidgets.QWidget(parent=self.home)
-        self.widget.setMinimumSize(QtCore.QSize(60, 0))
-        self.widget.setMaximumSize(QtCore.QSize(18, 16777215))
-        self.widget.setStyleSheet("background-color: rgb(51, 51, 51);border-radius: 5px;")
-        self.widget.setObjectName("widget")
-        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.widget)
-        self.verticalLayout_3.setContentsMargins(5, 5, 5, 5)
-        self.verticalLayout_3.setObjectName("verticalLayout_3")
-        self.widget_3 = QtWidgets.QWidget(parent=self.widget)
-        self.widget_3.setObjectName("widget_3")
-        self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.widget_3)
-        self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout_4.setObjectName("verticalLayout_4")
-        self.line_3 = QtWidgets.QFrame(parent=self.widget_3)
-        self.line_3.setStyleSheet("background-color: rgba(129, 129, 129, 50);\n"
-"border: 0px;\n"
-"border-radius: 50%")
-        self.line_3.setFrameShape(QtWidgets.QFrame.Shape.HLine)
-        self.line_3.setFrameShadow(QtWidgets.QFrame.Shadow.Sunken)
-        self.line_3.setObjectName("line_3")
-        self.verticalLayout_4.addWidget(self.line_3)
-        spacerItem = QtWidgets.QSpacerItem(20, 411, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
-        self.verticalLayout_4.addItem(spacerItem)
-        self.line = QtWidgets.QFrame(parent=self.widget_3)
-        self.line.setStyleSheet("background-color: rgba(129, 129, 129, 50);\n"
-"border: 0px;\n"
-"border-radius: 50%")
-        self.line.setFrameShape(QtWidgets.QFrame.Shape.HLine)
-        self.line.setFrameShadow(QtWidgets.QFrame.Shadow.Sunken)
-        self.line.setObjectName("line")
-        self.verticalLayout_4.addWidget(self.line)
-        self.pushButton_13 = QtWidgets.QPushButton(parent=self.widget_3)
-        self.pushButton_13.setMinimumSize(QtCore.QSize(50, 50))
-        self.pushButton_13.setMaximumSize(QtCore.QSize(45, 16777215))
-        self.pushButton_13.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
-        self.pushButton_13.setStyleSheet("QPushButton {\n"
-"        border: 0px;\n"
-"        font: 12pt;\n"
-"        }\n"
+        self.left_navbar = QtWidgets.QWidget(parent=self.home)
+        self.left_navbar.setMinimumSize(QtCore.QSize(55, 0))
+        self.left_navbar.setMaximumSize(QtCore.QSize(55, 16777215))
+        self.left_navbar.setStyleSheet("color:white;\n"
+"background-color: rgb(31, 31, 31);\n"
+"margin: 0 0 0 0;\n"
+"padding: 0 0 0 0;\n"
+"border-right:  1px solid rgba(129, 129, 129, 50);\n"
+"border-left: 0;")
+        self.left_navbar.setObjectName("left_navbar")
+        self.verticalLayout_11 = QtWidgets.QVBoxLayout(self.left_navbar)
+        self.verticalLayout_11.setContentsMargins(1, 1, 1, 1)
+        self.verticalLayout_11.setSpacing(0)
+        self.verticalLayout_11.setObjectName("verticalLayout_11")
+        self.widget_17 = QtWidgets.QWidget(parent=self.left_navbar)
+        self.widget_17.setStyleSheet("QWidget {border: 0;margin: 0 0 0 0;}\n"
+"\n"
+"QPushButton {\n"
+"font: 570 10pt \"Consolas\";\n"
+"color:     rgb(190, 190, 190);\n"
+"margin: 0 0 0 0;\n"
+"padding: 5,5,5,5;\n"
+"border-bottom: 1px solid rgba(129, 129, 129, 50);\n"
+"}\n"
 "QPushButton:hover {\n"
-"            background: rgb(55, 55, 55);\n"
+"            color: white;\n"
+"            background:   rgb(40, 40, 40);\n"
 "        }\n"
 "QPushButton:checked  {\n"
+"        border-left: 3px solid rgb(0, 150, 255);\n"
+"        border-radius: 0px;\n"
+"        color: white;\n"
+"        background:  rgb(40, 40, 40);\n"
+"}\n"
+"QPushButton:unchecked  {\n"
 "        border: 0px;\n"
-"        background: rgb(55, 55, 55);\n"
+"        background-color: transparent;\n"
+"        color:     rgb(171, 171, 171);\n"
 "}\n"
 "QToolTip{ \n"
 "        font: 12pt;\n"
 "        color: rgb(100, 100, 100);\n"
 "}")
+        self.widget_17.setObjectName("widget_17")
+        self.verticalLayout_12 = QtWidgets.QVBoxLayout(self.widget_17)
+        self.verticalLayout_12.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_12.setSpacing(0)
+        self.verticalLayout_12.setObjectName("verticalLayout_12")
+        self.pushButton_13 = QtWidgets.QPushButton(parent=self.widget_17)
+        self.pushButton_13.setMinimumSize(QtCore.QSize(54, 54))
+        self.pushButton_13.setMaximumSize(QtCore.QSize(54, 54))
+        self.pushButton_13.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.pushButton_13.setText("")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(".\\src\\ui\\../../resources/icons/play-button-arrowhead.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon1.addPixmap(QtGui.QPixmap(".\\src\\ui\\../../resources/icons/play-button.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.pushButton_13.setIcon(icon1)
         self.pushButton_13.setIconSize(QtCore.QSize(20, 20))
         self.pushButton_13.setCheckable(True)
+        self.pushButton_13.setFlat(False)
         self.pushButton_13.setObjectName("pushButton_13")
-        self.verticalLayout_4.addWidget(self.pushButton_13)
-        self.toolButton_2 = QtWidgets.QToolButton(parent=self.widget_3)
-        self.toolButton_2.setMinimumSize(QtCore.QSize(0, 35))
-        self.toolButton_2.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
-        self.toolButton_2.setStyleSheet("QToolButton {\n"
+        self.verticalLayout_12.addWidget(self.pushButton_13)
+        self.pushButton_2 = QtWidgets.QPushButton(parent=self.widget_17)
+        self.pushButton_2.setMinimumSize(QtCore.QSize(54, 54))
+        self.pushButton_2.setMaximumSize(QtCore.QSize(54, 54))
+        self.pushButton_2.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        self.pushButton_2.setStyleSheet("QToolButton {\n"
 "        border: 0px;\n"
 "         background: rgb(55, 55, 55);\n"
 "\n"
@@ -169,13 +176,18 @@ class Ui_MainWindow(object):
 "}")
         icon2 = QtGui.QIcon()
         icon2.addPixmap(QtGui.QPixmap(".\\src\\ui\\../../resources/icons/link.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.toolButton_2.setIcon(icon2)
-        self.toolButton_2.setIconSize(QtCore.QSize(15, 15))
-        self.toolButton_2.setToolButtonStyle(QtCore.Qt.ToolButtonStyle.ToolButtonTextBesideIcon)
-        self.toolButton_2.setObjectName("toolButton_2")
-        self.verticalLayout_4.addWidget(self.toolButton_2)
-        self.verticalLayout_3.addWidget(self.widget_3)
-        self.gridLayout_2.addWidget(self.widget, 0, 0, 1, 1)
+        self.pushButton_2.setIcon(icon2)
+        self.pushButton_2.setIconSize(QtCore.QSize(15, 15))
+        self.pushButton_2.setObjectName("pushButton_2")
+        self.verticalLayout_12.addWidget(self.pushButton_2)
+        spacerItem = QtWidgets.QSpacerItem(0, 0, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.MinimumExpanding)
+        self.verticalLayout_12.addItem(spacerItem)
+        self.verticalLayout_11.addWidget(self.widget_17)
+        self.gridLayout_2.addWidget(self.left_navbar, 0, 0, 1, 1)
+        self.widget_2 = QtWidgets.QWidget(parent=self.home)
+        self.widget_2.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.widget_2.setObjectName("widget_2")
+        self.gridLayout_2.addWidget(self.widget_2, 0, 1, 1, 1)
         icon3 = QtGui.QIcon()
         icon3.addPixmap(QtGui.QPixmap(".\\src\\ui\\../../resources/icons/home.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.tabWidget.addTab(self.home, icon3, "")
@@ -190,13 +202,13 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         self.tabWidget.setCurrentIndex(0)
         self.pushButton_13.clicked['bool'].connect(MainWindow.HandleMeasureDialog) # type: ignore
-        self.toolButton_2.clicked.connect(MainWindow.HandleConnectionConfigDialog) # type: ignore
+        self.pushButton_2.clicked.connect(MainWindow.HandleConnectionConfigDialog) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "SpectroApp"))
         self.pushButton_13.setToolTip(_translate("MainWindow", "Measure"))
-        self.toolButton_2.setToolTip(_translate("MainWindow", "None"))
-        self.toolButton_2.setText(_translate("MainWindow", "  Connection status"))
+        self.pushButton_2.setToolTip(_translate("MainWindow", "None"))
+        self.pushButton_2.setText(_translate("MainWindow", "  Connection status"))
         self.actionExit_Aplication.setText(_translate("MainWindow", "Exit Aplication"))
