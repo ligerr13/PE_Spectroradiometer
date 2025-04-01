@@ -9,11 +9,12 @@ from src.objects.editSettingsContextMenu import Ui_Form
 from src.objects.workspaceDesignFomr import Ui_WorkspaceDesignForm
 from src.signals.signals import NodeBoardSignalBus
 from src.dialogs.widgetCreatorDialog import WidgetCreatorDialog
-from src.widgets.spectralplottest import SpectralPlotWidget
+from src.widgets.locus_widget import LocusWidget
+from src.widgets.spectrum_widget import SpectrumWidget
 from src.signals.signals import WorkspaceSignalBus
 from src.dialogs.textToSceneDialog import TextToSceneDialog
 
-from src.globals.utils import open_dialog
+from src.globals.utils import convert_numpy, open_dialog
 from src.globals.utils import show_toast, ToastType
 
 class ICheckBoxData(QObject):
@@ -788,12 +789,12 @@ class Workspace(QWidget):
         
         DATA = [widget.get_widget_data() for widget in WIDGET_DATA]
         
-        WORKSAPCE_DATA = {
+        WORKSPACE_DATA = {
         "workspace": self.workspace_name,
         "widgets": DATA }
 
-        with open(f'{file_name}', 'w') as file:
-            json.dump(WORKSAPCE_DATA, file, indent=4)
+        with open(file_name, 'w') as file:
+            json.dump(WORKSPACE_DATA, file, indent=4, default=convert_numpy)
         
         # show_toast("Workscape Saved!", 3000, ToastType.SUCCESS)
     
@@ -801,55 +802,67 @@ class Workspace(QWidget):
         try:
             with open(file_name, 'r') as file:
                 LOADED = json.load(file)
-            
+
             if not isinstance(LOADED, dict):
                 raise ValueError("Loaded data is not a valid dictionary.")
-            
+
             workspace_name = LOADED.get('workspace')
             if not workspace_name:
                 raise ValueError("Workspace name is missing or invalid.")
-            
+
             WIDGETS_DATA = LOADED.get('widgets', [])
-            
             if not isinstance(WIDGETS_DATA, list):
                 raise ValueError("Widgets data is not a valid list.")
-            
+
             for WIDGET in WIDGETS_DATA:
                 if not isinstance(WIDGET, dict):
                     continue
-                
-                if WIDGET.get('type') == 'SceneWidget':
-                    widget = SpectralPlotWidget()
+
+                widget_type = WIDGET.get('type')
+                sub_type = WIDGET.get('sub-type')
+
+                if widget_type == 'SceneWidget':
+                    if sub_type == 'Spectrum-Color':
+                        widget = SpectrumWidget()
+                    elif sub_type == 'Locus':
+                        widget = LocusWidget()
+                    else:
+                        continue
+
                     try:
-                        widget.setObjectName(WIDGET.get('uniqe_name', 'DefaultID'))
-                        widget.setSpectralData(WIDGET.get('data', ''))
+                        widget.setObjectName(WIDGET.get('unique_name', 'DefaultID'))
+                        raw_spectral_data = WIDGET.get('data', [])
+                        if isinstance(raw_spectral_data, list):
+                            widget.setSpectralData(raw_spectral_data)
                         
                         geometry = WIDGET.get('geometry', {})
-                        x = geometry.get('x')
-                        y = geometry.get('y')
-                        width = geometry.get('width')
-                        height = geometry.get('height')
+                        x, y, width, height = (
+                            geometry.get('x'),
+                            geometry.get('y'),
+                            geometry.get('width'),
+                            geometry.get('height')
+                        )
 
-                        if not isinstance(x, (int, float)) or not isinstance(y, (int, float)) or not isinstance(width, (int, float)) or not isinstance(height, (int, float)):
-                            raise ValueError(f"Invalid geometry values")
+                        if all(isinstance(val, (int, float)) for val in [x, y, width, height]):
+                            widget.setGeometryProperties(x, y, width, height)
+                        else:
+                            raise ValueError("Invalid geometry values.")
 
-                        widget.setGeometryProperties(x, y, width, height)
-                        
                         self.scene.addWidget(widget)
+
                     except Exception as widget_error:
-                        # show_toast(f"Error processing widget: \n{widget_error}", 3000, ToastType.ERROR)
-                        pass
-            
+                        print(f"An Error has happend shile loading widgets: {widget_error}")
+
             self.update_explorer()
 
-        except FileNotFoundError as fnf_error:
-            pass
+        except FileNotFoundError:
+            print("The file not found!")
         except json.JSONDecodeError:
-            pass
+            print("Invalid JSON file!")
         except ValueError as ve:
-            pass
+            print(f"Invalid data: {ve}")
         except Exception as e:
-            pass
+            print(f"Unknown error: {e}")
 
 class NodeboardGraphicsScene(QGraphicsScene):
     def __init__(self, parent=None):

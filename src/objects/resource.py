@@ -151,11 +151,7 @@ class Ui_MainWindow(object):
         self.pushButton_13.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.pushButton_13.setText("")
         icon1 = QtGui.QIcon()
-<<<<<<< HEAD
-        icon1.addPixmap(QtGui.QPixmap(".\\src\\ui\\../../resources/icons/play-button.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-=======
         icon1.addPixmap(QtGui.QPixmap("src/ui/../../resources/icons/play-button-arrowhead.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
->>>>>>> d880c57 (Some changes)
         self.pushButton_13.setIcon(icon1)
         self.pushButton_13.setIconSize(QtCore.QSize(20, 20))
         self.pushButton_13.setCheckable(True)
@@ -180,7 +176,6 @@ class Ui_MainWindow(object):
 "        color: rgb(100, 100, 100);\n"
 "}")
         icon2 = QtGui.QIcon()
-<<<<<<< HEAD
         icon2.addPixmap(QtGui.QPixmap(".\\src\\ui\\../../resources/icons/link.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.pushButton_2.setIcon(icon2)
         self.pushButton_2.setIconSize(QtCore.QSize(15, 15))
@@ -194,16 +189,6 @@ class Ui_MainWindow(object):
         self.widget_2.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.widget_2.setObjectName("widget_2")
         self.gridLayout_2.addWidget(self.widget_2, 0, 1, 1, 1)
-=======
-        icon2.addPixmap(QtGui.QPixmap("src/ui/../../resources/icons/link.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.toolButton_2.setIcon(icon2)
-        self.toolButton_2.setIconSize(QtCore.QSize(15, 15))
-        self.toolButton_2.setToolButtonStyle(QtCore.Qt.ToolButtonStyle.ToolButtonTextBesideIcon)
-        self.toolButton_2.setObjectName("toolButton_2")
-        self.verticalLayout_4.addWidget(self.toolButton_2)
-        self.verticalLayout_3.addWidget(self.widget_3)
-        self.gridLayout_2.addWidget(self.widget, 0, 0, 1, 1)
->>>>>>> d880c57 (Some changes)
         icon3 = QtGui.QIcon()
         icon3.addPixmap(QtGui.QPixmap("src/ui/../../resources/icons/home.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.tabWidget.addTab(self.home, icon3, "")
