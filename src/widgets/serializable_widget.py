@@ -8,6 +8,7 @@ class SerializableWidget(QWidget):
         super().__init__()
         self.widget_id = widget_id
         self.widget_type = widget_type
+        self.sub_type = ""
         self.objectName = None
         self.data = data or {}
 
@@ -16,6 +17,7 @@ class SerializableWidget(QWidget):
         return {
             'id': self.widget_id,
             'type': self.widget_type,
+            'sub-type': self.sub_type,
             'uniqe_name': self.objectName,
             'geometry': {
                 'x': geometry.x(),
@@ -29,6 +31,7 @@ class SerializableWidget(QWidget):
     def set_widget_data(self, widget_data):
         self.widget_id = widget_data['id']
         self.widget_type = widget_data['type']
+        self.sub_type = widget_data['sub-type']
         self.data = widget_data['data']
         self.setGeometry(QRect(
             widget_data['geometry']['x'],

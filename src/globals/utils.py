@@ -3,7 +3,7 @@ from ..widgets.toast_widget import ToastWidget
 from src.globals.enum import ToastType
 import os
 from PyQt6.QtWidgets import QFileDialog
-
+import numpy as np
 
 class FileValidator:
     @classmethod
@@ -30,3 +30,9 @@ def open_dialog(parent, direction: str = ""):
     file_name = os.path.basename(fname)
 
     return file_name
+
+def convert_numpy(obj):
+    """ Ha az objektum egy ndarray, listává alakítja """
+    if isinstance(obj, np.ndarray):
+        return obj.tolist()
+    raise TypeError(f"Object of type {obj.__class__.__name__} is not JSON serializable")
