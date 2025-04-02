@@ -1,4 +1,4 @@
-from PyQt6.QtWidgets import QWidget, QSplitter,QVBoxLayout, QLabel,QTableWidgetItem, QTableWidget, QCheckBox, QGridLayout,QHBoxLayout,QDialog, QScrollArea, QSplitterHandle,QGraphicsView, QGraphicsProxyWidget, QGraphicsScene, QMenu, QGraphicsLineItem, QTreeWidgetItem, QPushButton, QSizePolicy, QHeaderView, QStyledItemDelegate, QStyle
+from PyQt6.QtWidgets import QSpacerItem, QWidget, QTabBar, QSplitter,QVBoxLayout, QLabel,QTableWidgetItem, QTableWidget, QCheckBox, QGridLayout,QHBoxLayout,QDialog, QScrollArea, QSplitterHandle,QGraphicsView, QGraphicsProxyWidget, QGraphicsScene, QMenu, QGraphicsLineItem, QTreeWidgetItem, QPushButton, QSizePolicy, QHeaderView, QStyledItemDelegate, QStyle
 from PyQt6.QtGui import QColor, qRgb, QTransform, QCursor, QStandardItem, QIcon, QFont, QFontMetrics, QPaintEvent, QPen, QPainter, QPainterPath
 from PyQt6.QtCore import  Qt, QLineF, QPointF, QPoint, QSize, QObject, Qt, pyqtSignal, pyqtSlot, QRectF
 from PyQt6 import QtCore
@@ -184,7 +184,6 @@ class ImportDialog(QDialog):
         self.optionsSelected.emit(selected_options)
         self.accept()
 
-
 class TableContainerWidget(QWidget):
     table_count = 0
     load_data_signal = pyqtSignal()
@@ -200,33 +199,62 @@ class TableContainerWidget(QWidget):
         
         self.import_dialog = ImportDialog()
 
-        main_layout = QGridLayout(self)
-        main_layout.setContentsMargins(15, 15, 15, 15)
+        self.main_layout = QGridLayout(self)
+        self.main_layout.setContentsMargins(1, 1, 1, 1)
         
-        title_layout = QHBoxLayout()
-        
-        btn = QPushButton('', self)
-        btn.setCursor(QtCore.Qt.CursorShape.PointingHandCursor)
-        btn.setIcon(QIcon("resources/icons/plus-symbol-button.png"))
-        
-        btn.setFixedHeight(40)
-        btn.setFixedWidth(40)
-        title_layout.addWidget(btn)
-        
-        table_name = self.file_path.stem
-        title_label = QLabel(f"Table: {TableContainerWidget.table_count}_{table_name}")
-        title_label.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeft | QtCore.Qt.AlignmentFlag.AlignVCenter)
-        title_label.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
-        title_layout.addWidget(title_label)
-        
-        main_layout.addLayout(title_layout, 0, 0, 1, 2, QtCore.Qt.AlignmentFlag.AlignLeft)
-
         self.table = WorkspaceTable()
-        main_layout.addWidget(self.table, 1, 0, 1, 2, QtCore.Qt.AlignmentFlag.AlignTop)
 
+        self.nav_bar = QWidget()
+        self.nav_bar.setFixedWidth(55)
+        self.nav_bar.setStyleSheet("""
+            background-color: rgb(20, 20, 20); 
+            border-right: 1px solid rgba(129, 129, 129, 50);
+            border-top: 0;
+            border-left:0;
+            border-bottom: 0;
+            margin: 0 0 0 0;
+            padding: 0 0 0 0;
+            spacing: 0;
+        """)
+        self.nav_bar.setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Expanding)
+        
+        nav_bar_layout = QGridLayout(self.nav_bar)
+        nav_bar_layout.setContentsMargins(1, 1, 1, 1)
+        nav_bar_layout.setAlignment(Qt.AlignmentFlag.AlignTop)
+        nav_bar_layout.setSpacing(3)
+
+        data_selecter_button = QPushButton('', self)
+        data_selecter_button.setCursor(QtCore.Qt.CursorShape.PointingHandCursor)
+        data_selecter_button.setIcon(QIcon("resources/icons/plus-symbol-button.png"))
+        
+        data_selecter_button.setFixedHeight(50)
+        data_selecter_button.setFixedWidth(50)
+
+        data_selecter_button.setStyleSheet("""
+            border: 0 0 0 0;
+            background-color: rgb(25,25,25);
+        """)
+
+        import_measurement_data_button = QPushButton('')
+        import_measurement_data_button.setIcon(QIcon("resources/icons/import.png"))
+        import_measurement_data_button.setFixedHeight(50)
+        import_measurement_data_button.setFixedWidth(50)
+        import_measurement_data_button.setStyleSheet("""
+            border: 0 0 0 0;
+            background-color: rgb(25,25,25);
+        """)
+        
+        nav_bar_layout.addWidget(data_selecter_button)
+        nav_bar_layout.addWidget(import_measurement_data_button)
+        
+        self.main_layout.addWidget(self.nav_bar, 0, 0, 2, 1)
+        self.main_layout.addWidget(self.table, 0, 1, 1, 2, QtCore.Qt.AlignmentFlag.AlignTop)
         self.setStyleSheet("""
             QWidget {
                 background-color: rgb(31,31,31);
+                margin: 0 0 0 0;
+                padding: 0 0 0 0;
+                spacing: 0;
             }
             QLabel {
                 padding: 1px;
@@ -237,22 +265,33 @@ class TableContainerWidget(QWidget):
 
         self.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Fixed)
 
-        btn.clicked.connect(self.open_import_options)
+        data_selecter_button.clicked.connect(self.open_import_options)
+        import_measurement_data_button.clicked.connect(self.import_measurements_to_workspace_table)
         self.signal_bus.update_options.connect(self.remove_option_from_selected)
 
-
-
     def open_import_options(self):
+        if not self.file_path:
+            return
+
         self.import_dialog.optionsSelected.connect(self.set_selected_options)
+
         if self.import_dialog.exec():
             pass
+        
+    def import_measurements_to_workspace_table(self):  
+        dir = "src/instrument/data"  
+        opened_file = open_dialog(self, direction=dir)
+        
+        if opened_file:
+            self.file_path = Path(opened_file)
+            self.load_data_signal.emit()
 
     def set_selected_options(self, options: list):
         if options != self.selected_options:
-            self.selected_options = options
-            print("Selected options:", self.selected_options)
+            self.selected_options = ['','Measurement'] + options + ['']
+            self.table.setHorizontalHeaderLabels(self.selected_options)
             self.load_data()
-
+            
     def load_data(self):
         with open(f"src/instrument/data/{self.file_path}") as json_file:
             data = json.load(json_file)
@@ -266,22 +305,22 @@ class TableContainerWidget(QWidget):
             print(f"Option '{label}' removed from selected_options.")
             self.table.delete_row(row)
 
-
     def insert_data(self, data: dict):
-
+        row_data = [self.file_path.name]
+        
         if "MeasurementJsonBuilder" in data and "Measurement Conditions" in data["MeasurementJsonBuilder"]:
-            for key in data["MeasurementJsonBuilder"]["Measurement Conditions"]:
-                if key in self.selected_options:
-                    self.table.add_table_row(key, data["MeasurementJsonBuilder"]["Measurement Conditions"][key]["value"])
-
-            for key in data:
-                if key in self.selected_options:
-                    self.table.add_table_row(key, data[key]["Spectral data"]["value"])
-
-            for key in data["ColorimetricJsonBuilder"]["Colorimetric Data"]:
-                if key in self.selected_options:
-                    self.table.add_table_row(key, data["ColorimetricJsonBuilder"]["Colorimetric Data"][key]["value"])
-
+            for key in self.selected_options[2:-1]:
+                if key in data["MeasurementJsonBuilder"]["Measurement Conditions"]:
+                    row_data.append(data["MeasurementJsonBuilder"]["Measurement Conditions"][key]["value"])
+                elif key in data:
+                    row_data.append(data[key]["Spectral data"]["value"])
+                elif key in data.get("ColorimetricJsonBuilder", {}).get("Colorimetric Data", {}):
+                    row_data.append(data["ColorimetricJsonBuilder"]["Colorimetric Data"][key]["value"])
+                else:
+                    row_data.append("")
+        
+        self.table.setColumnCount(len(row_data)  + 1)
+        self.table.add_table_row(row_data)
 
 class WorkspaceTable(QTableWidget):
     def __init__(self, parent=None):
@@ -289,8 +328,8 @@ class WorkspaceTable(QTableWidget):
         self.signal_bus  = WorkspaceSignalBus().instance()
 
         self.setRowCount(0)
-        self.setColumnCount(4)
-        self.setHorizontalHeaderLabels(['', 'Key', 'Value', ''])
+        self.setColumnCount(99)
+        self.setHorizontalHeaderLabels(['', 'Measurement', ''])
         self.verticalHeader().hide()
         self.setFixedHeight((self.rowCount()) * 40)
 
@@ -299,6 +338,10 @@ class WorkspaceTable(QTableWidget):
         self.setStyleSheet("""
                 QTableWidget {
                     background-color: transparent;
+                    border: 0 0 0 0;
+                    margin: 0 0 0 0;
+                    padding: 0 0 0 0;
+                    spacing: 0;
                 }
             """)
             
@@ -314,7 +357,7 @@ class WorkspaceTable(QTableWidget):
 
     def adjust_header_height(self):
         header = self.horizontalHeader()
-        header.setStyleSheet("QHeaderView::section { height: 40px; }")
+        header.setStyleSheet("QHeaderView::section { height: 40px; background-color: rgb(15,15,15);}")
         header.setMinimumHeight(40)
     
     def change_row_background(self, row_number: int, color: QColor):
@@ -339,48 +382,30 @@ class WorkspaceTable(QTableWidget):
     def delete_row(self, row: int):
         print(row)
         self.removeRow(row)
-
-    def add_table_row(self, label: str, value):
-        for row in range(self.rowCount()):
-            existing_label_item = self.item(row, 1)
-            if existing_label_item and existing_label_item.text() == label:
-                return
+    
+    def add_table_row(self, row_data: list):
+        row_position = self.rowCount()
+        self.insertRow(row_position)
 
         bold_font = QFont()
         bold_font.setPointSize(12)
         bold_font.setBold(True)
 
-        row_position = self.rowCount()
-        self.insertRow(row_position)
-
-        label_item = QTableWidgetItem(label)
-        label_item.setFont(bold_font)
-        self.setItem(row_position, 1, label_item)
-
-        value_item = QTableWidgetItem(str(value))
-        value_item.setFont(bold_font)
-        self.setItem(row_position, 2, value_item)
-
-        empty = QTableWidgetItem("")
-        self.setItem(row_position, 3, empty)
-
         btn = QPushButton('', self)
         btn.setCursor(QtCore.Qt.CursorShape.PointingHandCursor)
         btn.setIcon(QIcon("resources/icons/delete.png"))
         btn.setFixedWidth(40)
+        btn.setStyleSheet("QPushButton {background-color: rgb(210,39,48);}")
+        btn.clicked.connect(lambda _, rw=row_position: self.removeRow(rw))
         self.setCellWidget(row_position, 0, btn)
-        self.setRowHeight(row_position, 40)
 
-        btn.setStyleSheet("""
-            QPushButton {background-color: rgb(210,39,48);} 
-        """)
-        btn.clicked.connect(lambda _, lbl=label, rw=row_position: self.signal_bus.update_options.emit(lbl, rw))
+        for col, value in enumerate(row_data, start=1):
+            item = QTableWidgetItem(str(value))
+            item.setFont(bold_font)
+            self.setItem(row_position, col, item)
 
-        self.horizontalHeader().resizeSection(1, self.adjust_header_size() + 10)
-
-        for row in range(self.rowCount()):
-            if row % 2 == 0:
-                self.change_row_background(row, QColor("#191919"))
+        if row_position % 2 == 0:
+            self.change_row_background(row_position, QColor("#191919"))
 
         self.setFixedHeight((self.rowCount() + 1) * 40)
 
@@ -487,6 +512,110 @@ class CustomMenu(QMenu):
         self.insertSeparator(self.cMenu.actionPaste)
         self.insertSeparator(self.cMenu.actionSelect_All)
 
+class TableTabManager(QObject):
+    plusClicked = pyqtSignal()
+
+    def __init__(self, ui_main_window):
+        super().__init__()
+        self.tabletabwidget = ui_main_window.TabletabWidget
+        self.plusButton = QPushButton("New Table")
+        self.tab_count = 0
+
+        print(self.tabletabwidget)
+
+        self.setupPlusButton()
+
+    def setupPlusButton(self): 
+        """
+            Setups the New Worksapce Button.
+        """
+
+        self.plusButton.setParent(self.tabletabwidget)
+        self.plusButton.setFixedSize(3*35, 40)
+        self.plusButton.setStyleSheet("""
+        QPushButton { 
+                background: rgb(25, 25, 25);
+                border: 2px solid rgb(35, 35, 35);
+                border-radius: 3px;
+                padding: 5 5 5 5;
+                font: 700 10pt "Consolas";
+
+        }""")
+        self.plusButton.setToolTip("New table")
+        # self.plusButton.setIcon(QIcon("./resources/icons/plus-symbol-button.png"))
+        # self.file_menu_button.setIconSize(QSize(25,25))
+        self.plusButton.setCursor(QtCore.Qt.CursorShape.PointingHandCursor)
+
+        self._move_plus_button()
+
+        # Signals
+        self.plusButton.clicked.connect(self.plusClicked.emit)
+
+    def _move_plus_button(self):
+            """
+            Move the plus button to the correct location.
+            """
+
+            h = self.tabletabwidget.geometry().top() + 5
+            w = self.tabletabwidget.width()
+
+            if self._sizeHint().width() >= w:
+                self.plusButton.move(self._sizeHint().width() + 20, h)
+            else:
+                self.plusButton.move(self._sizeHint().width(), h)
+
+    def _sizeHint(self):
+        """
+        Return the size of the TabBar with increased width for the plus button.
+        """
+        sizeHint = QTabBar.sizeHint(self.tabletabwidget.tabBar()) 
+        width = sizeHint.width()
+        height = sizeHint.height()
+        return QSize(width + 60, height)
+    
+    def add_table_page(self, table_widget, page_name):
+        """
+        Add a new page to the TabWidget.
+
+        :param table_widget: The QWidget associated with the new page
+        :param page_name: The name of the new page
+        """
+       
+        max_characters = 30
+        character_width = 7
+        max_width = max_characters * character_width
+        
+        display_text = page_name + "  " if len(page_name) <= max_characters else page_name[:max_characters] + '...  '
+        text_width = min(len(display_text) * character_width, max_width)
+        
+        index = self.tabletabwidget.addTab(table_widget, display_text)
+        
+        self.tabletabwidget.setTabToolTip(index, page_name)
+        
+        closeButton = QPushButton()
+        closeButton.setIcon(QIcon("./resources/icons/close-2.png"))
+        closeButton.setIconSize(QSize(10, 10))
+        closeButton.clicked.connect(lambda checked, table_widget=table_widget: self.remove_table_page(self.tabletabwidget.indexOf(table_widget)))
+        
+        self.tabletabwidget.tabBar().setTabButton(index, QTabBar.ButtonPosition.RightSide, closeButton)
+        self.tabletabwidget.tabBar().setTabData(index, QSize(text_width, 20))
+        
+        self.tab_count += 1
+
+        self.tabletabwidget.setCurrentWidget(table_widget)
+
+        self._move_plus_button()
+
+    def remove_table_page(self, index):
+        """
+        Remove the page at the specified index.
+
+        :param index: The index of the page to be removed
+        """
+        self.tabletabwidget.removeTab(index)
+        self.tab_count -= 1
+        self._move_plus_button()
+
 class Workspace(QWidget):
     def __init__(self, workspace_name, parent=None):
         super().__init__(parent)
@@ -500,6 +629,7 @@ class Workspace(QWidget):
         self.context_menu = CustomMenu(self)
         self.viewScalefactor = 1.15
 
+        self.tabletabmanager = TableTabManager(self.ui)
 
         self.splitter = WorkspaceTableSplitter(Qt.Orientation.Vertical)
 
@@ -521,6 +651,9 @@ class Workspace(QWidget):
         self.context_menu.cMenu.actionShow_Workspace_Grid.triggered.connect(self.handle_grid_visibility)
         self.signal_bus.update_explorer.connect(self.update_explorer)
         self.splitter.toggleButton.connect(self.toggle_splitter_buttons)
+        # self.tabletabmanager.plusClicked.connect(lambda: self.tabletabmanager.add_table_page(TableContainerWidget('asdasd'), f"new-table-{self.tabletabmanager.tab_count + 1}"))
+        self.tabletabmanager.plusClicked.connect(lambda: self.tabletabmanager.add_table_page(TableContainerWidget("asd"), f"new-table-{self.tabletabmanager.tab_count + 1}"))
+
 
         # QDialogs
         self.widgetCreator = WidgetCreatorDialog()
@@ -542,30 +675,6 @@ class Workspace(QWidget):
             self.ui.pushButton_5.setChecked(False)
         else:
             self.ui.pushButton_5.setChecked(True)
-    
-    #AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-    def import_measurements_to_workspace_table(self):  
-        dir = "src/instrument/data"  
-        opened_file = open_dialog(self.toast_msg_anchor, direction=dir)
-        
-        if opened_file:
-            file_path = Path(opened_file)
-            container = QWidget()
-            vbox_layout = QVBoxLayout(container)
-            vbox_layout.setContentsMargins(0, 0, 0, 0)
-            vbox_layout.setSpacing(0)
-
-            table1 = TableContainerWidget(file_path)
-            vbox_layout.addWidget(table1)
-            self.ui.gridLayout_28.addWidget(container, TableContainerWidget.table_count, 0)
-            self.ui.gridLayout_28.setAlignment(Qt.AlignmentFlag.AlignTop)
-            table1.load_data_signal.emit()
-
-            show_toast("Table Created", 3000, ToastType.SUCCESS, self.toast_msg_anchor)
-
-        else:
-            show_toast("No file selected", 3000, ToastType.ERROR, self.toast_msg_anchor)
-    #AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
     @pyqtSlot(bool)
     def toggle_bottom_panel(self, value: bool):
@@ -634,7 +743,8 @@ class Workspace(QWidget):
     #Not the most elegant way to solve this.. has to be a better way to change the style.
     def handle_left_menu_tab_visibility(self, state):
         self.ui.WorkspaceMenuWidget.setVisible(state)
-        self.ui.widget_17.setStyleSheet("""QWidget {border: 0;}
+        self.ui.widget_17.setStyleSheet("""
+            QWidget {border: 0;}
             QPushButton {
             font: 570 10pt "Consolas";
             color: 	rgb(190, 190, 190);

@@ -38,6 +38,8 @@ class WorkspaceSignalBus(QObject):
 
     update_options = pyqtSignal(str, int)
 
+    
+
     def __init__(self):
         super().__init__()
 

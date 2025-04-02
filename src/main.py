@@ -3,6 +3,7 @@ import os
 from PyQt6.QtWidgets import QApplication, QMainWindow, QGraphicsView, QMenu, QFileDialog
 from PyQt6.QtGui import QGuiApplication, QKeySequence
 from PyQt6.QtCore import  QCoreApplication, QPoint, pyqtSlot
+from PyQt6.QtWidgets import QMainWindow, QMessageBox
 
 from src.objects.resource import Ui_MainWindow
 from src.navbar import NavBar
@@ -38,8 +39,6 @@ class FileContextMenu(QMenu):
         self.file_context_menu.actionClose_Window.setShortcut(QKeySequence("Ctrl+Q"))
         self.file_context_menu.actionHome_Page.setShortcut(QKeySequence("Ctrl+H"))
 
-from PyQt6.QtWidgets import QMainWindow, QMessageBox
-from src.globals.utils import show_toast
 
 class MyApp(QMainWindow):
     def __init__(self):

@@ -12,12 +12,12 @@ class MeasureDialog(QDialog):
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
 
-        self.measurement_conditions_checkBox = self.ui.checkBox
-        self.spectral_data_checkBox = self.ui.checkBox_2
-        self.colorimetric_data_checkBox = self.ui.checkBox_3
+        # self.measurement_conditions_checkBox = self.ui.checkBox
+        # self.spectral_data_checkBox = self.ui.checkBox_2
+        # self.colorimetric_data_checkBox = self.ui.checkBox_3
 
-        self.timer = self.ui.spinBox
-        self.times = self.ui.doubleSpinBox
+        # self.timer = self.ui.spinBox
+        # self.times = self.ui.doubleSpinBox
 
     def closeEvent(self, event):
         if self.result() == QDialog.DialogCode.Accepted:
