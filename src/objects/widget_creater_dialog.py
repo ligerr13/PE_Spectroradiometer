@@ -12,7 +12,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(632, 590)
+        Dialog.resize(714, 722)
         Dialog.setStyleSheet("background-color: rgb(20, 20, 20); \n"
 "border-radius: 0px;\n"
 "    border: 0px;")
@@ -21,10 +21,15 @@ class Ui_Dialog(object):
         self.horizontalLayout.setSpacing(1)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.page_selector_widget = QtWidgets.QWidget(parent=Dialog)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.page_selector_widget.sizePolicy().hasHeightForWidth())
+        self.page_selector_widget.setSizePolicy(sizePolicy)
         self.page_selector_widget.setStyleSheet("background: rgb(20,20,20);")
         self.page_selector_widget.setObjectName("page_selector_widget")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.page_selector_widget)
-        self.horizontalLayout_2.setContentsMargins(5, 3, 0, 5)
+        self.horizontalLayout_2.setContentsMargins(3, 3, 0, 0)
         self.horizontalLayout_2.setSpacing(0)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.page_selector = QtWidgets.QWidget(parent=self.page_selector_widget)
@@ -98,22 +103,42 @@ class Ui_Dialog(object):
         self.verticalLayout.addItem(spacerItem)
         self.horizontalLayout_2.addWidget(self.page_selector)
         self.page_widget = QtWidgets.QWidget(parent=self.page_selector_widget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.page_widget.sizePolicy().hasHeightForWidth())
+        self.page_widget.setSizePolicy(sizePolicy)
         self.page_widget.setStyleSheet("    border: 0px;")
         self.page_widget.setObjectName("page_widget")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.page_widget)
-        self.verticalLayout_2.setContentsMargins(1, 1, 5, 5)
+        self.verticalLayout_2.setContentsMargins(1, 1, 5, 2)
         self.verticalLayout_2.setSpacing(5)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.stackedWidget = QtWidgets.QStackedWidget(parent=self.page_widget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.stackedWidget.sizePolicy().hasHeightForWidth())
+        self.stackedWidget.setSizePolicy(sizePolicy)
+        self.stackedWidget.setMinimumSize(QtCore.QSize(0, 0))
+        self.stackedWidget.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.stackedWidget.setStyleSheet("border: 0px;")
         self.stackedWidget.setObjectName("stackedWidget")
         self.page = QtWidgets.QWidget()
+        self.page.setMinimumSize(QtCore.QSize(0, 0))
         self.page.setStyleSheet("    border: 0px;")
         self.page.setObjectName("page")
         self.gridLayout = QtWidgets.QGridLayout(self.page)
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
         self.gridLayout.setObjectName("gridLayout")
         self.tabWidget = QtWidgets.QTabWidget(parent=self.page)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.tabWidget.sizePolicy().hasHeightForWidth())
+        self.tabWidget.setSizePolicy(sizePolicy)
+        self.tabWidget.setMinimumSize(QtCore.QSize(0, 0))
+        self.tabWidget.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.tabWidget.setStyleSheet("QTabWidget\n"
 "{\n"
 "    border: 0px;\n"
@@ -159,21 +184,15 @@ class Ui_Dialog(object):
         self.tabWidget.setTabBarAutoHide(True)
         self.tabWidget.setObjectName("tabWidget")
         self.tab = QtWidgets.QWidget()
+        self.tab.setMaximumSize(QtCore.QSize(16777215, 300))
         self.tab.setObjectName("tab")
         self.gridLayout_2 = QtWidgets.QGridLayout(self.tab)
         self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
         self.gridLayout_2.setSpacing(1)
         self.gridLayout_2.setObjectName("gridLayout_2")
-        self.widget = QtWidgets.QWidget(parent=self.tab)
-        self.widget.setObjectName("widget")
-        self.gridLayout_3 = QtWidgets.QGridLayout(self.widget)
-        self.gridLayout_3.setContentsMargins(1, 1, 1, 1)
-        self.gridLayout_3.setSpacing(2)
-        self.gridLayout_3.setObjectName("gridLayout_3")
-        self.gridLayout_2.addWidget(self.widget, 0, 0, 1, 1)
-        spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
-        self.gridLayout_2.addItem(spacerItem1, 2, 0, 1, 1)
         self.groupBox = QtWidgets.QGroupBox(parent=self.tab)
+        self.groupBox.setMinimumSize(QtCore.QSize(0, 200))
+        self.groupBox.setMaximumSize(QtCore.QSize(16777215, 200))
         self.groupBox.setStyleSheet("QGroupBox {\n"
 "  border-radius: 2px;\n"
 "  margin-top: 1.4em;\n"
@@ -212,6 +231,7 @@ class Ui_Dialog(object):
         self.verticalLayout_3.setObjectName("verticalLayout_3")
         self.widget_5 = QtWidgets.QWidget(parent=self.groupBox)
         self.widget_5.setMinimumSize(QtCore.QSize(0, 40))
+        self.widget_5.setMaximumSize(QtCore.QSize(16777215, 50))
         self.widget_5.setObjectName("widget_5")
         self.horizontalLayout_9 = QtWidgets.QHBoxLayout(self.widget_5)
         self.horizontalLayout_9.setContentsMargins(1, 1, 1, 1)
@@ -248,7 +268,7 @@ class Ui_Dialog(object):
         self.spinBox.setMinimumSize(QtCore.QSize(100, 35))
         self.spinBox.setMaximumSize(QtCore.QSize(200, 16777215))
         self.spinBox.setMaximum(9999)
-        self.spinBox.setProperty("value", 300)
+        self.spinBox.setProperty("value", 660)
         self.spinBox.setObjectName("spinBox")
         self.horizontalLayout_3.addWidget(self.spinBox)
         self.comboBox = QtWidgets.QComboBox(parent=self.widget_2)
@@ -276,7 +296,7 @@ class Ui_Dialog(object):
         self.spinBox_2.setMinimumSize(QtCore.QSize(100, 35))
         self.spinBox_2.setMaximumSize(QtCore.QSize(200, 16777215))
         self.spinBox_2.setMaximum(9999)
-        self.spinBox_2.setProperty("value", 300)
+        self.spinBox_2.setProperty("value", 400)
         self.spinBox_2.setObjectName("spinBox_2")
         self.horizontalLayout_4.addWidget(self.spinBox_2)
         self.comboBox_2 = QtWidgets.QComboBox(parent=self.widget_3)
@@ -287,7 +307,7 @@ class Ui_Dialog(object):
         self.comboBox_2.addItem("")
         self.horizontalLayout_4.addWidget(self.comboBox_2)
         self.verticalLayout_3.addWidget(self.widget_3)
-        self.gridLayout_2.addWidget(self.groupBox, 1, 0, 1, 1)
+        self.gridLayout_2.addWidget(self.groupBox, 0, 0, 1, 1)
         self.tabWidget.addTab(self.tab, "")
         self.tab_2 = QtWidgets.QWidget()
         self.tab_2.setObjectName("tab_2")
@@ -295,23 +315,30 @@ class Ui_Dialog(object):
         self.gridLayout_5.setContentsMargins(0, 0, 0, 0)
         self.gridLayout_5.setSpacing(1)
         self.gridLayout_5.setObjectName("gridLayout_5")
-        spacerItem2 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
-        self.gridLayout_5.addItem(spacerItem2, 2, 0, 1, 1)
-        self.widget_7 = QtWidgets.QWidget(parent=self.tab_2)
-        self.widget_7.setObjectName("widget_7")
-        self.gridLayout_4 = QtWidgets.QGridLayout(self.widget_7)
-        self.gridLayout_4.setContentsMargins(1, 1, 1, 1)
-        self.gridLayout_4.setSpacing(2)
-        self.gridLayout_4.setObjectName("gridLayout_4")
-        self.gridLayout_5.addWidget(self.widget_7, 0, 0, 1, 1)
         self.groupBox_2 = QtWidgets.QGroupBox(parent=self.tab_2)
+        self.groupBox_2.setMinimumSize(QtCore.QSize(0, 200))
+        self.groupBox_2.setMaximumSize(QtCore.QSize(16777215, 200))
         self.groupBox_2.setStyleSheet("QGroupBox {\n"
 "  border-radius: 2px;\n"
 "  margin-top: 1.4em;\n"
 "  margin-bottom: 0.5;\n"
 "  font: 700 12pt \"Consolas\";\n"
 "}\n"
-"\n"
+"QLineEdit {\n"
+"    font: 600 10pt \"Segoe UI\";\n"
+"    background-color:  rgb(41,41,41);\n"
+"   color: white;\n"
+"    border-radius: 2px;\n"
+"}\n"
+"QPushButton {\n"
+"    background: rgb(0, 150, 255);\n"
+"    color: white;\n"
+"    border-radius: 2px;\n"
+"    font: 600 10pt \"Segoe UI\";\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background: rgb(51, 180, 255);\n"
+"}\n"
 "QGroupBox::title {\n"
 "  background: transparent;\n"
 "  color: white;\n"
@@ -341,26 +368,30 @@ class Ui_Dialog(object):
         self.verticalLayout_4.setContentsMargins(1, 1, 1, 1)
         self.verticalLayout_4.setSpacing(0)
         self.verticalLayout_4.setObjectName("verticalLayout_4")
-        self.widget_8 = QtWidgets.QWidget(parent=self.groupBox_2)
-        self.widget_8.setMinimumSize(QtCore.QSize(0, 40))
-        self.widget_8.setObjectName("widget_8")
-        self.horizontalLayout_10 = QtWidgets.QHBoxLayout(self.widget_8)
-        self.horizontalLayout_10.setContentsMargins(1, 1, 1, 1)
-        self.horizontalLayout_10.setSpacing(5)
+        self.widget = QtWidgets.QWidget(parent=self.groupBox_2)
+        self.widget.setObjectName("widget")
+        self.horizontalLayout_5 = QtWidgets.QHBoxLayout(self.widget)
+        self.horizontalLayout_5.setContentsMargins(5, 1, 1, 1)
+        self.horizontalLayout_5.setSpacing(20)
+        self.horizontalLayout_5.setObjectName("horizontalLayout_5")
+        self.pushButton = QtWidgets.QPushButton(parent=self.widget)
+        self.pushButton.setMaximumSize(QtCore.QSize(100, 35))
+        self.pushButton.setObjectName("pushButton")
+        self.horizontalLayout_5.addWidget(self.pushButton)
+        self.widget_4 = QtWidgets.QWidget(parent=self.widget)
+        self.widget_4.setMinimumSize(QtCore.QSize(0, 35))
+        self.widget_4.setMaximumSize(QtCore.QSize(16777215, 35))
+        self.widget_4.setStyleSheet("background-color:  rgb(41,41,41);\n"
+"border-radius: 2px;")
+        self.widget_4.setObjectName("widget_4")
+        self.horizontalLayout_10 = QtWidgets.QHBoxLayout(self.widget_4)
+        self.horizontalLayout_10.setContentsMargins(5, 0, 0, 0)
         self.horizontalLayout_10.setObjectName("horizontalLayout_10")
-        self.label_8 = QtWidgets.QLabel(parent=self.widget_8)
-        self.label_8.setMinimumSize(QtCore.QSize(120, 0))
-        self.label_8.setMaximumSize(QtCore.QSize(80, 16777215))
-        self.label_8.setObjectName("label_8")
-        self.horizontalLayout_10.addWidget(self.label_8)
-        self.comboBox_5 = QtWidgets.QComboBox(parent=self.widget_8)
-        self.comboBox_5.setMinimumSize(QtCore.QSize(0, 35))
-        self.comboBox_5.setObjectName("comboBox_5")
-        self.comboBox_5.addItem("")
-        self.comboBox_5.setItemText(0, "")
-        self.comboBox_5.addItem("")
-        self.horizontalLayout_10.addWidget(self.comboBox_5)
-        self.verticalLayout_4.addWidget(self.widget_8)
+        self.label_3 = QtWidgets.QLabel(parent=self.widget_4)
+        self.label_3.setObjectName("label_3")
+        self.horizontalLayout_10.addWidget(self.label_3)
+        self.horizontalLayout_5.addWidget(self.widget_4)
+        self.verticalLayout_4.addWidget(self.widget)
         self.widget_9 = QtWidgets.QWidget(parent=self.groupBox_2)
         self.widget_9.setMinimumSize(QtCore.QSize(0, 40))
         self.widget_9.setMaximumSize(QtCore.QSize(16777215, 50))
@@ -446,15 +477,29 @@ class Ui_Dialog(object):
         self.comboBox_8.addItem("")
         self.horizontalLayout_11.addWidget(self.comboBox_8)
         self.verticalLayout_4.addWidget(self.widget_11)
-        self.gridLayout_5.addWidget(self.groupBox_2, 1, 0, 1, 1)
+        self.gridLayout_5.addWidget(self.groupBox_2, 0, 0, 1, 1)
         self.tabWidget.addTab(self.tab_2, "")
         self.gridLayout.addWidget(self.tabWidget, 0, 0, 1, 1)
+        self.spectral_preview_widget = QtWidgets.QWidget(parent=self.page)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.spectral_preview_widget.sizePolicy().hasHeightForWidth())
+        self.spectral_preview_widget.setSizePolicy(sizePolicy)
+        self.spectral_preview_widget.setMinimumSize(QtCore.QSize(0, 0))
+        self.spectral_preview_widget.setStyleSheet("background-color:white;")
+        self.spectral_preview_widget.setObjectName("spectral_preview_widget")
+        self.gridLayout_4 = QtWidgets.QGridLayout(self.spectral_preview_widget)
+        self.gridLayout_4.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout_4.setObjectName("gridLayout_4")
+        self.gridLayout.addWidget(self.spectral_preview_widget, 1, 0, 1, 1)
         self.stackedWidget.addWidget(self.page)
         self.page_2 = QtWidgets.QWidget()
         self.page_2.setObjectName("page_2")
         self.stackedWidget.addWidget(self.page_2)
         self.verticalLayout_2.addWidget(self.stackedWidget)
         self.widget_6 = QtWidgets.QWidget(parent=self.page_widget)
+        self.widget_6.setMaximumSize(QtCore.QSize(16777215, 50))
         self.widget_6.setStyleSheet("QPushButton {\n"
 "        border: 0px;\n"
 "        font: 12pt;\n"
@@ -479,8 +524,8 @@ class Ui_Dialog(object):
         self.horizontalLayout_6 = QtWidgets.QHBoxLayout(self.widget_6)
         self.horizontalLayout_6.setContentsMargins(2, 2, 2, 2)
         self.horizontalLayout_6.setObjectName("horizontalLayout_6")
-        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.horizontalLayout_6.addItem(spacerItem3)
+        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalLayout_6.addItem(spacerItem1)
         self.CreateWidgetPushButton = QtWidgets.QPushButton(parent=self.widget_6)
         self.CreateWidgetPushButton.setMinimumSize(QtCore.QSize(100, 35))
         self.CreateWidgetPushButton.setMaximumSize(QtCore.QSize(100, 35))
@@ -508,6 +553,7 @@ class Ui_Dialog(object):
         self.horizontalLayout.addWidget(self.page_selector_widget)
 
         self.retranslateUi(Dialog)
+        self.stackedWidget.setCurrentIndex(0)
         self.tabWidget.setCurrentIndex(1)
         self.CreateWidgetPushButton.clicked.connect(Dialog.onCreateWidget) # type: ignore
         self.CancelCreateWidget.clicked.connect(Dialog.onCancel) # type: ignore
@@ -531,8 +577,8 @@ class Ui_Dialog(object):
         self.comboBox_2.setItemText(1, _translate("Dialog", "Points (pt)"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("Dialog", "Dimensions"))
         self.groupBox_2.setTitle(_translate("Dialog", "Widget Properties"))
-        self.label_8.setText(_translate("Dialog", "Name"))
-        self.comboBox_5.setItemText(1, _translate("Dialog", "400 to 700 (nm)"))
+        self.pushButton.setText(_translate("Dialog", "Choose file"))
+        self.label_3.setText(_translate("Dialog", "No measurement file choosen"))
         self.label_4.setText(_translate("Dialog", "Min Wavelength "))
         self.comboBox_6.setItemText(0, _translate("Dialog", "Nanometres (nm)"))
         self.label_5.setText(_translate("Dialog", "Max Wavelength"))

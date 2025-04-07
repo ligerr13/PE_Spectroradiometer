@@ -626,7 +626,10 @@ border-left: 0;
       <item row="1" column="0">
        <widget class="QStackedWidget" name="stackedWidget">
         <property name="styleSheet">
-         <string notr="true">border: 0; margin: 0 0 0 0;</string>
+         <string notr="true">border: 0; 
+margin: 0 0 0 0;
+background-color: rgb(20, 20, 20); 
+</string>
         </property>
         <property name="currentIndex">
          <number>0</number>
@@ -2763,12 +2766,12 @@ QToolTip{
   <slot>import_measurements_to_workspace_table()</slot>
  </slots>
  <buttongroups>
-  <buttongroup name="WorkspaceButtonGroup"/>
   <buttongroup name="WorkspaceMenuButtonGroup">
    <property name="exclusive">
     <bool>true</bool>
    </property>
   </buttongroup>
   <buttongroup name="WorkspaceToolsButtonGroup"/>
+  <buttongroup name="WorkspaceButtonGroup"/>
  </buttongroups>
 </ui>

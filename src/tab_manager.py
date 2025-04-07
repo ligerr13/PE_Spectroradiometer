@@ -16,7 +16,6 @@ class TabManager(QObject):
         self.plusButton = QPushButton()
         self.file_menu_button = QPushButton()
         
-        
         # Signals
         self.plusButton.clicked.connect(self.plusClicked.emit)
         

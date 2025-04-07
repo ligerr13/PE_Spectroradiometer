@@ -258,7 +258,10 @@ class Ui_WorkspaceDesignForm(object):
         self.gridLayout_2.setSpacing(1)
         self.gridLayout_2.setObjectName("gridLayout_2")
         self.stackedWidget = QtWidgets.QStackedWidget(parent=self.WorkspaceMenuWidget)
-        self.stackedWidget.setStyleSheet("border: 0; margin: 0 0 0 0;")
+        self.stackedWidget.setStyleSheet("border: 0; \n"
+"margin: 0 0 0 0;\n"
+"background-color: rgb(20, 20, 20); \n"
+"")
         self.stackedWidget.setObjectName("stackedWidget")
         self.page_5 = QtWidgets.QWidget()
         self.page_5.setStyleSheet("padding: 5 5 5 5;\n"

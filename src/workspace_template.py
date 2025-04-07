@@ -185,6 +185,7 @@ class ImportDialog(QDialog):
         self.accept()
 
 class TableContainerWidget(QWidget):
+    #TODO: Complete Table Logic and Fix Known Bugs
     table_count = 0
     load_data_signal = pyqtSignal()
 
@@ -357,7 +358,14 @@ class WorkspaceTable(QTableWidget):
 
     def adjust_header_height(self):
         header = self.horizontalHeader()
-        header.setStyleSheet("QHeaderView::section { height: 40px; background-color: rgb(15,15,15);}")
+        header.setStyleSheet("""
+            QHeaderView::section {
+                height: 40px; background-color: rgb(15,15,15);
+                border: .5px solid rgb(32,32,32);
+                border-top: 0px;
+                
+            }
+        """)
         header.setMinimumHeight(40)
     
     def change_row_background(self, row_number: int, color: QColor):
@@ -515,14 +523,16 @@ class CustomMenu(QMenu):
 class TableTabManager(QObject):
     plusClicked = pyqtSignal()
 
-    def __init__(self, ui_main_window):
+    def __init__(self, ui_main_window, workspace_name):
         super().__init__()
         self.tabletabwidget = ui_main_window.TabletabWidget
+        self.defualt_table_name = workspace_name + "-table"
         self.plusButton = QPushButton("New Table")
         self.tab_count = 0
 
-        print(self.tabletabwidget)
 
+
+        self.add_table_page(TableContainerWidget("Table"), f'{self.defualt_table_name}', False)
         self.setupPlusButton()
 
     def setupPlusButton(self): 
@@ -573,7 +583,7 @@ class TableTabManager(QObject):
         height = sizeHint.height()
         return QSize(width + 60, height)
     
-    def add_table_page(self, table_widget, page_name):
+    def add_table_page(self, table_widget, page_name, closeable = True):
         """
         Add a new page to the TabWidget.
 
@@ -596,8 +606,8 @@ class TableTabManager(QObject):
         closeButton.setIcon(QIcon("./resources/icons/close-2.png"))
         closeButton.setIconSize(QSize(10, 10))
         closeButton.clicked.connect(lambda checked, table_widget=table_widget: self.remove_table_page(self.tabletabwidget.indexOf(table_widget)))
-        
-        self.tabletabwidget.tabBar().setTabButton(index, QTabBar.ButtonPosition.RightSide, closeButton)
+        if closeable:
+            self.tabletabwidget.tabBar().setTabButton(index, QTabBar.ButtonPosition.RightSide, closeButton)
         self.tabletabwidget.tabBar().setTabData(index, QSize(text_width, 20))
         
         self.tab_count += 1
@@ -629,7 +639,7 @@ class Workspace(QWidget):
         self.context_menu = CustomMenu(self)
         self.viewScalefactor = 1.15
 
-        self.tabletabmanager = TableTabManager(self.ui)
+        self.tabletabmanager = TableTabManager(self.ui, self.workspace_name)
 
         self.splitter = WorkspaceTableSplitter(Qt.Orientation.Vertical)
 
@@ -652,7 +662,7 @@ class Workspace(QWidget):
         self.signal_bus.update_explorer.connect(self.update_explorer)
         self.splitter.toggleButton.connect(self.toggle_splitter_buttons)
         # self.tabletabmanager.plusClicked.connect(lambda: self.tabletabmanager.add_table_page(TableContainerWidget('asdasd'), f"new-table-{self.tabletabmanager.tab_count + 1}"))
-        self.tabletabmanager.plusClicked.connect(lambda: self.tabletabmanager.add_table_page(TableContainerWidget("asd"), f"new-table-{self.tabletabmanager.tab_count + 1}"))
+        self.tabletabmanager.plusClicked.connect(lambda: self.tabletabmanager.add_table_page(TableContainerWidget(""), f"new-{self.workspace_name}-{self.tabletabmanager.tab_count + 1}"))
 
 
         # QDialogs

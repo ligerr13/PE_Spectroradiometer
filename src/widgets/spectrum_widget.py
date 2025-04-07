@@ -12,28 +12,7 @@ from luxpy import plot_spectrum_colors ,spd, vlbar_cie_mesopic, spectrum, cri_re
 
 
 class SpectrumWidget(SceneWidget):
-    def __init__(self, parent=None):
-        super().__init__(parent)
-        self.data = None
-        self.plt = plt
-        self.sub_type = "Spectrum-Color"
-        self.plt.style.use("seaborn-v0_8")
-
-
-        self.init_ui()
-
-    def init_ui(self):
-        layout = QVBoxLayout()
-        self.setLayout(layout)
-        self.pc = MplCanvas(self)
-        layout.addWidget(self.pc)
-
-    def setSpectralData(self, data):
-            self.data = data
-            self.plot_data()
-
-    def plot_data(self):
-        wavelength = np.array([3.8000e+02, 3.8100e+02, 3.8200e+02, 3.8300e+02, 3.8400e+02,
+    wavelength = np.array([3.8000e+02, 3.8100e+02, 3.8200e+02, 3.8300e+02, 3.8400e+02,
     3.8500e+02, 3.8600e+02, 3.8700e+02, 3.8800e+02, 3.8900e+02,
     3.9000e+02, 3.9100e+02, 3.9200e+02, 3.9300e+02, 3.9400e+02,
     3.9500e+02, 3.9600e+02, 3.9700e+02, 3.9800e+02, 3.9900e+02,
@@ -114,13 +93,35 @@ class SpectrumWidget(SceneWidget):
     7.7000e+02, 7.7100e+02, 7.7200e+02, 7.7300e+02, 7.7400e+02,
     7.7500e+02, 7.7600e+02, 7.7700e+02, 7.7800e+02, 7.7900e+02,
     7.8000e+02])
+    
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.data = None
+        self.plt = plt
+        self.sub_type = "Spectrum-Color"
+        self.plt.style.use("seaborn-v0_8")
+
+        self.init_ui()
+
+    def init_ui(self):
+        layout = QVBoxLayout()
+        self.setLayout(layout)
+        self.pc = MplCanvas(self)
+        layout.addWidget(self.pc)
+
+    def setSpectralData(self, data):
+            self.data = data
+            self.plot_data()
+
+    def setWavelengthProperties(self, min_wl, max_wl, resolution):
+        pass
+    def plot_data(self):
         
         asd = np.array([self.data])
 
-        spd = np.vstack((wavelength, asd))
+        spd = np.vstack((SpectrumWidget.wavelength, asd))
         
         plot_spectrum_colors(spd = spd, axh=self.pc.axes)
-        # wavelength_height = 'spd'
 
         self.pc.draw()
 
