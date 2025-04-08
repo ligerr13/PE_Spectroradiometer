@@ -12,7 +12,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(714, 722)
+        Dialog.resize(655, 632)
         Dialog.setStyleSheet("background-color: rgb(20, 20, 20); \n"
 "border-radius: 0px;\n"
 "    border: 0px;")
@@ -29,7 +29,7 @@ class Ui_Dialog(object):
         self.page_selector_widget.setStyleSheet("background: rgb(20,20,20);")
         self.page_selector_widget.setObjectName("page_selector_widget")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.page_selector_widget)
-        self.horizontalLayout_2.setContentsMargins(3, 3, 0, 0)
+        self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_2.setSpacing(0)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.page_selector = QtWidgets.QWidget(parent=self.page_selector_widget)
@@ -111,7 +111,7 @@ class Ui_Dialog(object):
         self.page_widget.setStyleSheet("    border: 0px;")
         self.page_widget.setObjectName("page_widget")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.page_widget)
-        self.verticalLayout_2.setContentsMargins(1, 1, 5, 2)
+        self.verticalLayout_2.setContentsMargins(0, 2, 0, 2)
         self.verticalLayout_2.setSpacing(5)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.stackedWidget = QtWidgets.QStackedWidget(parent=self.page_widget)
@@ -126,7 +126,7 @@ class Ui_Dialog(object):
         self.stackedWidget.setObjectName("stackedWidget")
         self.page = QtWidgets.QWidget()
         self.page.setMinimumSize(QtCore.QSize(0, 0))
-        self.page.setStyleSheet("    border: 0px;")
+        self.page.setStyleSheet("border: 0px;")
         self.page.setObjectName("page")
         self.gridLayout = QtWidgets.QGridLayout(self.page)
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
@@ -145,11 +145,11 @@ class Ui_Dialog(object):
 "      background: rgb(31,31,31);\n"
 "}\n"
 "QTabWidget::pane {\n"
-"    top: 1px;\n"
+"    top: 5px;\n"
 "    border-top: 3px solid rgb(0, 0, 0);\n"
-"border-left: 3px solid rgb(0, 0, 0);\n"
-"border-right: 3px solid rgb(0, 0, 0);\n"
-"border-bottom: 3px solid rgb(0, 0, 0);\n"
+"    border-left: 3px solid rgb(0, 0, 0);\n"
+"    border-right: 3px solid rgb(0, 0, 0);\n"
+"    border-bottom: 3px solid rgb(0, 0, 0);\n"
 "} \n"
 "\n"
 "QTabBar::tab {\n"
@@ -312,7 +312,7 @@ class Ui_Dialog(object):
         self.tab_2 = QtWidgets.QWidget()
         self.tab_2.setObjectName("tab_2")
         self.gridLayout_5 = QtWidgets.QGridLayout(self.tab_2)
-        self.gridLayout_5.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout_5.setContentsMargins(0, 0, 0, 2)
         self.gridLayout_5.setSpacing(1)
         self.gridLayout_5.setObjectName("gridLayout_5")
         self.groupBox_2 = QtWidgets.QGroupBox(parent=self.tab_2)
@@ -321,7 +321,7 @@ class Ui_Dialog(object):
         self.groupBox_2.setStyleSheet("QGroupBox {\n"
 "  border-radius: 2px;\n"
 "  margin-top: 1.4em;\n"
-"  margin-bottom: 0.5;\n"
+"  margin-bottom: 1;\n"
 "  font: 700 12pt \"Consolas\";\n"
 "}\n"
 "QLineEdit {\n"
@@ -332,13 +332,331 @@ class Ui_Dialog(object):
 "}\n"
 "QPushButton {\n"
 "    background: rgb(0, 150, 255);\n"
-"    color: white;\n"
+"    color: rgba(255,255,255, 0.85);\n"
 "    border-radius: 2px;\n"
 "    font: 600 10pt \"Segoe UI\";\n"
 "}\n"
 "QPushButton:hover {\n"
 "    background: rgb(51, 180, 255);\n"
 "}\n"
+"QGroupBox::title {\n"
+"  background: transparent;\n"
+"  color: white;\n"
+"  padding-top: -30px;\n"
+"   padding-left: -18px;\n"
+"  margin: 0 15 15 15;\n"
+"}\n"
+"QLabel {\n"
+"    color: grey;\n"
+"    font: 550 11pt \"Consolas\";\n"
+"}\n"
+"QSpinBox {\n"
+"        font: 600 10pt \"Segoe UI\";\n"
+"         background-color:  rgb(41,41,41);\n"
+"        color: grey;\n"
+"        border-radius: 2px;\n"
+"        border: 0px;\n"
+"}\n"
+"QComboBox {\n"
+"        font: 700 10pt \"Segoe UI\";\n"
+"         background-color:  rgb(41,41,41);\n"
+"        color: grey;\n"
+"        border-radius: 2px;\n"
+"        border: 0px;\n"
+"}")
+        self.groupBox_2.setFlat(False)
+        self.groupBox_2.setObjectName("groupBox_2")
+        self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.groupBox_2)
+        self.verticalLayout_4.setContentsMargins(0, 1, 0, 1)
+        self.verticalLayout_4.setSpacing(0)
+        self.verticalLayout_4.setObjectName("verticalLayout_4")
+        self.widget = QtWidgets.QWidget(parent=self.groupBox_2)
+        self.widget.setStyleSheet("\n"
+"QWidget {\n"
+"\n"
+"    border-top: 1px solid rgba(129, 129, 129, 50);\n"
+"}\n"
+"")
+        self.widget.setObjectName("widget")
+        self.horizontalLayout_5 = QtWidgets.QHBoxLayout(self.widget)
+        self.horizontalLayout_5.setContentsMargins(0, 2, 0, 2)
+        self.horizontalLayout_5.setSpacing(0)
+        self.horizontalLayout_5.setObjectName("horizontalLayout_5")
+        self.pushButton = QtWidgets.QPushButton(parent=self.widget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.pushButton.sizePolicy().hasHeightForWidth())
+        self.pushButton.setSizePolicy(sizePolicy)
+        self.pushButton.setMinimumSize(QtCore.QSize(149, 0))
+        self.pushButton.setMaximumSize(QtCore.QSize(149, 999))
+        self.pushButton.setStyleSheet("border: 0px; border-radius: 0px;")
+        self.pushButton.setObjectName("pushButton")
+        self.horizontalLayout_5.addWidget(self.pushButton)
+        self.widget_4 = QtWidgets.QWidget(parent=self.widget)
+        self.widget_4.setMinimumSize(QtCore.QSize(0, 0))
+        self.widget_4.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.widget_4.setStyleSheet("background-color:  rgb(41,41,41);\n"
+"border:0px;\n"
+"")
+        self.widget_4.setObjectName("widget_4")
+        self.horizontalLayout_10 = QtWidgets.QHBoxLayout(self.widget_4)
+        self.horizontalLayout_10.setContentsMargins(1, 0, 0, 0)
+        self.horizontalLayout_10.setObjectName("horizontalLayout_10")
+        self.label_3 = QtWidgets.QLabel(parent=self.widget_4)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_3.sizePolicy().hasHeightForWidth())
+        self.label_3.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("Consolas")
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setItalic(False)
+        self.label_3.setFont(font)
+        self.label_3.setStyleSheet("border-top: 1px solid rgba(129, 129, 129, 50);\n"
+"border-bottom: 1px solid rgba(129, 129, 129, 50);\n"
+"border-radius: 0px;")
+        self.label_3.setObjectName("label_3")
+        self.horizontalLayout_10.addWidget(self.label_3)
+        self.horizontalLayout_5.addWidget(self.widget_4)
+        self.verticalLayout_4.addWidget(self.widget)
+        self.widget_9 = QtWidgets.QWidget(parent=self.groupBox_2)
+        self.widget_9.setMinimumSize(QtCore.QSize(0, 40))
+        self.widget_9.setMaximumSize(QtCore.QSize(16777215, 50))
+        self.widget_9.setStyleSheet("")
+        self.widget_9.setObjectName("widget_9")
+        self.horizontalLayout_7 = QtWidgets.QHBoxLayout(self.widget_9)
+        self.horizontalLayout_7.setContentsMargins(0, 2, 0, 2)
+        self.horizontalLayout_7.setSpacing(0)
+        self.horizontalLayout_7.setObjectName("horizontalLayout_7")
+        self.label_4 = QtWidgets.QLabel(parent=self.widget_9)
+        self.label_4.setMinimumSize(QtCore.QSize(150, 0))
+        self.label_4.setMaximumSize(QtCore.QSize(150, 16777215))
+        self.label_4.setStyleSheet("border: 1px solid rgba(129, 129, 129, 50); color: grey")
+        self.label_4.setObjectName("label_4")
+        self.horizontalLayout_7.addWidget(self.label_4)
+        self.spinBox_4 = QtWidgets.QSpinBox(parent=self.widget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.spinBox_4.sizePolicy().hasHeightForWidth())
+        self.spinBox_4.setSizePolicy(sizePolicy)
+        self.spinBox_4.setMinimumSize(QtCore.QSize(100, 0))
+        self.spinBox_4.setMaximumSize(QtCore.QSize(200, 16777215))
+        self.spinBox_4.setStyleSheet("border-top: 1px solid rgba(129, 129, 129, 50);\n"
+"border-bottom: 1px solid rgba(129, 129, 129, 50);\n"
+"border-radius: 0px;")
+        self.spinBox_4.setMinimum(400)
+        self.spinBox_4.setMaximum(720)
+        self.spinBox_4.setProperty("value", 400)
+        self.spinBox_4.setObjectName("spinBox_4")
+        self.horizontalLayout_7.addWidget(self.spinBox_4)
+        self.comboBox_6 = QtWidgets.QComboBox(parent=self.widget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.comboBox_6.sizePolicy().hasHeightForWidth())
+        self.comboBox_6.setSizePolicy(sizePolicy)
+        self.comboBox_6.setMinimumSize(QtCore.QSize(0, 0))
+        self.comboBox_6.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.comboBox_6.setStyleSheet("border-top: 1px solid rgba(129, 129, 129, 50);\n"
+"border-bottom: 1px solid rgba(129, 129, 129, 50);\n"
+"border-radius: 0px;")
+        self.comboBox_6.setObjectName("comboBox_6")
+        self.comboBox_6.addItem("")
+        self.horizontalLayout_7.addWidget(self.comboBox_6)
+        self.verticalLayout_4.addWidget(self.widget_9)
+        self.widget_10 = QtWidgets.QWidget(parent=self.groupBox_2)
+        self.widget_10.setMinimumSize(QtCore.QSize(0, 40))
+        self.widget_10.setMaximumSize(QtCore.QSize(16777215, 50))
+        self.widget_10.setStyleSheet("")
+        self.widget_10.setObjectName("widget_10")
+        self.horizontalLayout_8 = QtWidgets.QHBoxLayout(self.widget_10)
+        self.horizontalLayout_8.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_8.setSpacing(0)
+        self.horizontalLayout_8.setObjectName("horizontalLayout_8")
+        self.label_5 = QtWidgets.QLabel(parent=self.widget_10)
+        self.label_5.setMinimumSize(QtCore.QSize(150, 0))
+        self.label_5.setMaximumSize(QtCore.QSize(150, 16777215))
+        self.label_5.setStyleSheet("border: 1px solid rgba(129, 129, 129, 50); color: grey")
+        self.label_5.setObjectName("label_5")
+        self.horizontalLayout_8.addWidget(self.label_5)
+        self.spinBox_5 = QtWidgets.QSpinBox(parent=self.widget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.spinBox_5.sizePolicy().hasHeightForWidth())
+        self.spinBox_5.setSizePolicy(sizePolicy)
+        self.spinBox_5.setMinimumSize(QtCore.QSize(100, 35))
+        self.spinBox_5.setMaximumSize(QtCore.QSize(200, 16777215))
+        self.spinBox_5.setStyleSheet("border-top: 1px solid rgba(129, 129, 129, 50);\n"
+"border-bottom: 1px solid rgba(129, 129, 129, 50);\n"
+"border-radius: 0px;")
+        self.spinBox_5.setMinimum(401)
+        self.spinBox_5.setMaximum(720)
+        self.spinBox_5.setProperty("value", 720)
+        self.spinBox_5.setObjectName("spinBox_5")
+        self.horizontalLayout_8.addWidget(self.spinBox_5)
+        self.comboBox_7 = QtWidgets.QComboBox(parent=self.widget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.comboBox_7.sizePolicy().hasHeightForWidth())
+        self.comboBox_7.setSizePolicy(sizePolicy)
+        self.comboBox_7.setMinimumSize(QtCore.QSize(0, 0))
+        self.comboBox_7.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.comboBox_7.setStyleSheet("border-top: 1px solid rgba(129, 129, 129, 50);\n"
+"border-bottom: 1px solid rgba(129, 129, 129, 50);\n"
+"border-radius: 0px;")
+        self.comboBox_7.setObjectName("comboBox_7")
+        self.comboBox_7.addItem("")
+        self.horizontalLayout_8.addWidget(self.comboBox_7)
+        self.verticalLayout_4.addWidget(self.widget_10)
+        self.widget_11 = QtWidgets.QWidget(parent=self.groupBox_2)
+        self.widget_11.setMinimumSize(QtCore.QSize(0, 40))
+        self.widget_11.setMaximumSize(QtCore.QSize(16777215, 50))
+        self.widget_11.setStyleSheet("\n"
+"QWidget {\n"
+"    border-bottom: 1px solid rgba(129, 129, 129, 50);\n"
+"}\n"
+"")
+        self.widget_11.setObjectName("widget_11")
+        self.horizontalLayout_11 = QtWidgets.QHBoxLayout(self.widget_11)
+        self.horizontalLayout_11.setContentsMargins(0, 2, 0, 2)
+        self.horizontalLayout_11.setSpacing(0)
+        self.horizontalLayout_11.setObjectName("horizontalLayout_11")
+        self.label_6 = QtWidgets.QLabel(parent=self.widget_11)
+        self.label_6.setMinimumSize(QtCore.QSize(150, 0))
+        self.label_6.setMaximumSize(QtCore.QSize(150, 16777215))
+        self.label_6.setStyleSheet("border: 1px solid rgba(129, 129, 129, 50); color: grey")
+        self.label_6.setObjectName("label_6")
+        self.horizontalLayout_11.addWidget(self.label_6)
+        self.spinBox_6 = QtWidgets.QSpinBox(parent=self.widget_11)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.spinBox_6.sizePolicy().hasHeightForWidth())
+        self.spinBox_6.setSizePolicy(sizePolicy)
+        self.spinBox_6.setMinimumSize(QtCore.QSize(100, 0))
+        self.spinBox_6.setMaximumSize(QtCore.QSize(200, 16777215))
+        self.spinBox_6.setSizeIncrement(QtCore.QSize(0, 0))
+        self.spinBox_6.setStyleSheet("border-top: 1px solid rgba(129, 129, 129, 50);\n"
+"border-bottom: 1px solid rgba(129, 129, 129, 50);\n"
+"border-radius: 0px;")
+        self.spinBox_6.setMaximum(9999)
+        self.spinBox_6.setProperty("value", 300)
+        self.spinBox_6.setObjectName("spinBox_6")
+        self.horizontalLayout_11.addWidget(self.spinBox_6)
+        self.comboBox_8 = QtWidgets.QComboBox(parent=self.widget_11)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.comboBox_8.sizePolicy().hasHeightForWidth())
+        self.comboBox_8.setSizePolicy(sizePolicy)
+        self.comboBox_8.setMinimumSize(QtCore.QSize(0, 0))
+        self.comboBox_8.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.comboBox_8.setStyleSheet("border-top: 1px solid rgba(129, 129, 129, 50);\n"
+"border-bottom: 1px solid rgba(129, 129, 129, 50);\n"
+"border-radius: 0px;")
+        self.comboBox_8.setObjectName("comboBox_8")
+        self.comboBox_8.addItem("")
+        self.comboBox_8.addItem("")
+        self.horizontalLayout_11.addWidget(self.comboBox_8)
+        self.verticalLayout_4.addWidget(self.widget_11)
+        self.gridLayout_5.addWidget(self.groupBox_2, 0, 0, 1, 1)
+        self.tabWidget.addTab(self.tab_2, "")
+        self.gridLayout.addWidget(self.tabWidget, 0, 0, 1, 1)
+        self.spectral_preview_widget = QtWidgets.QWidget(parent=self.page)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.spectral_preview_widget.sizePolicy().hasHeightForWidth())
+        self.spectral_preview_widget.setSizePolicy(sizePolicy)
+        self.spectral_preview_widget.setMinimumSize(QtCore.QSize(0, 0))
+        self.spectral_preview_widget.setStyleSheet("background-color:rgb(21,21,21);")
+        self.spectral_preview_widget.setObjectName("spectral_preview_widget")
+        self.gridLayout_4 = QtWidgets.QGridLayout(self.spectral_preview_widget)
+        self.gridLayout_4.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout_4.setObjectName("gridLayout_4")
+        self.gridLayout.addWidget(self.spectral_preview_widget, 1, 0, 1, 1)
+        self.stackedWidget.addWidget(self.page)
+        self.page_2 = QtWidgets.QWidget()
+        self.page_2.setObjectName("page_2")
+        self.gridLayout_14 = QtWidgets.QGridLayout(self.page_2)
+        self.gridLayout_14.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout_14.setSpacing(6)
+        self.gridLayout_14.setObjectName("gridLayout_14")
+        self.tabWidget_2 = QtWidgets.QTabWidget(parent=self.page_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.tabWidget_2.sizePolicy().hasHeightForWidth())
+        self.tabWidget_2.setSizePolicy(sizePolicy)
+        self.tabWidget_2.setMinimumSize(QtCore.QSize(0, 0))
+        self.tabWidget_2.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.tabWidget_2.setStyleSheet("QTabWidget\n"
+"{\n"
+"    border: 0px;\n"
+"      background: rgb(31,31,31);\n"
+"}\n"
+"QTabWidget::pane {\n"
+"    top: 5px;\n"
+"    border-top: 3px solid rgb(0, 0, 0);\n"
+"    border-left: 3px solid rgb(0, 0, 0);\n"
+"    border-right: 3px solid rgb(0, 0, 0);\n"
+"    border-bottom: 3px solid rgb(0, 0, 0);\n"
+"} \n"
+"\n"
+"QTabBar::tab {\n"
+"    color: grey;\n"
+"    padding: 10 15 10 15;\n"
+"    font: 700 10pt \"Consolas\";\n"
+"      background: rgb(31,31,31);\n"
+"    /*border-top-right-radius: 1px;\n"
+"    border-top-left-radius: 1px;*/\n"
+"} \n"
+"\n"
+"QTabBar::tab:selected { \n"
+"    background-color: rgb(45, 45, 45);\n"
+"    border-bottom: 2px solid   rgb(0, 150, 255);\n"
+"    /*border-bottom: 1px solid rgb(31,31,31);*/\n"
+"    color: white;\n"
+"}\n"
+"QTabBar::tab:selected:hover{\n"
+"    background-color: rgb(45, 45, 45);\n"
+"}\n"
+"QTabBar::tab:hover { \n"
+"      background: rgb(45, 45, 45);\n"
+"}\n"
+"QTabWidget::tab-bar  {\n"
+"left: 5px;\n"
+"top: 0px;\n"
+"border: 2px solid blue;\n"
+"}b ")
+        self.tabWidget_2.setDocumentMode(True)
+        self.tabWidget_2.setTabsClosable(False)
+        self.tabWidget_2.setMovable(False)
+        self.tabWidget_2.setTabBarAutoHide(True)
+        self.tabWidget_2.setObjectName("tabWidget_2")
+        self.tab_7 = QtWidgets.QWidget()
+        self.tab_7.setMaximumSize(QtCore.QSize(16777215, 300))
+        self.tab_7.setObjectName("tab_7")
+        self.gridLayout_11 = QtWidgets.QGridLayout(self.tab_7)
+        self.gridLayout_11.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout_11.setSpacing(1)
+        self.gridLayout_11.setObjectName("gridLayout_11")
+        self.groupBox_7 = QtWidgets.QGroupBox(parent=self.tab_7)
+        self.groupBox_7.setMinimumSize(QtCore.QSize(0, 200))
+        self.groupBox_7.setMaximumSize(QtCore.QSize(16777215, 200))
+        self.groupBox_7.setStyleSheet("QGroupBox {\n"
+"  border-radius: 2px;\n"
+"  margin-top: 1.4em;\n"
+"  margin-bottom: 0.5;\n"
+"  font: 700 12pt \"Consolas\";\n"
+"}\n"
+"\n"
 "QGroupBox::title {\n"
 "  background: transparent;\n"
 "  color: white;\n"
@@ -362,140 +680,369 @@ class Ui_Dialog(object):
 "        color: grey;\n"
 "        border-radius: 2px;\n"
 "}")
-        self.groupBox_2.setFlat(False)
-        self.groupBox_2.setObjectName("groupBox_2")
-        self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.groupBox_2)
-        self.verticalLayout_4.setContentsMargins(1, 1, 1, 1)
-        self.verticalLayout_4.setSpacing(0)
-        self.verticalLayout_4.setObjectName("verticalLayout_4")
-        self.widget = QtWidgets.QWidget(parent=self.groupBox_2)
-        self.widget.setObjectName("widget")
-        self.horizontalLayout_5 = QtWidgets.QHBoxLayout(self.widget)
-        self.horizontalLayout_5.setContentsMargins(5, 1, 1, 1)
-        self.horizontalLayout_5.setSpacing(20)
-        self.horizontalLayout_5.setObjectName("horizontalLayout_5")
-        self.pushButton = QtWidgets.QPushButton(parent=self.widget)
-        self.pushButton.setMaximumSize(QtCore.QSize(100, 35))
-        self.pushButton.setObjectName("pushButton")
-        self.horizontalLayout_5.addWidget(self.pushButton)
-        self.widget_4 = QtWidgets.QWidget(parent=self.widget)
-        self.widget_4.setMinimumSize(QtCore.QSize(0, 35))
-        self.widget_4.setMaximumSize(QtCore.QSize(16777215, 35))
-        self.widget_4.setStyleSheet("background-color:  rgb(41,41,41);\n"
-"border-radius: 2px;")
-        self.widget_4.setObjectName("widget_4")
-        self.horizontalLayout_10 = QtWidgets.QHBoxLayout(self.widget_4)
-        self.horizontalLayout_10.setContentsMargins(5, 0, 0, 0)
-        self.horizontalLayout_10.setObjectName("horizontalLayout_10")
-        self.label_3 = QtWidgets.QLabel(parent=self.widget_4)
-        self.label_3.setObjectName("label_3")
-        self.horizontalLayout_10.addWidget(self.label_3)
-        self.horizontalLayout_5.addWidget(self.widget_4)
-        self.verticalLayout_4.addWidget(self.widget)
-        self.widget_9 = QtWidgets.QWidget(parent=self.groupBox_2)
-        self.widget_9.setMinimumSize(QtCore.QSize(0, 40))
-        self.widget_9.setMaximumSize(QtCore.QSize(16777215, 50))
-        self.widget_9.setStyleSheet("")
-        self.widget_9.setObjectName("widget_9")
-        self.horizontalLayout_7 = QtWidgets.QHBoxLayout(self.widget_9)
-        self.horizontalLayout_7.setContentsMargins(1, 1, 1, 1)
-        self.horizontalLayout_7.setSpacing(5)
-        self.horizontalLayout_7.setObjectName("horizontalLayout_7")
-        self.label_4 = QtWidgets.QLabel(parent=self.widget_9)
-        self.label_4.setMinimumSize(QtCore.QSize(120, 0))
-        self.label_4.setMaximumSize(QtCore.QSize(80, 16777215))
-        self.label_4.setObjectName("label_4")
-        self.horizontalLayout_7.addWidget(self.label_4)
-        self.spinBox_4 = QtWidgets.QSpinBox(parent=self.widget_9)
-        self.spinBox_4.setMinimumSize(QtCore.QSize(100, 35))
-        self.spinBox_4.setMaximumSize(QtCore.QSize(200, 16777215))
-        self.spinBox_4.setMinimum(400)
-        self.spinBox_4.setMaximum(720)
-        self.spinBox_4.setProperty("value", 400)
-        self.spinBox_4.setObjectName("spinBox_4")
-        self.horizontalLayout_7.addWidget(self.spinBox_4)
-        self.comboBox_6 = QtWidgets.QComboBox(parent=self.widget_9)
-        self.comboBox_6.setMinimumSize(QtCore.QSize(0, 35))
-        self.comboBox_6.setMaximumSize(QtCore.QSize(16777215, 35))
-        self.comboBox_6.setObjectName("comboBox_6")
-        self.comboBox_6.addItem("")
-        self.horizontalLayout_7.addWidget(self.comboBox_6)
-        self.verticalLayout_4.addWidget(self.widget_9)
-        self.widget_10 = QtWidgets.QWidget(parent=self.groupBox_2)
-        self.widget_10.setMinimumSize(QtCore.QSize(0, 40))
-        self.widget_10.setMaximumSize(QtCore.QSize(16777215, 50))
-        self.widget_10.setObjectName("widget_10")
-        self.horizontalLayout_8 = QtWidgets.QHBoxLayout(self.widget_10)
-        self.horizontalLayout_8.setContentsMargins(1, 1, 1, 1)
-        self.horizontalLayout_8.setSpacing(5)
-        self.horizontalLayout_8.setObjectName("horizontalLayout_8")
-        self.label_5 = QtWidgets.QLabel(parent=self.widget_10)
-        self.label_5.setMinimumSize(QtCore.QSize(120, 0))
-        self.label_5.setMaximumSize(QtCore.QSize(80, 16777215))
-        self.label_5.setObjectName("label_5")
-        self.horizontalLayout_8.addWidget(self.label_5)
-        self.spinBox_5 = QtWidgets.QSpinBox(parent=self.widget_10)
-        self.spinBox_5.setMinimumSize(QtCore.QSize(100, 35))
-        self.spinBox_5.setMaximumSize(QtCore.QSize(200, 16777215))
-        self.spinBox_5.setMinimum(401)
-        self.spinBox_5.setMaximum(720)
-        self.spinBox_5.setProperty("value", 720)
-        self.spinBox_5.setObjectName("spinBox_5")
-        self.horizontalLayout_8.addWidget(self.spinBox_5)
-        self.comboBox_7 = QtWidgets.QComboBox(parent=self.widget_10)
-        self.comboBox_7.setMinimumSize(QtCore.QSize(0, 35))
-        self.comboBox_7.setMaximumSize(QtCore.QSize(16777215, 35))
-        self.comboBox_7.setObjectName("comboBox_7")
-        self.comboBox_7.addItem("")
-        self.horizontalLayout_8.addWidget(self.comboBox_7)
-        self.verticalLayout_4.addWidget(self.widget_10)
-        self.widget_11 = QtWidgets.QWidget(parent=self.groupBox_2)
-        self.widget_11.setMinimumSize(QtCore.QSize(0, 40))
-        self.widget_11.setMaximumSize(QtCore.QSize(16777215, 50))
-        self.widget_11.setObjectName("widget_11")
-        self.horizontalLayout_11 = QtWidgets.QHBoxLayout(self.widget_11)
-        self.horizontalLayout_11.setContentsMargins(1, 1, 1, 1)
-        self.horizontalLayout_11.setSpacing(5)
-        self.horizontalLayout_11.setObjectName("horizontalLayout_11")
-        self.label_6 = QtWidgets.QLabel(parent=self.widget_11)
-        self.label_6.setMinimumSize(QtCore.QSize(120, 0))
-        self.label_6.setMaximumSize(QtCore.QSize(80, 16777215))
-        self.label_6.setObjectName("label_6")
-        self.horizontalLayout_11.addWidget(self.label_6)
-        self.spinBox_6 = QtWidgets.QSpinBox(parent=self.widget_11)
-        self.spinBox_6.setMinimumSize(QtCore.QSize(100, 35))
-        self.spinBox_6.setMaximumSize(QtCore.QSize(200, 16777215))
-        self.spinBox_6.setMaximum(9999)
-        self.spinBox_6.setProperty("value", 300)
-        self.spinBox_6.setObjectName("spinBox_6")
-        self.horizontalLayout_11.addWidget(self.spinBox_6)
-        self.comboBox_8 = QtWidgets.QComboBox(parent=self.widget_11)
-        self.comboBox_8.setMinimumSize(QtCore.QSize(0, 35))
-        self.comboBox_8.setMaximumSize(QtCore.QSize(16777215, 35))
-        self.comboBox_8.setObjectName("comboBox_8")
-        self.comboBox_8.addItem("")
-        self.comboBox_8.addItem("")
-        self.horizontalLayout_11.addWidget(self.comboBox_8)
-        self.verticalLayout_4.addWidget(self.widget_11)
-        self.gridLayout_5.addWidget(self.groupBox_2, 0, 0, 1, 1)
-        self.tabWidget.addTab(self.tab_2, "")
-        self.gridLayout.addWidget(self.tabWidget, 0, 0, 1, 1)
-        self.spectral_preview_widget = QtWidgets.QWidget(parent=self.page)
+        self.groupBox_7.setFlat(False)
+        self.groupBox_7.setObjectName("groupBox_7")
+        self.verticalLayout_9 = QtWidgets.QVBoxLayout(self.groupBox_7)
+        self.verticalLayout_9.setContentsMargins(1, 1, 1, 1)
+        self.verticalLayout_9.setSpacing(0)
+        self.verticalLayout_9.setObjectName("verticalLayout_9")
+        self.widget_26 = QtWidgets.QWidget(parent=self.groupBox_7)
+        self.widget_26.setMinimumSize(QtCore.QSize(0, 40))
+        self.widget_26.setMaximumSize(QtCore.QSize(16777215, 50))
+        self.widget_26.setObjectName("widget_26")
+        self.horizontalLayout_28 = QtWidgets.QHBoxLayout(self.widget_26)
+        self.horizontalLayout_28.setContentsMargins(1, 1, 1, 1)
+        self.horizontalLayout_28.setSpacing(5)
+        self.horizontalLayout_28.setObjectName("horizontalLayout_28")
+        self.label_22 = QtWidgets.QLabel(parent=self.widget_26)
+        self.label_22.setMinimumSize(QtCore.QSize(100, 0))
+        self.label_22.setMaximumSize(QtCore.QSize(80, 16777215))
+        self.label_22.setObjectName("label_22")
+        self.horizontalLayout_28.addWidget(self.label_22)
+        self.comboBox_19 = QtWidgets.QComboBox(parent=self.widget_26)
+        self.comboBox_19.setMinimumSize(QtCore.QSize(0, 35))
+        self.comboBox_19.setObjectName("comboBox_19")
+        self.comboBox_19.addItem("")
+        self.comboBox_19.setItemText(0, "")
+        self.comboBox_19.addItem("")
+        self.horizontalLayout_28.addWidget(self.comboBox_19)
+        self.verticalLayout_9.addWidget(self.widget_26)
+        self.widget_27 = QtWidgets.QWidget(parent=self.groupBox_7)
+        self.widget_27.setMinimumSize(QtCore.QSize(0, 40))
+        self.widget_27.setMaximumSize(QtCore.QSize(16777215, 50))
+        self.widget_27.setStyleSheet("")
+        self.widget_27.setObjectName("widget_27")
+        self.horizontalLayout_29 = QtWidgets.QHBoxLayout(self.widget_27)
+        self.horizontalLayout_29.setContentsMargins(1, 1, 1, 1)
+        self.horizontalLayout_29.setSpacing(5)
+        self.horizontalLayout_29.setObjectName("horizontalLayout_29")
+        self.label_23 = QtWidgets.QLabel(parent=self.widget_27)
+        self.label_23.setMinimumSize(QtCore.QSize(100, 0))
+        self.label_23.setMaximumSize(QtCore.QSize(80, 16777215))
+        self.label_23.setObjectName("label_23")
+        self.horizontalLayout_29.addWidget(self.label_23)
+        self.spinBox_16 = QtWidgets.QSpinBox(parent=self.widget_27)
+        self.spinBox_16.setMinimumSize(QtCore.QSize(100, 35))
+        self.spinBox_16.setMaximumSize(QtCore.QSize(200, 16777215))
+        self.spinBox_16.setMaximum(9999)
+        self.spinBox_16.setProperty("value", 660)
+        self.spinBox_16.setObjectName("spinBox_16")
+        self.horizontalLayout_29.addWidget(self.spinBox_16)
+        self.comboBox_20 = QtWidgets.QComboBox(parent=self.widget_27)
+        self.comboBox_20.setMinimumSize(QtCore.QSize(0, 35))
+        self.comboBox_20.setMaximumSize(QtCore.QSize(16777215, 35))
+        self.comboBox_20.setObjectName("comboBox_20")
+        self.comboBox_20.addItem("")
+        self.comboBox_20.addItem("")
+        self.horizontalLayout_29.addWidget(self.comboBox_20)
+        self.verticalLayout_9.addWidget(self.widget_27)
+        self.widget_28 = QtWidgets.QWidget(parent=self.groupBox_7)
+        self.widget_28.setMinimumSize(QtCore.QSize(0, 40))
+        self.widget_28.setMaximumSize(QtCore.QSize(16777215, 50))
+        self.widget_28.setObjectName("widget_28")
+        self.horizontalLayout_30 = QtWidgets.QHBoxLayout(self.widget_28)
+        self.horizontalLayout_30.setContentsMargins(1, 1, 1, 1)
+        self.horizontalLayout_30.setSpacing(5)
+        self.horizontalLayout_30.setObjectName("horizontalLayout_30")
+        self.label_24 = QtWidgets.QLabel(parent=self.widget_28)
+        self.label_24.setMinimumSize(QtCore.QSize(100, 0))
+        self.label_24.setMaximumSize(QtCore.QSize(80, 16777215))
+        self.label_24.setObjectName("label_24")
+        self.horizontalLayout_30.addWidget(self.label_24)
+        self.spinBox_17 = QtWidgets.QSpinBox(parent=self.widget_28)
+        self.spinBox_17.setMinimumSize(QtCore.QSize(100, 35))
+        self.spinBox_17.setMaximumSize(QtCore.QSize(200, 16777215))
+        self.spinBox_17.setMaximum(9999)
+        self.spinBox_17.setProperty("value", 400)
+        self.spinBox_17.setObjectName("spinBox_17")
+        self.horizontalLayout_30.addWidget(self.spinBox_17)
+        self.comboBox_21 = QtWidgets.QComboBox(parent=self.widget_28)
+        self.comboBox_21.setMinimumSize(QtCore.QSize(0, 35))
+        self.comboBox_21.setMaximumSize(QtCore.QSize(16777215, 35))
+        self.comboBox_21.setObjectName("comboBox_21")
+        self.comboBox_21.addItem("")
+        self.comboBox_21.addItem("")
+        self.horizontalLayout_30.addWidget(self.comboBox_21)
+        self.verticalLayout_9.addWidget(self.widget_28)
+        self.gridLayout_11.addWidget(self.groupBox_7, 0, 0, 1, 1)
+        self.tabWidget_2.addTab(self.tab_7, "")
+        self.tab_8 = QtWidgets.QWidget()
+        self.tab_8.setObjectName("tab_8")
+        self.gridLayout_12 = QtWidgets.QGridLayout(self.tab_8)
+        self.gridLayout_12.setContentsMargins(0, 0, 0, 2)
+        self.gridLayout_12.setSpacing(1)
+        self.gridLayout_12.setObjectName("gridLayout_12")
+        self.groupBox_8 = QtWidgets.QGroupBox(parent=self.tab_8)
+        self.groupBox_8.setMinimumSize(QtCore.QSize(0, 225))
+        self.groupBox_8.setMaximumSize(QtCore.QSize(16777215, 200))
+        self.groupBox_8.setStyleSheet("QGroupBox {\n"
+"  border-radius: 2px;\n"
+"  margin-top: 1.4em;\n"
+"  margin-bottom: 1;\n"
+"  font: 700 12pt \"Consolas\";\n"
+"}\n"
+"QLineEdit {\n"
+"    font: 600 10pt \"Segoe UI\";\n"
+"    background-color:  rgb(41,41,41);\n"
+"   color: white;\n"
+"    border-radius: 2px;\n"
+"}\n"
+"QPushButton {\n"
+"    background: rgb(0, 150, 255);\n"
+"    color: rgba(255,255,255, 0.85);\n"
+"    border-radius: 2px;\n"
+"    font: 600 10pt \"Segoe UI\";\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background: rgb(51, 180, 255);\n"
+"}\n"
+"QGroupBox::title {\n"
+"  background: transparent;\n"
+"  color: white;\n"
+"  padding-top: -30px;\n"
+"   padding-left: -18px;\n"
+"  margin: 0 15 15 15;\n"
+"}\n"
+"QLabel {\n"
+"    color: grey;\n"
+"    font: 550 11pt \"Consolas\";\n"
+"}\n"
+"QSpinBox {\n"
+"        font: 600 10pt \"Segoe UI\";\n"
+"         background-color:  rgb(41,41,41);\n"
+"        color: grey;\n"
+"        border-radius: 2px;\n"
+"        border: 0px;\n"
+"}\n"
+"QComboBox {\n"
+"        font: 700 10pt \"Segoe UI\";\n"
+"         background-color:  rgb(41,41,41);\n"
+"        color: grey;\n"
+"        border-radius: 2px;\n"
+"        border: 0px;\n"
+"}")
+        self.groupBox_8.setFlat(False)
+        self.groupBox_8.setObjectName("groupBox_8")
+        self.verticalLayout_10 = QtWidgets.QVBoxLayout(self.groupBox_8)
+        self.verticalLayout_10.setContentsMargins(0, 1, 0, 1)
+        self.verticalLayout_10.setSpacing(0)
+        self.verticalLayout_10.setObjectName("verticalLayout_10")
+        self.widget_29 = QtWidgets.QWidget(parent=self.groupBox_8)
+        self.widget_29.setStyleSheet("\n"
+"QWidget {\n"
+"\n"
+"    border-top: 1px solid rgba(129, 129, 129, 50);\n"
+"}\n"
+"")
+        self.widget_29.setObjectName("widget_29")
+        self.horizontalLayout_31 = QtWidgets.QHBoxLayout(self.widget_29)
+        self.horizontalLayout_31.setContentsMargins(0, 2, 0, 2)
+        self.horizontalLayout_31.setSpacing(0)
+        self.horizontalLayout_31.setObjectName("horizontalLayout_31")
+        self.pushButton_4 = QtWidgets.QPushButton(parent=self.widget_29)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.spectral_preview_widget.sizePolicy().hasHeightForWidth())
-        self.spectral_preview_widget.setSizePolicy(sizePolicy)
-        self.spectral_preview_widget.setMinimumSize(QtCore.QSize(0, 0))
-        self.spectral_preview_widget.setStyleSheet("background-color:white;")
-        self.spectral_preview_widget.setObjectName("spectral_preview_widget")
-        self.gridLayout_4 = QtWidgets.QGridLayout(self.spectral_preview_widget)
-        self.gridLayout_4.setContentsMargins(0, 0, 0, 0)
-        self.gridLayout_4.setObjectName("gridLayout_4")
-        self.gridLayout.addWidget(self.spectral_preview_widget, 1, 0, 1, 1)
-        self.stackedWidget.addWidget(self.page)
-        self.page_2 = QtWidgets.QWidget()
-        self.page_2.setObjectName("page_2")
+        sizePolicy.setHeightForWidth(self.pushButton_4.sizePolicy().hasHeightForWidth())
+        self.pushButton_4.setSizePolicy(sizePolicy)
+        self.pushButton_4.setMinimumSize(QtCore.QSize(149, 0))
+        self.pushButton_4.setMaximumSize(QtCore.QSize(149, 999))
+        self.pushButton_4.setStyleSheet("border: 0px; border-radius: 0px;")
+        self.pushButton_4.setObjectName("pushButton_4")
+        self.horizontalLayout_31.addWidget(self.pushButton_4)
+        self.widget_30 = QtWidgets.QWidget(parent=self.widget_29)
+        self.widget_30.setMinimumSize(QtCore.QSize(0, 0))
+        self.widget_30.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.widget_30.setStyleSheet("background-color:  rgb(41,41,41);\n"
+"border:0px;\n"
+"")
+        self.widget_30.setObjectName("widget_30")
+        self.horizontalLayout_32 = QtWidgets.QHBoxLayout(self.widget_30)
+        self.horizontalLayout_32.setContentsMargins(1, 0, 0, 0)
+        self.horizontalLayout_32.setObjectName("horizontalLayout_32")
+        self.label_25 = QtWidgets.QLabel(parent=self.widget_30)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_25.sizePolicy().hasHeightForWidth())
+        self.label_25.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("Consolas")
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setItalic(False)
+        self.label_25.setFont(font)
+        self.label_25.setStyleSheet("border-top: 1px solid rgba(129, 129, 129, 50);\n"
+"border-bottom: 1px solid rgba(129, 129, 129, 50);\n"
+"border-radius: 0px;")
+        self.label_25.setObjectName("label_25")
+        self.horizontalLayout_32.addWidget(self.label_25)
+        self.horizontalLayout_31.addWidget(self.widget_30)
+        self.verticalLayout_10.addWidget(self.widget_29)
+        self.widget_31 = QtWidgets.QWidget(parent=self.groupBox_8)
+        self.widget_31.setMinimumSize(QtCore.QSize(0, 40))
+        self.widget_31.setMaximumSize(QtCore.QSize(16777215, 50))
+        self.widget_31.setStyleSheet("")
+        self.widget_31.setObjectName("widget_31")
+        self.horizontalLayout_33 = QtWidgets.QHBoxLayout(self.widget_31)
+        self.horizontalLayout_33.setContentsMargins(0, 2, 0, 2)
+        self.horizontalLayout_33.setSpacing(0)
+        self.horizontalLayout_33.setObjectName("horizontalLayout_33")
+        self.label_26 = QtWidgets.QLabel(parent=self.widget_31)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_26.sizePolicy().hasHeightForWidth())
+        self.label_26.setSizePolicy(sizePolicy)
+        self.label_26.setMinimumSize(QtCore.QSize(150, 0))
+        self.label_26.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.label_26.setStyleSheet("border: 1px solid rgba(129, 129, 129, 50); color: grey")
+        self.label_26.setObjectName("label_26")
+        self.horizontalLayout_33.addWidget(self.label_26)
+        self.checkBox = QtWidgets.QCheckBox(parent=self.widget_31)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.checkBox.sizePolicy().hasHeightForWidth())
+        self.checkBox.setSizePolicy(sizePolicy)
+        self.checkBox.setMinimumSize(QtCore.QSize(50, 0))
+        self.checkBox.setMaximumSize(QtCore.QSize(50, 16777215))
+        self.checkBox.setStyleSheet("QCheckBox {\n"
+"    border-top: 1px solid rgba(129, 129, 129, 50);\n"
+"    border-bottom: 1px solid rgba(129, 129, 129, 50);\n"
+"    border-radius: 0px;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked {\n"
+"    image: url(./resources/icons/toggle-button-on.png);\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked {\n"
+"    image: url(./resources/icons/toggle-button-off.png);\n"
+"}\n"
+"QCheckBox::indicator {\n"
+"    width: 50px;\n"
+"    height: 50px;\n"
+"}")
+        self.checkBox.setObjectName("checkBox")
+        self.horizontalLayout_33.addWidget(self.checkBox)
+        self.verticalLayout_10.addWidget(self.widget_31)
+        self.widget_32 = QtWidgets.QWidget(parent=self.groupBox_8)
+        self.widget_32.setMinimumSize(QtCore.QSize(0, 40))
+        self.widget_32.setMaximumSize(QtCore.QSize(16777215, 50))
+        self.widget_32.setStyleSheet("")
+        self.widget_32.setObjectName("widget_32")
+        self.horizontalLayout_34 = QtWidgets.QHBoxLayout(self.widget_32)
+        self.horizontalLayout_34.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_34.setSpacing(0)
+        self.horizontalLayout_34.setObjectName("horizontalLayout_34")
+        self.label_27 = QtWidgets.QLabel(parent=self.widget_32)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_27.sizePolicy().hasHeightForWidth())
+        self.label_27.setSizePolicy(sizePolicy)
+        self.label_27.setMinimumSize(QtCore.QSize(150, 0))
+        self.label_27.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.label_27.setStyleSheet("border: 1px solid rgba(129, 129, 129, 50); color: grey")
+        self.label_27.setObjectName("label_27")
+        self.horizontalLayout_34.addWidget(self.label_27)
+        self.checkBox_2 = QtWidgets.QCheckBox(parent=self.widget_32)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.checkBox_2.sizePolicy().hasHeightForWidth())
+        self.checkBox_2.setSizePolicy(sizePolicy)
+        self.checkBox_2.setMinimumSize(QtCore.QSize(50, 0))
+        self.checkBox_2.setMaximumSize(QtCore.QSize(50, 16777215))
+        self.checkBox_2.setStyleSheet("QCheckBox {\n"
+"    border-top: 1px solid rgba(129, 129, 129, 50);\n"
+"    border-bottom: 1px solid rgba(129, 129, 129, 50);\n"
+"    border-radius: 0px;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked {\n"
+"    image: url(./resources/icons/toggle-button-on.png);\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked {\n"
+"    image: url(./resources/icons/toggle-button-off.png);\n"
+"}\n"
+"QCheckBox::indicator {\n"
+"    width: 50px;\n"
+"    height: 50px;\n"
+"}")
+        self.checkBox_2.setObjectName("checkBox_2")
+        self.horizontalLayout_34.addWidget(self.checkBox_2)
+        self.verticalLayout_10.addWidget(self.widget_32)
+        self.widget_33 = QtWidgets.QWidget(parent=self.groupBox_8)
+        self.widget_33.setMinimumSize(QtCore.QSize(0, 40))
+        self.widget_33.setMaximumSize(QtCore.QSize(16777215, 50))
+        self.widget_33.setStyleSheet("\n"
+"QWidget {\n"
+"    border-bottom: 1px solid rgba(129, 129, 129, 50);\n"
+"}\n"
+"")
+        self.widget_33.setObjectName("widget_33")
+        self.horizontalLayout_35 = QtWidgets.QHBoxLayout(self.widget_33)
+        self.horizontalLayout_35.setContentsMargins(0, 2, 0, 2)
+        self.horizontalLayout_35.setSpacing(0)
+        self.horizontalLayout_35.setObjectName("horizontalLayout_35")
+        self.label_28 = QtWidgets.QLabel(parent=self.widget_33)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_28.sizePolicy().hasHeightForWidth())
+        self.label_28.setSizePolicy(sizePolicy)
+        self.label_28.setMinimumSize(QtCore.QSize(150, 0))
+        self.label_28.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.label_28.setStyleSheet("border: 1px solid rgba(129, 129, 129, 50); color: grey")
+        self.label_28.setObjectName("label_28")
+        self.horizontalLayout_35.addWidget(self.label_28)
+        self.checkBox_3 = QtWidgets.QCheckBox(parent=self.widget_33)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.checkBox_3.sizePolicy().hasHeightForWidth())
+        self.checkBox_3.setSizePolicy(sizePolicy)
+        self.checkBox_3.setMinimumSize(QtCore.QSize(50, 0))
+        self.checkBox_3.setMaximumSize(QtCore.QSize(50, 16777215))
+        self.checkBox_3.setStyleSheet("QCheckBox {\n"
+"    border-top: 1px solid rgba(129, 129, 129, 50);\n"
+"    border-bottom: 1px solid rgba(129, 129, 129, 50);\n"
+"    border-radius: 0px;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked {\n"
+"    image: url(./resources/icons/toggle-button-on.png);\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked {\n"
+"    image: url(./resources/icons/toggle-button-off.png);\n"
+"}\n"
+"QCheckBox::indicator {\n"
+"    width: 50px;\n"
+"    height: 50px;\n"
+"}")
+        self.checkBox_3.setObjectName("checkBox_3")
+        self.horizontalLayout_35.addWidget(self.checkBox_3)
+        self.verticalLayout_10.addWidget(self.widget_33)
+        self.gridLayout_12.addWidget(self.groupBox_8, 0, 0, 1, 1)
+        self.tabWidget_2.addTab(self.tab_8, "")
+        self.gridLayout_14.addWidget(self.tabWidget_2, 0, 0, 1, 1)
+        self.spectral_preview_widget_2 = QtWidgets.QWidget(parent=self.page_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.spectral_preview_widget_2.sizePolicy().hasHeightForWidth())
+        self.spectral_preview_widget_2.setSizePolicy(sizePolicy)
+        self.spectral_preview_widget_2.setMinimumSize(QtCore.QSize(0, 0))
+        self.spectral_preview_widget_2.setStyleSheet("background-color:rgb(21,21,21);")
+        self.spectral_preview_widget_2.setObjectName("spectral_preview_widget_2")
+        self.gridLayout_13 = QtWidgets.QGridLayout(self.spectral_preview_widget_2)
+        self.gridLayout_13.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout_13.setObjectName("gridLayout_13")
+        self.gridLayout_14.addWidget(self.spectral_preview_widget_2, 1, 0, 1, 1)
         self.stackedWidget.addWidget(self.page_2)
         self.verticalLayout_2.addWidget(self.stackedWidget)
         self.widget_6 = QtWidgets.QWidget(parent=self.page_widget)
@@ -553,8 +1100,9 @@ class Ui_Dialog(object):
         self.horizontalLayout.addWidget(self.page_selector_widget)
 
         self.retranslateUi(Dialog)
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(1)
         self.tabWidget.setCurrentIndex(1)
+        self.tabWidget_2.setCurrentIndex(1)
         self.CreateWidgetPushButton.clicked.connect(Dialog.onCreateWidget) # type: ignore
         self.CancelCreateWidget.clicked.connect(Dialog.onCancel) # type: ignore
         self.custom_widget_button.clicked.connect(Dialog.onCustomWidgetClicked) # type: ignore
@@ -564,7 +1112,7 @@ class Ui_Dialog(object):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.custom_widget_button.setText(_translate("Dialog", "Custom Widget 1"))
+        self.custom_widget_button.setText(_translate("Dialog", "Spectrum Colors"))
         self.custom_widget_button_2.setText(_translate("Dialog", "Cutom Widget 2"))
         self.groupBox.setTitle(_translate("Dialog", "Widget Size"))
         self.label_7.setText(_translate("Dialog", "Predifined"))
@@ -587,5 +1135,25 @@ class Ui_Dialog(object):
         self.comboBox_8.setItemText(0, _translate("Dialog", "Pixels (px) per Inch"))
         self.comboBox_8.setItemText(1, _translate("Dialog", "Pixels (px) per Centimeter"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("Dialog", "Content"))
+        self.groupBox_7.setTitle(_translate("Dialog", "Widget Size"))
+        self.label_22.setText(_translate("Dialog", "Predifined"))
+        self.comboBox_19.setItemText(1, _translate("Dialog", "128x128 (128ppi)"))
+        self.label_23.setText(_translate("Dialog", "Width"))
+        self.comboBox_20.setItemText(0, _translate("Dialog", "Pixels (px)"))
+        self.comboBox_20.setItemText(1, _translate("Dialog", "Points (pt)"))
+        self.label_24.setText(_translate("Dialog", "Height"))
+        self.comboBox_21.setItemText(0, _translate("Dialog", "Pixels (px)"))
+        self.comboBox_21.setItemText(1, _translate("Dialog", "Points (pt)"))
+        self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_7), _translate("Dialog", "Dimensions"))
+        self.groupBox_8.setTitle(_translate("Dialog", "Widget Properties"))
+        self.pushButton_4.setText(_translate("Dialog", "Choose file"))
+        self.label_25.setText(_translate("Dialog", "No measurement file choosen"))
+        self.label_26.setText(_translate("Dialog", "Daylight "))
+        self.checkBox.setText(_translate("Dialog", " "))
+        self.label_27.setText(_translate("Dialog", "BlackBody Locus"))
+        self.checkBox_2.setText(_translate("Dialog", " "))
+        self.label_28.setText(_translate("Dialog", "D65 chromaticity"))
+        self.checkBox_3.setText(_translate("Dialog", " "))
+        self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_8), _translate("Dialog", "Content"))
         self.CreateWidgetPushButton.setText(_translate("Dialog", "Create"))
         self.CancelCreateWidget.setText(_translate("Dialog", "Cancel"))

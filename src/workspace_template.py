@@ -631,7 +631,7 @@ class Workspace(QWidget):
         super().__init__(parent)
         self.ui = Ui_WorkspaceDesignForm()
         self.ui.setupUi(self)
-        self.toast_msg_anchor = parent
+        self.main = parent
         
         self.workspace_name = workspace_name
         self.explorer = self.ui.treeWidget
@@ -640,7 +640,6 @@ class Workspace(QWidget):
         self.viewScalefactor = 1.15
 
         self.tabletabmanager = TableTabManager(self.ui, self.workspace_name)
-
         self.splitter = WorkspaceTableSplitter(Qt.Orientation.Vertical)
 
         self.splitter.addWidget(self.ui.workspace_container)
@@ -663,6 +662,7 @@ class Workspace(QWidget):
         self.splitter.toggleButton.connect(self.toggle_splitter_buttons)
         # self.tabletabmanager.plusClicked.connect(lambda: self.tabletabmanager.add_table_page(TableContainerWidget('asdasd'), f"new-table-{self.tabletabmanager.tab_count + 1}"))
         self.tabletabmanager.plusClicked.connect(lambda: self.tabletabmanager.add_table_page(TableContainerWidget(""), f"new-{self.workspace_name}-{self.tabletabmanager.tab_count + 1}"))
+        self.signal_bus.add_widget_to_current_workspace.connect(self.add_widget)
 
 
         # QDialogs
@@ -685,6 +685,31 @@ class Workspace(QWidget):
             self.ui.pushButton_5.setChecked(False)
         else:
             self.ui.pushButton_5.setChecked(True)
+
+    def add_widget(self, scene_widget):
+        if scene_widget:
+            tab_manager = self.main.get_tab_manager()
+            current_workspace = tab_manager.get_current_page_widget()
+
+            if current_workspace == self:
+                data = scene_widget.get_widget_data()
+                widget_type = scene_widget.__class__.__name__
+
+                match widget_type:
+                    case 'SpectrumWidget':
+                        clone = SpectrumWidget()
+                        clone.setSpectralData(data.get('data'))
+                        clone.setGeometry(
+                            data.get('geometry')['x'], 
+                            data.get('geometry')['y'], 
+                            data.get('geometry')['width'], 
+                            data.get('geometry')['height']
+                        )
+                        self.scene.addWidget(clone)
+                    case _:
+                        print(f"Unsupported widget type: {widget_type}")
+
+
 
     @pyqtSlot(bool)
     def toggle_bottom_panel(self, value: bool):
@@ -811,12 +836,12 @@ class Workspace(QWidget):
             self.update_test_button_on_view()
                 
     def handle_create_widget_on_scene(self, selected: bool):
-            if selected is not None:
-                if  selected == False:
-                    self.widgetCreator.closePopUp()
-                else:
-                    self.widgetCreator.popUp()
-                    self.ui.CreateWidgetButton.setChecked(True)
+        if selected is not None:
+            if  selected == False:
+                self.widgetCreator.closePopUp()
+            else:
+                self.widgetCreator.popUp()
+                self.ui.CreateWidgetButton.setChecked(True)
 
     def handle_scene_drag_mode(self, selected: bool):
         if selected:
@@ -841,27 +866,27 @@ class Workspace(QWidget):
                 print("An AttributeError occurred:", e)
 
     def handle_scene_delete_mode(self, selected: bool):
-            if selected is not None:
-                if  selected == False:
-                    self.scene.setDeleteButton(None)
-                else:
-                    self.scene.setDeleteButton(self.sender())
+        if selected is not None:
+            if  selected == False:
+                self.scene.setDeleteButton(None)
+            else:
+                self.scene.setDeleteButton(self.sender())
 
     def handle_scene_zoom_in(self):
-            scale_tr = QTransform()
-            scale_tr.scale(self.viewScalefactor, self.viewScalefactor)
+        scale_tr = QTransform()
+        scale_tr.scale(self.viewScalefactor, self.viewScalefactor)
 
-            tr = self.view.transform() * scale_tr
-            if tr.m11() <= 2.0 and tr.m22() <= 2.0:
-                self.view.setTransform(tr)
+        tr = self.view.transform() * scale_tr
+        if tr.m11() <= 2.0 and tr.m22() <= 2.0:
+            self.view.setTransform(tr)
 
     def handle_scene_zoom_out(self):
-            scale_tr = QTransform()
-            scale_tr.scale(1 / self.viewScalefactor, 1 / self.viewScalefactor)
+        scale_tr = QTransform()
+        scale_tr.scale(1 / self.viewScalefactor, 1 / self.viewScalefactor)
 
-            tr = self.view.transform() * scale_tr
-            if tr.m11() >= 0.4 and tr.m22() >= 0.4:
-                self.view.setTransform(tr)
+        tr = self.view.transform() * scale_tr
+        if tr.m11() >= 0.4 and tr.m22() >= 0.4:
+            self.view.setTransform(tr)
 
     def generate_grid_tiles_for_scene(self, grid):
         colorH = QColor(qRgb(31, 31, 31))
@@ -1030,11 +1055,10 @@ class NodeboardGraphicsScene(QGraphicsScene):
 
     def onWidgetDelete(self, deleted: QGraphicsProxyWidget):
         if isinstance(deleted, QGraphicsProxyWidget):
-                self.nodeboard_signal_bus.onWidgetDeselectedSignalEmit(deleted)
-                self.removeItem(deleted)
-                self.signal_bus.emitUpdateExplorer()
+            self.nodeboard_signal_bus.onWidgetDeselectedSignalEmit(deleted)
+            self.removeItem(deleted)
+            self.signal_bus.emitUpdateExplorer()
                 
-
     def onSelectWidget(self, selected: QGraphicsProxyWidget):
         if isinstance(selected, QGraphicsProxyWidget):
             selected.widget().setStyleSheet("QWidget {\nbackground-color: rgb(75, 75, 75);\nborder-radius: 5px; }")

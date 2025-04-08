@@ -2,6 +2,7 @@ from PyQt6.QtCore import QObject, pyqtSignal
 from PyQt6 import QtCore, QtWidgets
 from PyQt6.QtGui import QAction
 from PyQt6.QtWidgets import QGraphicsProxyWidget, QWidget
+from src.widgets.scene_widget import SceneWidget
 
 class NodeBoardSignalBus(QObject):
     widgetSelectedSignal = pyqtSignal(QGraphicsProxyWidget)
@@ -38,7 +39,8 @@ class WorkspaceSignalBus(QObject):
 
     update_options = pyqtSignal(str, int)
 
-    
+    add_widget_to_current_workspace = pyqtSignal(QGraphicsProxyWidget)
+
 
     def __init__(self):
         super().__init__()
@@ -57,3 +59,6 @@ class WorkspaceSignalBus(QObject):
 
     def emitUpdateOptions(self, key: str, row: int):
         self.update_options.emit(key, row)
+
+    def emitAddWidgetToCurrentWorkspace(self, widget: QGraphicsProxyWidget):
+        self.add_widget_to_current_workspace.emit(widget)

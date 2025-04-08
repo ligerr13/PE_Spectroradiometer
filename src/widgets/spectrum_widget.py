@@ -110,19 +110,16 @@ class SpectrumWidget(SceneWidget):
         layout.addWidget(self.pc)
 
     def setSpectralData(self, data):
-            self.data = data
-            self.plot_data()
+        self.data = data
+        self.plot_data()
 
     def setWavelengthProperties(self, min_wl, max_wl, resolution):
         pass
+
     def plot_data(self):
-        
-        asd = np.array([self.data])
-
-        spd = np.vstack((SpectrumWidget.wavelength, asd))
-        
+        _data = np.array([self.data])
+        spd = np.vstack((SpectrumWidget.wavelength, _data))
         plot_spectrum_colors(spd = spd, axh=self.pc.axes)
-
         self.pc.draw()
 
 class MplCanvas(FigureCanvasQTAgg):
@@ -130,5 +127,4 @@ class MplCanvas(FigureCanvasQTAgg):
         fig = Figure(figsize=(width, height), dpi=dpi)
         self.axes = fig.add_subplot(111)
         super(MplCanvas, self).__init__(fig)
-        # self.setCursor(QtGui.QCursor(Qt.CursorShape.ArrowCursor)) 
         

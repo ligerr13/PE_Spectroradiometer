@@ -3,6 +3,7 @@ from ..widgets.toast_widget import ToastWidget
 from src.globals.enum import ToastType
 import os
 from PyQt6.QtWidgets import QFileDialog
+from PyQt6.QtCore import QObject
 import numpy as np
 
 class FileValidator:
@@ -10,6 +11,22 @@ class FileValidator:
     def get_data_directory(cls):
         script_dir = os.path.dirname(__file__)
         return os.path.abspath(os.path.join(script_dir, '..', 'instrument', 'data'))
+    
+class Singleton(QObject):
+    _instance = None
+    _initialized = False
+
+    def __new__(cls, *args, **kwargs):
+        if not isinstance(cls._instance, cls):
+            cls._instance = super().__new__(cls)
+        return cls._instance
+
+    def __init__(self, *args, **kwargs):
+        if self.__class__._initialized:
+            return
+        super().__init__()
+        self.__class__._initialized = True
+
     
 def show_toast(message, duration=3000, success=None , parent=None):
     toast = ToastWidget(message, duration, success, parent)

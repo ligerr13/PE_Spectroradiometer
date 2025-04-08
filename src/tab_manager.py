@@ -4,8 +4,6 @@ from PyQt6.QtGui import QIcon, QKeySequence
 from PyQt6 import QtCore
 from src.globals.utils import show_toast, ToastType
 
-
-
 class TabManager(QObject):
     plusClicked = pyqtSignal()
 

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>714</width>
-    <height>722</height>
+    <width>655</width>
+    <height>632</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -50,10 +50,10 @@ border-radius: 0px;
        <number>0</number>
       </property>
       <property name="leftMargin">
-       <number>3</number>
+       <number>0</number>
       </property>
       <property name="topMargin">
-       <number>3</number>
+       <number>0</number>
       </property>
       <property name="rightMargin">
        <number>0</number>
@@ -140,7 +140,7 @@ QToolTip{
             <string notr="true"/>
            </property>
            <property name="text">
-            <string>Custom Widget 1</string>
+            <string>Spectrum Colors</string>
            </property>
            <property name="checkable">
             <bool>true</bool>
@@ -216,13 +216,13 @@ QToolTip{
           <number>5</number>
          </property>
          <property name="leftMargin">
-          <number>1</number>
+          <number>0</number>
          </property>
          <property name="topMargin">
-          <number>1</number>
+          <number>2</number>
          </property>
          <property name="rightMargin">
-          <number>5</number>
+          <number>0</number>
          </property>
          <property name="bottomMargin">
           <number>2</number>
@@ -251,7 +251,7 @@ QToolTip{
             <string notr="true">border: 0px;</string>
            </property>
            <property name="currentIndex">
-            <number>0</number>
+            <number>1</number>
            </property>
            <widget class="QWidget" name="page">
             <property name="minimumSize">
@@ -261,7 +261,7 @@ QToolTip{
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true">	border: 0px;</string>
+             <string notr="true">border: 0px;</string>
             </property>
             <layout class="QGridLayout" name="gridLayout">
              <property name="leftMargin">
@@ -303,11 +303,11 @@ QToolTip{
   	background: rgb(31,31,31);
 }
 QTabWidget::pane {
-	top: 1px;
+	top: 5px;
 	border-top: 3px solid rgb(0, 0, 0);
-border-left: 3px solid rgb(0, 0, 0);
-border-right: 3px solid rgb(0, 0, 0);
-border-bottom: 3px solid rgb(0, 0, 0);
+	border-left: 3px solid rgb(0, 0, 0);
+	border-right: 3px solid rgb(0, 0, 0);
+	border-bottom: 3px solid rgb(0, 0, 0);
 } 
 
 QTabBar::tab {
@@ -741,7 +741,7 @@ QComboBox {
                   <number>0</number>
                  </property>
                  <property name="bottomMargin">
-                  <number>0</number>
+                  <number>2</number>
                  </property>
                  <property name="spacing">
                   <number>1</number>
@@ -764,7 +764,7 @@ QComboBox {
                     <string notr="true">QGroupBox {
   border-radius: 2px;
   margin-top: 1.4em;
-  margin-bottom: 0.5;
+  margin-bottom: 1;
   font: 700 12pt &quot;Consolas&quot;;
 }
 QLineEdit {
@@ -775,7 +775,7 @@ QLineEdit {
 }
 QPushButton {
 	background: rgb(0, 150, 255);
-	color: white;
+	color: rgba(255,255,255, 0.85);
 	border-radius: 2px;
 	font: 600 10pt &quot;Segoe UI&quot;;
 }
@@ -798,12 +798,14 @@ QSpinBox {
  		background-color:  rgb(41,41,41);
 		color: grey;
 		border-radius: 2px;
+		border: 0px;
 }
 QComboBox {
 		font: 700 10pt &quot;Segoe UI&quot;;
  		background-color:  rgb(41,41,41);
 		color: grey;
 		border-radius: 2px;
+		border: 0px;
 }</string>
                    </property>
                    <property name="title">
@@ -817,42 +819,65 @@ QComboBox {
                      <number>0</number>
                     </property>
                     <property name="leftMargin">
-                     <number>1</number>
+                     <number>0</number>
                     </property>
                     <property name="topMargin">
                      <number>1</number>
                     </property>
                     <property name="rightMargin">
-                     <number>1</number>
+                     <number>0</number>
                     </property>
                     <property name="bottomMargin">
                      <number>1</number>
                     </property>
                     <item>
                      <widget class="QWidget" name="widget" native="true">
+                      <property name="styleSheet">
+                       <string notr="true">
+QWidget {
+
+	border-top: 1px solid rgba(129, 129, 129, 50);
+}
+</string>
+                      </property>
                       <layout class="QHBoxLayout" name="horizontalLayout_5">
                        <property name="spacing">
-                        <number>20</number>
+                        <number>0</number>
                        </property>
                        <property name="leftMargin">
-                        <number>5</number>
+                        <number>0</number>
                        </property>
                        <property name="topMargin">
-                        <number>1</number>
+                        <number>2</number>
                        </property>
                        <property name="rightMargin">
-                        <number>1</number>
+                        <number>0</number>
                        </property>
                        <property name="bottomMargin">
-                        <number>1</number>
+                        <number>2</number>
                        </property>
                        <item>
                         <widget class="QPushButton" name="pushButton">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>149</width>
+                           <height>0</height>
+                          </size>
+                         </property>
                          <property name="maximumSize">
                           <size>
-                           <width>100</width>
-                           <height>35</height>
+                           <width>149</width>
+                           <height>999</height>
                           </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">border: 0px; border-radius: 0px;</string>
                          </property>
                          <property name="text">
                           <string>Choose file</string>
@@ -864,22 +889,23 @@ QComboBox {
                          <property name="minimumSize">
                           <size>
                            <width>0</width>
-                           <height>35</height>
+                           <height>0</height>
                           </size>
                          </property>
                          <property name="maximumSize">
                           <size>
                            <width>16777215</width>
-                           <height>35</height>
+                           <height>16777215</height>
                           </size>
                          </property>
                          <property name="styleSheet">
                           <string notr="true">background-color:  rgb(41,41,41);
-border-radius: 2px;</string>
+border:0px;
+</string>
                          </property>
                          <layout class="QHBoxLayout" name="horizontalLayout_10">
                           <property name="leftMargin">
-                           <number>5</number>
+                           <number>1</number>
                           </property>
                           <property name="topMargin">
                            <number>0</number>
@@ -892,6 +918,25 @@ border-radius: 2px;</string>
                           </property>
                           <item>
                            <widget class="QLabel" name="label_3">
+                            <property name="sizePolicy">
+                             <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                              <horstretch>0</horstretch>
+                              <verstretch>0</verstretch>
+                             </sizepolicy>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <family>Consolas</family>
+                              <pointsize>11</pointsize>
+                              <italic>false</italic>
+                              <bold>true</bold>
+                             </font>
+                            </property>
+                            <property name="styleSheet">
+                             <string notr="true">border-top: 1px solid rgba(129, 129, 129, 50);
+border-bottom: 1px solid rgba(129, 129, 129, 50);
+border-radius: 0px;</string>
+                            </property>
                             <property name="text">
                              <string>No measurement file choosen</string>
                             </property>
@@ -922,33 +967,36 @@ border-radius: 2px;</string>
                       </property>
                       <layout class="QHBoxLayout" name="horizontalLayout_7">
                        <property name="spacing">
-                        <number>5</number>
+                        <number>0</number>
                        </property>
                        <property name="leftMargin">
-                        <number>1</number>
+                        <number>0</number>
                        </property>
                        <property name="topMargin">
-                        <number>1</number>
+                        <number>2</number>
                        </property>
                        <property name="rightMargin">
-                        <number>1</number>
+                        <number>0</number>
                        </property>
                        <property name="bottomMargin">
-                        <number>1</number>
+                        <number>2</number>
                        </property>
                        <item>
                         <widget class="QLabel" name="label_4">
                          <property name="minimumSize">
                           <size>
-                           <width>120</width>
+                           <width>150</width>
                            <height>0</height>
                           </size>
                          </property>
                          <property name="maximumSize">
                           <size>
-                           <width>80</width>
+                           <width>150</width>
                            <height>16777215</height>
                           </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">border: 1px solid rgba(129, 129, 129, 50); color: grey</string>
                          </property>
                          <property name="text">
                           <string>Min Wavelength </string>
@@ -957,10 +1005,16 @@ border-radius: 2px;</string>
                        </item>
                        <item>
                         <widget class="QSpinBox" name="spinBox_4">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
                          <property name="minimumSize">
                           <size>
                            <width>100</width>
-                           <height>35</height>
+                           <height>0</height>
                           </size>
                          </property>
                          <property name="maximumSize">
@@ -968,6 +1022,11 @@ border-radius: 2px;</string>
                            <width>200</width>
                            <height>16777215</height>
                           </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">border-top: 1px solid rgba(129, 129, 129, 50);
+border-bottom: 1px solid rgba(129, 129, 129, 50);
+border-radius: 0px;</string>
                          </property>
                          <property name="minimum">
                           <number>400</number>
@@ -982,17 +1041,28 @@ border-radius: 2px;</string>
                        </item>
                        <item>
                         <widget class="QComboBox" name="comboBox_6">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
                          <property name="minimumSize">
                           <size>
                            <width>0</width>
-                           <height>35</height>
+                           <height>0</height>
                           </size>
                          </property>
                          <property name="maximumSize">
                           <size>
                            <width>16777215</width>
-                           <height>35</height>
+                           <height>16777215</height>
                           </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">border-top: 1px solid rgba(129, 129, 129, 50);
+border-bottom: 1px solid rgba(129, 129, 129, 50);
+border-radius: 0px;</string>
                          </property>
                          <item>
                           <property name="text">
@@ -1018,35 +1088,41 @@ border-radius: 2px;</string>
                         <height>50</height>
                        </size>
                       </property>
+                      <property name="styleSheet">
+                       <string notr="true"/>
+                      </property>
                       <layout class="QHBoxLayout" name="horizontalLayout_8">
                        <property name="spacing">
-                        <number>5</number>
+                        <number>0</number>
                        </property>
                        <property name="leftMargin">
-                        <number>1</number>
+                        <number>0</number>
                        </property>
                        <property name="topMargin">
-                        <number>1</number>
+                        <number>0</number>
                        </property>
                        <property name="rightMargin">
-                        <number>1</number>
+                        <number>0</number>
                        </property>
                        <property name="bottomMargin">
-                        <number>1</number>
+                        <number>0</number>
                        </property>
                        <item>
                         <widget class="QLabel" name="label_5">
                          <property name="minimumSize">
                           <size>
-                           <width>120</width>
+                           <width>150</width>
                            <height>0</height>
                           </size>
                          </property>
                          <property name="maximumSize">
                           <size>
-                           <width>80</width>
+                           <width>150</width>
                            <height>16777215</height>
                           </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">border: 1px solid rgba(129, 129, 129, 50); color: grey</string>
                          </property>
                          <property name="text">
                           <string>Max Wavelength</string>
@@ -1055,6 +1131,12 @@ border-radius: 2px;</string>
                        </item>
                        <item>
                         <widget class="QSpinBox" name="spinBox_5">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
                          <property name="minimumSize">
                           <size>
                            <width>100</width>
@@ -1066,6 +1148,11 @@ border-radius: 2px;</string>
                            <width>200</width>
                            <height>16777215</height>
                           </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">border-top: 1px solid rgba(129, 129, 129, 50);
+border-bottom: 1px solid rgba(129, 129, 129, 50);
+border-radius: 0px;</string>
                          </property>
                          <property name="minimum">
                           <number>401</number>
@@ -1080,17 +1167,28 @@ border-radius: 2px;</string>
                        </item>
                        <item>
                         <widget class="QComboBox" name="comboBox_7">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
                          <property name="minimumSize">
                           <size>
                            <width>0</width>
-                           <height>35</height>
+                           <height>0</height>
                           </size>
                          </property>
                          <property name="maximumSize">
                           <size>
                            <width>16777215</width>
-                           <height>35</height>
+                           <height>16777215</height>
                           </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">border-top: 1px solid rgba(129, 129, 129, 50);
+border-bottom: 1px solid rgba(129, 129, 129, 50);
+border-radius: 0px;</string>
                          </property>
                          <item>
                           <property name="text">
@@ -1116,35 +1214,45 @@ border-radius: 2px;</string>
                         <height>50</height>
                        </size>
                       </property>
+                      <property name="styleSheet">
+                       <string notr="true">
+QWidget {
+	border-bottom: 1px solid rgba(129, 129, 129, 50);
+}
+</string>
+                      </property>
                       <layout class="QHBoxLayout" name="horizontalLayout_11">
                        <property name="spacing">
-                        <number>5</number>
+                        <number>0</number>
                        </property>
                        <property name="leftMargin">
-                        <number>1</number>
+                        <number>0</number>
                        </property>
                        <property name="topMargin">
-                        <number>1</number>
+                        <number>2</number>
                        </property>
                        <property name="rightMargin">
-                        <number>1</number>
+                        <number>0</number>
                        </property>
                        <property name="bottomMargin">
-                        <number>1</number>
+                        <number>2</number>
                        </property>
                        <item>
                         <widget class="QLabel" name="label_6">
                          <property name="minimumSize">
                           <size>
-                           <width>120</width>
+                           <width>150</width>
                            <height>0</height>
                           </size>
                          </property>
                          <property name="maximumSize">
                           <size>
-                           <width>80</width>
+                           <width>150</width>
                            <height>16777215</height>
                           </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">border: 1px solid rgba(129, 129, 129, 50); color: grey</string>
                          </property>
                          <property name="text">
                           <string>Resolution</string>
@@ -1153,10 +1261,16 @@ border-radius: 2px;</string>
                        </item>
                        <item>
                         <widget class="QSpinBox" name="spinBox_6">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
                          <property name="minimumSize">
                           <size>
                            <width>100</width>
-                           <height>35</height>
+                           <height>0</height>
                           </size>
                          </property>
                          <property name="maximumSize">
@@ -1164,6 +1278,17 @@ border-radius: 2px;</string>
                            <width>200</width>
                            <height>16777215</height>
                           </size>
+                         </property>
+                         <property name="sizeIncrement">
+                          <size>
+                           <width>0</width>
+                           <height>0</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">border-top: 1px solid rgba(129, 129, 129, 50);
+border-bottom: 1px solid rgba(129, 129, 129, 50);
+border-radius: 0px;</string>
                          </property>
                          <property name="maximum">
                           <number>9999</number>
@@ -1175,17 +1300,28 @@ border-radius: 2px;</string>
                        </item>
                        <item>
                         <widget class="QComboBox" name="comboBox_8">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
                          <property name="minimumSize">
                           <size>
                            <width>0</width>
-                           <height>35</height>
+                           <height>0</height>
                           </size>
                          </property>
                          <property name="maximumSize">
                           <size>
                            <width>16777215</width>
-                           <height>35</height>
+                           <height>16777215</height>
                           </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">border-top: 1px solid rgba(129, 129, 129, 50);
+border-bottom: 1px solid rgba(129, 129, 129, 50);
+border-radius: 0px;</string>
                          </property>
                          <item>
                           <property name="text">
@@ -1224,7 +1360,7 @@ border-radius: 2px;</string>
                 </size>
                </property>
                <property name="styleSheet">
-                <string notr="true">background-color:white;</string>
+                <string notr="true">background-color:rgb(21,21,21);</string>
                </property>
                <layout class="QGridLayout" name="gridLayout_4">
                 <property name="leftMargin">
@@ -1244,7 +1380,1065 @@ border-radius: 2px;</string>
              </item>
             </layout>
            </widget>
-           <widget class="QWidget" name="page_2"/>
+           <widget class="QWidget" name="page_2">
+            <layout class="QGridLayout" name="gridLayout_14">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <property name="spacing">
+              <number>6</number>
+             </property>
+             <item row="0" column="0">
+              <widget class="QTabWidget" name="tabWidget_2">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QTabWidget
+{
+	border: 0px;
+  	background: rgb(31,31,31);
+}
+QTabWidget::pane {
+	top: 5px;
+	border-top: 3px solid rgb(0, 0, 0);
+	border-left: 3px solid rgb(0, 0, 0);
+	border-right: 3px solid rgb(0, 0, 0);
+	border-bottom: 3px solid rgb(0, 0, 0);
+} 
+
+QTabBar::tab {
+	color: grey;
+	padding: 10 15 10 15;
+	font: 700 10pt &quot;Consolas&quot;;
+  	background: rgb(31,31,31);
+	/*border-top-right-radius: 1px;
+	border-top-left-radius: 1px;*/
+} 
+
+QTabBar::tab:selected { 
+	background-color: rgb(45, 45, 45);
+	border-bottom: 2px solid   rgb(0, 150, 255);
+	/*border-bottom: 1px solid rgb(31,31,31);*/
+	color: white;
+}
+QTabBar::tab:selected:hover{
+	background-color: rgb(45, 45, 45);
+}
+QTabBar::tab:hover { 
+  	background: rgb(45, 45, 45);
+}
+QTabWidget::tab-bar  {
+left: 5px;
+top: 0px;
+border: 2px solid blue;
+}b </string>
+               </property>
+               <property name="currentIndex">
+                <number>1</number>
+               </property>
+               <property name="documentMode">
+                <bool>true</bool>
+               </property>
+               <property name="tabsClosable">
+                <bool>false</bool>
+               </property>
+               <property name="movable">
+                <bool>false</bool>
+               </property>
+               <property name="tabBarAutoHide">
+                <bool>true</bool>
+               </property>
+               <widget class="QWidget" name="tab_7">
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>300</height>
+                 </size>
+                </property>
+                <attribute name="title">
+                 <string>Dimensions</string>
+                </attribute>
+                <layout class="QGridLayout" name="gridLayout_11">
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="spacing">
+                  <number>1</number>
+                 </property>
+                 <item row="0" column="0">
+                  <widget class="QGroupBox" name="groupBox_7">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>200</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>200</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QGroupBox {
+  border-radius: 2px;
+  margin-top: 1.4em;
+  margin-bottom: 0.5;
+  font: 700 12pt &quot;Consolas&quot;;
+}
+
+QGroupBox::title {
+  background: transparent;
+  color: white;
+  padding-top: -30px;
+   padding-left: -18px;
+  margin: 0 15 15 15;
+}
+QLabel {
+	color: grey;
+	font: 550 11pt &quot;Consolas&quot;;
+}
+QSpinBox {
+		font: 600 10pt &quot;Segoe UI&quot;;
+ 		background-color:  rgb(41,41,41);
+		color: grey;
+		border-radius: 2px;
+}
+QComboBox {
+		font: 700 10pt &quot;Segoe UI&quot;;
+ 		background-color:  rgb(41,41,41);
+		color: grey;
+		border-radius: 2px;
+}</string>
+                   </property>
+                   <property name="title">
+                    <string>Widget Size</string>
+                   </property>
+                   <property name="flat">
+                    <bool>false</bool>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_9">
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>1</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>1</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>1</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>1</number>
+                    </property>
+                    <item>
+                     <widget class="QWidget" name="widget_26" native="true">
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>16777215</width>
+                        <height>50</height>
+                       </size>
+                      </property>
+                      <layout class="QHBoxLayout" name="horizontalLayout_28">
+                       <property name="spacing">
+                        <number>5</number>
+                       </property>
+                       <property name="leftMargin">
+                        <number>1</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>1</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>1</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>1</number>
+                       </property>
+                       <item>
+                        <widget class="QLabel" name="label_22">
+                         <property name="minimumSize">
+                          <size>
+                           <width>100</width>
+                           <height>0</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>80</width>
+                           <height>16777215</height>
+                          </size>
+                         </property>
+                         <property name="text">
+                          <string>Predifined</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QComboBox" name="comboBox_19">
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>35</height>
+                          </size>
+                         </property>
+                         <item>
+                          <property name="text">
+                           <string/>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>128x128 (128ppi)</string>
+                          </property>
+                         </item>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QWidget" name="widget_27" native="true">
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>16777215</width>
+                        <height>50</height>
+                       </size>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true"/>
+                      </property>
+                      <layout class="QHBoxLayout" name="horizontalLayout_29">
+                       <property name="spacing">
+                        <number>5</number>
+                       </property>
+                       <property name="leftMargin">
+                        <number>1</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>1</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>1</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>1</number>
+                       </property>
+                       <item>
+                        <widget class="QLabel" name="label_23">
+                         <property name="minimumSize">
+                          <size>
+                           <width>100</width>
+                           <height>0</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>80</width>
+                           <height>16777215</height>
+                          </size>
+                         </property>
+                         <property name="text">
+                          <string>Width</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QSpinBox" name="spinBox_16">
+                         <property name="minimumSize">
+                          <size>
+                           <width>100</width>
+                           <height>35</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>200</width>
+                           <height>16777215</height>
+                          </size>
+                         </property>
+                         <property name="maximum">
+                          <number>9999</number>
+                         </property>
+                         <property name="value">
+                          <number>660</number>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QComboBox" name="comboBox_20">
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>35</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>35</height>
+                          </size>
+                         </property>
+                         <item>
+                          <property name="text">
+                           <string>Pixels (px)</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>Points (pt)</string>
+                          </property>
+                         </item>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QWidget" name="widget_28" native="true">
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>16777215</width>
+                        <height>50</height>
+                       </size>
+                      </property>
+                      <layout class="QHBoxLayout" name="horizontalLayout_30">
+                       <property name="spacing">
+                        <number>5</number>
+                       </property>
+                       <property name="leftMargin">
+                        <number>1</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>1</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>1</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>1</number>
+                       </property>
+                       <item>
+                        <widget class="QLabel" name="label_24">
+                         <property name="minimumSize">
+                          <size>
+                           <width>100</width>
+                           <height>0</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>80</width>
+                           <height>16777215</height>
+                          </size>
+                         </property>
+                         <property name="text">
+                          <string>Height</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QSpinBox" name="spinBox_17">
+                         <property name="minimumSize">
+                          <size>
+                           <width>100</width>
+                           <height>35</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>200</width>
+                           <height>16777215</height>
+                          </size>
+                         </property>
+                         <property name="maximum">
+                          <number>9999</number>
+                         </property>
+                         <property name="value">
+                          <number>400</number>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QComboBox" name="comboBox_21">
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>35</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>35</height>
+                          </size>
+                         </property>
+                         <item>
+                          <property name="text">
+                           <string>Pixels (px)</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>Points (pt)</string>
+                          </property>
+                         </item>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+               <widget class="QWidget" name="tab_8">
+                <attribute name="title">
+                 <string>Content</string>
+                </attribute>
+                <layout class="QGridLayout" name="gridLayout_12">
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>2</number>
+                 </property>
+                 <property name="spacing">
+                  <number>1</number>
+                 </property>
+                 <item row="0" column="0">
+                  <widget class="QGroupBox" name="groupBox_8">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>225</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>200</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QGroupBox {
+  border-radius: 2px;
+  margin-top: 1.4em;
+  margin-bottom: 1;
+  font: 700 12pt &quot;Consolas&quot;;
+}
+QLineEdit {
+	font: 600 10pt &quot;Segoe UI&quot;;
+	background-color:  rgb(41,41,41);
+   color: white;
+	border-radius: 2px;
+}
+QPushButton {
+	background: rgb(0, 150, 255);
+	color: rgba(255,255,255, 0.85);
+	border-radius: 2px;
+	font: 600 10pt &quot;Segoe UI&quot;;
+}
+QPushButton:hover {
+	background: rgb(51, 180, 255);
+}
+QGroupBox::title {
+  background: transparent;
+  color: white;
+  padding-top: -30px;
+   padding-left: -18px;
+  margin: 0 15 15 15;
+}
+QLabel {
+	color: grey;
+	font: 550 11pt &quot;Consolas&quot;;
+}
+QSpinBox {
+		font: 600 10pt &quot;Segoe UI&quot;;
+ 		background-color:  rgb(41,41,41);
+		color: grey;
+		border-radius: 2px;
+		border: 0px;
+}
+QComboBox {
+		font: 700 10pt &quot;Segoe UI&quot;;
+ 		background-color:  rgb(41,41,41);
+		color: grey;
+		border-radius: 2px;
+		border: 0px;
+}</string>
+                   </property>
+                   <property name="title">
+                    <string>Widget Properties</string>
+                   </property>
+                   <property name="flat">
+                    <bool>false</bool>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_10">
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>1</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>1</number>
+                    </property>
+                    <item>
+                     <widget class="QWidget" name="widget_29" native="true">
+                      <property name="styleSheet">
+                       <string notr="true">
+QWidget {
+
+	border-top: 1px solid rgba(129, 129, 129, 50);
+}
+</string>
+                      </property>
+                      <layout class="QHBoxLayout" name="horizontalLayout_31">
+                       <property name="spacing">
+                        <number>0</number>
+                       </property>
+                       <property name="leftMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>2</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>2</number>
+                       </property>
+                       <item>
+                        <widget class="QPushButton" name="pushButton_4">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>149</width>
+                           <height>0</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>149</width>
+                           <height>999</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">border: 0px; border-radius: 0px;</string>
+                         </property>
+                         <property name="text">
+                          <string>Choose file</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QWidget" name="widget_30" native="true">
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>0</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>16777215</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">background-color:  rgb(41,41,41);
+border:0px;
+</string>
+                         </property>
+                         <layout class="QHBoxLayout" name="horizontalLayout_32">
+                          <property name="leftMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>0</number>
+                          </property>
+                          <item>
+                           <widget class="QLabel" name="label_25">
+                            <property name="sizePolicy">
+                             <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                              <horstretch>0</horstretch>
+                              <verstretch>0</verstretch>
+                             </sizepolicy>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <family>Consolas</family>
+                              <pointsize>11</pointsize>
+                              <italic>false</italic>
+                              <bold>true</bold>
+                             </font>
+                            </property>
+                            <property name="styleSheet">
+                             <string notr="true">border-top: 1px solid rgba(129, 129, 129, 50);
+border-bottom: 1px solid rgba(129, 129, 129, 50);
+border-radius: 0px;</string>
+                            </property>
+                            <property name="text">
+                             <string>No measurement file choosen</string>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QWidget" name="widget_31" native="true">
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>16777215</width>
+                        <height>50</height>
+                       </size>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true"/>
+                      </property>
+                      <layout class="QHBoxLayout" name="horizontalLayout_33">
+                       <property name="spacing">
+                        <number>0</number>
+                       </property>
+                       <property name="leftMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>2</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>2</number>
+                       </property>
+                       <item>
+                        <widget class="QLabel" name="label_26">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>150</width>
+                           <height>0</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>16777215</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">border: 1px solid rgba(129, 129, 129, 50); color: grey</string>
+                         </property>
+                         <property name="text">
+                          <string>Daylight </string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QCheckBox" name="checkBox">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>50</width>
+                           <height>0</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>50</width>
+                           <height>16777215</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QCheckBox {
+	border-top: 1px solid rgba(129, 129, 129, 50);
+	border-bottom: 1px solid rgba(129, 129, 129, 50);
+	border-radius: 0px;
+}
+
+QCheckBox::indicator:checked {
+    image: url(./resources/icons/toggle-button-on.png);
+}
+
+QCheckBox::indicator:unchecked {
+    image: url(./resources/icons/toggle-button-off.png);
+}
+QCheckBox::indicator {
+    width: 50px;
+    height: 50px;
+}</string>
+                         </property>
+                         <property name="text">
+                          <string> </string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QWidget" name="widget_32" native="true">
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>16777215</width>
+                        <height>50</height>
+                       </size>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true"/>
+                      </property>
+                      <layout class="QHBoxLayout" name="horizontalLayout_34">
+                       <property name="spacing">
+                        <number>0</number>
+                       </property>
+                       <property name="leftMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>0</number>
+                       </property>
+                       <item>
+                        <widget class="QLabel" name="label_27">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>150</width>
+                           <height>0</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>16777215</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">border: 1px solid rgba(129, 129, 129, 50); color: grey</string>
+                         </property>
+                         <property name="text">
+                          <string>BlackBody Locus</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QCheckBox" name="checkBox_2">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>50</width>
+                           <height>0</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>50</width>
+                           <height>16777215</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QCheckBox {
+	border-top: 1px solid rgba(129, 129, 129, 50);
+	border-bottom: 1px solid rgba(129, 129, 129, 50);
+	border-radius: 0px;
+}
+
+QCheckBox::indicator:checked {
+    image: url(./resources/icons/toggle-button-on.png);
+}
+
+QCheckBox::indicator:unchecked {
+    image: url(./resources/icons/toggle-button-off.png);
+}
+QCheckBox::indicator {
+    width: 50px;
+    height: 50px;
+}</string>
+                         </property>
+                         <property name="text">
+                          <string> </string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QWidget" name="widget_33" native="true">
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>16777215</width>
+                        <height>50</height>
+                       </size>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">
+QWidget {
+	border-bottom: 1px solid rgba(129, 129, 129, 50);
+}
+</string>
+                      </property>
+                      <layout class="QHBoxLayout" name="horizontalLayout_35">
+                       <property name="spacing">
+                        <number>0</number>
+                       </property>
+                       <property name="leftMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>2</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>2</number>
+                       </property>
+                       <item>
+                        <widget class="QLabel" name="label_28">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>150</width>
+                           <height>0</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>16777215</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">border: 1px solid rgba(129, 129, 129, 50); color: grey</string>
+                         </property>
+                         <property name="text">
+                          <string>D65 chromaticity</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QCheckBox" name="checkBox_3">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>50</width>
+                           <height>0</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>50</width>
+                           <height>16777215</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QCheckBox {
+	border-top: 1px solid rgba(129, 129, 129, 50);
+	border-bottom: 1px solid rgba(129, 129, 129, 50);
+	border-radius: 0px;
+}
+
+QCheckBox::indicator:checked {
+    image: url(./resources/icons/toggle-button-on.png);
+}
+
+QCheckBox::indicator:unchecked {
+    image: url(./resources/icons/toggle-button-off.png);
+}
+QCheckBox::indicator {
+    width: 50px;
+    height: 50px;
+}</string>
+                         </property>
+                         <property name="text">
+                          <string> </string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QWidget" name="spectral_preview_widget_2" native="true">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color:rgb(21,21,21);</string>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_13">
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
           </widget>
          </item>
          <item>
@@ -1381,8 +2575,8 @@ QPushButton:hover {
    <slot>onCreateWidget()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>461</x>
-     <y>640</y>
+     <x>535</x>
+     <y>630</y>
     </hint>
     <hint type="destinationlabel">
      <x>312</x>
@@ -1397,8 +2591,8 @@ QPushButton:hover {
    <slot>onCancel()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>567</x>
-     <y>640</y>
+     <x>641</x>
+     <y>630</y>
     </hint>
     <hint type="destinationlabel">
      <x>312</x>

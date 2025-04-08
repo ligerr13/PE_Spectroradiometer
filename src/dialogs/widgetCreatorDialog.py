@@ -1,13 +1,18 @@
+from PyQt6.QtCore import pyqtSignal
 from PyQt6.QtWidgets import QDialog
 from pathlib import Path
 from src.objects.widget_creater_dialog import Ui_Dialog
 from src.widgets.spectrum_widget import SpectrumWidget
 from ..globals.utils import open_dialog
 import json
+from src.signals.signals import WorkspaceSignalBus
 
 class WidgetCreatorDialog(QDialog):
-    def __init__(self):
-        super().__init__()
+
+    s_reset = pyqtSignal()
+
+    def __init__(self, parent=None):
+        super().__init__(parent)
         
         #Setup UI
         self.ui = Ui_Dialog()
@@ -16,6 +21,8 @@ class WidgetCreatorDialog(QDialog):
         self._predefined = self.ui.comboBox_4
         self._preview_widget = SpectrumWidget()
         self._preview.addWidget(self._preview_widget)
+
+        self.signal_bus =  WorkspaceSignalBus.instance()
 
         #dimension-width
         self._width = self.ui.spinBox
@@ -41,20 +48,23 @@ class WidgetCreatorDialog(QDialog):
         self._file_selecter_button = self.ui.pushButton
         self._selected_file_label = self.ui.label_3
 
-        self._file_selecter_button.clicked.connect(self.open_file)
+        self._file_selecter_button.clicked.connect(self.on_show_preview)
         self._width.valueChanged.connect(self.on_update_preview)
         self._height.valueChanged.connect(self.on_update_preview)
         self._min_wavelength.valueChanged.connect(self.on_update_preview)
         self._max_wavelength.valueChanged.connect(self.on_update_preview)
         self._resolution.valueChanged.connect(self.on_update_preview)
+        self.s_reset.connect(self.on_reset_dialog)
 
-    def open_file(self) -> list[float]:
+        self._created_widget = None
+
+    def on_show_preview(self) -> list[float]:
         dir = "src/instrument/data"  
         opened_file = open_dialog(self, direction=dir)
 
         if opened_file:
             file_path = Path(dir) / Path(opened_file)
-        
+
             with open(file_path, 'r') as file:
                 json_data = json.load(file)
 
@@ -75,16 +85,17 @@ class WidgetCreatorDialog(QDialog):
                     except (KeyError, ValueError) as e:
                         print(f"Skipping {key} due to error: {e}")
 
-
                 self._preview_widget.setSpectralData(spectral_data)
-
                 self._preview_widget.setGeometryProperties(0, 0, 300, 300)
 
                 self._preview.addWidget(self._preview_widget)
+
+                self._created_widget = self._preview_widget
                 return spectral_data
 
-    def reset_dialog(self):
-        # Spinboxok reset
+    def on_reset_dialog(self):
+        self._created_widget = None
+
         self._width.setValue(300)
         self._height.setValue(300)
         self._min_wavelength.setValue(380)
@@ -109,8 +120,6 @@ class WidgetCreatorDialog(QDialog):
 
         self._preview.update()
 
-
-
     def on_update_preview(self):
         width = self._width.value()
         height = self._height.value()
@@ -130,15 +139,18 @@ class WidgetCreatorDialog(QDialog):
     
     def onCreateWidget(self):
         print("Creating Widget")
+        if self._created_widget:
+            self.signal_bus.add_widget_to_current_workspace.emit(self._created_widget)
         self.accept()
+        # self.s_reset.emit()
 
     def onCancel(self):
-        self.reset_dialog()
         self.reject()
+        self.s_reset.emit()
 
     def popUp(self):
         self.exec()
 
     def closePopUp(self):
-        self.reset_dialog()
         self.close()
+        self.s_reset.emit()

@@ -157,3 +157,8 @@ class MyApp(QMainWindow):
 
     def onUpdateSerialSettings(self, state: ToastType, message: str):
         show_toast(f"Connection: {message}", 3000, state, self)
+
+    def get_tab_manager(self):
+        if self.tm:
+            return self.tm
+        return None
