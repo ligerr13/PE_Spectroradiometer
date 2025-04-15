@@ -1,0 +1,19 @@
+{
+    "OK00": "Normal completion, received command was processed normally.",
+    "ER00": "Received command string was not a valid command.",
+    "ER02": "Measurement in process, the received command cannot be processed because the instrument is currently taking a measurement.",
+    "ER05": "No compensation values, no user calibration values in the specified calibration channel.",
+    "ER10": "Over measurement range, the luminance exceeds the instrument’s measuring range.",
+    "ER17": "Parameter error, the input parameter is outside the specified input range.",
+    "ER20": "No data, there are no measurement data in the instrument’s memory.",
+    "ER30": "Instrument internal memory error, an error occurred while reading/writing to the instrument’s memory.",
+    "ER51": "Temperature abnormality, ambient temperature is too high.",
+    "ER71": "Outside synchronization signal range, vertical sync signal could not be detected.",
+    "ER81": "Shutter operation abnormality, an abnormality in the internal shutter mechanism.",
+    "ER82": "Internal ND filter operation malfunction, abnormality in the ND filter mechanism.",
+    "ER83": "Measurement angle abnormality, the measuring angle selector was not in the correct position.",
+    "ER84": "Cooling fan abnormality, the cooling fan is stopped.",
+    "ER99": "Program abnormality, an unexpected error occurred.",
+    "ER100": "Connection lost.",
+    "ER101": "No response received in the given time."
+}

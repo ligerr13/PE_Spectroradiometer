@@ -94,6 +94,17 @@ QMenu:item:selected {
     <string>Open Workspace From File</string>
    </property>
   </action>
+  <action name="actionMeasure">
+   <property name="text">
+    <string>Measure</string>
+   </property>
+   <property name="toolTip">
+    <string>Starts measurement</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+M</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

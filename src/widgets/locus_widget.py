@@ -29,7 +29,23 @@ class LocusWidget(SceneWidget):
         self.pc = MplCanvas(self)
         layout.addWidget(self.pc)
 
-    def setSpectralData(self, data):
+    def get_widget_data(self):
+        super().get_widget_data()
+        geometry = self.geometry()
+        return {
+            'id': self.widget_id,
+            'type': self.widget_type,
+            'sub-type': self.sub_type,
+            'uniqe_name': self.objectName,
+            'geometry': {
+                'x': geometry.x(),
+                'y': geometry.y(),
+                'width': geometry.width(),
+                'height': geometry.height()
+            },
+            'data': self.data
+        }
+    def setLocusData(self, data):
             self.data = data
             self.plot_data()
 

@@ -53,6 +53,8 @@ class Ui_Form(object):
         self.actionClose_All_Workspace.setObjectName("actionClose_All_Workspace")
         self.actionopen_workspace_form_file = QtGui.QAction(parent=Form)
         self.actionopen_workspace_form_file.setObjectName("actionopen_workspace_form_file")
+        self.actionMeasure = QtGui.QAction(parent=Form)
+        self.actionMeasure.setObjectName("actionMeasure")
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -72,3 +74,6 @@ class Ui_Form(object):
         self.actionHome_Page.setText(_translate("Form", "Home Page"))
         self.actionClose_All_Workspace.setText(_translate("Form", "Close All Workspace"))
         self.actionopen_workspace_form_file.setText(_translate("Form", "Open Workspace From File"))
+        self.actionMeasure.setText(_translate("Form", "Measure"))
+        self.actionMeasure.setToolTip(_translate("Form", "Starts measurement"))
+        self.actionMeasure.setShortcut(_translate("Form", "Ctrl+M"))

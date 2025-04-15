@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1222</width>
+    <width>1246</width>
     <height>870</height>
    </rect>
   </property>
@@ -183,6 +183,59 @@ border: 0;</string>
         <property name="spacing">
          <number>0</number>
         </property>
+        <item row="0" column="1">
+         <widget class="QWidget" name="widget_2" native="true">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_3">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item row="0" column="0">
+            <widget class="QStackedWidget" name="stackedWidget">
+             <property name="currentIndex">
+              <number>0</number>
+             </property>
+             <widget class="QWidget" name="measure">
+              <layout class="QGridLayout" name="gridLayout_5"/>
+             </widget>
+             <widget class="QWidget" name="connection">
+              <layout class="QVBoxLayout" name="verticalLayout">
+               <property name="spacing">
+                <number>1</number>
+               </property>
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+              </layout>
+             </widget>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
         <item row="0" column="0">
          <widget class="QWidget" name="left_navbar" native="true">
           <property name="minimumSize">
@@ -382,129 +435,6 @@ QToolTip{
           </layout>
          </widget>
         </item>
-        <item row="0" column="1">
-         <widget class="QWidget" name="widget_2" native="true">
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <layout class="QGridLayout" name="gridLayout_3">
-           <property name="leftMargin">
-            <number>0</number>
-           </property>
-           <property name="topMargin">
-            <number>0</number>
-           </property>
-           <property name="rightMargin">
-            <number>0</number>
-           </property>
-           <property name="bottomMargin">
-            <number>0</number>
-           </property>
-           <item row="0" column="0">
-            <widget class="QStackedWidget" name="stackedWidget">
-             <property name="currentIndex">
-              <number>1</number>
-             </property>
-             <widget class="QWidget" name="measure"/>
-             <widget class="QWidget" name="connection">
-              <layout class="QVBoxLayout" name="verticalLayout">
-               <property name="spacing">
-                <number>1</number>
-               </property>
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="topMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <property name="bottomMargin">
-                <number>0</number>
-               </property>
-               <item>
-                <widget class="QWidget" name="widget" native="true">
-                 <property name="minimumSize">
-                  <size>
-                   <width>0</width>
-                   <height>54</height>
-                  </size>
-                 </property>
-                 <property name="maximumSize">
-                  <size>
-                   <width>16777215</width>
-                   <height>54</height>
-                  </size>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">background-color: orange</string>
-                 </property>
-                 <layout class="QHBoxLayout" name="horizontalLayout">
-                  <item>
-                   <widget class="QPushButton" name="pushButton">
-                    <property name="text">
-                     <string>PushButton</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
-               <item>
-                <widget class="QWidget" name="widget_3" native="true">
-                 <property name="styleSheet">
-                  <string notr="true"/>
-                 </property>
-                 <layout class="QGridLayout" name="gridLayout_4">
-                  <item row="0" column="0">
-                   <widget class="QScrollArea" name="scrollArea">
-                    <property name="widgetResizable">
-                     <bool>true</bool>
-                    </property>
-                    <widget class="QWidget" name="scrollAreaWidgetContents">
-                     <property name="geometry">
-                      <rect>
-                       <x>0</x>
-                       <y>0</y>
-                       <width>1132</width>
-                       <height>950</height>
-                      </rect>
-                     </property>
-                     <layout class="QGridLayout" name="gridLayout_5">
-                      <item row="2" column="0">
-                       <widget class="QWidget" name="widget_5" native="true"/>
-                      </item>
-                      <item row="0" column="0">
-                       <widget class="QWidget" name="widget_4" native="true">
-                        <property name="minimumSize">
-                         <size>
-                          <width>0</width>
-                          <height>900</height>
-                         </size>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="1" column="0">
-                       <widget class="QWidget" name="widget_6" native="true"/>
-                      </item>
-                     </layout>
-                    </widget>
-                   </widget>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
        </layout>
       </widget>
      </widget>
@@ -533,6 +463,22 @@ QToolTip{
     <hint type="destinationlabel">
      <x>753</x>
      <y>439</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_13</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>HandleMeasureDialog(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>27</x>
+     <y>81</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>622</x>
+     <y>434</y>
     </hint>
    </hints>
   </connection>

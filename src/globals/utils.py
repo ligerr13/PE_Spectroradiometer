@@ -48,6 +48,14 @@ def open_dialog(parent, direction: str = ""):
 
     return file_name
 
+def open_folder_dialog(parent, direction: str = ""):
+    folder = QFileDialog.getExistingDirectory(
+        parent,
+        "Select Folder",
+        directory=direction
+    )
+    return folder
+
 def convert_numpy(obj):
     """ Ha az objektum egy ndarray, listává alakítja """
     if isinstance(obj, np.ndarray):

@@ -17,9 +17,11 @@ class WidgetCreatorDialog(QDialog):
         #Setup UI
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
+        self._selected_file_label = self.ui.label_3
         self._preview = self.ui.gridLayout_4
         self._predefined = self.ui.comboBox_4
         self._preview_widget = SpectrumWidget()
+        self._preview_data = []
         self._preview.addWidget(self._preview_widget)
 
         self.signal_bus =  WorkspaceSignalBus.instance()
@@ -65,42 +67,57 @@ class WidgetCreatorDialog(QDialog):
         if opened_file:
             file_path = Path(dir) / Path(opened_file)
 
-            with open(file_path, 'r') as file:
-                json_data = json.load(file)
+            try:
+                with open(file_path, 'r') as file:
+                    json_data = json.load(file)
 
-                spectral_keys = [
-                    "Spectral380To479JsonBuilder",
-                    "Spectral480To579JsonBuilder",
-                    "Spectral580To679JsonBuilder",
-                    "Spectral680To780JsonBuilder"
-                ]
+                    spectral_keys = [
+                        "Spectral380To479JsonBuilder",
+                        "Spectral480To579JsonBuilder",
+                        "Spectral580To679JsonBuilder",
+                        "Spectral680To780JsonBuilder"
+                    ]
 
-                spectral_data = []
+                    spectral_data = []
+                    self._selected_file_label.setText(str(file_path))
 
-                for key in spectral_keys:
-                    try:
-                        value_str = json_data[key]["Spectral data"]["value"]
-                        values = [float(v.strip()) for v in value_str.split(",")]
-                        spectral_data.extend(values)
-                    except (KeyError, ValueError) as e:
-                        print(f"Skipping {key} due to error: {e}")
+                    for key in spectral_keys:
+                        try:
+                            value_str = json_data[key]["Spectral data"]["value"]
+                            values = [float(v.strip()) for v in value_str.split(",")]
+                            spectral_data.extend(values)
+                            self._preview_data = spectral_data
+                        except (KeyError, ValueError) as e:
+                            print(f"Skipping {key} due to error: {e}")
 
-                self._preview_widget.setSpectralData(spectral_data)
-                self._preview_widget.setGeometryProperties(0, 0, 300, 300)
+                    self._preview_widget.setSpectralData(spectral_data, 380, 780, 100)
+                    self._preview_widget.setGeometryProperties(0, 0, 300, 300)
 
-                self._preview.addWidget(self._preview_widget)
+                    self._preview.addWidget(self._preview_widget)
 
-                self._created_widget = self._preview_widget
-                return spectral_data
+                    self._created_widget = self._preview_widget
+                    return spectral_data
+                
+            except FileNotFoundError:
+                print("The file not found!")
+            except json.JSONDecodeError:
+                print("Invalid JSON file!")
+            except ValueError as ve:
+                print(f"Invalid data: {ve}")
+            except Exception as e:
+                print(f"Unknown error: {e}")
 
     def on_reset_dialog(self):
         self._created_widget = None
+        self._selected_file_label.clear()
 
         self._width.setValue(300)
         self._height.setValue(300)
         self._min_wavelength.setValue(380)
         self._max_wavelength.setValue(780)
         self._resolution.setValue(1)
+
+        self._preview_data = []
 
         self._width_unit.setCurrentIndex(0)
         self._height_unit.setCurrentIndex(0)
@@ -128,7 +145,7 @@ class WidgetCreatorDialog(QDialog):
         resolution = self._resolution.value()
 
         self._preview_widget.setGeometryProperties(0, 0, width, height)
-        self._preview_widget.setWavelengthProperties(min_wl, max_wl, resolution)
+        self._preview_widget.setSpectralData(self._preview_data, min_wl, max_wl, resolution)
         self._preview_widget.update()
 
     def onCustomWidgetClicked(self):
@@ -138,11 +155,10 @@ class WidgetCreatorDialog(QDialog):
         self.ui.stackedWidget.setCurrentIndex(1)
     
     def onCreateWidget(self):
-        print("Creating Widget")
         if self._created_widget:
             self.signal_bus.add_widget_to_current_workspace.emit(self._created_widget)
+            self.s_reset.emit()
         self.accept()
-        # self.s_reset.emit()
 
     def onCancel(self):
         self.reject()

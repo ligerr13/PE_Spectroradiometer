@@ -26,6 +26,7 @@ class FileContextMenu(QMenu):
         self.addAction(self.file_context_menu.actionSaveAs)
         self.addAction(self.file_context_menu.actionSave_All)
         self.addAction(self.file_context_menu.actionopen_workspace_form_file)
+        self.addAction(self.file_context_menu.actionMeasure)
         self.addAction(self.file_context_menu.actionClose_Workspace)
         self.addAction(self.file_context_menu.actionClose_All_Workspace)
         self.addAction(self.file_context_menu.actionClose_Window)
@@ -34,6 +35,7 @@ class FileContextMenu(QMenu):
         self.insertSeparator(self.file_context_menu.actionClose_Workspace)
         self.insertSeparator(self.file_context_menu.actionNew_Workspace)
         self.insertSeparator(self.file_context_menu.actionSaveAs)
+        self.insertSeparator(self.file_context_menu.actionMeasure)
 
         ## Calling Methods 
         self.file_context_menu.actionClose_Window.setShortcut(QKeySequence("Ctrl+Q"))

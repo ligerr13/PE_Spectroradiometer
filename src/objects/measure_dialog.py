@@ -12,12 +12,14 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(477, 531)
+        Dialog.resize(477, 191)
+        Dialog.setAccessibleName("")
         Dialog.setStyleSheet("background-color: rgb(20, 20, 20); \n"
 "border-radius: 5px;\n"
 "border: 0px;")
         self.horizontalLayout = QtWidgets.QHBoxLayout(Dialog)
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout.setSpacing(0)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.widget = QtWidgets.QWidget(parent=Dialog)
         self.widget.setObjectName("widget")
@@ -30,12 +32,144 @@ class Ui_Dialog(object):
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.widget_2)
         self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.label_2 = QtWidgets.QLabel(parent=self.widget_2)
-        self.label_2.setMinimumSize(QtCore.QSize(0, 35))
-        self.label_2.setStyleSheet("font: 623 14pt \"Segoe UI\";\n"
-"color: rgb(233, 233, 233);")
-        self.label_2.setObjectName("label_2")
-        self.horizontalLayout_2.addWidget(self.label_2)
+        self.scrollArea = QtWidgets.QScrollArea(parent=self.widget_2)
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollArea.setObjectName("scrollArea")
+        self.scrollAreaWidgetContents = QtWidgets.QWidget()
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 477, 135))
+        self.scrollAreaWidgetContents.setStyleSheet("")
+        self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
+        self.gridLayout = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
+        self.gridLayout.setContentsMargins(0, 5, 0, 0)
+        self.gridLayout.setSpacing(1)
+        self.gridLayout.setObjectName("gridLayout")
+        self.groupBox = QtWidgets.QGroupBox(parent=self.scrollAreaWidgetContents)
+        self.groupBox.setStyleSheet("QGroupBox {\n"
+"  border-radius: 2px;\n"
+"  margin-top: 1.4em;\n"
+"  margin-bottom: 1;\n"
+"  font: 700 12pt \"Consolas\";\n"
+"}\n"
+"QLineEdit {\n"
+"    font: 600 10pt \"Segoe UI\";\n"
+"    background-color:  rgb(41,41,41);\n"
+"   color: white;\n"
+"    border-radius: 2px;\n"
+"}\n"
+"QPushButton {\n"
+"    background: rgb(0, 150, 255);\n"
+"    color: rgba(255,255,255, 0.85);\n"
+"    border-radius: 2px;\n"
+"    font: 600 10pt \"Segoe UI\";\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background: rgb(51, 180, 255);\n"
+"}\n"
+"QGroupBox::title {\n"
+"  background: transparent;\n"
+"  color: white;\n"
+"  padding-top: -30px;\n"
+"   padding-left: -18px;\n"
+"  margin: 0 15 15 15;\n"
+"}\n"
+"QLabel {\n"
+"    color: grey;\n"
+"    font: 550 11pt \"Consolas\";\n"
+"}\n"
+"QSpinBox {\n"
+"        font: 600 10pt \"Segoe UI\";\n"
+"         background-color:  rgb(41,41,41);\n"
+"        color: grey;\n"
+"        border-radius: 2px;\n"
+"        border: 0px;\n"
+"}\n"
+"QComboBox {\n"
+"        font: 700 10pt \"Segoe UI\";\n"
+"         background-color:  rgb(41,41,41);\n"
+"        color: grey;\n"
+"        border-radius: 2px;\n"
+"        border: 0px;\n"
+"}")
+        self.groupBox.setObjectName("groupBox")
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.groupBox)
+        self.verticalLayout.setContentsMargins(1, 0, 1, 0)
+        self.verticalLayout.setSpacing(1)
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.widget_3 = QtWidgets.QWidget(parent=self.groupBox)
+        self.widget_3.setMinimumSize(QtCore.QSize(0, 50))
+        self.widget_3.setMaximumSize(QtCore.QSize(16777215, 50))
+        self.widget_3.setObjectName("widget_3")
+        self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.widget_3)
+        self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_3.setSpacing(0)
+        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
+        self.pushButton = QtWidgets.QPushButton(parent=self.widget_3)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.pushButton.sizePolicy().hasHeightForWidth())
+        self.pushButton.setSizePolicy(sizePolicy)
+        self.pushButton.setMinimumSize(QtCore.QSize(149, 0))
+        self.pushButton.setMaximumSize(QtCore.QSize(149, 999))
+        self.pushButton.setStyleSheet("border: 0px; border-radius: 0px;")
+        self.pushButton.setObjectName("pushButton")
+        self.horizontalLayout_3.addWidget(self.pushButton)
+        self.label_3 = QtWidgets.QLabel(parent=self.widget_3)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_3.sizePolicy().hasHeightForWidth())
+        self.label_3.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("Consolas")
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setItalic(False)
+        self.label_3.setFont(font)
+        self.label_3.setStyleSheet("border-top: 1px solid rgba(129, 129, 129, 50);\n"
+"border-bottom: 1px solid rgba(129, 129, 129, 50);\n"
+"border-radius: 0px;\n"
+"border: 1px solid rgba(129, 129, 129, 50); \n"
+"color: grey;\n"
+"border-radius: 0px;")
+        self.label_3.setObjectName("label_3")
+        self.horizontalLayout_3.addWidget(self.label_3)
+        self.verticalLayout.addWidget(self.widget_3)
+        self.widget_4 = QtWidgets.QWidget(parent=self.groupBox)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.widget_4.sizePolicy().hasHeightForWidth())
+        self.widget_4.setSizePolicy(sizePolicy)
+        self.widget_4.setMinimumSize(QtCore.QSize(0, 50))
+        self.widget_4.setMaximumSize(QtCore.QSize(16777213, 50))
+        self.widget_4.setObjectName("widget_4")
+        self.horizontalLayout_5 = QtWidgets.QHBoxLayout(self.widget_4)
+        self.horizontalLayout_5.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_5.setSpacing(0)
+        self.horizontalLayout_5.setObjectName("horizontalLayout_5")
+        self.label_4 = QtWidgets.QLabel(parent=self.widget_4)
+        self.label_4.setMinimumSize(QtCore.QSize(150, 0))
+        self.label_4.setMaximumSize(QtCore.QSize(150, 16777215))
+        self.label_4.setStyleSheet("border: 1px solid rgba(129, 129, 129, 50); \n"
+"color: grey;\n"
+"border-radius: 0px;")
+        self.label_4.setObjectName("label_4")
+        self.horizontalLayout_5.addWidget(self.label_4)
+        self.fileName = QtWidgets.QLineEdit(parent=self.widget_4)
+        self.fileName.setMinimumSize(QtCore.QSize(0, 50))
+        self.fileName.setMaximumSize(QtCore.QSize(16777215, 50))
+        self.fileName.setStyleSheet("border-radius: 0px;  font: 6 10pt \"Consolas\";\n"
+"border: 1px solid rgba(129, 129, 129, 50); \n"
+"color: grey;\n"
+"border-radius: 0px;")
+        self.fileName.setText("")
+        self.fileName.setObjectName("fileName")
+        self.horizontalLayout_5.addWidget(self.fileName)
+        self.verticalLayout.addWidget(self.widget_4)
+        self.gridLayout.addWidget(self.groupBox, 0, 0, 1, 1)
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+        self.horizontalLayout_2.addWidget(self.scrollArea)
         self.verticalLayout_2.addWidget(self.widget_2)
         self.widget_7 = QtWidgets.QWidget(parent=self.widget)
         self.widget_7.setMinimumSize(QtCore.QSize(0, 50))
@@ -124,6 +258,10 @@ class Ui_Dialog(object):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
         self.widget.setStyleSheet(_translate("Dialog", "0"))
-        self.label_2.setText(_translate("Dialog", "New Measurement"))
+        self.groupBox.setTitle(_translate("Dialog", "Export Options"))
+        self.pushButton.setText(_translate("Dialog", "Save here"))
+        self.label_3.setText(_translate("Dialog", "No save path has been chosen"))
+        self.label_4.setText(_translate("Dialog", "Measure name"))
+        self.fileName.setPlaceholderText(_translate("Dialog", "Please provide a name for the measurement."))
         self.pushButton_5.setText(_translate("Dialog", "Cancel"))
         self.pushButton_6.setText(_translate("Dialog", "Start"))

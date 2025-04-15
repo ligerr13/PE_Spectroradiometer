@@ -101,6 +101,9 @@ class SpectrumWidget(SceneWidget):
         self.sub_type = "Spectrum-Color"
         self.plt.style.use("seaborn-v0_8")
 
+        self.min_wavelength = 0
+        self.max_wavelength = 0
+
         self.init_ui()
 
     def init_ui(self):
@@ -109,19 +112,53 @@ class SpectrumWidget(SceneWidget):
         self.pc = MplCanvas(self)
         layout.addWidget(self.pc)
 
-    def setSpectralData(self, data):
+    def get_widget_data(self):
+        super().get_widget_data()
+        geometry = self.geometry()
+        return {
+            'id': self.widget_id,
+            'type': self.widget_type,
+            'sub-type': self.sub_type,
+            'uniqe_name': self.objectName,
+            'geometry': {
+                'x': geometry.x(),
+                'y': geometry.y(),
+                'width': geometry.width(),
+                'height': geometry.height()
+            },
+            'range': {
+                'min': self.min_wavelength, 
+                'max':self.max_wavelength
+            }, 
+            'data': self.data
+        }
+
+    def setSpectralData(self, data, min_wl, max_wl, resolution):
         self.data = data
+        self.min_wavelength = min_wl
+        self.max_wavelength = max_wl
+        self.res = resolution
         self.plot_data()
 
-    def setWavelengthProperties(self, min_wl, max_wl, resolution):
-        pass
 
     def plot_data(self):
-        _data = np.array([self.data])
-        spd = np.vstack((SpectrumWidget.wavelength, _data))
-        plot_spectrum_colors(spd = spd, axh=self.pc.axes)
-        self.pc.draw()
+        if self.data is None:
+            return
+    
+        # _data = np.array([self.data])
+        # spd = np.vstack((SpectrumWidget.wavelength, _data))
+        # plot_spectrum_colors(spd = spd, axh=self.pc.axes)
+        # self.pc.draw()
 
+        mask = (SpectrumWidget.wavelength >= self.min_wavelength) & (SpectrumWidget.wavelength <= self.max_wavelength)
+        filtered_wavelengths = SpectrumWidget.wavelength[mask]
+        filtered_data = np.array(self.data)[mask]
+
+        spd_filtered = np.vstack((filtered_wavelengths, filtered_data))
+        self.pc.axes.clear()
+        plot_spectrum_colors(spd=spd_filtered, axh=self.pc.axes)
+        self.pc.draw()
+        
 class MplCanvas(FigureCanvasQTAgg):
     def __init__(self, parent=None, width= 1, height=1, dpi=95):
         fig = Figure(figsize=(width, height), dpi=dpi)

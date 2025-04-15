@@ -698,7 +698,7 @@ class Workspace(QWidget):
                 match widget_type:
                     case 'SpectrumWidget':
                         clone = SpectrumWidget()
-                        clone.setSpectralData(data.get('data'))
+                        clone.setSpectralData(data.get('data'), data.get('range')['min'], data.get('range')['max'], 100)
                         clone.setGeometry(
                             data.get('geometry')['x'], 
                             data.get('geometry')['y'], 
@@ -968,18 +968,35 @@ class Workspace(QWidget):
 
                 if widget_type == 'SceneWidget':
                     if sub_type == 'Spectrum-Color':
-                        widget = SpectrumWidget()
+                        try: 
+                            widget = SpectrumWidget()
+                            widget.setObjectName(WIDGET.get('unique_name', 'DefaultID'))
+                            raw_spectral_data = WIDGET.get('data', [])
+                            min_wl = WIDGET.get('range')['min']
+                            max_wl = WIDGET.get('range')['max']
+
+                            if isinstance(raw_spectral_data, list):
+                                widget.setSpectralData(raw_spectral_data, min_wl, max_wl, 100)
+
+                        except Exception as widget_error:
+                            print(f"An Error has happend while creating spectrum widgets: {widget_error}")
+
+
                     elif sub_type == 'Locus':
-                        widget = LocusWidget()
+                        try:
+                            widget = LocusWidget()
+                            widget.setObjectName(WIDGET.get('unique_name', 'DefaultID'))
+                            raw_colorimetric_data = WIDGET.get('data', [])
+
+                            if isinstance(raw_colorimetric_data, list):
+                                widget.setLocusData(raw_colorimetric_data)
+                        except Exception as widget_error:
+                            print(f"An Error has happend while creating locus widgets: {widget_error}")
+
                     else:
                         continue
 
                     try:
-                        widget.setObjectName(WIDGET.get('unique_name', 'DefaultID'))
-                        raw_spectral_data = WIDGET.get('data', [])
-                        if isinstance(raw_spectral_data, list):
-                            widget.setSpectralData(raw_spectral_data)
-                        
                         geometry = WIDGET.get('geometry', {})
                         x, y, width, height = (
                             geometry.get('x'),
@@ -996,7 +1013,7 @@ class Workspace(QWidget):
                         self.scene.addWidget(widget)
 
                     except Exception as widget_error:
-                        print(f"An Error has happend shile loading widgets: {widget_error}")
+                        print(f"An Error has happend while loading widgets: {widget_error}")
 
             self.update_explorer()
 
