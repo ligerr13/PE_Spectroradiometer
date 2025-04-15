@@ -12,19 +12,25 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(477, 191)
+        Dialog.resize(424, 198)
         Dialog.setAccessibleName("")
-        Dialog.setStyleSheet("background-color: rgb(20, 20, 20); \n"
-"border-radius: 5px;\n"
-"border: 0px;")
+        Dialog.setStyleSheet("QDialog {\n"
+"    border: 2px solid rgb(0, 150, 255); \n"
+"}\n"
+"\n"
+"QWidget {\n"
+"    background-color: rgb(20, 20, 20); \n"
+"}\n"
+"")
         self.horizontalLayout = QtWidgets.QHBoxLayout(Dialog)
-        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout.setSpacing(0)
+        self.horizontalLayout.setContentsMargins(2, 2, 2, 2)
+        self.horizontalLayout.setSpacing(2)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.widget = QtWidgets.QWidget(parent=Dialog)
+        self.widget.setStyleSheet("")
         self.widget.setObjectName("widget")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.widget)
-        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_2.setContentsMargins(1, 1, 1, 1)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.widget_2 = QtWidgets.QWidget(parent=self.widget)
         self.widget_2.setStyleSheet("")
@@ -36,7 +42,7 @@ class Ui_Dialog(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 477, 135))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 416, 134))
         self.scrollAreaWidgetContents.setStyleSheet("")
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.gridLayout = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
@@ -109,9 +115,12 @@ class Ui_Dialog(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.pushButton.sizePolicy().hasHeightForWidth())
         self.pushButton.setSizePolicy(sizePolicy)
-        self.pushButton.setMinimumSize(QtCore.QSize(149, 0))
-        self.pushButton.setMaximumSize(QtCore.QSize(149, 999))
-        self.pushButton.setStyleSheet("border: 0px; border-radius: 0px;")
+        self.pushButton.setMinimumSize(QtCore.QSize(149, 50))
+        self.pushButton.setMaximumSize(QtCore.QSize(149, 50))
+        self.pushButton.setStyleSheet("border-top: 1px solid rgba(129, 129, 129, 50);\n"
+"border-bottom: 1px solid rgba(129, 129, 129, 50);\n"
+"color: white;\n"
+"border-radius: 0px;")
         self.pushButton.setObjectName("pushButton")
         self.horizontalLayout_3.addWidget(self.pushButton)
         self.label_3 = QtWidgets.QLabel(parent=self.widget_3)
@@ -172,7 +181,7 @@ class Ui_Dialog(object):
         self.horizontalLayout_2.addWidget(self.scrollArea)
         self.verticalLayout_2.addWidget(self.widget_2)
         self.widget_7 = QtWidgets.QWidget(parent=self.widget)
-        self.widget_7.setMinimumSize(QtCore.QSize(0, 50))
+        self.widget_7.setMinimumSize(QtCore.QSize(0, 40))
         self.widget_7.setMaximumSize(QtCore.QSize(16777215, 50))
         self.widget_7.setStyleSheet("QWidget {\n"
 "    background-color: rgb(31, 31, 31);\n"
@@ -231,8 +240,7 @@ class Ui_Dialog(object):
         self.pushButton_6.setMaximumSize(QtCore.QSize(16777215, 50))
         self.pushButton_6.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.pushButton_6.setStyleSheet("QPushButton:hover {\n"
-"            background: rgb(43, 81, 235);\n"
-"            border :3px solid rgb(63, 101, 255);\n"
+"            background: rgb(0, 150, 255);\n"
 "        }\n"
 "QPushButton:checked  {\n"
 "        border: 0px;\n"
@@ -256,8 +264,7 @@ class Ui_Dialog(object):
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.widget.setStyleSheet(_translate("Dialog", "0"))
+        Dialog.setWindowTitle(_translate("Dialog", "Measure"))
         self.groupBox.setTitle(_translate("Dialog", "Export Options"))
         self.pushButton.setText(_translate("Dialog", "Save here"))
         self.label_3.setText(_translate("Dialog", "No save path has been chosen"))

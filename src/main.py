@@ -40,6 +40,7 @@ class FileContextMenu(QMenu):
         ## Calling Methods 
         self.file_context_menu.actionClose_Window.setShortcut(QKeySequence("Ctrl+Q"))
         self.file_context_menu.actionHome_Page.setShortcut(QKeySequence("Ctrl+H"))
+        self.file_context_menu.actionMeasure.setShortcut(QKeySequence("Ctrl+M"))
 
 
 class MyApp(QMainWindow):
@@ -59,6 +60,7 @@ class MyApp(QMainWindow):
             self.fcu.file_context_menu.actionNew_Workspace,
             self.fcu.file_context_menu.actionSaveAs,
             self.fcu.file_context_menu.actionSave_All,
+            self.fcu.file_context_menu.actionMeasure,
             self.fcu.file_context_menu.actionClose_Workspace,
             self.fcu.file_context_menu.actionClose_All_Workspace,
             self.fcu.file_context_menu.actionClose_Window
@@ -74,7 +76,8 @@ class MyApp(QMainWindow):
         self.fcu.file_context_menu.actionClose_Window.triggered.connect(lambda: QCoreApplication.quit())
         self.fcu.file_context_menu.actionClose_Workspace.triggered.connect(lambda: self.tm.remove_page(self.tm.get_current_page_index()))
         self.fcu.file_context_menu.actionHome_Page.triggered.connect(lambda: self.tm.tabWidget.setCurrentIndex(self.tm.get_page_by_tabname("home")))
-        
+        self.fcu.file_context_menu.actionMeasure.triggered.connect(self.HandleMeasureDialog)
+
         self.navbar.connectionConfigDialog.serial_settings_has_changed.connect(self.onUpdateSerialSettings)
 
         self.fcu.file_context_menu.actionopen_workspace_form_file.triggered.connect(self.open_dialog_and_create_workspace)

@@ -1483,7 +1483,7 @@ class Ui_Dialog(object):
 
         self.retranslateUi(Dialog)
         self.stackedWidget.setCurrentIndex(0)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(1)
         self.tabWidget_2.setCurrentIndex(1)
         self.CreateWidgetPushButton.clicked.connect(Dialog.onCreateWidget) # type: ignore
         self.CancelCreateWidget.clicked.connect(Dialog.onCancel) # type: ignore

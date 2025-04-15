@@ -1,5 +1,5 @@
 from PyQt6.QtWidgets import QDialog, QMessageBox
-from PyQt6.QtCore import pyqtSignal
+from PyQt6.QtCore import pyqtSignal, Qt
 from src.objects.measure_dialog import Ui_Dialog
 from ..instrument.examples.basic_usage import run_program, _measure_read_store, error_handler
 from ..globals.utils import FileValidator, open_folder_dialog
@@ -15,6 +15,8 @@ class MeasureDialog(QDialog):
     def __init__(self):
         super().__init__()
         
+        self.setWindowFlags(Qt.WindowType.FramelessWindowHint)
+
         # Setup UI
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
