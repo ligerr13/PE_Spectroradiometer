@@ -18,10 +18,29 @@ class ToastWidget(QWidget):
         self.adjust_size_to_text()
         self.set_style_sheet()
 
-        self.setParent(parent)
-        self.start_pos = QPoint(parent.width() // 2 - self.width() // 2, parent.height())
-        self.end_pos = QPoint(parent.width() // 2 - self.width() // 2, 65)
-        
+        if parent:
+            self.setParent(parent)
+            self.start_pos = QPoint(parent.width() // 2 - self.width() // 2, parent.height())
+            self.end_pos = QPoint(parent.width() // 2 - self.width() // 2, 65)
+            
+        else:
+            active_window = QApplication.activeWindow()
+
+            if active_window:
+                aw_geo = active_window.geometry()
+
+                self.start_pos = QPoint(aw_geo.x() + (aw_geo.width() - self.width()) // 2,aw_geo.y() + aw_geo.height())
+                self.end_pos = QPoint(aw_geo.x() + (aw_geo.width() - self.width()) // 2, aw_geo.height() - aw_geo.y() // 5)
+
+            else:
+                screen = QApplication.primaryScreen()
+                screen_geometry = screen.availableGeometry()
+                self.start_pos = screen_geometry.width() // 2 - self.width() // 2
+                self.end_pos = screen_geometry.height() // 3 - self.height() // 2
+
+        self.start_animation()
+        QTimer.singleShot(duration, self.close)
+
         self.start_animation()
 
         QTimer.singleShot(duration, self.close)

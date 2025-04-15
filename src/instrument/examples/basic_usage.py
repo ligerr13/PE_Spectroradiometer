@@ -1,6 +1,8 @@
 import asyncio
 from ..src.instrument import Instrument as CS2000
 from ..src.commands import Measure, MeasuringSwitchEnable, RemoteModeSelect
+from ...globals.utils import show_toast
+from ...globals.enum import ToastType
 import pandas as pd
 import numpy as np
 import datetime
@@ -85,6 +87,8 @@ async def _measure_read_store(protocol):
     colorimetric_df = pd.DataFrame(list(colorimetric_dict.items()), columns=["Parameter", "Value"])
     colorimetric_df.to_csv(f"Colorimetric_Data_{_ct}.csv", index=False)
 
+    show_toast(f"Successful measurement and saving!", duration=6500, success=ToastType.SUCCESS)
+
 def run_program(program, error_handler):
     try:
         asyncio.run(program())
@@ -93,4 +97,6 @@ def run_program(program, error_handler):
 
 def error_handler(e):
     print(f"An Error has happened: {e}")
+    show_toast(f"An Error has happened: {type(e).__name__}", duration=6500, success=ToastType.ERROR)
+
     print("Shutting down...")

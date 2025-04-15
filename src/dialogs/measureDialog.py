@@ -34,12 +34,6 @@ class MeasureDialog(QDialog):
         self.save_path_button.clicked.connect(self.onCheckFolder)
 
     def closeEvent(self, event):
-        if self.result() == QDialog.DialogCode.Accepted:
-            print("Dialog accepted")
-        else:
-            print("Dialog rejected")
-        
-        self.save_path_label.clear()
         event.accept()
 
     def onCheckFolder(self):
@@ -55,7 +49,6 @@ class MeasureDialog(QDialog):
             file_name = self.ui.fileName.text().strip()
             full_path = self.save_path / f"{file_name}.json"
             print(f"Saving to: {full_path}")
-            # asyncio.run(BasicProgramAndSave(full_path))
             run_program(_measure_read_store, error_handler)
             self.accept()
 
@@ -79,7 +72,8 @@ class MeasureDialog(QDialog):
 
 
     def cleanUp(self):
-        self.ui.fileName.setText("")
+        # self.save_path_label.clear()
+        pass
 
     def popUp(self):
         self.cleanUp()

@@ -4,7 +4,6 @@ from ..src.instrument import Instrument, Delimiter
 PORT = 'COM4'
 BAUDRATE = 9600
 
-
 # @Instrument.connection(port=PORT, baudrate=BAUDRATE)
 async def Measure(protocol, operation: int = 1):
     """
