@@ -5,6 +5,7 @@ import os
 from PyQt6.QtWidgets import QFileDialog
 from PyQt6.QtCore import QObject
 import numpy as np
+import serial.tools.list_ports
 
 class FileValidator:
     @classmethod
@@ -28,6 +29,13 @@ class Singleton(QObject):
         self.__class__._initialized = True
 
     
+def find_serial_port(vendor_id=0x2341, product_id=0x0043):
+    ports = serial.tools.list_ports.comports()
+    for port in ports:
+        if port.vid == vendor_id and port.pid == product_id:
+            return port.device 
+    show_toast("Spectroradiometer not found", 5000, ToastType.ERROR)
+
 def show_toast(message, duration=3000, success=None , parent=None):
     toast = ToastWidget(message, duration, success, parent)
     toast.showToast()
