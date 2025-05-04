@@ -14,7 +14,7 @@ async def _test_1(protocol):
     """
     await RemoteModeSelect(protocol, operation=1)
 
-    data = await Measure(protocol)
+    data = await Measure(protocol, operation=1)
 
     return data
 

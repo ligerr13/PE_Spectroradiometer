@@ -6,6 +6,9 @@ from typing import Union, Optional
 from dataclasses import dataclass
 import json
 import serial_asyncio
+import pyudev
+
+from globals.utils import find_serial_port
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -136,16 +139,19 @@ class Instrument:
         return Instrument.ReadData(response, code, info)
 
     @classmethod
-    def connection(cls, port: str = "COM4", baudrate: int = 9600, protocol: asyncio.Protocol = SerialProtocol):
+    def connection(cls, port: str = None, baudrate: int = 9600, protocol: asyncio.Protocol = SerialProtocol, idVendor=0xfffe, idProduct=0x0001):
         """Decorator to handle serial connection. Reuses active connection if available."""
 
         def decorator(func):
             @functools.wraps(func)
             async def wrapper(*args, **kwargs):
                 if cls.active_connection is None:
+                    _port = port or find_serial_port(idVendor, idProduct)
+
                     loop = asyncio.get_running_loop()
+                    
                     _transport, _protocol = await serial_asyncio.create_serial_connection(
-                        loop, protocol, port, baudrate
+                        loop, protocol, _port, baudrate
                     )
                     cls.active_connection = _protocol
                     try:
