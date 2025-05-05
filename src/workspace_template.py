@@ -698,7 +698,7 @@ class Workspace(QWidget):
                 match widget_type:
                     case 'SpectrumWidget':
                         clone = SpectrumWidget()
-                        clone.setSpectralData(data.get('data'), data.get('range')['min'], data.get('range')['max'], 100)
+                        clone.configure(data.get('data'), data.get('range')['min'], data.get('range')['max'])
                         clone.setGeometry(
                             data.get('geometry')['x'], 
                             data.get('geometry')['y'], 
@@ -976,7 +976,7 @@ class Workspace(QWidget):
                             max_wl = WIDGET.get('range')['max']
 
                             if isinstance(raw_spectral_data, list):
-                                widget.setSpectralData(raw_spectral_data, min_wl, max_wl, 100)
+                                widget.configure(raw_spectral_data, min_wl, max_wl)
 
                         except Exception as widget_error:
                             print(f"An Error has happend while creating spectrum widgets: {widget_error}")
@@ -989,7 +989,7 @@ class Workspace(QWidget):
                             raw_colorimetric_data = WIDGET.get('data', [])
 
                             if isinstance(raw_colorimetric_data, list):
-                                widget.setLocusData(raw_colorimetric_data)
+                                widget.configure(raw_colorimetric_data)
                         except Exception as widget_error:
                             print(f"An Error has happend while creating locus widgets: {widget_error}")
 

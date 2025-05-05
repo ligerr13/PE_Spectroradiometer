@@ -7,7 +7,7 @@ import pandas as pd
 import numpy as np
 import datetime
 
-@CS2000.connection(port='/dev/cu.usbmodem12345678901', baudrate=9600)
+@CS2000.connection(baudrate=9600)
 async def _measure_read_store(protocol):
     """Performs the full measurement process"""
 

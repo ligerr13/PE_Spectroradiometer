@@ -2,6 +2,7 @@ from PyQt6.QtGui import QMouseEvent
 from PyQt6 import QtGui
 from PyQt6 import QtCore
 from PyQt6.QtCore import pyqtSignal, Qt, QPointF
+from abc import ABCMeta, abstractmethod
 
 from .serializable_widget import SerializableWidget
 
@@ -14,6 +15,10 @@ class SceneWidget(SerializableWidget):
         self.oldPos = None
         self.moveable = False
         self.enableMovementSignal.connect(self.enable_movement)
+    
+    @abstractmethod
+    def configure(self):
+        raise NotImplementedError
     
     def enable_movement(self, value: bool = True):
         self.moveable = value

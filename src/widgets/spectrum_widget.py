@@ -133,22 +133,15 @@ class SpectrumWidget(SceneWidget):
             'data': self.data
         }
 
-    def setSpectralData(self, data, min_wl, max_wl, resolution):
+    def configure(self, data, min_wl, max_wl):
         self.data = data
         self.min_wavelength = min_wl
         self.max_wavelength = max_wl
-        self.res = resolution
         self.plot_data()
-
 
     def plot_data(self):
         if self.data is None:
             return
-    
-        # _data = np.array([self.data])
-        # spd = np.vstack((SpectrumWidget.wavelength, _data))
-        # plot_spectrum_colors(spd = spd, axh=self.pc.axes)
-        # self.pc.draw()
 
         mask = (SpectrumWidget.wavelength >= self.min_wavelength) & (SpectrumWidget.wavelength <= self.max_wavelength)
         filtered_wavelengths = SpectrumWidget.wavelength[mask]

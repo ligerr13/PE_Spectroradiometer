@@ -1,15 +1,20 @@
 from PyQt6.QtCore import pyqtSignal
-from PyQt6.QtWidgets import QDialog
+from PyQt6.QtWidgets import QDialog, QAbstractButton
 from pathlib import Path
-from src.objects.widget_creater_dialog import Ui_Dialog
+# from src.objects.widget_creater_dialog import Ui_Dialog
+from src.objects.widget_creator_new import Ui_Dialog
 from src.widgets.spectrum_widget import SpectrumWidget
+from src.widgets.locus_widget import LocusWidget
 from ..globals.utils import open_dialog
 import json
 from src.signals.signals import WorkspaceSignalBus
 
+
 class WidgetCreatorDialog(QDialog):
 
-    s_reset = pyqtSignal()
+    should_reset = pyqtSignal()
+    should_update_preview = pyqtSignal(int)
+    current_page_id: int = 0
 
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -17,51 +22,36 @@ class WidgetCreatorDialog(QDialog):
         #Setup UI
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
-        self._selected_file_label = self.ui.label_3
-        self._preview = self.ui.gridLayout_4
-        self._predefined = self.ui.comboBox_4
-        self._preview_widget = SpectrumWidget()
-        self._preview_data = []
-        self._preview.addWidget(self._preview_widget)
 
-        self.signal_bus =  WorkspaceSignalBus.instance()
+        self._selected_file: str
+        self.should_reset.connect(self.onResetDialog)
+        self.should_update_preview.connect(self.onUpdatePreview)
 
-        #dimension-width
-        self._width = self.ui.spinBox
-        self._width_unit = self.ui.comboBox
+        self._spectral_data = []
+        self._colorimetric_data = {}
 
-        #dimension-height
-        self._height = self.ui.spinBox_2
-        self._height_unit = self.ui.comboBox_2
+        self._spectral_preview_widget = SpectrumWidget()
+        self._spectral_preview = self.ui.gridLayout_7
+        self._spectral_preview.addWidget(self._spectral_preview_widget)
 
-        #content-min-wavelength
-        self._min_wavelength = self.ui.spinBox_4
-        self._min_wavelength_unit = self.ui.comboBox_6
+        self._locus_preview_widget = LocusWidget()
+        self._locus_preview = self.ui.gridLayout_8
+        self._locus_preview.addWidget(self._locus_preview_widget)
 
-        #content-max-wavelength
-        self._max_wavelength = self.ui.spinBox_5
-        self._max_wavelength_unit = self.ui.comboBox_7
+    
+    def HandlePages(self, button):
+        name = button.objectName()
 
-        #content-resolution
-        self._resolution = self.ui.spinBox_6
-        self._resolution_unit = self.ui.comboBox_8
+        if name == "spectrum_colors_btn":
+           self.current_page_id = 0
 
-        #content-select-file
-        self._file_selecter_button = self.ui.pushButton
-        self._selected_file_label = self.ui.label_3
+        elif name == "spectrum_locus_btn":
+            self.current_page_id = 1
 
-        self._file_selecter_button.clicked.connect(self.on_show_preview)
-        self._width.valueChanged.connect(self.on_update_preview)
-        self._height.valueChanged.connect(self.on_update_preview)
-        self._min_wavelength.valueChanged.connect(self.on_update_preview)
-        self._max_wavelength.valueChanged.connect(self.on_update_preview)
-        self._resolution.valueChanged.connect(self.on_update_preview)
-        self.s_reset.connect(self.on_reset_dialog)
+        self.setPages(self.current_page_id)
 
-        self._created_widget = None
-
-    def on_show_preview(self) -> list[float]:
-        dir = "src/instrument/data"  
+    def ImportData(self):
+        dir = "src/instrument/data"
         opened_file = open_dialog(self, direction=dir)
 
         if opened_file:
@@ -70,103 +60,83 @@ class WidgetCreatorDialog(QDialog):
             try:
                 with open(file_path, 'r') as file:
                     json_data = json.load(file)
-
-                    spectral_keys = [
-                        "Spectral380To479JsonBuilder",
-                        "Spectral480To579JsonBuilder",
-                        "Spectral580To679JsonBuilder",
-                        "Spectral680To780JsonBuilder"
-                    ]
-
+                    
                     spectral_data = []
-                    self._selected_file_label.setText(str(file_path))
+                    colorimetric_data = {}
+
+                    spectral_keys = ["Spectral380To479JsonBuilder","Spectral480To579JsonBuilder","Spectral580To679JsonBuilder","Spectral680To780JsonBuilder"]
 
                     for key in spectral_keys:
                         try:
                             value_str = json_data[key]["Spectral data"]["value"]
                             values = [float(v.strip()) for v in value_str.split(",")]
                             spectral_data.extend(values)
-                            self._preview_data = spectral_data
                         except (KeyError, ValueError) as e:
                             print(f"Skipping {key} due to error: {e}")
 
-                    self._preview_widget.setSpectralData(spectral_data, 380, 780, 100)
-                    self._preview_widget.setGeometryProperties(0, 0, 300, 300)
+                    self._spectral_data = spectral_data
 
-                    self._preview.addWidget(self._preview_widget)
+                    try:
+                        colorimetric_section = json_data["ColorimetricJsonBuilder"]["Colorimetric Data"]
+                        for key, entry in colorimetric_section.items():
+                            colorimetric_data[key] = float(entry["value"].replace(" ", ""))
+                    except (KeyError, ValueError) as e:
+                        print(f"Error parsing colorimetric data: {e}")
 
-                    self._created_widget = self._preview_widget
-                    return spectral_data
-                
-            except FileNotFoundError:
-                print("The file not found!")
-            except json.JSONDecodeError:
-                print("Invalid JSON file!")
-            except ValueError as ve:
-                print(f"Invalid data: {ve}")
+                    self._colorimetric_data = colorimetric_data
+                    print(colorimetric_data)
+
             except Exception as e:
                 print(f"Unknown error: {e}")
 
-    def on_reset_dialog(self):
-        self._created_widget = None
-        self._selected_file_label.clear()
+            self.ui.choosen_file_label.setText(str(file_path))
+            self._selected_file = file_path
+            self.should_update_preview.emit(self.current_page_id)
 
-        self._width.setValue(300)
-        self._height.setValue(300)
-        self._min_wavelength.setValue(380)
-        self._max_wavelength.setValue(780)
-        self._resolution.setValue(1)
+    def onUpdatePreview(self, current_page_id: int):
+        match current_page_id:
+            case 0:
+                width = self.ui.spinBox_7.value()
+                height = self.ui.spinBox_8.value()
 
-        self._preview_data = []
+                min_wl = self.ui.spinBox_4.value()
+                max_wl = self.ui.spinBox_5.value()
 
-        self._width_unit.setCurrentIndex(0)
-        self._height_unit.setCurrentIndex(0)
-        self._min_wavelength_unit.setCurrentIndex(0)
-        self._max_wavelength_unit.setCurrentIndex(0)
-        self._resolution_unit.setCurrentIndex(0)
+                self._spectral_preview_widget.setGeometryProperties(0, 0, width, height)
+                self._spectral_preview_widget.configure(self._spectral_data, min_wl, max_wl)
+            case 1:
+                width = self.ui.spinBox_13.value()
+                height = self.ui.spinBox_12.value()
 
-        self._selected_file_label.setText("No measurement file choosen")
+                cctext = self.ui.checkBox_11.isChecked()
+                eew = self.ui.checkBox_10.isChecked()
+                dl = self.ui.checkBox_9.isChecked()
+                bbl = self.ui.checkBox_8.isChecked()
+                d65 = self.ui.checkBox_6.isChecked()
 
-        if self._preview_widget:
-            self._preview.removeWidget(self._preview_widget)
-            self._preview_widget.deleteLater()
-        
-        self._preview_widget = SpectrumWidget()
-        self._preview_widget.setGeometryProperties(0, 0, 300, 300)
-        self._preview.addWidget(self._preview_widget)
+                self._locus_preview_widget.setGeometryProperties(0, 0, width, height)
+                self._locus_preview_widget.configure(self._colorimetric_data,cctext, eew, dl, bbl, d65)
 
-        self._preview.update()
+            case _:
+                pass
 
-    def on_update_preview(self):
-        width = self._width.value()
-        height = self._height.value()
-        min_wl = self._min_wavelength.value()
-        max_wl = self._max_wavelength.value()
-        resolution = self._resolution.value()
-
-        self._preview_widget.setGeometryProperties(0, 0, width, height)
-        self._preview_widget.setSpectralData(self._preview_data, min_wl, max_wl, resolution)
-        self._preview_widget.update()
-
-    def onCustomWidgetClicked(self):
-        self.ui.stackedWidget.setCurrentIndex(0)
-    
-    def onCustomWidget2Clicked(self):
-        self.ui.stackedWidget.setCurrentIndex(1)
-    
-    def onCreateWidget(self):
-        if self._created_widget:
-            self.signal_bus.add_widget_to_current_workspace.emit(self._created_widget)
-            self.s_reset.emit()
-        self.accept()
+    def onResetDialog(self):
+        self._selected_file = ""
+        self.ui.choosen_file_label.clear()
+        self.current_page_id = 0
 
     def onCancel(self):
+        self.should_reset.emit()
         self.reject()
-        self.s_reset.emit()
 
     def popUp(self):
         self.exec()
 
     def closePopUp(self):
+        self.should_reset.emit()
         self.close()
-        self.s_reset.emit()
+
+    def setPages(self, page_id) -> None:
+        self.ui.stacked_contents.setCurrentIndex(page_id)
+        self.ui.stacked_dimensions.setCurrentIndex(page_id)
+        self.ui.stacked_previews.setCurrentIndex(page_id)

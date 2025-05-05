@@ -8,7 +8,7 @@ from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg
 from matplotlib.figure import Figure
 from matplotlib import cm
 from .scene_widget import SceneWidget
-from luxpy import plotSL
+from luxpy import plotSL, plot_color_data
 
 
 class LocusWidget(SceneWidget):
@@ -45,15 +45,21 @@ class LocusWidget(SceneWidget):
             },
             'data': self.data
         }
-    def setLocusData(self, data):
-            self.data = data
-            self.plot_data()
+    
+    def configure(self, data, cctext, eew, dl, bbl, d65):
+        self.data = data
 
-    def plot_data(self):
-        plotSL(cspace = 'Yuv', cieobs = self.cieobs, show = False,\
-                 BBL = True, DL = True, diagram_colors = True, axh = self.pc.axes)
+        axh = plotSL(cspace = 'Yuv', cieobs = self.cieobs, show = False,\
+                 BBL = bbl, EEW = eew, D65 = d65, DL = dl, diagram_colors = True, axh = self.pc.axes, cctlabels=cctext)
+        
+        Y = data["Y"]
+        u = data["u'"]
+        v = data["v'"]
+        
+        plot_color_data(u, v, formatstr = 'go', axh = axh, label = 'Yuv_REF_2')
+
         self.pc.draw()
-
+        
 class MplCanvas(FigureCanvasQTAgg):
     def __init__(self, parent=None, width= 1, height=1, dpi=95):
         fig = Figure(figsize=(width, height), dpi=dpi)

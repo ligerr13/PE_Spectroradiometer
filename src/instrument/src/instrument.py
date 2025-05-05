@@ -6,9 +6,8 @@ from typing import Union, Optional
 from dataclasses import dataclass
 import json
 import serial_asyncio
-import pyudev
 
-from globals.utils import find_serial_port
+from ...globals.utils import find_serial_port
 
 logging.basicConfig(level=logging.DEBUG)
 
