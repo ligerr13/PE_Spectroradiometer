@@ -29,7 +29,7 @@ class Singleton(QObject):
         self.__class__._initialized = True
 
     
-def find_serial_port(vendor_id=0x2341, product_id=0x0043):
+def find_serial_port(vendor_id, product_id):
     ports = serial.tools.list_ports.comports()
     for port in ports:
         if port.vid == vendor_id and port.pid == product_id:

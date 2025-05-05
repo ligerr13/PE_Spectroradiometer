@@ -109,6 +109,7 @@ class SerialProtocol(asyncio.Protocol):
 class Instrument:
 
     active_connection: Optional[asyncio.Protocol] = None
+    config: dict = {}
 
     @dataclass
     class ReadData:
@@ -136,10 +137,24 @@ class Instrument:
             return Instrument.ReadData(None, code, info)
 
         return Instrument.ReadData(response, code, info)
+    
+
+    @classmethod
+    def load_config(cls, path='src\instrument\config\connection_config.json'):
+        if not cls.config:
+            with open(path, 'r') as f:
+                raw = json.load(f)
+                cls.config = raw
 
     @classmethod
     def connection(cls, port: str = None, baudrate: int = 9600, protocol: asyncio.Protocol = SerialProtocol, idVendor=0xfffe, idProduct=0x0001):
         """Decorator to handle serial connection. Reuses active connection if available."""
+
+        cls.load_config()
+
+        baudrate = baudrate or cls.config.get("baudrate")
+        idVendor = idVendor or cls.config.get("idVendor")
+        idProduct = idProduct or cls.config.get("idProduct")
 
         def decorator(func):
             @functools.wraps(func)
