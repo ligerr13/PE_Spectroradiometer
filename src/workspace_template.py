@@ -706,9 +706,27 @@ class Workspace(QWidget):
                             data.get('geometry')['height']
                         )
                         self.scene.addWidget(clone)
+
+                    case 'LocusWidget':
+                        clone = LocusWidget()
+                        clone.configure(
+                            data.get('data'), 
+                            data.get('config')['cctext'], 
+                            data.get('config')['eew'],
+                            data.get('config')['dl'], 
+                            data.get('config')['bbl'],
+                            data.get('config')['d65'])
+                        
+                        clone.setGeometry(
+                            data.get('geometry')['x'], 
+                            data.get('geometry')['y'], 
+                            data.get('geometry')['width'], 
+                            data.get('geometry')['height'])
+                        
+                        self.scene.addWidget(clone)
+
                     case _:
                         print(f"Unsupported widget type: {widget_type}")
-
 
 
     @pyqtSlot(bool)
@@ -1031,7 +1049,6 @@ class Workspace(QWidget):
                         print(f"An Error has happend while loading widgets: {widget_error}")
 
             self.update_explorer()
-
         except FileNotFoundError:
             print("The file not found!")
         except json.JSONDecodeError:
@@ -1042,6 +1059,7 @@ class Workspace(QWidget):
             print(f"Unknown error: {e}")
 
 class NodeboardGraphicsScene(QGraphicsScene):
+
     def __init__(self, parent=None):
         QGraphicsScene.__init__(self, parent)
         # Signalbus

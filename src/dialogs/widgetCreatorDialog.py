@@ -4,7 +4,7 @@ from pathlib import Path
 # from src.objects.widget_creater_dialog import Ui_Dialog
 from src.objects.widget_creator_new import Ui_Dialog
 from src.widgets.spectrum_widget import SpectrumWidget
-from src.widgets.locus_widget import LocusWidget
+from src.widgets.locus_widget import LocusWidget, LocusConfig
 from ..globals.utils import open_dialog
 import json
 from src.signals.signals import WorkspaceSignalBus
@@ -22,11 +22,14 @@ class WidgetCreatorDialog(QDialog):
         #Setup UI
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
+        
+        self.signal_bus =  WorkspaceSignalBus.instance()
 
         self._selected_file: str
         self.should_reset.connect(self.onResetDialog)
         self.should_update_preview.connect(self.onUpdatePreview)
 
+        self.current_widget = None
         self._spectral_data = []
         self._colorimetric_data = {}
 
@@ -34,19 +37,25 @@ class WidgetCreatorDialog(QDialog):
         self._spectral_preview = self.ui.gridLayout_7
         self._spectral_preview.addWidget(self._spectral_preview_widget)
 
+
         self._locus_preview_widget = LocusWidget()
         self._locus_preview = self.ui.gridLayout_8
         self._locus_preview.addWidget(self._locus_preview_widget)
 
+        self.current_page_id = 0
+        self.setPages(0)
+        self.current_widget = self._spectral_preview_widget
     
     def HandlePages(self, button):
         name = button.objectName()
 
         if name == "spectrum_colors_btn":
-           self.current_page_id = 0
-
+            self.current_page_id = 0
+            self.current_widget = self._spectral_preview_widget
         elif name == "spectrum_locus_btn":
             self.current_page_id = 1
+            self.current_widget = self._locus_preview_widget
+
 
         self.setPages(self.current_page_id)
 
@@ -119,6 +128,11 @@ class WidgetCreatorDialog(QDialog):
 
             case _:
                 pass
+
+    def onCreateWidget(self):
+        if self.current_widget:
+            self.signal_bus.add_widget_to_current_workspace.emit(self.current_widget)
+        self.accept()
 
     def onResetDialog(self):
         self._selected_file = ""

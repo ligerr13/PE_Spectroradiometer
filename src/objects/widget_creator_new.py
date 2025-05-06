@@ -117,7 +117,7 @@ class Ui_Dialog(object):
         self.scrollArea_3.setWidgetResizable(True)
         self.scrollArea_3.setObjectName("scrollArea_3")
         self.scrollAreaWidgetContents_3 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_3.setGeometry(QtCore.QRect(0, 0, 474, 500))
+        self.scrollAreaWidgetContents_3.setGeometry(QtCore.QRect(0, 0, 339, 166))
         self.scrollAreaWidgetContents_3.setObjectName("scrollAreaWidgetContents_3")
         self.verticalLayout_6 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_3)
         self.verticalLayout_6.setObjectName("verticalLayout_6")
@@ -367,7 +367,7 @@ class Ui_Dialog(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 474, 250))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 379, 250))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -946,7 +946,7 @@ class Ui_Dialog(object):
         self.scrollArea_6.setWidgetResizable(True)
         self.scrollArea_6.setObjectName("scrollArea_6")
         self.scrollAreaWidgetContents_6 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_6.setGeometry(QtCore.QRect(0, 0, 474, 500))
+        self.scrollAreaWidgetContents_6.setGeometry(QtCore.QRect(0, 0, 130, 72))
         self.scrollAreaWidgetContents_6.setObjectName("scrollAreaWidgetContents_6")
         self.gridLayout_6 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents_6)
         self.gridLayout_6.setObjectName("gridLayout_6")
@@ -996,8 +996,8 @@ class Ui_Dialog(object):
         self.stacked_contents.setCurrentIndex(1)
         self.stacked_previews.setCurrentIndex(0)
         self.PlotButtonGroup.buttonClicked['QAbstractButton*'].connect(Dialog.HandlePages) # type: ignore
-        self.create_button.clicked.connect(Dialog.accept) # type: ignore
-        self.cancel_button.clicked.connect(Dialog.reject) # type: ignore
+        self.create_button.clicked.connect(Dialog.onCreateWidget) # type: ignore
+        self.cancel_button.clicked.connect(Dialog.onCancel) # type: ignore
         self.choose_file_btn.clicked.connect(Dialog.ImportData) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 

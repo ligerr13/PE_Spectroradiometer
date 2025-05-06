@@ -16,7 +16,7 @@ from dataclasses import dataclass
 class LocusConfig:
     cctext: bool = False
     eew: bool = False
-    bll: bool = True
+    bbl: bool = True
     dl: bool = False
     d65: bool = False
 
@@ -63,13 +63,18 @@ class LocusWidget(SceneWidget):
                 'cctext': self.config.cctext,
                 'eew':  self.config.eew,
                 'dl':   self.config.dl,
-                'bbl':  self.config.bll,
+                'bbl':  self.config.bbl,
                 'd65':  self.config.d65
             }
         }
     
     def configure(self, data, cctext, eew, dl, bbl, d65):
         self.data = data
+        self.config.cctext = cctext
+        self.config.eew = eew
+        self.config.dl = dl 
+        self.config.bbl = bbl 
+        self.config.d65 = d65 
 
         axh = plotSL(cspace = 'Yuv', cieobs = self.cieobs, show = False,\
                  BBL = bbl, EEW = eew, D65 = d65, DL = dl, diagram_colors = True, axh = self.pc.axes, cctlabels=cctext)

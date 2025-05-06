@@ -282,8 +282,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>474</width>
-                      <height>500</height>
+                      <width>339</width>
+                      <height>166</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -976,7 +976,7 @@ border-radius: 0px;</string>
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>474</width>
+                      <width>379</width>
                       <height>250</height>
                      </rect>
                     </property>
@@ -2433,8 +2433,8 @@ QCheckBox::indicator {
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>474</width>
-                      <height>500</height>
+                      <width>130</width>
+                      <height>72</height>
                      </rect>
                     </property>
                     <layout class="QGridLayout" name="gridLayout_6">
@@ -2561,7 +2561,7 @@ QCheckBox::indicator {
    <sender>create_button</sender>
    <signal>clicked()</signal>
    <receiver>Dialog</receiver>
-   <slot>accept()</slot>
+   <slot>onCreateWidget()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>573</x>
@@ -2577,7 +2577,7 @@ QCheckBox::indicator {
    <sender>cancel_button</sender>
    <signal>clicked()</signal>
    <receiver>Dialog</receiver>
-   <slot>reject()</slot>
+   <slot>onCancel()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>654</x>
@@ -2609,6 +2609,8 @@ QCheckBox::indicator {
  <slots>
   <slot>HandlePages(QAbstractButton*)</slot>
   <slot>ImportData()</slot>
+  <slot>onCreateWidget()</slot>
+  <slot>onCancel()</slot>
  </slots>
  <buttongroups>
   <buttongroup name="PlotButtonGroup"/>
