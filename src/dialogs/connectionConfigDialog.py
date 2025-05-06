@@ -38,6 +38,7 @@ class ConnectionConfigDialog(QDialog):
                 return
             
             data["baudrate"] = int(self.ui.baudrateQLineEdit.text())
+            data["port"] = str(self.ui.lineEdit.text())
             data["bytesize"] = int(self.ui.bytesizeQLineEdit.text())
             data["stopbits"] = int(self.ui.stopbitQLineEdit.text())
             data["parity"] = str(self.ui.parityQLineEdit.text())
@@ -70,6 +71,7 @@ class ConnectionConfigDialog(QDialog):
                 return
 
             self.ui.baudrateQLineEdit.setText(str(data["baudrate"]))
+            self.ui.lineEdit.setText(str(data["port"]))
             self.ui.bytesizeQLineEdit.setText(str(data["bytesize"]))
             self.ui.stopbitQLineEdit.setText(str(data["stopbits"]))
             self.ui.parityQLineEdit.setText(str(data["parity"]))

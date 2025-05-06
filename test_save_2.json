@@ -37,7 +37,14 @@
                 0.0063,
                 558.71,
                 9.91
-            ]
+            ],
+            "config": {
+                "cctext":   false,
+                "eew":      false,
+                "dl":       false,
+                "bbl":      true,
+                "d65":      false 
+            }
         },
         {
             "id": "SpectralData Widget",
@@ -47,8 +54,8 @@
             "geometry": {
                 "x": 5,
                 "y": 5,
-                "width": 660,
-                "height": 400
+                "width":    660,
+                "height":   400
             },
             "range": {
                 "min": 380,

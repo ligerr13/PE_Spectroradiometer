@@ -152,6 +152,7 @@ class Instrument:
 
         cls.load_config()
 
+        port = port or cls.config.get("port")
         baudrate = baudrate or cls.config.get("baudrate")
         idVendor = idVendor or cls.config.get("idVendor")
         idProduct = idProduct or cls.config.get("idProduct")

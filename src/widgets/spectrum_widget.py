@@ -9,6 +9,7 @@ from matplotlib.figure import Figure
 from matplotlib import cm
 from .scene_widget import SceneWidget
 from luxpy import plot_spectrum_colors ,spd, vlbar_cie_mesopic, spectrum, cri_ref
+from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
 
 
 class SpectrumWidget(SceneWidget):
@@ -109,8 +110,12 @@ class SpectrumWidget(SceneWidget):
     def init_ui(self):
         layout = QVBoxLayout()
         self.setLayout(layout)
+
         self.pc = MplCanvas(self)
         layout.addWidget(self.pc)
+
+        self.toolbar = NavigationToolbar(self.pc, self)
+        layout.addWidget(self.toolbar)
 
     def get_widget_data(self):
         super().get_widget_data()

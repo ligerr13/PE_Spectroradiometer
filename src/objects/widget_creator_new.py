@@ -993,7 +993,7 @@ class Ui_Dialog(object):
         self.retranslateUi(Dialog)
         self.tabWidget.setCurrentIndex(2)
         self.stacked_dimensions.setCurrentIndex(1)
-        self.stacked_contents.setCurrentIndex(0)
+        self.stacked_contents.setCurrentIndex(1)
         self.stacked_previews.setCurrentIndex(0)
         self.PlotButtonGroup.buttonClicked['QAbstractButton*'].connect(Dialog.HandlePages) # type: ignore
         self.create_button.clicked.connect(Dialog.accept) # type: ignore

@@ -9,12 +9,23 @@ from matplotlib.figure import Figure
 from matplotlib import cm
 from .scene_widget import SceneWidget
 from luxpy import plotSL, plot_color_data
+from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
+from dataclasses import dataclass
 
+@dataclass
+class LocusConfig:
+    cctext: bool = False
+    eew: bool = False
+    bll: bool = True
+    dl: bool = False
+    d65: bool = False
 
 class LocusWidget(SceneWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.data = None
+        self.config = LocusConfig()
+
         self.plt = plt
         self.sub_type = 'Locus'
         self.cieobs = '1931_2'
@@ -26,8 +37,12 @@ class LocusWidget(SceneWidget):
     def init_ui(self):
         layout = QVBoxLayout()
         self.setLayout(layout)
+
         self.pc = MplCanvas(self)
         layout.addWidget(self.pc)
+        
+        self.toolbar = NavigationToolbar(self.pc, self)
+        layout.addWidget(self.toolbar)
 
     def get_widget_data(self):
         super().get_widget_data()
@@ -43,7 +58,14 @@ class LocusWidget(SceneWidget):
                 'width': geometry.width(),
                 'height': geometry.height()
             },
-            'data': self.data
+            'data': self.data,
+            'config': {
+                'cctext': self.config.cctext,
+                'eew':  self.config.eew,
+                'dl':   self.config.dl,
+                'bbl':  self.config.bll,
+                'd65':  self.config.d65
+            }
         }
     
     def configure(self, data, cctext, eew, dl, bbl, d65):
@@ -56,7 +78,7 @@ class LocusWidget(SceneWidget):
         u = data["u'"]
         v = data["v'"]
         
-        plot_color_data(u, v, formatstr = 'go', axh = axh, label = 'Yuv_REF_2')
+        plot_color_data(u, v, formatstr = 'go', axh = axh, label = 'Yuv')
 
         self.pc.draw()
         

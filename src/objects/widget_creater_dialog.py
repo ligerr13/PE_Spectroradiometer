@@ -914,7 +914,7 @@ class Ui_Dialog(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 429, 548))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 478, 548))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.gridLayout_3 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout_3.setContentsMargins(0, 0, 0, 0)
@@ -1482,9 +1482,9 @@ class Ui_Dialog(object):
         self.horizontalLayout.addWidget(self.page_selector_widget)
 
         self.retranslateUi(Dialog)
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(1)
         self.tabWidget.setCurrentIndex(0)
-        self.tabWidget_2.setCurrentIndex(1)
+        self.tabWidget_2.setCurrentIndex(0)
         self.CreateWidgetPushButton.clicked.connect(Dialog.onCreateWidget) # type: ignore
         self.CancelCreateWidget.clicked.connect(Dialog.onCancel) # type: ignore
         self.custom_widget_button.clicked.connect(Dialog.onCustomWidgetClicked) # type: ignore

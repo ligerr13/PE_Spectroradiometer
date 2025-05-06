@@ -12,7 +12,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(477, 659)
+        Dialog.resize(472, 718)
         Dialog.setStyleSheet("background-color: rgb(20, 20, 20); ")
         self.verticalLayout = QtWidgets.QVBoxLayout(Dialog)
         self.verticalLayout.setContentsMargins(9, -1, -1, -1)
@@ -93,61 +93,7 @@ class Ui_Dialog(object):
 "color: rgb(144, 144, 144)")
         self.timeoutQLineEdit.setObjectName("timeoutQLineEdit")
         self.gridLayout_5.addWidget(self.timeoutQLineEdit, 1, 0, 1, 1)
-        self.gridLayout.addWidget(self.widget_7, 4, 0, 1, 1)
-        self.widget_8 = QtWidgets.QWidget(parent=self.groupBox)
-        self.widget_8.setMaximumSize(QtCore.QSize(16777215, 90))
-        self.widget_8.setSizeIncrement(QtCore.QSize(0, 0))
-        self.widget_8.setStyleSheet("color:white;\n"
-"border-radius: 5px;")
-        self.widget_8.setObjectName("widget_8")
-        self.gridLayout_6 = QtWidgets.QGridLayout(self.widget_8)
-        self.gridLayout_6.setContentsMargins(0, 10, 0, 10)
-        self.gridLayout_6.setObjectName("gridLayout_6")
-        self.label_6 = QtWidgets.QLabel(parent=self.widget_8)
-        self.label_6.setMaximumSize(QtCore.QSize(16777215, 20))
-        self.label_6.setStyleSheet("font: 600 11pt \"Segoe UI\";\n"
-"color: rgb(255, 255, 255);\n"
-"border: 0px;")
-        self.label_6.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
-        self.label_6.setObjectName("label_6")
-        self.gridLayout_6.addWidget(self.label_6, 0, 0, 1, 1)
-        self.parityQLineEdit = QtWidgets.QLineEdit(parent=self.widget_8)
-        self.parityQLineEdit.setMinimumSize(QtCore.QSize(35, 40))
-        self.parityQLineEdit.setStyleSheet("border: 0px;\n"
-"        font: 700 10pt \"Segoe UI\";\n"
-"         background: rgb(55, 55, 55);\n"
-"        border :3px solid rgb(55, 55, 55);\n"
-"color: rgb(144, 144, 144)")
-        self.parityQLineEdit.setObjectName("parityQLineEdit")
-        self.gridLayout_6.addWidget(self.parityQLineEdit, 1, 0, 1, 1)
-        self.gridLayout.addWidget(self.widget_8, 3, 0, 1, 1)
-        self.widget_9 = QtWidgets.QWidget(parent=self.groupBox)
-        self.widget_9.setMaximumSize(QtCore.QSize(16777215, 90))
-        self.widget_9.setSizeIncrement(QtCore.QSize(0, 0))
-        self.widget_9.setStyleSheet("color:white;\n"
-"border-radius: 5px;")
-        self.widget_9.setObjectName("widget_9")
-        self.gridLayout_7 = QtWidgets.QGridLayout(self.widget_9)
-        self.gridLayout_7.setContentsMargins(0, 10, 0, 10)
-        self.gridLayout_7.setObjectName("gridLayout_7")
-        self.label_7 = QtWidgets.QLabel(parent=self.widget_9)
-        self.label_7.setMaximumSize(QtCore.QSize(16777215, 20))
-        self.label_7.setStyleSheet("font: 600 11pt \"Segoe UI\";\n"
-"color: rgb(255, 255, 255);\n"
-"border: 0px;")
-        self.label_7.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
-        self.label_7.setObjectName("label_7")
-        self.gridLayout_7.addWidget(self.label_7, 0, 0, 1, 1)
-        self.bytesizeQLineEdit = QtWidgets.QLineEdit(parent=self.widget_9)
-        self.bytesizeQLineEdit.setMinimumSize(QtCore.QSize(35, 40))
-        self.bytesizeQLineEdit.setStyleSheet("border: 0px;\n"
-"        font: 700 10pt \"Segoe UI\";\n"
-"         background: rgb(55, 55, 55);\n"
-"        border :3px solid rgb(55, 55, 55);\n"
-"color: rgb(144, 144, 144)")
-        self.bytesizeQLineEdit.setObjectName("bytesizeQLineEdit")
-        self.gridLayout_7.addWidget(self.bytesizeQLineEdit, 1, 0, 1, 1)
-        self.gridLayout.addWidget(self.widget_9, 1, 0, 1, 1)
+        self.gridLayout.addWidget(self.widget_7, 5, 0, 1, 1)
         self.widget_4 = QtWidgets.QWidget(parent=self.groupBox)
         self.widget_4.setMaximumSize(QtCore.QSize(16777215, 90))
         self.widget_4.setSizeIncrement(QtCore.QSize(0, 0))
@@ -175,6 +121,60 @@ class Ui_Dialog(object):
         self.baudrateQLineEdit.setObjectName("baudrateQLineEdit")
         self.gridLayout_3.addWidget(self.baudrateQLineEdit, 1, 0, 1, 2)
         self.gridLayout.addWidget(self.widget_4, 0, 0, 1, 1)
+        self.widget_9 = QtWidgets.QWidget(parent=self.groupBox)
+        self.widget_9.setMaximumSize(QtCore.QSize(16777215, 90))
+        self.widget_9.setSizeIncrement(QtCore.QSize(0, 0))
+        self.widget_9.setStyleSheet("color:white;\n"
+"border-radius: 5px;")
+        self.widget_9.setObjectName("widget_9")
+        self.gridLayout_7 = QtWidgets.QGridLayout(self.widget_9)
+        self.gridLayout_7.setContentsMargins(0, 10, 0, 10)
+        self.gridLayout_7.setObjectName("gridLayout_7")
+        self.label_7 = QtWidgets.QLabel(parent=self.widget_9)
+        self.label_7.setMaximumSize(QtCore.QSize(16777215, 20))
+        self.label_7.setStyleSheet("font: 600 11pt \"Segoe UI\";\n"
+"color: rgb(255, 255, 255);\n"
+"border: 0px;")
+        self.label_7.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.label_7.setObjectName("label_7")
+        self.gridLayout_7.addWidget(self.label_7, 0, 0, 1, 1)
+        self.bytesizeQLineEdit = QtWidgets.QLineEdit(parent=self.widget_9)
+        self.bytesizeQLineEdit.setMinimumSize(QtCore.QSize(35, 40))
+        self.bytesizeQLineEdit.setStyleSheet("border: 0px;\n"
+"        font: 700 10pt \"Segoe UI\";\n"
+"         background: rgb(55, 55, 55);\n"
+"        border :3px solid rgb(55, 55, 55);\n"
+"color: rgb(144, 144, 144)")
+        self.bytesizeQLineEdit.setObjectName("bytesizeQLineEdit")
+        self.gridLayout_7.addWidget(self.bytesizeQLineEdit, 1, 0, 1, 1)
+        self.gridLayout.addWidget(self.widget_9, 2, 0, 1, 1)
+        self.widget_8 = QtWidgets.QWidget(parent=self.groupBox)
+        self.widget_8.setMaximumSize(QtCore.QSize(16777215, 90))
+        self.widget_8.setSizeIncrement(QtCore.QSize(0, 0))
+        self.widget_8.setStyleSheet("color:white;\n"
+"border-radius: 5px;")
+        self.widget_8.setObjectName("widget_8")
+        self.gridLayout_6 = QtWidgets.QGridLayout(self.widget_8)
+        self.gridLayout_6.setContentsMargins(0, 10, 0, 10)
+        self.gridLayout_6.setObjectName("gridLayout_6")
+        self.label_6 = QtWidgets.QLabel(parent=self.widget_8)
+        self.label_6.setMaximumSize(QtCore.QSize(16777215, 20))
+        self.label_6.setStyleSheet("font: 600 11pt \"Segoe UI\";\n"
+"color: rgb(255, 255, 255);\n"
+"border: 0px;")
+        self.label_6.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.label_6.setObjectName("label_6")
+        self.gridLayout_6.addWidget(self.label_6, 0, 0, 1, 1)
+        self.parityQLineEdit = QtWidgets.QLineEdit(parent=self.widget_8)
+        self.parityQLineEdit.setMinimumSize(QtCore.QSize(35, 40))
+        self.parityQLineEdit.setStyleSheet("border: 0px;\n"
+"        font: 700 10pt \"Segoe UI\";\n"
+"         background: rgb(55, 55, 55);\n"
+"        border :3px solid rgb(55, 55, 55);\n"
+"color: rgb(144, 144, 144)")
+        self.parityQLineEdit.setObjectName("parityQLineEdit")
+        self.gridLayout_6.addWidget(self.parityQLineEdit, 1, 0, 1, 1)
+        self.gridLayout.addWidget(self.widget_8, 4, 0, 1, 1)
         self.widget_6 = QtWidgets.QWidget(parent=self.groupBox)
         self.widget_6.setMaximumSize(QtCore.QSize(16777215, 90))
         self.widget_6.setSizeIncrement(QtCore.QSize(0, 0))
@@ -201,7 +201,30 @@ class Ui_Dialog(object):
 "color: rgb(144, 144, 144)")
         self.stopbitQLineEdit.setObjectName("stopbitQLineEdit")
         self.gridLayout_4.addWidget(self.stopbitQLineEdit, 1, 0, 1, 1)
-        self.gridLayout.addWidget(self.widget_6, 2, 0, 1, 1)
+        self.gridLayout.addWidget(self.widget_6, 3, 0, 1, 1)
+        self.widget_10 = QtWidgets.QWidget(parent=self.groupBox)
+        self.widget_10.setMinimumSize(QtCore.QSize(0, 0))
+        self.widget_10.setMaximumSize(QtCore.QSize(16777215, 90))
+        self.widget_10.setObjectName("widget_10")
+        self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.widget_10)
+        self.verticalLayout_5.setContentsMargins(0, 0, 0, -1)
+        self.verticalLayout_5.setObjectName("verticalLayout_5")
+        self.label_9 = QtWidgets.QLabel(parent=self.widget_10)
+        self.label_9.setStyleSheet("font: 600 11pt \"Segoe UI\";\n"
+"color: rgb(255, 255, 255);\n"
+"border: 0px;")
+        self.label_9.setObjectName("label_9")
+        self.verticalLayout_5.addWidget(self.label_9)
+        self.lineEdit = QtWidgets.QLineEdit(parent=self.widget_10)
+        self.lineEdit.setMinimumSize(QtCore.QSize(40, 40))
+        self.lineEdit.setStyleSheet("border: 0px;\n"
+"        font: 700 10pt \"Segoe UI\";\n"
+"         background: rgb(55, 55, 55);\n"
+"        border :3px solid rgb(55, 55, 55);\n"
+"color: rgb(144, 144, 144)")
+        self.lineEdit.setObjectName("lineEdit")
+        self.verticalLayout_5.addWidget(self.lineEdit)
+        self.gridLayout.addWidget(self.widget_10, 1, 0, 1, 1)
         self.verticalLayout_3.addWidget(self.groupBox)
         self.verticalLayout.addWidget(self.widget)
         self.widget_2 = QtWidgets.QWidget(parent=Dialog)
@@ -259,11 +282,13 @@ class Ui_Dialog(object):
         self.groupBox.setTitle(_translate("Dialog", "Fill out the options to configure serial connection"))
         self.label_5.setText(_translate("Dialog", "Timout"))
         self.timeoutQLineEdit.setPlaceholderText(_translate("Dialog", "Type new timeout"))
-        self.label_6.setText(_translate("Dialog", "Parity"))
-        self.parityQLineEdit.setPlaceholderText(_translate("Dialog", "Type new parity"))
-        self.label_7.setText(_translate("Dialog", "Byte size"))
-        self.bytesizeQLineEdit.setPlaceholderText(_translate("Dialog", "Type new byte size"))
         self.label_3.setText(_translate("Dialog", "Baudrate"))
         self.baudrateQLineEdit.setPlaceholderText(_translate("Dialog", "Type new baudrate"))
+        self.label_7.setText(_translate("Dialog", "Byte size"))
+        self.bytesizeQLineEdit.setPlaceholderText(_translate("Dialog", "Type new byte size"))
+        self.label_6.setText(_translate("Dialog", "Parity"))
+        self.parityQLineEdit.setPlaceholderText(_translate("Dialog", "Type new parity"))
         self.label_4.setText(_translate("Dialog", "Stopbits"))
         self.stopbitQLineEdit.setPlaceholderText(_translate("Dialog", "Type new stop bits"))
+        self.label_9.setText(_translate("Dialog", "Port"))
+        self.lineEdit.setPlaceholderText(_translate("Dialog", "Type new port"))

@@ -37,7 +37,14 @@
                 0.0063,
                 558.71,
                 9.91
-            ]
+            ],
+            "config": {
+                "cctext":   false,
+                "eew":      false,
+                "dl":       false,
+                "bbl":      true,
+                "d65":      false 
+            }
         },
         {
             "id": "SpectralData Widget",
