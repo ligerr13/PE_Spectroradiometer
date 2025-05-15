@@ -1,4 +1,0 @@
-globals==0.3.36
-numpy==2.2.5
-pandas==2.2.3
-pyserial_asyncio==0.6
