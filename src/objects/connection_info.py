@@ -12,7 +12,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(472, 718)
+        Dialog.resize(472, 728)
         Dialog.setStyleSheet("background-color: rgb(20, 20, 20); ")
         self.verticalLayout = QtWidgets.QVBoxLayout(Dialog)
         self.verticalLayout.setContentsMargins(9, -1, -1, -1)

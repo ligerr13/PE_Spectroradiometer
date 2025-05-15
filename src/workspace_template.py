@@ -1005,24 +1005,25 @@ class Workspace(QWidget):
                             widget = LocusWidget()
                             widget.setObjectName(WIDGET.get('unique_name', 'DefaultID'))
                             raw_colorimetric_data = WIDGET.get('data', [])
+                            print(raw_colorimetric_data)
                             colorimetric_config =   WIDGET.get('config', {})
                             config = LocusConfig(
                                 cctext=colorimetric_config.get('cctext', False),
                                 eew=colorimetric_config.get('eew', False),
-                                bll=colorimetric_config.get('bll', True),
+                                bbl=colorimetric_config.get('bbl', True),
                                 dl=colorimetric_config.get('dl', False),
                                 d65=colorimetric_config.get('d65', False)
                             )
 
-                            if isinstance(raw_colorimetric_data, list):
-                                widget.configure(
-                                    data=raw_colorimetric_data,
-                                    cctext=config.cctext,
-                                    eew=config.eew,
-                                    dl=config.dl,
-                                    bbl=config.bll,
-                                    d65=config.d65
-                                )
+                           
+                            widget.configure(
+                                data=raw_colorimetric_data,
+                                cctext=config.cctext,
+                                eew=config.eew,
+                                dl=config.dl,
+                                bbl=config.bbl,
+                                d65=config.d65
+                            )
                         except Exception as widget_error:
                             print(f"An Error has happend while creating locus widgets: {widget_error}")
 

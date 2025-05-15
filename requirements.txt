@@ -1,7 +1,8 @@
-pyqtdarktheme
-PyQt6
-pyserial
-python-statemachine
-pyqt6rc
-matplotlib
-numpy
+luxpy==1.12.0
+matplotlib==3.10.1
+numpy==2.2.5
+pandas==2.2.3
+PyQt6==6.9.0
+PyQt6_sip==13.6.0
+pyserial==3.5
+pyserial_asyncio==0.6

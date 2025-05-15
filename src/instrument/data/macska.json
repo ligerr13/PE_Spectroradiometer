@@ -1,0 +1,162 @@
+{
+    "ColorimetricJsonBuilder": {
+        "Colorimetric Data": {
+            "Le": {
+                "value": "1.0544e-1",
+                "switch": 0
+            },
+            "Lv": {
+                "value": "133.99",
+                "switch": 0
+            },
+            "X": {
+                "value": "1.2620e+2",
+                "switch": 0
+            },
+            "Y": {
+                "value": "1.7399e+2",
+                "switch": 0
+            },
+            "Z": {
+                "value": "2.0334e+2",
+                "switch": 0
+            },
+            "x": {
+                "value": "0.1339",
+                "switch": 0
+            },
+            "y": {
+                "value": "0.2587",
+                "switch": 0
+            },
+            "u'": {
+                "value": "0.2039",
+                "switch": 0
+            },
+            "v'": {
+                "value": "0.4870",
+                "switch": 0
+            },
+            "T": {
+                "value": "0.9303",
+                "switch": 0
+            },
+            "delta uv": {
+                "value": "+0.0065",
+                "switch": 0
+            },
+            "lambda d": {
+                "value": "561.36",
+                "switch": 0
+            },
+            "Pe": {
+                "value": "9.0400",
+                "switch": 0
+            },
+            "X10": {
+                "value": "1.3798e+2",
+                "switch": 0
+            },
+            "Y10": {
+                "value": "1.4551e+2",
+                "switch": 0
+            },
+            "Z10": {
+                "value": "1.2168e+2",
+                "switch": 0
+            },
+            "x10": {
+                "value": "0.3405",
+                "switch": 0
+            },
+            "y10": {
+                "value": "0.3591",
+                "switch": 0
+            },
+            "u'10": {
+                "value": "0.2055",
+                "switch": 0
+            },
+            "v'10": {
+                "value": "0.4876",
+                "switch": 0
+            },
+            "T10": {
+                "value": "5253",
+                "switch": 0
+            },
+            "delta uv10": {
+                "value": "+0.0063",
+                "switch": 0
+            },
+            "lambda d10": {
+                "value": "558.71",
+                "switch": 0
+            },
+            "Pe10": {
+                "value": "9.9100",
+                "switch": 0
+            }
+        }
+    },
+    "Spectral380To479JsonBuilder": {
+        "Spectral data": {
+            "value": "spectral_irradiance_data_380nm_to_479nm.response",
+            "switch": 0
+        }
+    },
+    "Spectral480To579JsonBuilder": {
+        "Spectral data": {
+            "value": "spectral_irradiance_data_480nm_to_579nm.response",
+            "switch": 0
+        }
+    },
+    "Spectral580To679JsonBuilder": {
+        "Spectral data": {
+            "value": "spectral_irradiance_data_580nm_to_679nm.response",
+            "switch": 0
+        }
+    },
+    "Spectral680To780JsonBuilder": {
+        "Spectral data": {
+            "value": "spectral_irradiance_data_680nm_to_780nm.response",
+            "switch": 0
+        }
+    },
+    "MeasurementConditionsJsonBuilder": {
+        "Measurement Conditions": {
+            "Speed mode": {
+                "value": "1",
+                "switch": 0
+            },
+            "Sync mode": {
+                "value": "2",
+                "switch": 0
+            },
+            "Integration time": {
+                "value": "3",
+                "switch": 0
+            },
+            "Internal ND filter": {
+                "value": "4",
+                "switch": 0
+            },
+            "Optional close-up lens": {
+                "value": "5",
+                "switch": 0
+            },
+            "Optional external ND filter": {
+                "value": "6",
+                "switch": 0
+            },
+            "Measurement angle": {
+                "value": "7",
+                "switch": 0
+            },
+            "Calibration channel": {
+                "value": "8",
+                "switch": 0
+            }
+        }
+    }
+}

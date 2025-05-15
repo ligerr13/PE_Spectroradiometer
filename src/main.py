@@ -1,4 +1,7 @@
 import os
+import asyncio
+from qasync import asyncSlot
+from typing import Any, Coroutine
 
 from PyQt6.QtWidgets import QApplication, QMainWindow, QGraphicsView, QMenu, QFileDialog
 from PyQt6.QtGui import QGuiApplication, QKeySequence
@@ -65,6 +68,9 @@ class MyApp(QMainWindow):
             self.fcu.file_context_menu.actionClose_All_Workspace,
             self.fcu.file_context_menu.actionClose_Window
         ])
+        
+        # Calling Methods
+        self.tm.add_page(Workspace("Default", self), "Default")
 
         # Signal
         self.signal_bus = WorkspaceSignalBus.instance()
@@ -83,9 +89,17 @@ class MyApp(QMainWindow):
         self.fcu.file_context_menu.actionopen_workspace_form_file.triggered.connect(self.open_dialog_and_create_workspace)
         self.fcu.file_context_menu.actionSaveAs.triggered.connect(self.save_current_workspace)
         self.signal_bus.newWorkspaceCreated.connect(self.handleNewWorkspaceCreation)
+        self.signal_bus.request_start_measurement.connect(self.start_program)
 
-        # Calling Methods
-        self.tm.add_page(Workspace("Default", self), "Default")
+
+    @asyncSlot(object)
+    async def start_program(self, program: Coroutine[Any, Any, None]):
+        try:
+            await program()
+        except Exception as e:
+            print(f"Program exited with error: {e}")
+
+
 
     @pyqtSlot()
     def open_dialog_and_create_workspace(self):

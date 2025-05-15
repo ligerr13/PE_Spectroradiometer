@@ -1,61 +1,16 @@
 {
-    "workspace": "test_workspace_2.json",
+    "workspace": "test_workspace_3.json",
     "widgets": [
-        {
-            "id": "SpectralData Widget",
-            "type": "SceneWidget",
-            "sub-type": "Locus",
-            "uniqe_name": "SpectralData Widget",
-            "geometry": {
-                "x": 680,
-                "y": 91,
-                "width": 592,
-                "height": 423
-            },
-            "data": {
-                "Le": 0.60544,
-                "Lv": 133.99,
-                "X": 126.2,
-                "Y": 133.99,
-                "Z": 113.34,
-                "x": 0.3379,
-                "y": 0.3587,
-                "u'": 0.2039,
-                "v'": 0.487,
-                "T": 5303.0,
-                "delta uv": 0.0065,
-                "lambda d": 561.36,
-                "Pe": 9.04,
-                "X10": 137.98,
-                "Y10": 145.51,
-                "Z10": 121.68,
-                "x10": 0.3405,
-                "y10": 0.3591,
-                "u'10": 0.2055,
-                "v'10": 0.4876,
-                "T10": 5253.0,
-                "delta uv10": 0.0063,
-                "lambda d10": 558.71,
-                "Pe10": 9.91
-            },
-            "config": {
-                "cctext": false,
-                "eew": false,
-                "dl": false,
-                "bbl": true,
-                "d65": false
-            }
-        },
         {
             "id": "SpectralData Widget",
             "type": "SceneWidget",
             "sub-type": "Spectrum-Color",
             "uniqe_name": "DefaultID",
             "geometry": {
-                "x": 11,
-                "y": 94,
-                "width": 660,
-                "height": 400
+                "x": 9,
+                "y": 9,
+                "width": 592,
+                "height": 423
             },
             "range": {
                 "min": 380,
@@ -464,51 +419,6 @@
                 0.0014529,
                 0.0014507
             ]
-        },
-        {
-            "id": "SpectralData Widget",
-            "type": "SceneWidget",
-            "sub-type": "Locus",
-            "uniqe_name": "DefaultID",
-            "geometry": {
-                "x": 214,
-                "y": 529,
-                "width": 400,
-                "height": 400
-            },
-            "data": [
-                0.60544,
-                133.99,
-                126.2,
-                133.99,
-                113.34,
-                0.3379,
-                0.3587,
-                0.2039,
-                0.487,
-                5303,
-                0.0065,
-                561.36,
-                9.04,
-                137.98,
-                145.51,
-                121.68,
-                0.3405,
-                0.3591,
-                0.2055,
-                0.4876,
-                5253,
-                0.0063,
-                558.71,
-                9.91
-            ],
-            "config": {
-                "cctext": false,
-                "eew": false,
-                "dl": false,
-                "bbl": true,
-                "d65": false
-            }
         }
     ]
 }

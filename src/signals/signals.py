@@ -1,3 +1,4 @@
+from types import CoroutineType
 from PyQt6.QtCore import QObject, pyqtSignal
 from PyQt6 import QtCore, QtWidgets
 from PyQt6.QtGui import QAction
@@ -41,12 +42,25 @@ class WorkspaceSignalBus(QObject):
 
     add_widget_to_current_workspace = pyqtSignal(QGraphicsProxyWidget)
 
+    fileNameUpdated = pyqtSignal(str)
+
+    request_start_measurement = pyqtSignal(object)
+    request_cancel_measurement = pyqtSignal()
 
     def __init__(self):
         super().__init__()
 
+    def emitRequestStartMeas(self, program):
+        self.request_start_measurement.emit(program)
+    
+    def emitRequestCancelMeas(self):
+        self.request_cancel_measurement.emit()
+
     def emitCloseWorkspaceSignal(self):
         self.closeWorkspace.emit()
+
+    def emitFileNameUpdatedSignal(self, file_name: str):
+        self.fileNameUpdated.emit(file_name)
 
     def emitNewWorkspaceCreatedSignal(self, tag):
         self.newWorkspaceCreated.emit(tag)

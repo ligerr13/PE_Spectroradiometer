@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>710</width>
+    <width>866</width>
     <height>680</height>
    </rect>
   </property>
@@ -610,8 +610,8 @@ border-radius: 0px;</string>
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>474</width>
-                      <height>500</height>
+                      <width>339</width>
+                      <height>166</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayout_22">
@@ -1454,8 +1454,8 @@ QCheckBox::indicator {
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>474</width>
-                      <height>500</height>
+                      <width>228</width>
+                      <height>496</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayout_11">
@@ -2353,7 +2353,7 @@ QCheckBox::indicator {
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>474</width>
+                      <width>630</width>
                       <height>500</height>
                      </rect>
                     </property>

@@ -93,7 +93,6 @@ class WidgetCreatorDialog(QDialog):
                         print(f"Error parsing colorimetric data: {e}")
 
                     self._colorimetric_data = colorimetric_data
-                    print(colorimetric_data)
 
             except Exception as e:
                 print(f"Unknown error: {e}")

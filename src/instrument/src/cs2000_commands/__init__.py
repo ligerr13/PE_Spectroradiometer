@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from ..src.instrument import Instrument, Delimiter
+from ...src.instrument import Instrument, Delimiter
 
 PORT = 'COM4'
 BAUDRATE = 9600

@@ -7,9 +7,8 @@ from dataclasses import dataclass
 import json
 import serial_asyncio
 
-from ...globals.utils import find_serial_port
-
-logging.basicConfig(level=logging.DEBUG)
+# logging.basicConfig(level=logging.DEBUG)
+# logging.getLogger('no_spam')
 
 class Delimiter(enum.Enum):
     CRLF = b'\r\n'
@@ -21,13 +20,12 @@ class SerialProtocol(asyncio.Protocol):
         self._ready_event = asyncio.Event()
         self._rbuffer = asyncio.Queue()
         self._transport = None
-        self._timeout = 10.0
+        self._timeout = 1.0
         self._delimiter = Delimiter.CRLF.value
         self._partial_data = ''
 
     def connection_lost(self, exc) -> None:
         logging.error("Connection: lost.")
-        return super().connection_lost(exc)
 
     def connection_made(self, transport) -> None:
         """called when  the serial connection is established."""
@@ -60,6 +58,7 @@ class SerialProtocol(asyncio.Protocol):
         except UnicodeDecodeError as e:
             logging.error(f"Failed to decode data: {e}")
 
+
     def write_command(self, command: bytes, delimiter: Delimiter = Delimiter.CRLF) -> None:
         """Write command to the instrument as a byte string."""
         if not isinstance(command, (bytes)):
@@ -67,7 +66,7 @@ class SerialProtocol(asyncio.Protocol):
             return None
                 
         if self._transport is None or self._transport.is_closing():
-            logging.warning("Connection: lost.")
+            logging.warning("Connection: lost in the write phase.")
             return None
         
         try:
@@ -76,13 +75,13 @@ class SerialProtocol(asyncio.Protocol):
         
         except Exception as e:
             logging.error(f"Error while sending data: {e}")
-            return None
+            raise
 
     async def read_until_delimiter(self) -> tuple[str, Union[list[str], None]]:
         """Read a line from the buffer with a timeout."""
         if self._transport is None or self._transport.is_closing():
             logging.error("Connection: lost.")
-            return 'ER100', None
+            raise ConnectionError("Serial connection lost before reading.")
 
         try:
             line = await asyncio.wait_for(self._rbuffer.get(), timeout=self._timeout)
@@ -91,19 +90,14 @@ class SerialProtocol(asyncio.Protocol):
                 parts = line.split(',', 1)
                 if len(parts) > 1:
                     return parts[0], parts[1].split(',')
-                return parts[0], None
 
         except asyncio.TimeoutError:
             logging.error("Timeout while waiting for response.")
-            if self._transport:
-                self._transport.close()
-            return 'ER101', None
+            raise TimeoutError("Timeout while reading from serial connection.")
         
         except Exception as e:
             logging.error(f"Unexpected error while reading: {e}")
-            if self._transport:
-                self._transport.close()
-            return 'ER99', None
+            raise RuntimeError(f"Unexpected error during serial read: {e}")
 
 
 class Instrument:
@@ -128,62 +122,86 @@ class Instrument:
             protocol.write_command(command)
 
     async def Read(protocol: SerialProtocol) -> ReadData:
-        """Read response and check for errors."""
+        try:
+            err, response = await protocol.read_until_delimiter()
 
-        err, response = await protocol.read_until_delimiter()
+        except asyncio.TimeoutError:
+            logging.error("Timeout: No response from instrument.")
+            raise RuntimeError("Timeout: No response from instrument.")
+        
         code, info = Instrument.check_error_code(err)
 
         if code != 0:
-            return Instrument.ReadData(None, code, info)
+            logging.error(f"Instrument error [{code}]: {info}")
+            raise RuntimeError(f"Instrument error [{code}]: {info}")
 
         return Instrument.ReadData(response, code, info)
-    
 
     @classmethod
-    def load_config(cls, path='src\instrument\config\connection_config.json'):
+    def load_config(cls, path='src\\instrument\\config\\connection_config.json'):
         if not cls.config:
-            with open(path, 'r') as f:
-                raw = json.load(f)
-                cls.config = raw
+            try:
+                with open(path, 'r') as f:
+                    raw = json.load(f)
+                    cls.config = raw
+            except FileNotFoundError:
+                logging.error(f"Config file not found: {path}")
+            except json.JSONDecodeError as e:
+                logging.error(f"JSON decode error in config file: {e}")
+            except Exception as e:
+                logging.error(f"Unexpected error while loading config: {e}")
+
+    @classmethod
+    async def close_connection(cls):
+        if cls.active_connection:
+            transport = getattr(cls.active_connection, '_transport', None)
+            if transport:
+                await transport.close()
+            cls.active_connection = None
 
     @classmethod
     def connection(cls, port: str = None, baudrate: int = 9600, protocol: asyncio.Protocol = SerialProtocol, idVendor=0xfffe, idProduct=0x0001):
-        """Decorator to handle serial connection. Reuses active connection if available."""
-
+        """Decorator to handle serial connection."""
+        
         cls.load_config()
-
         port = port or cls.config.get("port")
         baudrate = baudrate or cls.config.get("baudrate")
-        idVendor = idVendor or cls.config.get("idVendor")
-        idProduct = idProduct or cls.config.get("idProduct")
+
+        if port is None:
+            logging.error(f"No valid serial port found.")
 
         def decorator(func):
             @functools.wraps(func)
             async def wrapper(*args, **kwargs):
                 if cls.active_connection is None:
-                    _port = port or find_serial_port(idVendor, idProduct)
-
                     loop = asyncio.get_running_loop()
-                    
-                    _transport, _protocol = await serial_asyncio.create_serial_connection(
-                        loop, protocol, _port, baudrate
-                    )
-                    cls.active_connection = _protocol
+                    _transport = None
+                    _protocol = None
+
                     try:
+                        _transport, _protocol = await serial_asyncio.create_serial_connection(
+                            loop, protocol, port, baudrate
+                        )
+
+                        cls.active_connection = _protocol
+
                         await _protocol._ready_event.wait()
                         return await func(_protocol, *args, **kwargs)
-                    finally:
-                        _transport.close()
-                        cls.active_connection = None
+
+                    except Exception as e:
+                        raise RuntimeError(f"Failed during serial communication on port {port}: {e}")
                 else:
                     return await func(cls.active_connection, *args, **kwargs)
 
             return wrapper
         return decorator
+
     
     @staticmethod
-    def check_error_code(error_code: str) -> tuple[int, str]:
-        """Check the error code, raise an exception if it starts with 'ER'"""
+    def check_error_code(error_code: Optional[str]) -> tuple[int, str]:
+        if not error_code:
+            raise RuntimeError("No error code received: communication failure or no response.")
+
         try:
             with open('./src/error_codes.json', 'r') as file:
                 error_codes = json.load(file)
@@ -191,9 +209,14 @@ class Instrument:
             meaning = error_codes.get(error_code, "Unknown error code.")
 
             if error_code.startswith("ER"):
-                return 1, meaning
-                
+                raise RuntimeError(f"Instrument error [{error_code}]: {meaning}")
+
             return 0, meaning
-                    
+
+        except FileNotFoundError:
+            raise RuntimeError("Error codes file not found.")
+        except json.JSONDecodeError:
+            raise RuntimeError("Error codes JSON file is corrupted.")
         except Exception as e:
-            return 1, f'{e}'
+            raise RuntimeError(f"Unexpected error during error code checking: {e}")
+

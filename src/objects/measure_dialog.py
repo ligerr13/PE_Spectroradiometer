@@ -12,7 +12,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(424, 198)
+        Dialog.resize(474, 458)
         Dialog.setAccessibleName("")
         Dialog.setStyleSheet("QDialog {\n"
 "    border: 2px solid rgb(0, 150, 255); \n"
@@ -21,7 +21,9 @@ class Ui_Dialog(object):
 "QWidget {\n"
 "    background-color: rgb(20, 20, 20); \n"
 "}\n"
-"")
+"\n"
+"QPushButton {color: white;}\n"
+"QLabel{color:white;}")
         self.horizontalLayout = QtWidgets.QHBoxLayout(Dialog)
         self.horizontalLayout.setContentsMargins(2, 2, 2, 2)
         self.horizontalLayout.setSpacing(2)
@@ -32,243 +34,119 @@ class Ui_Dialog(object):
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.widget)
         self.verticalLayout_2.setContentsMargins(1, 1, 1, 1)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.widget_2 = QtWidgets.QWidget(parent=self.widget)
-        self.widget_2.setStyleSheet("")
-        self.widget_2.setObjectName("widget_2")
-        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.widget_2)
-        self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.scrollArea = QtWidgets.QScrollArea(parent=self.widget_2)
+        self.tabWidget = QtWidgets.QTabWidget(parent=self.widget)
+        self.tabWidget.setObjectName("tabWidget")
+        self.tab = QtWidgets.QWidget()
+        self.tab.setObjectName("tab")
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.tab)
+        self.verticalLayout.setContentsMargins(1, 1, 1, 1)
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.scrollArea = QtWidgets.QScrollArea(parent=self.tab)
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 416, 134))
-        self.scrollAreaWidgetContents.setStyleSheet("")
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 458, 419))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
-        self.gridLayout = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
-        self.gridLayout.setContentsMargins(0, 5, 0, 0)
-        self.gridLayout.setSpacing(1)
-        self.gridLayout.setObjectName("gridLayout")
-        self.groupBox = QtWidgets.QGroupBox(parent=self.scrollAreaWidgetContents)
-        self.groupBox.setStyleSheet("QGroupBox {\n"
-"  border-radius: 2px;\n"
-"  margin-top: 1.4em;\n"
-"  margin-bottom: 1;\n"
-"  font: 700 12pt \"Consolas\";\n"
-"}\n"
-"QLineEdit {\n"
-"    font: 600 10pt \"Segoe UI\";\n"
-"    background-color:  rgb(41,41,41);\n"
-"   color: white;\n"
-"    border-radius: 2px;\n"
-"}\n"
-"QPushButton {\n"
-"    background: rgb(0, 150, 255);\n"
-"    color: rgba(255,255,255, 0.85);\n"
-"    border-radius: 2px;\n"
-"    font: 600 10pt \"Segoe UI\";\n"
-"}\n"
-"QPushButton:hover {\n"
-"    background: rgb(51, 180, 255);\n"
-"}\n"
-"QGroupBox::title {\n"
-"  background: transparent;\n"
-"  color: white;\n"
-"  padding-top: -30px;\n"
-"   padding-left: -18px;\n"
-"  margin: 0 15 15 15;\n"
-"}\n"
-"QLabel {\n"
-"    color: grey;\n"
-"    font: 550 11pt \"Consolas\";\n"
-"}\n"
-"QSpinBox {\n"
-"        font: 600 10pt \"Segoe UI\";\n"
-"         background-color:  rgb(41,41,41);\n"
-"        color: grey;\n"
-"        border-radius: 2px;\n"
-"        border: 0px;\n"
-"}\n"
-"QComboBox {\n"
-"        font: 700 10pt \"Segoe UI\";\n"
-"         background-color:  rgb(41,41,41);\n"
-"        color: grey;\n"
-"        border-radius: 2px;\n"
-"        border: 0px;\n"
-"}")
-        self.groupBox.setObjectName("groupBox")
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.groupBox)
-        self.verticalLayout.setContentsMargins(1, 0, 1, 0)
-        self.verticalLayout.setSpacing(1)
-        self.verticalLayout.setObjectName("verticalLayout")
-        self.widget_3 = QtWidgets.QWidget(parent=self.groupBox)
-        self.widget_3.setMinimumSize(QtCore.QSize(0, 50))
-        self.widget_3.setMaximumSize(QtCore.QSize(16777215, 50))
-        self.widget_3.setObjectName("widget_3")
-        self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.widget_3)
-        self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout_3.setSpacing(0)
-        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        self.pushButton = QtWidgets.QPushButton(parent=self.widget_3)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.pushButton.sizePolicy().hasHeightForWidth())
-        self.pushButton.setSizePolicy(sizePolicy)
-        self.pushButton.setMinimumSize(QtCore.QSize(149, 50))
-        self.pushButton.setMaximumSize(QtCore.QSize(149, 50))
-        self.pushButton.setStyleSheet("border-top: 1px solid rgba(129, 129, 129, 50);\n"
-"border-bottom: 1px solid rgba(129, 129, 129, 50);\n"
-"color: white;\n"
-"border-radius: 0px;")
+        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
+        self.verticalLayout_3.setObjectName("verticalLayout_3")
+        self.open_file_widget = QtWidgets.QWidget(parent=self.scrollAreaWidgetContents)
+        self.open_file_widget.setObjectName("open_file_widget")
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.open_file_widget)
+        self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.pushButton = QtWidgets.QPushButton(parent=self.open_file_widget)
         self.pushButton.setObjectName("pushButton")
-        self.horizontalLayout_3.addWidget(self.pushButton)
-        self.label_3 = QtWidgets.QLabel(parent=self.widget_3)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.label_3.sizePolicy().hasHeightForWidth())
-        self.label_3.setSizePolicy(sizePolicy)
-        font = QtGui.QFont()
-        font.setFamily("Consolas")
-        font.setPointSize(11)
-        font.setBold(True)
-        font.setItalic(False)
-        self.label_3.setFont(font)
-        self.label_3.setStyleSheet("border-top: 1px solid rgba(129, 129, 129, 50);\n"
-"border-bottom: 1px solid rgba(129, 129, 129, 50);\n"
-"border-radius: 0px;\n"
-"border: 1px solid rgba(129, 129, 129, 50); \n"
-"color: grey;\n"
-"border-radius: 0px;")
-        self.label_3.setObjectName("label_3")
-        self.horizontalLayout_3.addWidget(self.label_3)
-        self.verticalLayout.addWidget(self.widget_3)
-        self.widget_4 = QtWidgets.QWidget(parent=self.groupBox)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.widget_4.sizePolicy().hasHeightForWidth())
-        self.widget_4.setSizePolicy(sizePolicy)
-        self.widget_4.setMinimumSize(QtCore.QSize(0, 50))
-        self.widget_4.setMaximumSize(QtCore.QSize(16777213, 50))
-        self.widget_4.setObjectName("widget_4")
-        self.horizontalLayout_5 = QtWidgets.QHBoxLayout(self.widget_4)
-        self.horizontalLayout_5.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout_5.setSpacing(0)
-        self.horizontalLayout_5.setObjectName("horizontalLayout_5")
-        self.label_4 = QtWidgets.QLabel(parent=self.widget_4)
-        self.label_4.setMinimumSize(QtCore.QSize(150, 0))
-        self.label_4.setMaximumSize(QtCore.QSize(150, 16777215))
-        self.label_4.setStyleSheet("border: 1px solid rgba(129, 129, 129, 50); \n"
-"color: grey;\n"
-"border-radius: 0px;")
-        self.label_4.setObjectName("label_4")
-        self.horizontalLayout_5.addWidget(self.label_4)
-        self.fileName = QtWidgets.QLineEdit(parent=self.widget_4)
-        self.fileName.setMinimumSize(QtCore.QSize(0, 50))
-        self.fileName.setMaximumSize(QtCore.QSize(16777215, 50))
-        self.fileName.setStyleSheet("border-radius: 0px;  font: 6 10pt \"Consolas\";\n"
-"border: 1px solid rgba(129, 129, 129, 50); \n"
-"color: grey;\n"
-"border-radius: 0px;")
-        self.fileName.setText("")
-        self.fileName.setObjectName("fileName")
-        self.horizontalLayout_5.addWidget(self.fileName)
-        self.verticalLayout.addWidget(self.widget_4)
-        self.gridLayout.addWidget(self.groupBox, 0, 0, 1, 1)
+        self.horizontalLayout_2.addWidget(self.pushButton)
+        self.label = QtWidgets.QLabel(parent=self.open_file_widget)
+        self.label.setObjectName("label")
+        self.horizontalLayout_2.addWidget(self.label)
+        self.verticalLayout_3.addWidget(self.open_file_widget)
+        self.file_name_widget = QtWidgets.QWidget(parent=self.scrollAreaWidgetContents)
+        self.file_name_widget.setObjectName("file_name_widget")
+        self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.file_name_widget)
+        self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
+        self.lineEdit = QtWidgets.QLineEdit(parent=self.file_name_widget)
+        self.lineEdit.setObjectName("lineEdit")
+        self.horizontalLayout_3.addWidget(self.lineEdit)
+        self.verticalLayout_3.addWidget(self.file_name_widget)
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
-        self.horizontalLayout_2.addWidget(self.scrollArea)
-        self.verticalLayout_2.addWidget(self.widget_2)
-        self.widget_7 = QtWidgets.QWidget(parent=self.widget)
-        self.widget_7.setMinimumSize(QtCore.QSize(0, 40))
-        self.widget_7.setMaximumSize(QtCore.QSize(16777215, 50))
-        self.widget_7.setStyleSheet("QWidget {\n"
-"    background-color: rgb(31, 31, 31);\n"
-"    color:white;\n"
-"    border-radius: 0px;\n"
-"    background-color: rgb(35, 35, 35);\n"
-"}\n"
-"Line {\n"
-"    background-color: rgba(129, 129, 129, 50);\n"
-"}\n"
-"QPushButton {\n"
-"        font: 700 10pt \"Segoe UI\";\n"
-"}")
-        self.widget_7.setObjectName("widget_7")
-        self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.widget_7)
+        self.verticalLayout.addWidget(self.scrollArea)
+        self.tabWidget.addTab(self.tab, "")
+        self.tab_2 = QtWidgets.QWidget()
+        self.tab_2.setObjectName("tab_2")
+        self.gridLayout = QtWidgets.QGridLayout(self.tab_2)
+        self.gridLayout.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout.setObjectName("gridLayout")
+        self.scrollArea_2 = QtWidgets.QScrollArea(parent=self.tab_2)
+        self.scrollArea_2.setWidgetResizable(True)
+        self.scrollArea_2.setObjectName("scrollArea_2")
+        self.scrollAreaWidgetContents_2 = QtWidgets.QWidget()
+        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, 0, 460, 421))
+        self.scrollAreaWidgetContents_2.setObjectName("scrollAreaWidgetContents_2")
+        self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_2)
+        self.verticalLayout_4.setObjectName("verticalLayout_4")
+        self.widget_2 = QtWidgets.QWidget(parent=self.scrollAreaWidgetContents_2)
+        self.widget_2.setObjectName("widget_2")
+        self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.widget_2)
+        self.verticalLayout_5.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_5.setObjectName("verticalLayout_5")
+        self.label_2 = QtWidgets.QLabel(parent=self.widget_2)
+        self.label_2.setObjectName("label_2")
+        self.verticalLayout_5.addWidget(self.label_2)
+        self.plainTextEdit = QtWidgets.QPlainTextEdit(parent=self.widget_2)
+        self.plainTextEdit.setObjectName("plainTextEdit")
+        self.verticalLayout_5.addWidget(self.plainTextEdit)
+        self.progressBar = QtWidgets.QProgressBar(parent=self.widget_2)
+        self.progressBar.setProperty("value", 1)
+        self.progressBar.setTextVisible(False)
+        self.progressBar.setObjectName("progressBar")
+        self.verticalLayout_5.addWidget(self.progressBar)
+        self.verticalLayout_4.addWidget(self.widget_2)
+        self.widget_3 = QtWidgets.QWidget(parent=self.scrollAreaWidgetContents_2)
+        self.widget_3.setObjectName("widget_3")
+        self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.widget_3)
         self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout_4.setSpacing(1)
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
-        self.pushButton_5 = QtWidgets.QPushButton(parent=self.widget_7)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.pushButton_5.sizePolicy().hasHeightForWidth())
-        self.pushButton_5.setSizePolicy(sizePolicy)
-        self.pushButton_5.setMinimumSize(QtCore.QSize(0, 50))
-        self.pushButton_5.setMaximumSize(QtCore.QSize(150, 50))
-        self.pushButton_5.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
-        self.pushButton_5.setStyleSheet("QPushButton:hover {\n"
-"            background: rgb(55, 55, 55);\n"
-"        }\n"
-"QPushButton:checked  {\n"
-"        border: 0px;\n"
-"        background-color: rgb(45, 45, 45);\n"
-"}\n"
-"QPushTip{ \n"
-"        font: 12pt;\n"
-"        color: rgb(100, 100, 100);\n"
-"}")
-        self.pushButton_5.setCheckable(False)
-        self.pushButton_5.setObjectName("pushButton_5")
-        self.horizontalLayout_4.addWidget(self.pushButton_5)
-        self.line = QtWidgets.QFrame(parent=self.widget_7)
-        self.line.setMinimumSize(QtCore.QSize(1, 0))
-        self.line.setMaximumSize(QtCore.QSize(1, 16777215))
-        self.line.setFrameShape(QtWidgets.QFrame.Shape.VLine)
-        self.line.setFrameShadow(QtWidgets.QFrame.Shadow.Sunken)
-        self.line.setObjectName("line")
-        self.horizontalLayout_4.addWidget(self.line)
-        self.pushButton_6 = QtWidgets.QPushButton(parent=self.widget_7)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.pushButton_6.sizePolicy().hasHeightForWidth())
-        self.pushButton_6.setSizePolicy(sizePolicy)
-        self.pushButton_6.setMinimumSize(QtCore.QSize(0, 50))
-        self.pushButton_6.setMaximumSize(QtCore.QSize(16777215, 50))
-        self.pushButton_6.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
-        self.pushButton_6.setStyleSheet("QPushButton:hover {\n"
-"            background: rgb(0, 150, 255);\n"
-"        }\n"
-"QPushButton:checked  {\n"
-"        border: 0px;\n"
-"        background: rgb(43, 81, 235);\n"
-"        border :3px solid rgb(63, 101, 255);\n"
-"}\n"
-"QPushTip{ \n"
-"        font: 12pt;\n"
-"        color: rgb(100, 100, 100);\n"
-"}")
-        self.pushButton_6.setCheckable(False)
-        self.pushButton_6.setObjectName("pushButton_6")
-        self.horizontalLayout_4.addWidget(self.pushButton_6)
-        self.verticalLayout_2.addWidget(self.widget_7)
+        self.cancel_button = QtWidgets.QPushButton(parent=self.widget_3)
+        self.cancel_button.setMinimumSize(QtCore.QSize(50, 50))
+        self.cancel_button.setMaximumSize(QtCore.QSize(999, 50))
+        self.cancel_button.setStyleSheet("")
+        self.cancel_button.setObjectName("cancel_button")
+        self.horizontalLayout_4.addWidget(self.cancel_button)
+        self.start_stop_button = QtWidgets.QPushButton(parent=self.widget_3)
+        self.start_stop_button.setMinimumSize(QtCore.QSize(50, 50))
+        self.start_stop_button.setMaximumSize(QtCore.QSize(50, 50))
+        self.start_stop_button.setStyleSheet("color: white;")
+        self.start_stop_button.setText("")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(".\\src\\ui\\../../resources/icons/cancel-measure-button.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon.addPixmap(QtGui.QPixmap(".\\src\\ui\\../../resources/icons/start-measure-button.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
+        self.start_stop_button.setIcon(icon)
+        self.start_stop_button.setIconSize(QtCore.QSize(45, 45))
+        self.start_stop_button.setCheckable(True)
+        self.start_stop_button.setChecked(True)
+        self.start_stop_button.setObjectName("start_stop_button")
+        self.horizontalLayout_4.addWidget(self.start_stop_button)
+        self.verticalLayout_4.addWidget(self.widget_3)
+        self.scrollArea_2.setWidget(self.scrollAreaWidgetContents_2)
+        self.gridLayout.addWidget(self.scrollArea_2, 0, 0, 1, 1)
+        self.tabWidget.addTab(self.tab_2, "")
+        self.verticalLayout_2.addWidget(self.tabWidget)
         self.horizontalLayout.addWidget(self.widget)
 
         self.retranslateUi(Dialog)
-        self.pushButton_6.clicked.connect(Dialog.onAccept) # type: ignore
-        self.pushButton_5.clicked.connect(Dialog.reject) # type: ignore
+        self.tabWidget.setCurrentIndex(1)
+        self.cancel_button.clicked.connect(Dialog.reject) # type: ignore
+        self.start_stop_button.clicked['bool'].connect(Dialog.onAccept) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Measure"))
-        self.groupBox.setTitle(_translate("Dialog", "Export Options"))
-        self.pushButton.setText(_translate("Dialog", "Save here"))
-        self.label_3.setText(_translate("Dialog", "No save path has been chosen"))
-        self.label_4.setText(_translate("Dialog", "Measure name"))
-        self.fileName.setPlaceholderText(_translate("Dialog", "Please provide a name for the measurement."))
-        self.pushButton_5.setText(_translate("Dialog", "Cancel"))
-        self.pushButton_6.setText(_translate("Dialog", "Start"))
+        self.pushButton.setText(_translate("Dialog", "Select Folder"))
+        self.label.setText(_translate("Dialog", "TextLabel"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("Dialog", "Save options"))
+        self.label_2.setText(_translate("Dialog", "Program log"))
+        self.cancel_button.setText(_translate("Dialog", "Cancel"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("Dialog", "Control Panel"))
