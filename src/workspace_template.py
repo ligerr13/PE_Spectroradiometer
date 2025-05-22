@@ -11,6 +11,7 @@ from src.signals.signals import NodeBoardSignalBus
 from src.dialogs.widgetCreatorDialog import WidgetCreatorDialog
 from src.widgets.locus_widget import LocusWidget, LocusConfig
 from src.widgets.spectrum_widget import SpectrumWidget
+from src.widgets.daylight_locus_widget import DaylightLocusConfig, DaylightLocusWidget
 from src.signals.signals import WorkspaceSignalBus
 from src.dialogs.textToSceneDialog import TextToSceneDialog
 
@@ -725,6 +726,20 @@ class Workspace(QWidget):
                         
                         self.scene.addWidget(clone)
 
+                    case 'DaylightLocusWidget':
+                        clone = DaylightLocusWidget()
+                        clone.configure(
+                            data.get('data'), 
+                            data.get('config')['ccts'], 
+                            data.get('config')['force_daylight_below4000K'],
+                        )                        
+                        clone.setGeometry(
+                            data.get('geometry')['x'], 
+                            data.get('geometry')['y'], 
+                            data.get('geometry')['width'], 
+                            data.get('geometry')['height'])
+                        
+                        self.scene.addWidget(clone)
                     case _:
                         print(f"Unsupported widget type: {widget_type}")
 
@@ -1005,7 +1020,6 @@ class Workspace(QWidget):
                             widget = LocusWidget()
                             widget.setObjectName(WIDGET.get('unique_name', 'DefaultID'))
                             raw_colorimetric_data = WIDGET.get('data', [])
-                            print(raw_colorimetric_data)
                             colorimetric_config =   WIDGET.get('config', {})
                             config = LocusConfig(
                                 cctext=colorimetric_config.get('cctext', False),
@@ -1023,6 +1037,25 @@ class Workspace(QWidget):
                                 dl=config.dl,
                                 bbl=config.bbl,
                                 d65=config.d65
+                            )
+                        except Exception as widget_error:
+                            print(f"An Error has happend while creating locus widgets: {widget_error}")
+
+                    elif sub_type == 'DaylightLocus':
+                        try:
+                            widget = DaylightLocusWidget()
+                            widget.setObjectName(WIDGET.get('unique_name', 'DefaultID'))
+                            raw_ccts_data = WIDGET.get('data', [])
+                            daylight_config =   WIDGET.get('config', {})
+                            config = DaylightLocusConfig(
+                                ccts=daylight_config.get('ccts', []),
+                                force_daylight_below4000K=daylight_config.get('force_daylight_below4000K', False)
+                            )
+
+                            widget.configure(
+                                data=raw_ccts_data,
+                                ccts=config.ccts,
+                                force_daylight_below4000K=config.force_daylight_below4000K
                             )
                         except Exception as widget_error:
                             print(f"An Error has happend while creating locus widgets: {widget_error}")

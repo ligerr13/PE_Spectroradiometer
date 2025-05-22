@@ -182,6 +182,13 @@ QToolTip{
           </widget>
          </item>
          <item>
+          <widget class="QPushButton" name="pushButton_2">
+           <property name="text">
+            <string>Daylight Locus</string>
+           </property>
+          </widget>
+         </item>
+         <item>
           <spacer name="verticalSpacer">
            <property name="styleSheet">
             <string notr="true">border: 0px;</string>
@@ -251,7 +258,7 @@ QToolTip{
             <string notr="true">border: 0px;</string>
            </property>
            <property name="currentIndex">
-            <number>1</number>
+            <number>2</number>
            </property>
            <widget class="QWidget" name="page">
             <property name="minimumSize">
@@ -506,8 +513,8 @@ QComboBox {
                         <rect>
                          <x>0</x>
                          <y>0</y>
-                         <width>493</width>
-                         <height>300</height>
+                         <width>285</width>
+                         <height>120</height>
                         </rect>
                        </property>
                        <layout class="QGridLayout" name="gridLayout_7">
@@ -1519,7 +1526,7 @@ QCheckBox::indicator {
                         <rect>
                          <x>0</x>
                          <y>0</y>
-                         <width>495</width>
+                         <width>429</width>
                          <height>50</height>
                         </rect>
                        </property>
@@ -1781,7 +1788,7 @@ border: 2px solid blue;
 }b </string>
                </property>
                <property name="currentIndex">
-                <number>0</number>
+                <number>1</number>
                </property>
                <property name="documentMode">
                 <bool>true</bool>
@@ -3430,6 +3437,24 @@ border-radius: 0px;</string>
                   </widget>
                  </item>
                 </layout>
+               </widget>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QWidget" name="page_3">
+            <layout class="QGridLayout" name="gridLayout_8">
+             <item row="0" column="0">
+              <widget class="QTabWidget" name="tabWidget_3">
+               <widget class="QWidget" name="tab_3">
+                <attribute name="title">
+                 <string>Tab 1</string>
+                </attribute>
+               </widget>
+               <widget class="QWidget" name="tab_4">
+                <attribute name="title">
+                 <string>Tab 2</string>
+                </attribute>
                </widget>
               </widget>
              </item>

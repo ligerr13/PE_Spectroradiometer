@@ -1,13 +1,16 @@
 from PyQt6.QtCore import pyqtSignal
-from PyQt6.QtWidgets import QDialog, QAbstractButton
+from PyQt6.QtWidgets import QDialog, QSizePolicy
 from pathlib import Path
 # from src.objects.widget_creater_dialog import Ui_Dialog
 from src.objects.widget_creator_new import Ui_Dialog
 from src.widgets.spectrum_widget import SpectrumWidget
 from src.widgets.locus_widget import LocusWidget, LocusConfig
+from src.widgets.daylight_locus_widget import DaylightLocusConfig, DaylightLocusWidget
 from ..globals.utils import open_dialog
 import json
+import numpy as np
 from src.signals.signals import WorkspaceSignalBus
+from superqt import QLabeledRangeSlider
 
 
 class WidgetCreatorDialog(QDialog):
@@ -42,10 +45,33 @@ class WidgetCreatorDialog(QDialog):
         self._locus_preview = self.ui.gridLayout_8
         self._locus_preview.addWidget(self._locus_preview_widget)
 
+        self._daylight_locus_widget = DaylightLocusWidget()
+        self._daylight_preview = self.ui.gridLayout_9
+        self._daylight_preview.addWidget(self._daylight_locus_widget)
+        self.ccts_range_slider = QLabeledRangeSlider()
+        self.ccts_range_slider.valueChanged.connect(self.update_daylight_ccts_labels)
+        self.ccts_range_slider.setMinimum(0)
+        self.ccts_range_slider.setMaximum(99)
+        self.ccts_range_slider.setValue((0, 99))
+        size_policy = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
+        self.ccts_range_slider.setSizePolicy(size_policy)
+        self.ccts_range_slider.setStyleSheet("""
+            QRangeSlider {
+                border: none;
+            }
+        """)
+        self.ui.horizontalLayout_4.addWidget(self.ccts_range_slider)
+
+
         self.current_page_id = 0
         self.setPages(0)
         self.current_widget = self._spectral_preview_widget
     
+    def update_daylight_ccts_labels(self, val):
+        log_ccts = np.logspace(np.log10(4000), np.log10(1e11), num=100)
+        self.ui.ccts_min.setText(f"{log_ccts[val[0]]}")
+        self.ui.ccts_max.setText(f"{log_ccts[val[1]]}")
+
     def HandlePages(self, button):
         name = button.objectName()
 
@@ -55,7 +81,9 @@ class WidgetCreatorDialog(QDialog):
         elif name == "spectrum_locus_btn":
             self.current_page_id = 1
             self.current_widget = self._locus_preview_widget
-
+        elif name == "daylight_locus_btn":
+            self.current_page_id = 2
+            self.current_widget = self._daylight_locus_widget
 
         self.setPages(self.current_page_id)
 
@@ -124,6 +152,18 @@ class WidgetCreatorDialog(QDialog):
 
                 self._locus_preview_widget.setGeometryProperties(0, 0, width, height)
                 self._locus_preview_widget.configure(self._colorimetric_data,cctext, eew, dl, bbl, d65)
+            case 2:
+                width = self.ui.spinBox_10.value()
+                height = self.ui.spinBox_9.value()
+
+                force_daylight_below4000K = self.ui.checkBox_13.isChecked()
+
+                range_indices = self.ccts_range_slider.value()
+                log_ccts = np.logspace(np.log10(4000), np.log10(1e11), num=100)
+                ccts = log_ccts[range_indices[0]:range_indices[1] + 1].tolist()
+
+                self._daylight_locus_widget.setGeometryProperties(0, 0, width, height)
+                self._daylight_locus_widget.configure(self._colorimetric_data, ccts, force_daylight_below4000K)
 
             case _:
                 pass
