@@ -47,8 +47,27 @@ class WorkspaceSignalBus(QObject):
     request_start_measurement = pyqtSignal(object)
     request_cancel_measurement = pyqtSignal()
 
+    measurement_started = pyqtSignal()
+    measurement_canceled = pyqtSignal()
+    measurement_ended = pyqtSignal()
+    measurement_blocked = pyqtSignal()
+    measurement_failed = pyqtSignal()
+
+    calibration_started = pyqtSignal()
+    calibration_ended = pyqtSignal()
+    calibration_failed = pyqtSignal()
+
+    identification_success = pyqtSignal(str, str)
+    identification_failed = pyqtSignal(str, str)
+
     def __init__(self):
         super().__init__()
+
+    def emitIdentificationSuccess(self, product_name: str, serial_number: str):
+        self.identification_success.emit(product_name, serial_number)
+    
+    def emitIdentificationFailed(self, error_message: str):
+        self.identification_failed.emit(error_message)
 
     def emitRequestStartMeas(self, program):
         self.request_start_measurement.emit(program)
@@ -76,3 +95,46 @@ class WorkspaceSignalBus(QObject):
 
     def emitAddWidgetToCurrentWorkspace(self, widget: QGraphicsProxyWidget):
         self.add_widget_to_current_workspace.emit(widget)
+
+    def emitCalibrationStarted(self):
+        self.calibration_started.emit()
+
+    def emitCalibrationEnded(self):
+        self.calibration_ended.emit()
+
+    def emitCalibrationFailed(self):
+        self.calibration_failed.emit()
+
+    def emitMeasurementStarted(self):
+        self.measurement_started.emit()
+
+    def emitMeasurementEnded(self):
+        self.measurement_ended.emit()
+
+    def emitMeasurementCanceled(self):
+        self.measurement_canceled.emit()
+    
+    def emitMeasurementFailed(self):
+        self.measurement_failed.emit()
+
+
+class ConnectionSignals(QObject):
+    success = pyqtSignal()
+    failed = pyqtSignal()
+
+    _instance = None
+
+    @classmethod
+    def instance(cls):
+        if cls._instance is None:
+            cls._instance = cls()
+        return cls._instance
+
+    def __init__(self):
+        super().__init__()
+
+    def emitSuccess(self):
+        self.success.emit()
+    
+    def emitFailed(self):
+        self.failed.emit()

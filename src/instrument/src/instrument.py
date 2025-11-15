@@ -4,6 +4,7 @@ import logging
 import enum
 from typing import Union, Optional
 from dataclasses import dataclass
+from ...signals.signals import ConnectionSignals
 import json
 import serial_asyncio
 
@@ -23,9 +24,14 @@ class SerialProtocol(asyncio.Protocol):
         self._timeout = 1.0
         self._delimiter = Delimiter.CRLF.value
         self._partial_data = ''
+        self.closed_event = asyncio.Event()
 
     def connection_lost(self, exc) -> None:
         logging.error("Connection: lost.")
+        print(">>> connection_lost() called <<<")
+        self.closed_event.set()
+        super().connection_lost(exc)
+
 
     def connection_made(self, transport) -> None:
         """called when  the serial connection is established."""
@@ -36,7 +42,7 @@ class SerialProtocol(asyncio.Protocol):
     def data_received(self, data: bytes) -> None:
         """Handle incoming data, collect until delimiter is received."""
         try:
-            self._partial_data += data.decode('utf-8', errors='ignore')
+            self._partial_data += data.decode('utf-8')
             delimiter_str = self._delimiter.decode('utf-8')
 
             while delimiter_str in self._partial_data:
@@ -102,7 +108,7 @@ class SerialProtocol(asyncio.Protocol):
 
 class Instrument:
 
-    active_connection: Optional[asyncio.Protocol] = None
+    active_connection: Optional[SerialProtocol] = None
     config: dict = {}
 
     @dataclass
@@ -151,24 +157,45 @@ class Instrument:
             except Exception as e:
                 logging.error(f"Unexpected error while loading config: {e}")
 
+
     @classmethod
     async def close_connection(cls):
+        logging.info("Closing serial connection if active.")
         if cls.active_connection:
-            transport = getattr(cls.active_connection, '_transport', None)
-            if transport:
-                await transport.close()
+            protocol = cls.active_connection
+            transport = getattr(protocol, '_transport', None)
+
+            if transport and not transport.is_closing():
+                try:
+                    logging.info("Closing serial transport...")
+                    loop = asyncio.get_running_loop()
+                    loop.call_soon_threadsafe(transport.close)
+
+                    try:
+                        await asyncio.wait_for(protocol.closed_event.wait(), timeout=2.0)
+                    except asyncio.TimeoutError:
+                        logging.warning("Timeout waiting for connection_lost. Forcing close.")
+                        protocol.closed_event.set()
+
+                    logging.info("Serial connection closed successfully.")
+                except Exception as e:
+                    logging.error(f"Error while closing transport: {e}")
+
             cls.active_connection = None
-
+            
     @classmethod
-    def connection(cls, port: str = None, baudrate: int = 9600, protocol: asyncio.Protocol = SerialProtocol, idVendor=0xfffe, idProduct=0x0001):
-        """Decorator to handle serial connection."""
-        
+    def connection(cls, port: str = None, baudrate: int = None, protocol: asyncio.Protocol = SerialProtocol):
         cls.load_config()
-        port = port or cls.config.get("port")
-        baudrate = baudrate or cls.config.get("baudrate")
+        
+        effective_port = port if port is not None else cls.config.get("port")
+        effective_baudrate = baudrate if baudrate is not None else cls.config.get("baudrate")
 
-        if port is None:
-            logging.error(f"No valid serial port found.")
+        if effective_port is None:
+            logging.error("No valid serial port found. Please specify 'port' or ensure it's in the config.")
+            raise ValueError("Serial port not specified.")
+        
+
+        bus = ConnectionSignals.instance()
 
         def decorator(func):
             @functools.wraps(func)
@@ -177,22 +204,21 @@ class Instrument:
                     loop = asyncio.get_running_loop()
                     _transport = None
                     _protocol = None
-
                     try:
                         _transport, _protocol = await serial_asyncio.create_serial_connection(
-                            loop, protocol, port, baudrate
+                            loop, protocol, effective_port, effective_baudrate
                         )
-
                         cls.active_connection = _protocol
-
                         await _protocol._ready_event.wait()
+                        bus.emitSuccess()
                         return await func(_protocol, *args, **kwargs)
-
                     except Exception as e:
-                        raise RuntimeError(f"Failed during serial communication on port {port}: {e}")
+                        # logging.error(f"Failed to establish serial connection on port {effective_port}: {e}")
+                        cls.active_connection = None
+                        bus.emitFailed()
+                        raise RuntimeError(f"Failed to connect to instrument: {e}")
                 else:
                     return await func(cls.active_connection, *args, **kwargs)
-
             return wrapper
         return decorator
 
@@ -219,4 +245,5 @@ class Instrument:
             raise RuntimeError("Error codes JSON file is corrupted.")
         except Exception as e:
             raise RuntimeError(f"Unexpected error during error code checking: {e}")
+        
 

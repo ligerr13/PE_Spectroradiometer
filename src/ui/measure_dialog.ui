@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>474</width>
-    <height>458</height>
+    <width>507</width>
+    <height>514</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -94,8 +94,8 @@ QLabel{color:white;}</string>
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>458</width>
-               <height>419</height>
+               <width>491</width>
+               <height>475</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -185,8 +185,8 @@ QLabel{color:white;}</string>
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>460</width>
-               <height>421</height>
+               <width>493</width>
+               <height>477</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_4">

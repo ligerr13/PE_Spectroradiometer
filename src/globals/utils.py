@@ -1,3 +1,4 @@
+from serial.tools import list_ports
 from enum import Enum
 from ..widgets.toast_widget import ToastWidget
 from src.globals.enum import ToastType
@@ -64,7 +65,9 @@ def open_folder_dialog(parent, direction: str = ""):
     return folder
 
 def convert_numpy(obj):
-    """ Ha az objektum egy ndarray, listává alakítja """
     if isinstance(obj, np.ndarray):
         return obj.tolist()
     raise TypeError(f"Object of type {obj.__class__.__name__} is not JSON serializable")
+
+def findAllSerialPorts():
+    return list_ports.comports()

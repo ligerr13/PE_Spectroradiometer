@@ -1,5 +1,7 @@
 import os
 import asyncio
+import logging
+from types import CoroutineType
 from qasync import asyncSlot
 from typing import Any, Coroutine
 
@@ -16,6 +18,7 @@ from src.signals.signals import WorkspaceSignalBus
 from src.workspace_landing_page import WorkSpaceLandingPage
 from src.objects.fileContextMenu import Ui_Form
 from src.globals.utils import show_toast, ToastType
+from src.instrument.src.instrument import Instrument
 
 class FileContextMenu(QMenu):
     def __init__(self):
@@ -47,6 +50,10 @@ class FileContextMenu(QMenu):
 
 
 class MyApp(QMainWindow):
+    is_measurement_running: bool
+    is_cancel_requested: bool
+    task: asyncio.Task | None
+
     def __init__(self):
         super().__init__()
 
@@ -56,6 +63,10 @@ class MyApp(QMainWindow):
         self.navbar = NavBar(self.ui)
         self.tm = TabManager(self.ui)
         self.fcu = FileContextMenu()
+
+        self.is_measurement_running = False
+        self.is_cancel_requested = False
+        self.task = None
 
         # Actions
         self.addActions([
@@ -89,16 +100,68 @@ class MyApp(QMainWindow):
         self.fcu.file_context_menu.actionopen_workspace_form_file.triggered.connect(self.open_dialog_and_create_workspace)
         self.fcu.file_context_menu.actionSaveAs.triggered.connect(self.save_current_workspace)
         self.signal_bus.newWorkspaceCreated.connect(self.handleNewWorkspaceCreation)
-        self.signal_bus.request_start_measurement.connect(self.start_program)
+        
+        self.signal_bus.request_start_measurement.connect(self.handle_request_start_measurement)
+        # self.signal_bus.request_cancel_measurement.connect(self.handle_request_cancel_measurement)
+        self.signal_bus.measurement_started.connect(self.on_measurement_started)
+        self.signal_bus.measurement_ended.connect(self.on_measurement_ended)
+        self.signal_bus.measurement_canceled.connect(self.on_measurement_canceled)
+        self.signal_bus.measurement_blocked.connect(self.on_measurement_blocked)
 
+    def on_measurement_started(self):
+        logging.info("MyApp: Measurement started.")
+
+    def on_measurement_ended(self):
+        logging.info("MyApp: Measurement has ended (completed or failed).")
+
+    def on_measurement_canceled(self):
+        logging.info("MyApp: Measurement has been cancelled.")
+
+    def on_measurement_blocked(self):
+        logging.warning("MyApp: Measurement blocked: Another measurement is already active or cannot be cancelled.")
+
+    def handle_request_cancel_measurement(self):
+        if self.task and not self.task.done():
+            self.is_cancel_requested = True
+            self.task.cancel()
+        else:
+            self.signal_bus.measurement_blocked.emit()
 
     @asyncSlot(object)
-    async def start_program(self, program: Coroutine[Any, Any, None]):
-        try:
-            await program()
-        except Exception as e:
-            print(f"Program exited with error: {e}")
+    async def handle_request_start_measurement(self, program: Coroutine[Any, Any, None]):
+        """Called when a measurement is requested."""
 
+        if self.is_measurement_running:
+            self.signal_bus.measurement_blocked.emit()
+            return
+        
+        self.is_measurement_running = True
+        self.is_cancel_requested = False
+        self.signal_bus.measurement_started.emit()
+
+        self.task = asyncio.create_task(program)
+
+        try:
+            await self.task
+
+            if not self.is_cancel_requested:
+                self.signal_bus.measurement_ended.emit()
+        except asyncio.CancelledError:
+            logging.info("Measurement task was cancelled.")
+            self.signal_bus.measurement_canceled.emit()
+        except Exception as e:
+            logging.error(f"Measurement program exited with error: {e}")
+            self.signal_bus.measurement_ended.emit()
+
+        finally:
+            self._is_measurement_running = False
+            self._measurement_task = None
+            self._cancellation_requested = False
+
+            try:
+                await Instrument.close_connection()
+            except Exception as close_err:
+                logging.error(f"Error closing instrument connection: {close_err}")
 
 
     @pyqtSlot()

@@ -151,10 +151,27 @@ async def RemoteModeSelect(protocol, operation: int = 1) -> None:
 
     input_byte: bytes = b'RMTS,' + bytes(str(operation), 'utf-8')
 
-    print("palacsinta")
     try:
         Instrument.Write(protocol, input_byte)
 
         _: str = await Instrument.Read(protocol)
     except:
+        raise
+
+async def IdentificationDataRead(protocol) -> Instrument.ReadData:
+    """
+    `Reads the product identification information from the instrument.`
+    
+    :rtype: Instrument.ReadData
+    :return: ReadData containing the product info: [Product name, Variation code, Serial number]
+    """
+
+    input_byte: bytes = b'IDDR'
+    
+    try:
+        Instrument.Write(protocol, input_byte)
+        
+        read_data: Instrument.ReadData = await Instrument.Read(protocol) 
+        return read_data
+    except Exception as e:
         raise
