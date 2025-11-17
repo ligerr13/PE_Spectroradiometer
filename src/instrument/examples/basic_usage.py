@@ -100,6 +100,9 @@ async def p_measure_read_store(protocol):
         try:
             with open(filename, 'w', encoding='utf-8') as f:
                 f.write(final_json_string)
+
+            await bus.emitGeneratedFile(filename)
+
         except Exception as file_error:
             logging.error(f"Error while writing json file: {file_error}")
             

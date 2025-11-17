@@ -83,6 +83,8 @@ class MeasureDialogV2(QDialog):
         self.workspace_signal_bus.measurement_failed.connect(self.onMeasurementFailed)
         self.workspace_signal_bus.identification_failed.connect(self.onIdentficationFailed)
         self.workspace_signal_bus.identification_success.connect(self.onIndentificationSuccess)
+        self.workspace_signal_bus.measurement_file_generated.connect(self.onAddFile)
+
         self.ui.pushButton_2.clicked.connect(self.onConnectClicked)
         self.ui.comboBox.currentIndexChanged.connect(self.onPortSelected)
 
@@ -178,6 +180,8 @@ class MeasureDialogV2(QDialog):
         self.ui.label_8.setProperty("state", "failed")
         self.ui.label_8.style().polish(self.ui.label_8)
 
+    def onAddFile(generated_file: str):
+        print(generated_file)
 
     def reset(self):
         self.programLogger.idleLog()

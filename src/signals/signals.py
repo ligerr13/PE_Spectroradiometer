@@ -65,6 +65,8 @@ class WorkspaceSignalBus(QObject):
 
     measurement_files_generated_success = pyqtSignal()
     measurement_files_generated_failed = pyqtSignal()
+    measurement_file_generated = pyqtSignal(str)
+
 
     def __init__(self):
         super().__init__()
@@ -128,6 +130,9 @@ class WorkspaceSignalBus(QObject):
 
     def emitGeneratingFilesFailed(self):
         self.measurement_files_generated_failed.emit()
+
+    def emitGeneratedFile(self, file_name: str):
+        self.measurement_file_generated.emit(file_name)
 
 class ConnectionSignals(QObject):
     success = pyqtSignal()
