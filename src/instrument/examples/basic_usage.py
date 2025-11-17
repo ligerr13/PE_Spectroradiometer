@@ -14,6 +14,15 @@ async def p_measure_read_store(protocol):
     bus = WorkspaceSignalBus.instance()
     state = 0
 
+    save_file = {
+        "MeasurementJsonBuilder": {"Measurement Conditions": {}},
+        "Spectral380To479JsonBuilder": {"Spectral data": {}},
+        "Spectral480To579JsonBuilder": {"Spectral data": {}},
+        "Spectral580To679JsonBuilder": {"Spectral data": {}},
+        "Spectral680To780JsonBuilder": {"Spectral data": {}},
+        "ColorimetricJsonBuilder": {"Colorimetric Data": {}}
+    }
+
     try:
         state = 1
         bus.emitCalibrationStarted()
@@ -46,30 +55,56 @@ async def p_measure_read_store(protocol):
         bus.emitMeasurementEnded()
 
         await RemoteModeSelect(protocol, operation=0)
+
+        state = 3
+        condition_values = measurement_conditions.response
+        conditions_dict = save_file["MeasurementJsonBuilder"]["Measurement Conditions"]
         
-        spectral_data = np.concatenate([
-            spectral_irradiance_data_380nm_to_479nm.response,
-            spectral_irradiance_data_480nm_to_579nm.response,
-            spectral_irradiance_data_580nm_to_679nm.response,
-            spectral_irradiance_data_680nm_to_780nm.response
-        ])
+        for key, value in zip(CS2000.MEASUREMENT_KEYS, condition_values):
+            conditions_dict[key] = {"value": value.strip(), "switch": 0}
 
-        wavelengths = np.arange(380, 781, 1)
+        spectral_responses = [
+            (save_file["Spectral380To479JsonBuilder"], spectral_irradiance_data_380nm_to_479nm.response),
+            (save_file["Spectral480To579JsonBuilder"], spectral_irradiance_data_480nm_to_579nm.response),
+            (save_file["Spectral580To679JsonBuilder"], spectral_irradiance_data_580nm_to_679nm.response),
+            (save_file["Spectral680To780JsonBuilder"], spectral_irradiance_data_680nm_to_780nm.response)
+        ]
+        
+        for builder_dict, response_list in spectral_responses:
+            formatted_values = [f"{float(val):.4e}" for val in response_list]
+            
+            builder_dict["Spectral data"] = {
+                "value": ",".join(formatted_values),
+                "switch": 0
+            }
 
-        values = colorimetric_data.response
-        colorimetric_dict = {key: float(value) for key, value in zip(CS2000.COLORIMETRIC_KEYS, values)}
+        colorimetric_values = colorimetric_data.response
+        colorimetric_data_dict = save_file["ColorimetricJsonBuilder"]["Colorimetric Data"]
+        
+        for key, value in zip(CS2000.COLORIMETRIC_KEYS, colorimetric_values):
+            if key in ["T", "delta uv", "T10", "delta uv10"]:
+                formatted_value = value.strip() if key.startswith('T') else value.strip()
+            elif 'e' in value.lower():
+                formatted_value = f"{float(value):.4e}" 
+            else:
+                formatted_value = value.strip() 
 
-        spectral_df = pd.DataFrame({
-            "Wavelength": wavelengths,
-            "Spectral-Irradiance": spectral_data
-        })
+            colorimetric_data_dict[key] = {"value": formatted_value, "switch": 0}
+
+        final_json_string = json.dumps(save_file, indent=4)
+        
+        state = 4
         _ct = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-        spectral_df.to_csv(f"Spectral_Data_{_ct}.csv", index=False)
-
-        colorimetric_df = pd.DataFrame(list(colorimetric_dict.items()), columns=["Parameter", "Value"])
-        colorimetric_df.to_csv(f"Colorimetric_Data_{_ct}.csv", index=False)
-
-        await bus.emitMeasurementDoneSuccess()
+        filename = f"Measurement_Data_{_ct}.json" 
+        
+        try:
+            with open(filename, 'w', encoding='utf-8') as f:
+                f.write(final_json_string)
+        except Exception as file_error:
+            logging.error(f"Error while writing json file: {file_error}")
+            
+        await bus.emitMeasurementDoneSuccess(final_json_string)
+        return final_json_string
 
     except Exception as e:
         print(f"Measurement failed: {e}")
@@ -78,28 +113,13 @@ async def p_measure_read_store(protocol):
             await bus.emitCalibrationFailed()
         elif state == 2:
             await bus.emitMeasurementFailed()
+        elif state == 3:
+            await bus.emitProcessingFailed()
+        elif state == 4:
+            await bus.emitGeneratingFilesFailed()
+        
     finally:
         try:
             asyncio.create_task(CS2000.close_connection())
         except Exception as close_err:
             print(f"Error closing instrument connection: {close_err}")
-            
-@CS2000.connection(baudrate=9600)
-async def p_identify_instrument(protocol):
-    """Coonects and identifies the insturment."""
-    bus = WorkspaceSignalBus.instance()
-    try:
-        
-        id_data = await IdentificationDataRead(protocol)
-        
-        product_name = id_data.response[0].strip('"')
-        
-        if product_name in ["CS-2000", "CS-2000A"]:
-             bus.emitIdentificationSuccess(product_name, id_data.response[2])
-        else:
-             raise RuntimeError(f"Unknown device: {product_name}")
-    except Exception as e:
-        bus.emitIdentificationFailed(str(e))
-        
-    finally:
-        asyncio.create_task(CS2000.close_connection())

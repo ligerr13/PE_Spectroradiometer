@@ -121,6 +121,12 @@ class Instrument:
         "Le", "Lv", "X", "Y", "Z", "x", "y", "u'", "v'", "T", "delta uv", "lambda d", 
         "Pe","X10", "Y10", "Z10", "x10", "y10", "u'10", "v'10", "T10", "delta uv10", "lambda d10", "Pe10"
     ]
+
+    MEASUREMENT_KEYS = [
+        "Speed mode", "Sync mode", "Integration time", "Internal ND filter",
+        "Optional close-up lens", "Optional external ND filter",
+        "Measurement angle", "Calibration channel"
+    ]
     
     def Write(protocol: SerialProtocol, command: bytes):
         """Write to the instrument."""

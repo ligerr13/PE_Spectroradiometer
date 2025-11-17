@@ -88,6 +88,7 @@ class MeasureDialogV2(QDialog):
 
     def popUp(self):
         self.exec()
+        self.reset()
 
     def onIdentficationFailed(self):
         self.addLog("> Instrument identification failed. Please check the connection and try again.").setData(QColor(255, 100, 103), Qt.ItemDataRole.ForegroundRole)
@@ -176,3 +177,25 @@ class MeasureDialogV2(QDialog):
     def onMeasurementFailed(self):
         self.ui.label_8.setProperty("state", "failed")
         self.ui.label_8.style().polish(self.ui.label_8)
+
+
+    def reset(self):
+        self.programLogger.idleLog()
+
+        for lbl in [self.ui.label_6, self.ui.label_7, self.ui.label_8, self.ui.label_11]:
+            lbl.setProperty("state", "idle")
+            lbl.style().polish(lbl)
+
+        self.measureButton.setDisabled(False)
+        self.portPicker.clear()
+
+    def closeEvent(self, event):
+        if self.ui.label_8.property("state") == "in-progress":
+            self.addLog("> Cannot close dialog: measurement in progress.")
+            event.ignore()
+            return
+
+        self.reset()
+        super().closeEvent(event)
+
+
