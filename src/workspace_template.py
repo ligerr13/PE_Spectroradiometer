@@ -186,7 +186,6 @@ class ImportDialog(QDialog):
         self.accept()
 
 class TableContainerWidget(QWidget):
-    #TODO: Complete Table Logic and Fix Known Bugs
     table_count = 0
     load_data_signal = pyqtSignal()
 
@@ -197,6 +196,8 @@ class TableContainerWidget(QWidget):
 
         TableContainerWidget.table_count += 1
         self.file_path = file_path
+        self.selected_files = []
+        self.imported_files = []
         self.selected_options = []
         
         self.import_dialog = ImportDialog()
@@ -281,24 +282,48 @@ class TableContainerWidget(QWidget):
             pass
         
     def import_measurements_to_workspace_table(self):  
-        dir = "src/instrument/data"  
-        opened_file = open_dialog(self, direction=dir)
-        
-        if opened_file:
-            self.file_path = Path(opened_file)
-            self.load_data_signal.emit()
+        dir = "src/instrument/data"
+        opened_files = open_dialog(self, direction=dir)
+
+        if not opened_files:
+            return
+
+        for file_path_str in opened_files:
+            path_obj = Path(file_path_str)
+            if path_obj in self.imported_files:
+                print(f"[INFO] File already imported: {path_obj.name}")
+                continue
+
+            self.imported_files.append(path_obj)
+            print(f"[INFO] Imported: {path_obj.name}")
+
+        self.load_data()
+
+    def remove_imported_file(self, row: int):
+        if 0 <= row < len(self.imported_files):
+            removed_file = self.imported_files.pop(row)
+            print(f"[INFO] Removed from imported_files: {removed_file.name}")
+        self.table.removeRow(row)
+
+    def load_data(self):
+        self.table.clear_table()
+
+        for file_path in self.imported_files:
+            try:
+                with open(file_path, 'r') as json_file:
+                    data = json.load(json_file)
+                    if data:
+                        self.insert_data(data, file_path)
+            except Exception as e:
+                print(f"[ERROR] Could not load {file_path}: {e}")
 
     def set_selected_options(self, options: list):
-        if options != self.selected_options:
-            self.selected_options = ['','Measurement'] + options + ['']
-            self.table.setHorizontalHeaderLabels(self.selected_options)
-            self.load_data()
-            
-    def load_data(self):
-        with open(f"src/instrument/data/{self.file_path}") as json_file:
-            data = json.load(json_file)
-            if data:
-                self.insert_data(data)
+        self.selected_options = ['', 'Measurement'] + options + ['']
+        self.table.clear_table()
+        self.table.setColumnCount(len(self.selected_options))
+        self.table.setHorizontalHeaderLabels(self.selected_options)
+        self.load_data()
+
 
     def remove_option_from_selected(self, label: str, row: int):
         if label in self.selected_options:
@@ -307,8 +332,8 @@ class TableContainerWidget(QWidget):
             print(f"Option '{label}' removed from selected_options.")
             self.table.delete_row(row)
 
-    def insert_data(self, data: dict):
-        row_data = [self.file_path.name]
+    def insert_data(self, data: dict, file_path: Path):
+        row_data = [file_path.name]
         
         if "MeasurementJsonBuilder" in data and "Measurement Conditions" in data["MeasurementJsonBuilder"]:
             for key in self.selected_options[2:-1]:
@@ -321,8 +346,8 @@ class TableContainerWidget(QWidget):
                 else:
                     row_data.append("")
         
-        self.table.setColumnCount(len(row_data)  + 1)
-        self.table.add_table_row(row_data)
+            self.table.add_table_row(row_data)
+            self.table.setColumnCount(len(row_data)  + 1)
 
 class WorkspaceTable(QTableWidget):
     def __init__(self, parent=None):
@@ -370,10 +395,10 @@ class WorkspaceTable(QTableWidget):
         header.setMinimumHeight(40)
     
     def change_row_background(self, row_number: int, color: QColor):
-            for column in range(self.columnCount() + 1):
-                item = self.item(row_number, column)
-                if item:
-                    item.setBackground(color)
+        for column in range(self.columnCount() + 1):
+            item = self.item(row_number, column)
+            if item:
+                item.setBackground(color)
 
     def adjust_header_size(self):
         max_label_width = 0
@@ -388,10 +413,25 @@ class WorkspaceTable(QTableWidget):
                 max_label_width = max(max_label_width, fm.boundingRect(label_item.text()).width())
         return max_label_width
 
+
+    def delete_row_of_button(self, button: QPushButton):
+        for row in range(self.rowCount()):
+            if self.cellWidget(row, 0) == button:
+                self.parent().remove_imported_file(row)
+                break
+            
     def delete_row(self, row: int):
-        print(row)
+        file_item = self.item(row, 1)
+        if file_item:
+            file_name = file_item.text()
+            if hasattr(self.parent(), 'remove_imported_file'):
+                self.parent().remove_imported_file(file_name)
         self.removeRow(row)
-    
+
+    def clear_table(self):
+        self.setRowCount(0)
+
+
     def add_table_row(self, row_data: list):
         row_position = self.rowCount()
         self.insertRow(row_position)
@@ -405,7 +445,7 @@ class WorkspaceTable(QTableWidget):
         btn.setIcon(QIcon("resources/icons/delete.png"))
         btn.setFixedWidth(40)
         btn.setStyleSheet("QPushButton {background-color: rgb(210,39,48);}")
-        btn.clicked.connect(lambda _, rw=row_position: self.removeRow(rw))
+        btn.clicked.connect(lambda _, r=row_position: self.parent().remove_imported_file(r))
         self.setCellWidget(row_position, 0, btn)
 
         for col, value in enumerate(row_data, start=1):

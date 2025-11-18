@@ -7,6 +7,7 @@ from PyQt6.QtWidgets import QFileDialog
 from PyQt6.QtCore import QObject
 import numpy as np
 import serial.tools.list_ports
+from pathlib import Path
 
 class FileValidator:
     @classmethod
@@ -44,17 +45,14 @@ def darken_color(rgb, factor=0.8):
     return tuple(int(c * factor) for c in rgb)
 
 def open_dialog(parent, direction: str = ""):
+    fnames, _ = QFileDialog.getOpenFileNames(
+        parent,
+        "Open File",
+        direction,
+        "JSON Files (*.json)",
+    )
 
-    fname, _ = QFileDialog.getOpenFileName(
-                parent,
-                "Open File",
-                f"{direction}",
-                "JSON Files (*.json)",
-        )
-        
-    file_name = os.path.basename(fname)
-
-    return file_name
+    return [Path(f) for f in fnames]
 
 def open_folder_dialog(parent, direction: str = ""):
     folder = QFileDialog.getExistingDirectory(
