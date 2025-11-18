@@ -445,7 +445,7 @@ class WorkspaceTable(QTableWidget):
         btn.setIcon(QIcon("resources/icons/delete.png"))
         btn.setFixedWidth(40)
         btn.setStyleSheet("QPushButton {background-color: rgb(210,39,48);}")
-        btn.clicked.connect(lambda _, r=row_position: self.parent().remove_imported_file(r))
+        btn.clicked.connect(lambda _, b=btn: self.delete_row_of_button(b))
         self.setCellWidget(row_position, 0, btn)
 
         for col, value in enumerate(row_data, start=1):
