@@ -1,4 +1,3 @@
-import random
 from PyQt6.QtWidgets import QSpacerItem, QWidget, QTabBar, QSplitter,QVBoxLayout, QLabel,QTableWidgetItem, QTableWidget, QCheckBox, QGridLayout,QHBoxLayout,QDialog, QScrollArea, QSplitterHandle,QGraphicsView, QGraphicsProxyWidget, QGraphicsScene, QMenu, QGraphicsLineItem, QTreeWidgetItem, QPushButton, QSizePolicy, QHeaderView, QStyledItemDelegate, QStyle
 from PyQt6.QtGui import QColor, qRgb, QTransform, QCursor, QStandardItem, QIcon, QFont, QFontMetrics, QPaintEvent, QPen, QPainter, QPainterPath
 from PyQt6.QtCore import  Qt, QLineF, QPointF, QPoint, QSize, QObject, Qt, pyqtSignal, pyqtSlot, QRectF
@@ -9,6 +8,7 @@ from pathlib import Path
 from src.objects.editSettingsContextMenu import Ui_Form
 from src.objects.workspaceDesignFomr import Ui_WorkspaceDesignForm
 from src.objects.workspace_data_table import Ui_Form as WDataTableUi_Form
+from src.objects.data_table_filter import Ui_Form as WDataTableFilterUi_Form
 from src.signals.signals import NodeBoardSignalBus
 from src.dialogs.widgetCreatorDialog import WidgetCreatorDialog
 from src.widgets.locus_widget import LocusWidget, LocusConfig
@@ -92,36 +92,34 @@ class ICheckBox(QCheckBox):
         else:
             self.checkbox_data.imported = False
 
-class ImportDialog(QDialog):
+class ImportOptionsWidget(QWidget):
     optionsSelected = pyqtSignal(list)
-    
-    def __init__(self):
-        super().__init__()
+
+    def __init__(self, parent=None):
+        super().__init__(parent)
+
         self.checkboxes = []
-        
-        self.setWindowTitle("Import Settings")
-        self.setFixedSize(300, 300)
-        self.setWindowFlags(Qt.WindowType.CustomizeWindowHint)
-        layout = QVBoxLayout()
+
+        layout = QVBoxLayout(self)
 
         scroll_area = QScrollArea(self)
         scroll_area.setWidgetResizable(True)
 
         check_widget = QWidget()
         self.check_layout = QVBoxLayout()
-
         check_widget.setLayout(self.check_layout)
+
         scroll_area.setWidget(check_widget)
         layout.addWidget(scroll_area)
 
-        close_button = QPushButton("Close", self)
-        close_button.clicked.connect(self.on_accept)
-        
-        layout.addWidget(close_button)
+        apply_btn = QPushButton("Apply")
+        apply_btn.clicked.connect(self.on_apply)
+
+        layout.addWidget(apply_btn)
+
         self.setLayout(layout)
 
         checkbox_data_list = [
-            # Conditions
             ICheckBoxData(text="Speed Mode", key="Speed mode", imported=False),
             ICheckBoxData(text="Sync mode", key="Sync mode", imported=False),
             ICheckBoxData(text="Integration time", key="Integration time", imported=False),
@@ -131,7 +129,7 @@ class ImportDialog(QDialog):
             ICheckBoxData(text="Measurement angle", key="Measurement angle", imported=False),
             ICheckBoxData(text="Calibration channel", key="Calibration channel", imported=False),
 
-            # Colorimetric Data
+            # Colorimetric
             ICheckBoxData(text="Le", key="Le", imported=False),
             ICheckBoxData(text="Lv", key="Lv", imported=False),
             ICheckBoxData(text="X", key="X", imported=False),
@@ -157,13 +155,12 @@ class ImportDialog(QDialog):
             ICheckBoxData(text="lambda d10", key="lambda d10", imported=False),
             ICheckBoxData(text="Pe10", key="Pe10", imported=False),
 
-            # Spectral Builders
+            # Spectral groups
             ICheckBoxData(text="Spectral380To479JsonBuilder", key="Spectral380To479JsonBuilder", imported=False),
             ICheckBoxData(text="Spectral480To579JsonBuilder", key="Spectral480To579JsonBuilder", imported=False),
             ICheckBoxData(text="Spectral580To679JsonBuilder", key="Spectral580To679JsonBuilder", imported=False),
             ICheckBoxData(text="Spectral680To780JsonBuilder", key="Spectral680To780JsonBuilder", imported=False)
         ]
-
 
         for checkbox_data in checkbox_data_list:
             checkbox = ICheckBox(checkbox_data)
@@ -179,13 +176,29 @@ class ImportDialog(QDialog):
                 checkbox.setChecked(False)
                 checkbox.checkbox_data.imported = False
 
-    def on_accept(self):
-        selected_options = [
-            checkbox.checkbox_data.key for checkbox in self.checkboxes if checkbox.isChecked()
+    def on_apply(self):
+        selected = [
+            checkbox.checkbox_data.key
+            for checkbox in self.checkboxes if checkbox.isChecked()
         ]
+        self.optionsSelected.emit(selected)
+        self.hide()
 
-        self.optionsSelected.emit(selected_options)
-        self.accept()
+class DataTableFilter(QWidget):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+
+        self.ui = WDataTableFilterUi_Form()
+        self.ui.setupUi(self)
+
+    def is_visible(self) -> bool:
+        return self.isVisible()
+
+    def toggle_on(self) -> None:
+        self.setVisible = True
+
+    def toggle_off(self) -> None:
+        self.setVisible = False
 
 class WorkspaceDataTable(QWidget):
     def __init__(self, parent=None):
@@ -197,8 +210,19 @@ class WorkspaceDataTable(QWidget):
         sp = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         self.setSizePolicy(sp)
 
+        self.filter_widget = ImportOptionsWidget(self)
+        self.filter_widget.hide()
+
+        self.ui.verticalLayout_2.addWidget(self.filter_widget)
+
     def OpenFilterWidget(self):
-        pass
+        if self.filter_widget.isVisible():
+            self.filter_widget.hide()
+        else:
+            self.filter_widget.show()
+
+
+
 
 class TableContainerWidget(QWidget):
     table_count = 0
@@ -226,6 +250,7 @@ class TableContainerWidget(QWidget):
 
         main_layout = QVBoxLayout()
         main_layout.spacing = 0
+
         main_layout.addWidget(self.w_data_table)
         self.setLayout(main_layout)
 
