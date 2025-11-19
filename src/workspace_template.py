@@ -1,3 +1,4 @@
+import random
 from PyQt6.QtWidgets import QSpacerItem, QWidget, QTabBar, QSplitter,QVBoxLayout, QLabel,QTableWidgetItem, QTableWidget, QCheckBox, QGridLayout,QHBoxLayout,QDialog, QScrollArea, QSplitterHandle,QGraphicsView, QGraphicsProxyWidget, QGraphicsScene, QMenu, QGraphicsLineItem, QTreeWidgetItem, QPushButton, QSizePolicy, QHeaderView, QStyledItemDelegate, QStyle
 from PyQt6.QtGui import QColor, qRgb, QTransform, QCursor, QStandardItem, QIcon, QFont, QFontMetrics, QPaintEvent, QPen, QPainter, QPainterPath
 from PyQt6.QtCore import  Qt, QLineF, QPointF, QPoint, QSize, QObject, Qt, pyqtSignal, pyqtSlot, QRectF
@@ -7,6 +8,7 @@ from pathlib import Path
 
 from src.objects.editSettingsContextMenu import Ui_Form
 from src.objects.workspaceDesignFomr import Ui_WorkspaceDesignForm
+from src.objects.workspace_data_table import Ui_Form as WDataTableUi_Form
 from src.signals.signals import NodeBoardSignalBus
 from src.dialogs.widgetCreatorDialog import WidgetCreatorDialog
 from src.widgets.locus_widget import LocusWidget, LocusConfig
@@ -185,6 +187,19 @@ class ImportDialog(QDialog):
         self.optionsSelected.emit(selected_options)
         self.accept()
 
+class WorkspaceDataTable(QWidget):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+
+        self.ui = WDataTableUi_Form()
+        self.ui.setupUi(self)
+
+        sp = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        self.setSizePolicy(sp)
+
+    def OpenFilterWidget(self):
+        pass
+
 class TableContainerWidget(QWidget):
     table_count = 0
     load_data_signal = pyqtSignal()
@@ -192,85 +207,34 @@ class TableContainerWidget(QWidget):
     def __init__(self, file_path: Path):
         super().__init__()
 
-        self.signal_bus  = WorkspaceSignalBus().instance()
+        self.signal_bus = WorkspaceSignalBus().instance()
 
         TableContainerWidget.table_count += 1
-        self.file_path = file_path
-        self.selected_files = []
-        self.imported_files = []
-        self.selected_options = []
-        
-        self.import_dialog = ImportDialog()
+        self.file_path          = file_path
+        self.selected_files     = []
+        self.imported_files     = []
+        self.selected_options   = []
 
-        self.main_layout = QGridLayout(self)
-        self.main_layout.setContentsMargins(1, 1, 1, 1)
-        
+        sp = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        self.setSizePolicy(sp)
+
+        self.w_data_table = WorkspaceDataTable(self)
+
         self.table = WorkspaceTable()
 
-        self.nav_bar = QWidget()
-        self.nav_bar.setFixedWidth(55)
-        self.nav_bar.setStyleSheet("""
-            background-color: rgb(20, 20, 20); 
-            border-right: 1px solid rgba(129, 129, 129, 50);
-            border-top: 0;
-            border-left:0;
-            border-bottom: 0;
-            margin: 0 0 0 0;
-            padding: 0 0 0 0;
-            spacing: 0;
-        """)
-        self.nav_bar.setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Expanding)
+        self.w_data_table.ui.verticalLayout_5.addWidget(self.table)
+
+        main_layout = QVBoxLayout()
+        main_layout.spacing = 0
+        main_layout.addWidget(self.w_data_table)
+        self.setLayout(main_layout)
+
+        # self.table = self.table_widget.ui.tableWidget
         
-        nav_bar_layout = QGridLayout(self.nav_bar)
-        nav_bar_layout.setContentsMargins(1, 1, 1, 1)
-        nav_bar_layout.setAlignment(Qt.AlignmentFlag.AlignTop)
-        nav_bar_layout.setSpacing(3)
 
-        data_selecter_button = QPushButton('', self)
-        data_selecter_button.setCursor(QtCore.Qt.CursorShape.PointingHandCursor)
-        data_selecter_button.setIcon(QIcon("resources/icons/plus-symbol-button.png"))
-        
-        data_selecter_button.setFixedHeight(50)
-        data_selecter_button.setFixedWidth(50)
-
-        data_selecter_button.setStyleSheet("""
-            border: 0 0 0 0;
-            background-color: rgb(25,25,25);
-        """)
-
-        import_measurement_data_button = QPushButton('')
-        import_measurement_data_button.setIcon(QIcon("resources/icons/import.png"))
-        import_measurement_data_button.setFixedHeight(50)
-        import_measurement_data_button.setFixedWidth(50)
-        import_measurement_data_button.setStyleSheet("""
-            border: 0 0 0 0;
-            background-color: rgb(25,25,25);
-        """)
-        
-        nav_bar_layout.addWidget(data_selecter_button)
-        nav_bar_layout.addWidget(import_measurement_data_button)
-        
-        self.main_layout.addWidget(self.nav_bar, 0, 0, 2, 1)
-        self.main_layout.addWidget(self.table, 0, 1, 1, 2, QtCore.Qt.AlignmentFlag.AlignTop)
-        self.setStyleSheet("""
-            QWidget {
-                background-color: rgb(31,31,31);
-                margin: 0 0 0 0;
-                padding: 0 0 0 0;
-                spacing: 0;
-            }
-            QLabel {
-                padding: 1px;
-                font-size: 16px; 
-                font-weight: bold;
-            }
-        """)
-
-        self.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Fixed)
-
-        data_selecter_button.clicked.connect(self.open_import_options)
-        import_measurement_data_button.clicked.connect(self.import_measurements_to_workspace_table)
-        self.signal_bus.update_options.connect(self.remove_option_from_selected)
+        # data_selecter_button.clicked.connect(self.open_import_options)
+        # import_measurement_data_button.clicked.connect(self.import_measurements_to_workspace_table)
+        # self.signal_bus.update_options.connect(self.remove_option_from_selected)
 
     def open_import_options(self):
         if not self.file_path:
@@ -364,7 +328,7 @@ class WorkspaceTable(QTableWidget):
         self.setGridStyle(QtCore.Qt.PenStyle.NoPen)
         self.setStyleSheet("""
                 QTableWidget {
-                    background-color: transparent;
+                    background-color: red;
                     border: 0 0 0 0;
                     margin: 0 0 0 0;
                     padding: 0 0 0 0;
@@ -412,7 +376,6 @@ class WorkspaceTable(QTableWidget):
                 fm = QFontMetrics(bold_font)
                 max_label_width = max(max_label_width, fm.boundingRect(label_item.text()).width())
         return max_label_width
-
 
     def delete_row_of_button(self, button: QPushButton):
         for row in range(self.rowCount()):
@@ -525,13 +488,13 @@ class WorkspaceTableSplitter(QSplitter):
 
     def setStyle(self):
         self.setStyleSheet("""
-                    QSplitter::handle {
-                        background-color: rgb(53, 53, 53);
-                    }
-                    QSplitter::handle:hover {
-                        background-color: rgb(0, 150, 255);
-                    }
-                """)
+            QSplitter::handle {
+                background-color: rgb(53, 53, 53);
+            }
+            QSplitter::handle:hover {
+                background-color: rgb(0, 150, 255);
+            }
+        """)
 
 class CustomMenu(QMenu):
     def __init__(self, parent=None):
@@ -570,8 +533,6 @@ class TableTabManager(QObject):
         self.defualt_table_name = workspace_name + "-table"
         self.plusButton = QPushButton("New Table")
         self.tab_count = 0
-
-
 
         self.add_table_page(TableContainerWidget("Table"), f'{self.defualt_table_name}', False)
         self.setupPlusButton()
