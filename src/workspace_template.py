@@ -98,8 +98,6 @@ class ImportOptionsWidget(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
 
-        # QApplication.instance().installEventFilter(self)
-        # self.installEventFilter(self)
         self.checkboxes = []
 
         layout = QVBoxLayout(self)
@@ -168,14 +166,6 @@ class ImportOptionsWidget(QWidget):
             checkbox = ICheckBox(checkbox_data)
             self.add_checkbox(checkbox)
 
-    # def eventFilter(self, obj, event):
-    #     if event.type() == QEvent.Type.MouseButtonPress:
-    #         if self.isVisible():
-    #             if obj is not self:
-    #                 if not self.rect().contains(self.mapFromGlobal(QCursor.pos())):
-    #                     self.hide()
-    #     return super().eventFilter(obj, event)
-
     def add_checkbox(self, checkbox: ICheckBox):
         self.checkboxes.append(checkbox)
         self.check_layout.addWidget(checkbox)
@@ -236,14 +226,33 @@ class WorkspaceDataTable(QWidget):
 
     def OpenFilterWidget(self):
         target_width = self.ui.widget_2.frameGeometry().width()
-        target_height = self.ui.widget_2.frameGeometry().height()
+        available_height = self.ui.widget_2.frameGeometry().height()
 
-        print(target_width, target_height)
+        self.filter_widget.resize(target_width, self.filter_widget.frameGeometry().height())
 
-        self.filter_widget.move(-5, 45)
-        self.filter_widget.resize(target_width + 9, 400)
+        if self.filter_widget.sizeHint().height() > available_height:
+            self.filter_widget.setParent(self)
+            self.filter_widget.setWindowFlags(Qt.Widget)
+            self.filter_widget.move(0, 0)
+        else:
+            if self.filter_widget.parent() is not None:
+                self.filter_widget.setParent(None)
+                self.filter_widget.setWindowFlags(Qt.WindowType.Popup | Qt.WindowType.FramelessWindowHint)
+
+            global_pos = self.ui.widget_2.mapToGlobal(QtCore.QPoint(0, 0))
+            x = global_pos.x()
+            y = global_pos.y() + self.ui.widget_2.height()
+
+            self.filter_widget.move(x,y - available_height + 50)
+
         self.filter_widget.raise_()
         self.filter_widget.show()
+
+    def initMeasurementFiles(self):
+        pass
+        # get all the files from srs/instument/data
+        # then add the filename and a checkbox
+        # self.ui.treeWidget..... add items
 
 class TableContainerWidget(QWidget):
     table_count = 0
