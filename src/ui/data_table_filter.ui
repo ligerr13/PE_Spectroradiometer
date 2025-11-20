@@ -6,12 +6,122 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>583</width>
+    <width>545</width>
     <height>541</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>0</width>
+    <height>0</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">/*
+======================================================
+1. QFrame (Általános konténer / A Dropdown fő kerete)
+======================================================
+*/
+
+QFrame {
+    /* Ez a stílus vonatkozik a Dropdown fő keretére, 
+       ÉS az összes többi QFrame-re is az alkalmazásban. */
+    background-color:  rgb(51,51,51); /* Sidebar háttér */
+    border: 1px solid #495057; /* Közepes szürke keret */
+    border-radius: 5px;
+}
+
+QWidget {
+background-color: rgb(51,51,51);
+}
+/*
+======================================================
+2. QPushButton (Általános gombok / Ikon gombok és Gyorsgombok)
+======================================================
+*/
+
+QPushButton {
+    /* Minden gomb alapstílusa: Gyorsgombok és az Ikon Gomb (gear) is */
+    background: none;
+    border: 1px solid #495057; 
+    border-radius: 4px;
+    color: #007bff; /* Kék szöveg/ikon */
+}
+
+QPushButton:hover {
+    background-color: #343a40; /* Hover: Sötétebb háttér */
+    color: white;
+    border-color: white;
+}
+
+/*
+======================================================
+3. QLineEdit (Keresőmező)
+======================================================
+*/
+
+QLineEdit {
+    border: 1px solid #007bff; /* Kék keret */
+    border-radius: 4px;
+    background-color: #212529; /* Sötét háttér */
+    color: #f8f9fa;            /* Fehér szöveg */
+    padding: 8px; /* Belső margó */
+}
+
+/*
+======================================================
+4. QLabel (Számláló és Kategória Címek)
+======================================================
+*/
+
+QLabel {
+    /* A Kategória Címek (pl. &quot;Mérés Alapadatai&quot;) */
+    font-weight: bold;
+    color: #007bff; /* Kék kiemelés */
+}
+
+/* Különleges stílus a Számláló Jelvényhez, ha egyedi kezelést igényel */
+/* Megjegyzés: A színt a kódnak kell beállítania, ha QLabel az alapja. */
+/* Példa: Ha a jelvénynek kereknek és vörösnek kell lennie: */
+/*
+QLabel[property=&quot;badge&quot;] {
+    background-color: #dc3545;
+    border-radius: 12px;
+    color: #f8f9fa;
+    font-weight: bold;
+}
+*/
+
+/*
+======================================================
+5. QCheckBox (Fájl/Oszlop kiválasztás)
+======================================================
+*/
+
+QCheckBox {
+    color: #f8f9fa; /* Fehér szöveg */
+    spacing: 8px;   
+}
+
+QCheckBox:hover {
+    background-color: #343a40; 
+    color: white;
+}
+
+QCheckBox::indicator {
+    width: 13px;
+    height: 13px;
+    border: 1px solid #495057;
+    background-color: #212529;
+}
+
+QCheckBox::indicator:checked {
+    background-color: #007bff; /* Kék, ha be van pipálva */
+    border: 1px solid #007bff;
+}</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
@@ -27,8 +137,8 @@
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>545</width>
-           <height>421</height>
+           <width>507</width>
+           <height>420</height>
           </rect>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout"/>

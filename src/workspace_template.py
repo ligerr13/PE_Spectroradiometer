@@ -1,6 +1,6 @@
-from PyQt6.QtWidgets import QSpacerItem, QWidget, QTabBar, QSplitter,QVBoxLayout, QLabel,QTableWidgetItem, QTableWidget, QCheckBox, QGridLayout,QHBoxLayout,QDialog, QScrollArea, QSplitterHandle,QGraphicsView, QGraphicsProxyWidget, QGraphicsScene, QMenu, QGraphicsLineItem, QTreeWidgetItem, QPushButton, QSizePolicy, QHeaderView, QStyledItemDelegate, QStyle
+from PyQt6.QtWidgets import QApplication, QWidget, QTabBar, QSplitter,QVBoxLayout, QLabel,QTableWidgetItem, QTableWidget, QCheckBox, QGridLayout,QHBoxLayout,QDialog, QScrollArea, QSplitterHandle,QGraphicsView, QGraphicsProxyWidget, QGraphicsScene, QMenu, QGraphicsLineItem, QTreeWidgetItem, QPushButton, QSizePolicy, QHeaderView, QStyledItemDelegate, QStyle
 from PyQt6.QtGui import QColor, qRgb, QTransform, QCursor, QStandardItem, QIcon, QFont, QFontMetrics, QPaintEvent, QPen, QPainter, QPainterPath
-from PyQt6.QtCore import  Qt, QLineF, QPointF, QPoint, QSize, QObject, Qt, pyqtSignal, pyqtSlot, QRectF
+from PyQt6.QtCore import  Qt, QLineF, QEvent, QPoint, QSize, QObject, Qt, pyqtSignal, pyqtSlot
 from PyQt6 import QtCore
 import json
 from pathlib import Path
@@ -98,6 +98,8 @@ class ImportOptionsWidget(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
 
+        # QApplication.instance().installEventFilter(self)
+        # self.installEventFilter(self)
         self.checkboxes = []
 
         layout = QVBoxLayout(self)
@@ -166,6 +168,14 @@ class ImportOptionsWidget(QWidget):
             checkbox = ICheckBox(checkbox_data)
             self.add_checkbox(checkbox)
 
+    # def eventFilter(self, obj, event):
+    #     if event.type() == QEvent.Type.MouseButtonPress:
+    #         if self.isVisible():
+    #             if obj is not self:
+    #                 if not self.rect().contains(self.mapFromGlobal(QCursor.pos())):
+    #                     self.hide()
+    #     return super().eventFilter(obj, event)
+
     def add_checkbox(self, checkbox: ICheckBox):
         self.checkboxes.append(checkbox)
         self.check_layout.addWidget(checkbox)
@@ -190,6 +200,8 @@ class DataTableFilter(QWidget):
 
         self.ui = WDataTableFilterUi_Form()
         self.ui.setupUi(self)
+        QApplication.instance().installEventFilter(self)
+        self.installEventFilter(self)
 
     def is_visible(self) -> bool:
         return self.isVisible()
@@ -199,6 +211,14 @@ class DataTableFilter(QWidget):
 
     def toggle_off(self) -> None:
         self.setVisible = False
+
+    def eventFilter(self, obj, event):
+        if event.type() == QEvent.Type.MouseButtonPress:
+            if self.isVisible():
+                if obj is not self:
+                    if not self.rect().contains(self.mapFromGlobal(QCursor.pos())):
+                        self.hide()
+        return super().eventFilter(obj, event)
 
 class WorkspaceDataTable(QWidget):
     def __init__(self, parent=None):
@@ -210,19 +230,20 @@ class WorkspaceDataTable(QWidget):
         sp = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         self.setSizePolicy(sp)
 
-        self.filter_widget = ImportOptionsWidget(self)
+        # self.filter_widget = ImportOptionsWidget(self)
+        self.filter_widget = DataTableFilter(self)
         self.filter_widget.hide()
 
-        self.ui.verticalLayout_2.addWidget(self.filter_widget)
-
     def OpenFilterWidget(self):
-        if self.filter_widget.isVisible():
-            self.filter_widget.hide()
-        else:
-            self.filter_widget.show()
+        target_width = self.ui.widget_2.frameGeometry().width()
+        target_height = self.ui.widget_2.frameGeometry().height()
 
+        print(target_width, target_height)
 
-
+        self.filter_widget.move(-5, 45)
+        self.filter_widget.resize(target_width + 9, 400)
+        self.filter_widget.raise_()
+        self.filter_widget.show()
 
 class TableContainerWidget(QWidget):
     table_count = 0
@@ -249,14 +270,14 @@ class TableContainerWidget(QWidget):
         self.w_data_table.ui.verticalLayout_5.addWidget(self.table)
 
         main_layout = QVBoxLayout()
-        main_layout.spacing = 0
+        main_layout.setSpacing(0)
+        main_layout.setContentsMargins(0,0,0,0)
 
         main_layout.addWidget(self.w_data_table)
         self.setLayout(main_layout)
 
         # self.table = self.table_widget.ui.tableWidget
         
-
         # data_selecter_button.clicked.connect(self.open_import_options)
         # import_measurement_data_button.clicked.connect(self.import_measurements_to_workspace_table)
         # self.signal_bus.update_options.connect(self.remove_option_from_selected)
