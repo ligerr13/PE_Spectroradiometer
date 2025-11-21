@@ -62,7 +62,7 @@ class Ui_Form(object):
         self.verticalLayout_3.setObjectName("verticalLayout_3")
         self.widget_4 = QtWidgets.QWidget(parent=self.scrollAreaWidgetContents)
         self.widget_4.setMinimumSize(QtCore.QSize(0, 0))
-        self.widget_4.setStyleSheet("border-right: 0px;")
+        self.widget_4.setStyleSheet("border-right: 0px; background-color: rgb(30,30,30);")
         self.widget_4.setObjectName("widget_4")
         self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.widget_4)
         self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
@@ -72,8 +72,8 @@ class Ui_Form(object):
         self.widget_5.setStyleSheet("border-right: 0px;")
         self.widget_5.setObjectName("widget_5")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.widget_5)
-        self.horizontalLayout_2.setContentsMargins(10, 1, 1, 1)
-        self.horizontalLayout_2.setSpacing(1)
+        self.horizontalLayout_2.setContentsMargins(10, 5, 5, 5)
+        self.horizontalLayout_2.setSpacing(5)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.label = QtWidgets.QLabel(parent=self.widget_5)
         font = QtGui.QFont()
@@ -85,17 +85,24 @@ class Ui_Form(object):
         self.label.setStyleSheet("color: white; \n"
 "border-right: 0px;\n"
 "font: 700 10pt \"Consolas\";")
+        self.label.setText("")
         self.label.setObjectName("label")
         self.horizontalLayout_2.addWidget(self.label)
         self.pushButton = QtWidgets.QPushButton(parent=self.widget_5)
-        self.pushButton.setMinimumSize(QtCore.QSize(50, 50))
-        self.pushButton.setMaximumSize(QtCore.QSize(50, 50))
+        self.pushButton.setMinimumSize(QtCore.QSize(35, 35))
+        self.pushButton.setMaximumSize(QtCore.QSize(35, 35))
+        font = QtGui.QFont()
+        font.setFamily("Consolas")
+        font.setPointSize(15)
+        font.setBold(True)
+        font.setItalic(False)
+        self.pushButton.setFont(font)
         self.pushButton.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(30, 30, 30);\n"
+"    background-color: rgb(43, 43, 43);\n"
 "    color: white;\n"
 "    border-radius: 2px;  \n"
 "    padding: 4px 8px;\n"
-"    font: 700 20pt \"Consolas\";\n"
+"    font: 700 15pt \"Consolas\";\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
@@ -109,14 +116,20 @@ class Ui_Form(object):
         self.pushButton.setObjectName("pushButton")
         self.horizontalLayout_2.addWidget(self.pushButton)
         self.pushButton_2 = QtWidgets.QPushButton(parent=self.widget_5)
-        self.pushButton_2.setMinimumSize(QtCore.QSize(50, 50))
-        self.pushButton_2.setMaximumSize(QtCore.QSize(50, 50))
+        self.pushButton_2.setMinimumSize(QtCore.QSize(35, 35))
+        self.pushButton_2.setMaximumSize(QtCore.QSize(35, 35))
+        font = QtGui.QFont()
+        font.setFamily("Consolas")
+        font.setPointSize(15)
+        font.setBold(True)
+        font.setItalic(False)
+        self.pushButton_2.setFont(font)
         self.pushButton_2.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(30, 30, 30);\n"
+"    background-color: rgb(43, 43, 43);\n"
 "    color: white;\n"
 "    border-radius: 2px;  \n"
 "    padding: 4px 8px;\n"
-"    font: 700 20pt \"Consolas\";\n"
+"    font: 700 15pt \"Consolas\";\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
@@ -255,12 +268,90 @@ class Ui_Form(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.TableContainer.sizePolicy().hasHeightForWidth())
         self.TableContainer.setSizePolicy(sizePolicy)
-        self.TableContainer.setStyleSheet("")
+        self.TableContainer.setStyleSheet("    background-color: #1e1e1e;\n"
+"    alternate-background-color: #222;\n"
+"border: 0px;")
         self.TableContainer.setObjectName("TableContainer")
         self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.TableContainer)
-        self.verticalLayout_5.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_5.setContentsMargins(5, 5, 5, 5)
         self.verticalLayout_5.setSpacing(0)
         self.verticalLayout_5.setObjectName("verticalLayout_5")
+        self.tableWidget = QtWidgets.QTableWidget(parent=self.TableContainer)
+        self.tableWidget.setStyleSheet("QTableWidget {\n"
+"    background-color: #1e1e1e;\n"
+"    alternate-background-color: #222;\n"
+"    color: #dcdcdc;\n"
+"    font: 11pt \"Consolas\";\n"
+"    gridline-color: #333;\n"
+"}\n"
+"\n"
+"/* Sorok */\n"
+"QTableWidget::item {\n"
+"    padding: 4px;\n"
+"    height: 28px;\n"
+"}\n"
+"\n"
+"/* Hover sor */\n"
+"QTableWidget::item:hover {\n"
+"    background-color: #2b2b2b;\n"
+"}\n"
+"\n"
+"/* Kijelölt sor */\n"
+"QTableWidget::item:selected {\n"
+"    background-color: #3d6aff;\n"
+"    color: white;\n"
+"}\n"
+"\n"
+"/* Kijelölt + hover */\n"
+"QTableWidget::item:selected:hover {\n"
+"    background-color: #5278ff;\n"
+"}\n"
+"\n"
+"/* Header */\n"
+"QHeaderView::section {\n"
+"    background-color: #2b2b2b;\n"
+"    color: #dcdcdc;\n"
+"    padding: 6px;\n"
+"    font: bold 10pt \"Consolas\";\n"
+"    border: 1px solid #3a3a3a;\n"
+"}\n"
+"\n"
+"/* Scrollbar */\n"
+"QScrollBar:vertical {\n"
+"    width: 12px;\n"
+"    background: #1e1e1e;\n"
+"}\n"
+"\n"
+"QScrollBar::handle:vertical {\n"
+"    background: #3a3a3a;\n"
+"    min-height: 20px;\n"
+"    border-radius: 6px;\n"
+"}\n"
+"\n"
+"QScrollBar::handle:vertical:hover {\n"
+"    background: #505050;\n"
+"}\n"
+"\n"
+"QScrollBar::add-line,\n"
+"QScrollBar::sub-line {\n"
+"    background: none;\n"
+"    height: 0px;\n"
+"}\n"
+"\n"
+"QTableWidget::item:!selected {\n"
+"    font-weight: normal;\n"
+"}\n"
+"\n"
+"QTableWidget::item:selected {\n"
+"    font-weight: bold;\n"
+"}\n"
+"")
+        self.tableWidget.setObjectName("tableWidget")
+        self.tableWidget.setColumnCount(1)
+        self.tableWidget.setRowCount(0)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(0, item)
+        self.verticalLayout_5.addWidget(self.tableWidget)
         self.horizontalLayout.addWidget(self.TableContainer)
         self.verticalLayout.addWidget(self.widget)
 
@@ -271,10 +362,11 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
-        self.label.setText(_translate("Form", "Available Files"))
         self.pushButton.setText(_translate("Form", "📶"))
         self.pushButton_2.setText(_translate("Form", "📁"))
         self.treeWidget.headerItem().setText(0, _translate("Form", "Selected"))
+        item = self.tableWidget.horizontalHeaderItem(0)
+        item.setText(_translate("Form", "Default"))
 
 
 if __name__ == "__main__":

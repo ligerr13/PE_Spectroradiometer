@@ -152,7 +152,7 @@
                 </size>
                </property>
                <property name="styleSheet">
-                <string notr="true">border-right: 0px;</string>
+                <string notr="true">border-right: 0px; background-color: rgb(30,30,30);</string>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_4">
                 <property name="spacing">
@@ -177,19 +177,19 @@
                   </property>
                   <layout class="QHBoxLayout" name="horizontalLayout_2">
                    <property name="spacing">
-                    <number>1</number>
+                    <number>5</number>
                    </property>
                    <property name="leftMargin">
                     <number>10</number>
                    </property>
                    <property name="topMargin">
-                    <number>1</number>
+                    <number>5</number>
                    </property>
                    <property name="rightMargin">
-                    <number>1</number>
+                    <number>5</number>
                    </property>
                    <property name="bottomMargin">
-                    <number>1</number>
+                    <number>5</number>
                    </property>
                    <item>
                     <widget class="QLabel" name="label">
@@ -207,7 +207,7 @@ border-right: 0px;
 font: 700 10pt &quot;Consolas&quot;;</string>
                      </property>
                      <property name="text">
-                      <string>Available Files</string>
+                      <string/>
                      </property>
                     </widget>
                    </item>
@@ -215,23 +215,31 @@ font: 700 10pt &quot;Consolas&quot;;</string>
                     <widget class="QPushButton" name="pushButton">
                      <property name="minimumSize">
                       <size>
-                       <width>50</width>
-                       <height>50</height>
+                       <width>35</width>
+                       <height>35</height>
                       </size>
                      </property>
                      <property name="maximumSize">
                       <size>
-                       <width>50</width>
-                       <height>50</height>
+                       <width>35</width>
+                       <height>35</height>
                       </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Consolas</family>
+                       <pointsize>15</pointsize>
+                       <italic>false</italic>
+                       <bold>true</bold>
+                      </font>
                      </property>
                      <property name="styleSheet">
                       <string notr="true">QPushButton {
-    background-color: rgb(30, 30, 30);
+    background-color: rgb(43, 43, 43);
     color: white;
     border-radius: 2px;  
     padding: 4px 8px;
-    font: 700 20pt &quot;Consolas&quot;;
+    font: 700 15pt &quot;Consolas&quot;;
 }
 
 QPushButton:hover {
@@ -252,23 +260,31 @@ QPushButton:pressed {
                     <widget class="QPushButton" name="pushButton_2">
                      <property name="minimumSize">
                       <size>
-                       <width>50</width>
-                       <height>50</height>
+                       <width>35</width>
+                       <height>35</height>
                       </size>
                      </property>
                      <property name="maximumSize">
                       <size>
-                       <width>50</width>
-                       <height>50</height>
+                       <width>35</width>
+                       <height>35</height>
                       </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Consolas</family>
+                       <pointsize>15</pointsize>
+                       <italic>false</italic>
+                       <bold>true</bold>
+                      </font>
                      </property>
                      <property name="styleSheet">
                       <string notr="true">QPushButton {
-    background-color: rgb(30, 30, 30);
+    background-color: rgb(43, 43, 43);
     color: white;
     border-radius: 2px;  
     padding: 4px 8px;
-    font: 700 20pt &quot;Consolas&quot;;
+    font: 700 15pt &quot;Consolas&quot;;
 }
 
 QPushButton:hover {
@@ -430,24 +446,106 @@ QScrollBar::sub-line {
          </sizepolicy>
         </property>
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">    background-color: #1e1e1e;
+    alternate-background-color: #222;
+border: 0px;</string>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_5">
          <property name="spacing">
           <number>0</number>
          </property>
          <property name="leftMargin">
-          <number>0</number>
+          <number>5</number>
          </property>
          <property name="topMargin">
-          <number>0</number>
+          <number>5</number>
          </property>
          <property name="rightMargin">
-          <number>0</number>
+          <number>5</number>
          </property>
          <property name="bottomMargin">
-          <number>0</number>
+          <number>5</number>
          </property>
+         <item>
+          <widget class="QTableWidget" name="tableWidget">
+           <property name="styleSheet">
+            <string notr="true">QTableWidget {
+    background-color: #1e1e1e;
+    alternate-background-color: #222;
+    color: #dcdcdc;
+    font: 11pt &quot;Consolas&quot;;
+    gridline-color: #333;
+}
+
+/* Sorok */
+QTableWidget::item {
+    padding: 4px;
+    height: 28px;
+}
+
+/* Hover sor */
+QTableWidget::item:hover {
+    background-color: #2b2b2b;
+}
+
+/* Kijelölt sor */
+QTableWidget::item:selected {
+    background-color: #3d6aff;
+    color: white;
+}
+
+/* Kijelölt + hover */
+QTableWidget::item:selected:hover {
+    background-color: #5278ff;
+}
+
+/* Header */
+QHeaderView::section {
+    background-color: #2b2b2b;
+    color: #dcdcdc;
+    padding: 6px;
+    font: bold 10pt &quot;Consolas&quot;;
+    border: 1px solid #3a3a3a;
+}
+
+/* Scrollbar */
+QScrollBar:vertical {
+    width: 12px;
+    background: #1e1e1e;
+}
+
+QScrollBar::handle:vertical {
+    background: #3a3a3a;
+    min-height: 20px;
+    border-radius: 6px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: #505050;
+}
+
+QScrollBar::add-line,
+QScrollBar::sub-line {
+    background: none;
+    height: 0px;
+}
+
+QTableWidget::item:!selected {
+    font-weight: normal;
+}
+
+QTableWidget::item:selected {
+    font-weight: bold;
+}
+</string>
+           </property>
+           <column>
+            <property name="text">
+             <string>Default</string>
+            </property>
+           </column>
+          </widget>
+         </item>
         </layout>
        </widget>
       </item>

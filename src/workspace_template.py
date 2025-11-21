@@ -225,7 +225,7 @@ class WorkspaceDataTable(QWidget):
         self.filter_widget = DataTableFilter(self)
         self.filter_widget.hide()
 
-        self.splitter = WorkspaceTableSplitter(Qt.Orientation.Horizontal)
+        self.splitter = plitter(Qt.Orientation.Horizontal)
         self.splitter.addWidget(self.ui.widget_2)
         self.splitter.addWidget(self.ui.TableContainer)
 
@@ -299,10 +299,10 @@ class TableContainerWidget(QWidget):
         self.setSizePolicy(sp)
 
         self.w_data_table = WorkspaceDataTable(self)
+        self.table_manager = WorkspaceTable(self.w_data_table.ui.tableWidget)
 
-        self.table = WorkspaceTable()
 
-        self.w_data_table.ui.verticalLayout_5.addWidget(self.table)
+        # self.w_data_table.ui.verticalLayout_5.addWidget(self.table)
 
         main_layout = QVBoxLayout()
         main_layout.setSpacing(0)
@@ -394,115 +394,63 @@ class TableContainerWidget(QWidget):
             self.table.add_table_row(row_data)
             self.table.setColumnCount(len(row_data)  + 1)
 
-class WorkspaceTable(QTableWidget):
-    def __init__(self, parent=None):
+class WorkspaceTable(QObject):
+    def __init__(self, table: QTableWidget, parent=None):
         super().__init__(parent)
-        self.signal_bus  = WorkspaceSignalBus().instance()
+        self.table = table
 
-        self.setRowCount(0)
-        self.setColumnCount(99)
-        self.setHorizontalHeaderLabels(['', 'Measurement', ''])
-        self.verticalHeader().hide()
-        self.setFixedHeight((self.rowCount()) * 40)
+        self.table.setRowCount(0)
+        self.table.setColumnCount(3)
+        self.table.setHorizontalHeaderLabels(["", "Measurement", ""])
+        self.table.verticalHeader().hide()
 
-        self.setShowGrid(True)
-        self.setGridStyle(QtCore.Qt.PenStyle.NoPen)
-        self.setStyleSheet("""
-                QTableWidget {
-                    background-color: red;
-                    border: 0 0 0 0;
-                    margin: 0 0 0 0;
-                    padding: 0 0 0 0;
-                    spacing: 0;
-                }
-            """)
-            
-        self.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeMode.Fixed)
-        self.horizontalHeader().resizeSection(0, 40)
+        self.table.setShowGrid(False)
+       
 
-        for i in range(3, self.columnCount()):
-            self.horizontalHeader().setSectionResizeMode(i, QHeaderView.ResizeMode.Stretch)
-
-        self.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Fixed)
-    
-        self.adjust_header_height()
-
-    def adjust_header_height(self):
-        header = self.horizontalHeader()
-        header.setStyleSheet("""
-            QHeaderView::section {
-                height: 40px; background-color: rgb(15,15,15);
-                border: .5px solid rgb(32,32,32);
-                border-top: 0px;
-                
-            }
-        """)
-        header.setMinimumHeight(40)
-    
-    def change_row_background(self, row_number: int, color: QColor):
-        for column in range(self.columnCount() + 1):
-            item = self.item(row_number, column)
-            if item:
-                item.setBackground(color)
-
-    def adjust_header_size(self):
-        max_label_width = 0
-        for row in range(self.rowCount()):
-            label_item = self.item(row, 1)
-            if label_item:
-                bold_font = QFont()
-                bold_font.setPointSize(12)
-                bold_font.setBold(True)
-        
-                fm = QFontMetrics(bold_font)
-                max_label_width = max(max_label_width, fm.boundingRect(label_item.text()).width())
-        return max_label_width
-
-    def delete_row_of_button(self, button: QPushButton):
-        for row in range(self.rowCount()):
-            if self.cellWidget(row, 0) == button:
-                self.parent().remove_imported_file(row)
-                break
-            
-    def delete_row(self, row: int):
-        file_item = self.item(row, 1)
-        if file_item:
-            file_name = file_item.text()
-            if hasattr(self.parent(), 'remove_imported_file'):
-                self.parent().remove_imported_file(file_name)
-        self.removeRow(row)
+        header = self.table.horizontalHeader()
+       
+        header.setSectionResizeMode(0, QHeaderView.ResizeMode.Fixed)
+        header.setSectionResizeMode(1, QHeaderView.ResizeMode.Stretch)
+        header.setSectionResizeMode(2, QHeaderView.ResizeMode.Stretch)
 
     def clear_table(self):
-        self.setRowCount(0)
+        self.table.setRowCount(0)
 
+    def add_table_row(self, values: list):
+        row = self.table.rowCount()
+        self.table.insertRow(row)
 
-    def add_table_row(self, row_data: list):
-        row_position = self.rowCount()
-        self.insertRow(row_position)
-
-        bold_font = QFont()
-        bold_font.setPointSize(12)
-        bold_font.setBold(True)
-
-        btn = QPushButton('', self)
-        btn.setCursor(QtCore.Qt.CursorShape.PointingHandCursor)
+        btn = QPushButton("")
         btn.setIcon(QIcon("resources/icons/delete.png"))
         btn.setFixedWidth(40)
-        btn.setStyleSheet("QPushButton {background-color: rgb(210,39,48);}")
+        btn.setStyleSheet("background-color: rgb(210,39,48); border: none;")
         btn.clicked.connect(lambda _, b=btn: self.delete_row_of_button(b))
-        self.setCellWidget(row_position, 0, btn)
 
-        for col, value in enumerate(row_data, start=1):
-            item = QTableWidgetItem(str(value))
-            item.setFont(bold_font)
-            self.setItem(row_position, col, item)
+        self.table.setCellWidget(row, 0, btn)
 
-        if row_position % 2 == 0:
-            self.change_row_background(row_position, QColor("#191919"))
+        bold = QFont(); bold.setBold(True)
 
-        self.setFixedHeight((self.rowCount() + 1) * 40)
+        for col, v in enumerate(values, start=1):
+            item = QTableWidgetItem(str(v))
+            item.setFont(bold)
+            self.table.setItem(row, col, item)
 
-class WorkspaceTableSplitterHandle(QSplitterHandle):
+        if row % 2 == 0:
+            for col in range(self.table.columnCount()):
+                item = self.table.item(row, col)
+                if item:
+                    item.setBackground(QColor("#191919"))
+
+        self.table.setFixedHeight((self.table.rowCount() + 1) * 40)
+
+    def delete_row_of_button(self, btn):
+        for row in range(self.table.rowCount()):
+            if self.table.cellWidget(row, 0) == btn:
+                self.table.removeRow(row)
+                break
+
+
+class plitterHandle(QSplitterHandle):
 
     handleRelease = pyqtSignal()
 
@@ -532,7 +480,7 @@ class WorkspaceTableSplitterHandle(QSplitterHandle):
         self.handleRelease.emit()
         super().mouseReleaseEvent(event)
 
-class WorkspaceTableSplitter(QSplitter):
+class plitter(QSplitter):
     toggleButton = pyqtSignal(QWidget, bool)
 
     def __init__(self, orientation):
@@ -565,8 +513,8 @@ class WorkspaceTableSplitter(QSplitter):
             self.moveSplitter(9999, index)
 
     def createHandle(self):
-        """Override createHandle to return an instance of WorkspaceTableSplitterHandle."""
-        handle = WorkspaceTableSplitterHandle(self.orientation(), self)
+        """Override createHandle to return an instance of plitterHandle."""
+        handle = plitterHandle(self.orientation(), self)
         handle.handleRelease.connect(self.setRestaAnchor)
         return handle
 
@@ -726,7 +674,7 @@ class Workspace(QWidget):
         self.viewScalefactor = 1.15
 
         self.tabletabmanager = TableTabManager(self.ui, self.workspace_name)
-        self.splitter = WorkspaceTableSplitter(Qt.Orientation.Vertical)
+        self.splitter = plitter(Qt.Orientation.Vertical)
 
         self.splitter.addWidget(self.ui.workspace_container)
         self.splitter.addWidget(self.ui.table_widget_container)
