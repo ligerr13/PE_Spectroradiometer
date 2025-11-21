@@ -18,7 +18,7 @@ from src.widgets.daylight_locus_widget import DaylightLocusConfig, DaylightLocus
 from src.signals.signals import WorkspaceSignalBus
 from src.dialogs.textToSceneDialog import TextToSceneDialog
 
-from src.globals.utils import convert_numpy, open_dialog, is_valid_measurement_file
+from src.globals.utils import add_file_to_tree, convert_numpy, open_dialog, is_valid_measurement_file, get_file_date
 from src.globals.utils import show_toast, ToastType
 
 class ICheckBoxData(QObject):
@@ -211,6 +211,7 @@ class DataTableFilter(QWidget):
                         self.hide()
         return super().eventFilter(obj, event)
 
+
 class WorkspaceDataTable(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -218,67 +219,65 @@ class WorkspaceDataTable(QWidget):
         self.ui = WDataTableUi_Form()
         self.ui.setupUi(self)
 
-        sp = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        sp = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
         self.setSizePolicy(sp)
 
         self.filter_widget = DataTableFilter(self)
         self.filter_widget.hide()
 
+        self.splitter = WorkspaceTableSplitter(Qt.Orientation.Horizontal)
+        self.splitter.addWidget(self.ui.widget_2)
+        self.splitter.addWidget(self.ui.TableContainer)
+
+        self.ui.horizontalLayout.addWidget(self.splitter)
+
         self.initMeasurementFiles()
 
     def OpenFilterWidget(self):
+        """Megjeleníti a filter panelt, a parent méretéhez igazítva."""
         target_width = self.ui.widget_2.frameGeometry().width()
         available_height = self.ui.widget_2.frameGeometry().height()
 
         self.filter_widget.resize(target_width, self.filter_widget.frameGeometry().height())
 
         if self.filter_widget.sizeHint().height() > available_height:
+            # Nincs elég hely, a widget marad a parentben
             self.filter_widget.setParent(self)
-            self.filter_widget.setWindowFlags(Qt.Widget)
+            self.filter_widget.setWindowFlags(Qt.WindowType.Widget)
             self.filter_widget.move(0, 0)
         else:
+            # Popup ablakként jelenik meg
             if self.filter_widget.parent() is not None:
                 self.filter_widget.setParent(None)
                 self.filter_widget.setWindowFlags(Qt.WindowType.Popup | Qt.WindowType.FramelessWindowHint)
 
-            global_pos = self.ui.widget_2.mapToGlobal(QtCore.QPoint(0, 0))
+            global_pos = self.ui.widget_2.mapToGlobal(QPoint(0, 0))
             x = global_pos.x()
             y = global_pos.y() + self.ui.widget_2.height()
 
-            self.filter_widget.move(x,y - available_height + 50)
+            self.filter_widget.move(x, y - available_height + 50)
 
         self.filter_widget.raise_()
         self.filter_widget.show()
 
     def initMeasurementFiles(self):
-        base_dir = "src/instrument/data"
-
-        if not os.path.exists(base_dir):
-            print(f"Directory not found: {base_dir}")
+        """Betölti a mérések JSON fájljait és kategorizálja dátum alapján."""
+        folder = Path("src/instrument/data")
+        if not folder.exists():
             return
 
-        for file_name in os.listdir(base_dir):
-            full_path = os.path.join(base_dir, file_name)
-
-            if not file_name.lower().endswith(".json"):
+        for filepath in folder.glob("*.json"):
+            try:
+                with open(filepath, "r") as f:
+                    data = json.load(f)
+            except Exception:
                 continue
 
-            try:
-                with open(full_path, "r", encoding="utf-8") as f:
-                    data = json.load(f)
+            if not is_valid_measurement_file(data):
+                continue
 
-                if is_valid_measurement_file(data):
-                    print(f"OK – valid: {file_name}")
-
-                    item = QTreeWidgetItem([file_name])
-                    item.setCheckState(0, Qt.CheckState.Unchecked)
-                    self.ui.treeWidget.addTopLevelItem(item)
-
-                else:
-                    print(f"INVALID measurement file → {file_name}")
-
-            except Exception as e:
-                print(f"Error reading {file_name}: {e}")
+            file_date = get_file_date(filepath)
+            add_file_to_tree(self.ui.treeWidget, filepath, file_date)
 
 
 class TableContainerWidget(QWidget):
@@ -513,20 +512,23 @@ class WorkspaceTableSplitterHandle(QSplitterHandle):
         self.default_height = 5
         self.pressed_height = 8
 
-        self.setCursor(Qt.CursorShape.SizeVerCursor)
+        if orientation == Qt.Orientation.Vertical:
+            self.setCursor(Qt.CursorShape.SizeVerCursor)
+        else:
+            self.setCursor(Qt.CursorShape.SizeHorCursor)
 
     def mousePressEvent(self, event):
         """When handle is pressed, increase its size."""
         
         self.is_pressed == True
-        self.setFixedHeight(self.pressed_height)
+        # self.setFixedHeight(self.pressed_height)
         super().mousePressEvent(event)
 
     def mouseReleaseEvent(self, event):
         """When the mouse is released, reset the handle size."""
         
         self.is_pressed == True
-        self.setFixedHeight(self.default_height)
+        # self.setFixedHeight(self.default_height)
         self.handleRelease.emit()
         super().mouseReleaseEvent(event)
 

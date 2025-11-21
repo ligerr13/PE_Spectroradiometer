@@ -57,7 +57,7 @@
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <property name="spacing">
-       <number>0</number>
+       <number>2</number>
       </property>
       <property name="leftMargin">
        <number>0</number>
@@ -81,12 +81,18 @@
         </property>
         <property name="maximumSize">
          <size>
-          <width>400</width>
+          <width>16777215</width>
           <height>16777215</height>
          </size>
         </property>
+        <property name="baseSize">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
         <property name="styleSheet">
-         <string notr="true">border-right: 1px solid rgb(41,41,41);</string>
+         <string notr="true">border-right: 0px solid rgb(41,41,41);</string>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_2">
          <property name="spacing">
@@ -114,7 +120,7 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>398</width>
+              <width>460</width>
               <height>430</height>
              </rect>
             </property>
@@ -171,22 +177,30 @@
                   </property>
                   <layout class="QHBoxLayout" name="horizontalLayout_2">
                    <property name="spacing">
-                    <number>0</number>
+                    <number>1</number>
                    </property>
                    <property name="leftMargin">
                     <number>10</number>
                    </property>
                    <property name="topMargin">
-                    <number>0</number>
+                    <number>1</number>
                    </property>
                    <property name="rightMargin">
-                    <number>0</number>
+                    <number>1</number>
                    </property>
                    <property name="bottomMargin">
-                    <number>0</number>
+                    <number>1</number>
                    </property>
                    <item>
                     <widget class="QLabel" name="label">
+                     <property name="font">
+                      <font>
+                       <family>Consolas</family>
+                       <pointsize>10</pointsize>
+                       <italic>false</italic>
+                       <bold>true</bold>
+                      </font>
+                     </property>
                      <property name="styleSheet">
                       <string notr="true">color: white; 
 border-right: 0px;
@@ -201,21 +215,73 @@ font: 700 10pt &quot;Consolas&quot;;</string>
                     <widget class="QPushButton" name="pushButton">
                      <property name="minimumSize">
                       <size>
-                       <width>0</width>
+                       <width>50</width>
+                       <height>50</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>50</width>
                        <height>50</height>
                       </size>
                      </property>
                      <property name="styleSheet">
-                      <string notr="true">color: white; 
-border-right: 0px;
-font: 700 10pt &quot;Consolas&quot;;</string>
+                      <string notr="true">QPushButton {
+    background-color: rgb(30, 30, 30);
+    color: white;
+    border-radius: 2px;  
+    padding: 4px 8px;
+    font: 700 20pt &quot;Consolas&quot;;
+}
+
+QPushButton:hover {
+    background-color: rgb(50, 50, 50); /* világosabb hover */
+}
+
+QPushButton:pressed {
+    background-color: rgb(70, 70, 70); /* lenyomott állapot */
+}
+</string>
                      </property>
                      <property name="text">
-                      <string>Open Filters</string>
+                      <string>📶</string>
                      </property>
-                     <property name="icon">
-                      <iconset>
-                       <normaloff>../../resources/icons/properties.png</normaloff>../../resources/icons/properties.png</iconset>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="pushButton_2">
+                     <property name="minimumSize">
+                      <size>
+                       <width>50</width>
+                       <height>50</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>50</width>
+                       <height>50</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QPushButton {
+    background-color: rgb(30, 30, 30);
+    color: white;
+    border-radius: 2px;  
+    padding: 4px 8px;
+    font: 700 20pt &quot;Consolas&quot;;
+}
+
+QPushButton:hover {
+    background-color: rgb(50, 50, 50); /* világosabb hover */
+}
+
+QPushButton:pressed {
+    background-color: rgb(70, 70, 70); /* lenyomott állapot */
+}
+</string>
+                     </property>
+                     <property name="text">
+                      <string>📁</string>
                      </property>
                     </widget>
                    </item>
@@ -237,30 +303,46 @@ font: 700 10pt &quot;Consolas&quot;;</string>
     font: 11pt &quot;Consolas&quot;;
 }
 
-/* Sorok alap */
+/* ====== ALAP ITEM ====== */
 QTreeWidget::item {
     height: 28px;
     padding: 4px;
-}
-
-/* Hover */
-QTreeWidget::item:hover {
-    background-color: #2b2b2b;
-}
-
-/* Kijelölt sor */
-QTreeWidget::item:selected {
-    background-color: #3d6aff;
-    color: white;
     border: none;
 }
 
-/* Kijelölt + hover */
+/* ====== DÁTUM KATEGÓRIA (has-children) ====== */
+QTreeWidget::item:has-children {
+    font-weight: bold;
+    color: #bfbfbf;            /* kissé világosabb mint a sima text */
+}
+
+/* Hover a kategóriára */
+QTreeWidget::item:has-children:hover {
+    background-color: #2b2b2b;
+}
+
+/* ====== FÁJL ELEMEK (nincs children) ====== */
+QTreeWidget::item:!has-children {
+    font-weight: normal;
+    color: #dcdcdc;
+}
+
+/* Hover fájl elemekre */
+QTreeWidget::item:!has-children:hover {
+    background-color: #2b2b2b;
+}
+
+/* ====== SELECTED ====== */
+QTreeWidget::item:selected {
+    background-color: #3d6aff;
+    color: white;
+}
+
 QTreeWidget::item:selected:hover {
     background-color: #5278ff;
 }
 
-/* Checkbox — ALAP (nincs kép, gyönyörű QSS kocka) */
+/* ====== CHECKBOXOK ====== */
 QTreeWidget::indicator {
     width: 16px;
     height: 16px;
@@ -269,35 +351,31 @@ QTreeWidget::indicator {
     background: #222;
 }
 
-/* Hover checkbox */
 QTreeWidget::indicator:hover {
     border: 1px solid #aaa;
 }
 
-/* Unchecked */
 QTreeWidget::indicator:unchecked {
     background: #2a2a2a;
 }
 
-/* Checked */
 QTreeWidget::indicator:checked {
     background-color: #3d6aff;
     border: 1px solid #3d6aff;
 }
 
-/* CHECKBOX a kijelölt soron → világosabb legyen hogy látszódjon */
+/* Kijelölt sor checkbox — legyen jól látható */
 QTreeWidget::item:selected QTreeWidget::indicator {
     background: #eef1ff;
     border: 1px solid white;
 }
 
-/* CHECKED a kijelölt soron → kék maradjon de világosabb */
 QTreeWidget::item:selected QTreeWidget::indicator:checked {
     background-color: #ffffff;
     border: 1px solid white;
 }
 
-/* Header */
+/* ====== HEADER ====== */
 QHeaderView::section {
     background-color: #2b2b2b;
     color: #dcdcdc;
@@ -306,7 +384,7 @@ QHeaderView::section {
     border: 1px solid #3a3a3a;
 }
 
-/* Scrollbar */
+/* ====== SCROLLBAR ====== */
 QScrollBar:vertical {
     width: 12px;
     background: #1e1e1e;
@@ -329,11 +407,6 @@ QScrollBar::sub-line {
 }
 </string>
                </property>
-               <column>
-                <property name="text">
-                 <string>File</string>
-                </property>
-               </column>
                <column>
                 <property name="text">
                  <string>Selected</string>

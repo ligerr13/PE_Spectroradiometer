@@ -1,10 +1,11 @@
+from datetime import datetime
 from serial.tools import list_ports
 from enum import Enum
 from ..widgets.toast_widget import ToastWidget
 from src.globals.enum import ToastType
 import os
-from PyQt6.QtWidgets import QFileDialog
-from PyQt6.QtCore import QObject
+from PyQt6.QtWidgets import QFileDialog, QTreeWidgetItem
+from PyQt6.QtCore import QObject, Qt
 import numpy as np
 import serial.tools.list_ports
 from pathlib import Path
@@ -99,3 +100,33 @@ def is_valid_measurement_file(data: dict) -> bool:
 
     except Exception:
         return False
+
+def get_file_date(path):
+    timestamp = os.path.getmtime(path)
+    return datetime.fromtimestamp(timestamp)
+
+def add_file_to_tree(tree, filepath, file_date):
+    """
+    file_date: datetime objektum
+    """
+
+    date_key = file_date.strftime("%Y-%m-%d")
+
+    category_item = None
+    for i in range(tree.topLevelItemCount()):
+        item = tree.topLevelItem(i)
+        if item.text(0) == date_key:
+            category_item = item
+            break
+
+    if category_item is None:
+        category_item = QTreeWidgetItem([date_key])
+        category_item.setExpanded(True)
+        tree.addTopLevelItem(category_item)
+
+    filename = filepath.name
+
+    file_item = QTreeWidgetItem([filename])
+    file_item.setCheckState(0, Qt.CheckState.Unchecked)
+
+    category_item.addChild(file_item)

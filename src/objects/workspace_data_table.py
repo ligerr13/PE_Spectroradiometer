@@ -33,7 +33,7 @@ class Ui_Form(object):
         self.widget.setObjectName("widget")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.widget)
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout.setSpacing(0)
+        self.horizontalLayout.setSpacing(2)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.widget_2 = QtWidgets.QWidget(parent=self.widget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding)
@@ -41,8 +41,9 @@ class Ui_Form(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.widget_2.sizePolicy().hasHeightForWidth())
         self.widget_2.setSizePolicy(sizePolicy)
-        self.widget_2.setMaximumSize(QtCore.QSize(400, 16777215))
-        self.widget_2.setStyleSheet("border-right: 1px solid rgb(41,41,41);")
+        self.widget_2.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.widget_2.setBaseSize(QtCore.QSize(0, 0))
+        self.widget_2.setStyleSheet("border-right: 0px solid rgb(41,41,41);")
         self.widget_2.setObjectName("widget_2")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.widget_2)
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
@@ -52,7 +53,7 @@ class Ui_Form(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 398, 430))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 460, 430))
         self.scrollAreaWidgetContents.setStyleSheet("border-right: 0px;")
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
@@ -71,25 +72,63 @@ class Ui_Form(object):
         self.widget_5.setStyleSheet("border-right: 0px;")
         self.widget_5.setObjectName("widget_5")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.widget_5)
-        self.horizontalLayout_2.setContentsMargins(10, 0, 0, 0)
-        self.horizontalLayout_2.setSpacing(0)
+        self.horizontalLayout_2.setContentsMargins(10, 1, 1, 1)
+        self.horizontalLayout_2.setSpacing(1)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.label = QtWidgets.QLabel(parent=self.widget_5)
+        font = QtGui.QFont()
+        font.setFamily("Consolas")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setItalic(False)
+        self.label.setFont(font)
         self.label.setStyleSheet("color: white; \n"
 "border-right: 0px;\n"
 "font: 700 10pt \"Consolas\";")
         self.label.setObjectName("label")
         self.horizontalLayout_2.addWidget(self.label)
         self.pushButton = QtWidgets.QPushButton(parent=self.widget_5)
-        self.pushButton.setMinimumSize(QtCore.QSize(0, 50))
-        self.pushButton.setStyleSheet("color: white; \n"
-"border-right: 0px;\n"
-"font: 700 10pt \"Consolas\";")
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("ui\\../../resources/icons/properties.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButton.setIcon(icon)
+        self.pushButton.setMinimumSize(QtCore.QSize(50, 50))
+        self.pushButton.setMaximumSize(QtCore.QSize(50, 50))
+        self.pushButton.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(30, 30, 30);\n"
+"    color: white;\n"
+"    border-radius: 2px;  \n"
+"    padding: 4px 8px;\n"
+"    font: 700 20pt \"Consolas\";\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(50, 50, 50); /* világosabb hover */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(70, 70, 70); /* lenyomott állapot */\n"
+"}\n"
+"")
         self.pushButton.setObjectName("pushButton")
         self.horizontalLayout_2.addWidget(self.pushButton)
+        self.pushButton_2 = QtWidgets.QPushButton(parent=self.widget_5)
+        self.pushButton_2.setMinimumSize(QtCore.QSize(50, 50))
+        self.pushButton_2.setMaximumSize(QtCore.QSize(50, 50))
+        self.pushButton_2.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(30, 30, 30);\n"
+"    color: white;\n"
+"    border-radius: 2px;  \n"
+"    padding: 4px 8px;\n"
+"    font: 700 20pt \"Consolas\";\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(50, 50, 50); /* világosabb hover */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(70, 70, 70); /* lenyomott állapot */\n"
+"}\n"
+"")
+        self.pushButton_2.setObjectName("pushButton_2")
+        self.horizontalLayout_2.addWidget(self.pushButton_2)
         self.verticalLayout_4.addWidget(self.widget_5)
         self.verticalLayout_3.addWidget(self.widget_4)
         self.treeWidget = QtWidgets.QTreeWidget(parent=self.scrollAreaWidgetContents)
@@ -102,30 +141,46 @@ class Ui_Form(object):
 "    font: 11pt \"Consolas\";\n"
 "}\n"
 "\n"
-"/* Sorok alap */\n"
+"/* ====== ALAP ITEM ====== */\n"
 "QTreeWidget::item {\n"
 "    height: 28px;\n"
 "    padding: 4px;\n"
-"}\n"
-"\n"
-"/* Hover */\n"
-"QTreeWidget::item:hover {\n"
-"    background-color: #2b2b2b;\n"
-"}\n"
-"\n"
-"/* Kijelölt sor */\n"
-"QTreeWidget::item:selected {\n"
-"    background-color: #3d6aff;\n"
-"    color: white;\n"
 "    border: none;\n"
 "}\n"
 "\n"
-"/* Kijelölt + hover */\n"
+"/* ====== DÁTUM KATEGÓRIA (has-children) ====== */\n"
+"QTreeWidget::item:has-children {\n"
+"    font-weight: bold;\n"
+"    color: #bfbfbf;            /* kissé világosabb mint a sima text */\n"
+"}\n"
+"\n"
+"/* Hover a kategóriára */\n"
+"QTreeWidget::item:has-children:hover {\n"
+"    background-color: #2b2b2b;\n"
+"}\n"
+"\n"
+"/* ====== FÁJL ELEMEK (nincs children) ====== */\n"
+"QTreeWidget::item:!has-children {\n"
+"    font-weight: normal;\n"
+"    color: #dcdcdc;\n"
+"}\n"
+"\n"
+"/* Hover fájl elemekre */\n"
+"QTreeWidget::item:!has-children:hover {\n"
+"    background-color: #2b2b2b;\n"
+"}\n"
+"\n"
+"/* ====== SELECTED ====== */\n"
+"QTreeWidget::item:selected {\n"
+"    background-color: #3d6aff;\n"
+"    color: white;\n"
+"}\n"
+"\n"
 "QTreeWidget::item:selected:hover {\n"
 "    background-color: #5278ff;\n"
 "}\n"
 "\n"
-"/* Checkbox — ALAP (nincs kép, gyönyörű QSS kocka) */\n"
+"/* ====== CHECKBOXOK ====== */\n"
 "QTreeWidget::indicator {\n"
 "    width: 16px;\n"
 "    height: 16px;\n"
@@ -134,35 +189,31 @@ class Ui_Form(object):
 "    background: #222;\n"
 "}\n"
 "\n"
-"/* Hover checkbox */\n"
 "QTreeWidget::indicator:hover {\n"
 "    border: 1px solid #aaa;\n"
 "}\n"
 "\n"
-"/* Unchecked */\n"
 "QTreeWidget::indicator:unchecked {\n"
 "    background: #2a2a2a;\n"
 "}\n"
 "\n"
-"/* Checked */\n"
 "QTreeWidget::indicator:checked {\n"
 "    background-color: #3d6aff;\n"
 "    border: 1px solid #3d6aff;\n"
 "}\n"
 "\n"
-"/* CHECKBOX a kijelölt soron → világosabb legyen hogy látszódjon */\n"
+"/* Kijelölt sor checkbox — legyen jól látható */\n"
 "QTreeWidget::item:selected QTreeWidget::indicator {\n"
 "    background: #eef1ff;\n"
 "    border: 1px solid white;\n"
 "}\n"
 "\n"
-"/* CHECKED a kijelölt soron → kék maradjon de világosabb */\n"
 "QTreeWidget::item:selected QTreeWidget::indicator:checked {\n"
 "    background-color: #ffffff;\n"
 "    border: 1px solid white;\n"
 "}\n"
 "\n"
-"/* Header */\n"
+"/* ====== HEADER ====== */\n"
 "QHeaderView::section {\n"
 "    background-color: #2b2b2b;\n"
 "    color: #dcdcdc;\n"
@@ -171,7 +222,7 @@ class Ui_Form(object):
 "    border: 1px solid #3a3a3a;\n"
 "}\n"
 "\n"
-"/* Scrollbar */\n"
+"/* ====== SCROLLBAR ====== */\n"
 "QScrollBar:vertical {\n"
 "    width: 12px;\n"
 "    background: #1e1e1e;\n"
@@ -221,9 +272,9 @@ class Ui_Form(object):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
         self.label.setText(_translate("Form", "Available Files"))
-        self.pushButton.setText(_translate("Form", "Open Filters"))
-        self.treeWidget.headerItem().setText(0, _translate("Form", "File"))
-        self.treeWidget.headerItem().setText(1, _translate("Form", "Selected"))
+        self.pushButton.setText(_translate("Form", "📶"))
+        self.pushButton_2.setText(_translate("Form", "📁"))
+        self.treeWidget.headerItem().setText(0, _translate("Form", "Selected"))
 
 
 if __name__ == "__main__":
