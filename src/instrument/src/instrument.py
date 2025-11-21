@@ -123,7 +123,7 @@ class Instrument:
     ]
 
     MEASUREMENT_KEYS = [
-        "Speed mode", "Sync mode", "Integration time", "Internal ND filter",
+        "Speed mode", "Sync mode", "Integration time", "InternalND filter",
         "Optional close-up lens", "Optional external ND filter",
         "Measurement angle", "Calibration channel"
     ]

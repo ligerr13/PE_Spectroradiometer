@@ -69,3 +69,33 @@ def convert_numpy(obj):
 
 def findAllSerialPorts():
     return list_ports.comports()
+
+def is_valid_measurement_file(data: dict) -> bool:
+    try:
+        if "MeasurementJsonBuilder" not in data:
+            return False
+        if "Measurement Conditions" not in data["MeasurementJsonBuilder"]:
+            return False
+
+        if "ColorimetricJsonBuilder" not in data:
+            return False
+        if "Colorimetric Data" not in data["ColorimetricJsonBuilder"]:
+            return False
+
+        spectral_keys = [
+            "Spectral380To479JsonBuilder",
+            "Spectral480To579JsonBuilder",
+            "Spectral580To679JsonBuilder",
+            "Spectral680To780JsonBuilder",
+        ]
+
+        for key in spectral_keys:
+            if key not in data:
+                return False
+            if "Spectral data" not in data[key]:
+                return False
+
+        return True
+
+    except Exception:
+        return False

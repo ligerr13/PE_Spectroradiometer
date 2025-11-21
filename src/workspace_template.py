@@ -1,3 +1,4 @@
+import os
 from PyQt6.QtWidgets import QApplication, QWidget, QTabBar, QSplitter,QVBoxLayout, QLabel,QTableWidgetItem, QTableWidget, QCheckBox, QGridLayout,QHBoxLayout,QDialog, QScrollArea, QSplitterHandle,QGraphicsView, QGraphicsProxyWidget, QGraphicsScene, QMenu, QGraphicsLineItem, QTreeWidgetItem, QPushButton, QSizePolicy, QHeaderView, QStyledItemDelegate, QStyle
 from PyQt6.QtGui import QColor, qRgb, QTransform, QCursor, QStandardItem, QIcon, QFont, QFontMetrics, QPaintEvent, QPen, QPainter, QPainterPath
 from PyQt6.QtCore import  Qt, QLineF, QEvent, QPoint, QSize, QObject, Qt, pyqtSignal, pyqtSlot
@@ -17,7 +18,7 @@ from src.widgets.daylight_locus_widget import DaylightLocusConfig, DaylightLocus
 from src.signals.signals import WorkspaceSignalBus
 from src.dialogs.textToSceneDialog import TextToSceneDialog
 
-from src.globals.utils import convert_numpy, open_dialog
+from src.globals.utils import convert_numpy, open_dialog, is_valid_measurement_file
 from src.globals.utils import show_toast, ToastType
 
 class ICheckBoxData(QObject):
@@ -220,9 +221,10 @@ class WorkspaceDataTable(QWidget):
         sp = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         self.setSizePolicy(sp)
 
-        # self.filter_widget = ImportOptionsWidget(self)
         self.filter_widget = DataTableFilter(self)
         self.filter_widget.hide()
+
+        self.initMeasurementFiles()
 
     def OpenFilterWidget(self):
         target_width = self.ui.widget_2.frameGeometry().width()
@@ -249,10 +251,35 @@ class WorkspaceDataTable(QWidget):
         self.filter_widget.show()
 
     def initMeasurementFiles(self):
-        pass
-        # get all the files from srs/instument/data
-        # then add the filename and a checkbox
-        # self.ui.treeWidget..... add items
+        base_dir = "src/instrument/data"
+
+        if not os.path.exists(base_dir):
+            print(f"Directory not found: {base_dir}")
+            return
+
+        for file_name in os.listdir(base_dir):
+            full_path = os.path.join(base_dir, file_name)
+
+            if not file_name.lower().endswith(".json"):
+                continue
+
+            try:
+                with open(full_path, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+
+                if is_valid_measurement_file(data):
+                    print(f"OK – valid: {file_name}")
+
+                    item = QTreeWidgetItem([file_name])
+                    item.setCheckState(0, Qt.CheckState.Unchecked)
+                    self.ui.treeWidget.addTopLevelItem(item)
+
+                else:
+                    print(f"INVALID measurement file → {file_name}")
+
+            except Exception as e:
+                print(f"Error reading {file_name}: {e}")
+
 
 class TableContainerWidget(QWidget):
     table_count = 0

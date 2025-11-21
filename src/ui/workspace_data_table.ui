@@ -228,7 +228,106 @@ font: 700 10pt &quot;Consolas&quot;;</string>
              <item>
               <widget class="QTreeWidget" name="treeWidget">
                <property name="styleSheet">
-                <string notr="true">border-right: 0px;</string>
+                <string notr="true">QTreeWidget {
+    background-color: #1e1e1e;
+    alternate-background-color: #222;
+    color: #dcdcdc;
+    border: 1px solid #333;
+    padding: 5px;
+    font: 11pt &quot;Consolas&quot;;
+}
+
+/* Sorok alap */
+QTreeWidget::item {
+    height: 28px;
+    padding: 4px;
+}
+
+/* Hover */
+QTreeWidget::item:hover {
+    background-color: #2b2b2b;
+}
+
+/* Kijelölt sor */
+QTreeWidget::item:selected {
+    background-color: #3d6aff;
+    color: white;
+    border: none;
+}
+
+/* Kijelölt + hover */
+QTreeWidget::item:selected:hover {
+    background-color: #5278ff;
+}
+
+/* Checkbox — ALAP (nincs kép, gyönyörű QSS kocka) */
+QTreeWidget::indicator {
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    border: 1px solid #666;
+    background: #222;
+}
+
+/* Hover checkbox */
+QTreeWidget::indicator:hover {
+    border: 1px solid #aaa;
+}
+
+/* Unchecked */
+QTreeWidget::indicator:unchecked {
+    background: #2a2a2a;
+}
+
+/* Checked */
+QTreeWidget::indicator:checked {
+    background-color: #3d6aff;
+    border: 1px solid #3d6aff;
+}
+
+/* CHECKBOX a kijelölt soron → világosabb legyen hogy látszódjon */
+QTreeWidget::item:selected QTreeWidget::indicator {
+    background: #eef1ff;
+    border: 1px solid white;
+}
+
+/* CHECKED a kijelölt soron → kék maradjon de világosabb */
+QTreeWidget::item:selected QTreeWidget::indicator:checked {
+    background-color: #ffffff;
+    border: 1px solid white;
+}
+
+/* Header */
+QHeaderView::section {
+    background-color: #2b2b2b;
+    color: #dcdcdc;
+    padding: 6px;
+    font: bold 10pt &quot;Consolas&quot;;
+    border: 1px solid #3a3a3a;
+}
+
+/* Scrollbar */
+QScrollBar:vertical {
+    width: 12px;
+    background: #1e1e1e;
+}
+
+QScrollBar::handle:vertical {
+    background: #3a3a3a;
+    min-height: 20px;
+    border-radius: 6px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: #505050;
+}
+
+QScrollBar::add-line,
+QScrollBar::sub-line {
+    background: none;
+    height: 0px;
+}
+</string>
                </property>
                <column>
                 <property name="text">
