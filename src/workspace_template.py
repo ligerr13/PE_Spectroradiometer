@@ -211,7 +211,6 @@ class DataTableFilter(QWidget):
                         self.hide()
         return super().eventFilter(obj, event)
 
-
 class WorkspaceDataTable(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -221,6 +220,8 @@ class WorkspaceDataTable(QWidget):
 
         sp = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
         self.setSizePolicy(sp)
+
+        self.ui.treeWidget.itemChanged.connect(self.onTreeItemChanged)
 
         self.filter_widget = DataTableFilter(self)
         self.filter_widget.hide()
@@ -233,20 +234,31 @@ class WorkspaceDataTable(QWidget):
 
         self.initMeasurementFiles()
 
+    def onTreeItemChanged(self, item, column):
+        # print(item.checkState(column))
+
+        if item.parent() is None:
+            return
+        
+        filename = item.text(0) 
+        folder = Path("src/instrument/data")
+        file_path = folder / filename
+
+        checked = item.checkState(0) == Qt.CheckState.Checked
+
+        WorkspaceSignalBus.instance().add_file_to_table.emit(file_path, checked)
+
     def OpenFilterWidget(self):
-        """Megjeleníti a filter panelt, a parent méretéhez igazítva."""
         target_width = self.ui.widget_2.frameGeometry().width()
         available_height = self.ui.widget_2.frameGeometry().height()
 
         self.filter_widget.resize(target_width, self.filter_widget.frameGeometry().height())
 
         if self.filter_widget.sizeHint().height() > available_height:
-            # Nincs elég hely, a widget marad a parentben
             self.filter_widget.setParent(self)
             self.filter_widget.setWindowFlags(Qt.WindowType.Widget)
             self.filter_widget.move(0, 0)
         else:
-            # Popup ablakként jelenik meg
             if self.filter_widget.parent() is not None:
                 self.filter_widget.setParent(None)
                 self.filter_widget.setWindowFlags(Qt.WindowType.Popup | Qt.WindowType.FramelessWindowHint)
@@ -261,7 +273,6 @@ class WorkspaceDataTable(QWidget):
         self.filter_widget.show()
 
     def initMeasurementFiles(self):
-        """Betölti a mérések JSON fájljait és kategorizálja dátum alapján."""
         folder = Path("src/instrument/data")
         if not folder.exists():
             return
@@ -278,7 +289,6 @@ class WorkspaceDataTable(QWidget):
 
             file_date = get_file_date(filepath)
             add_file_to_tree(self.ui.treeWidget, filepath, file_date)
-
 
 class TableContainerWidget(QWidget):
     table_count = 0
@@ -317,6 +327,22 @@ class TableContainerWidget(QWidget):
         # import_measurement_data_button.clicked.connect(self.import_measurements_to_workspace_table)
         # self.signal_bus.update_options.connect(self.remove_option_from_selected)
 
+        WorkspaceSignalBus.instance().add_file_to_table.connect(
+                    # lambda file_path, checked: print(f"File: {file_path}, is_checked: {checked}")
+                    self.onFileToggled
+                )
+
+        
+    def onFileToggled(self, filepath: Path, checked: bool):
+        if checked:
+            # self.addFileToTable(filepath)
+            self.imported_files.append(filepath)
+            self.load_data()
+        else:
+            # self.removeFileFromTable(filepath)
+            self.imported_files.remove(filepath)
+            self.remove_imported_file()
+
     def open_import_options(self):
         if not self.file_path:
             return
@@ -348,10 +374,10 @@ class TableContainerWidget(QWidget):
         if 0 <= row < len(self.imported_files):
             removed_file = self.imported_files.pop(row)
             print(f"[INFO] Removed from imported_files: {removed_file.name}")
-        self.table.removeRow(row)
+        self.table_manager.table.removeRow(row)
 
     def load_data(self):
-        self.table.clear_table()
+        self.table_manager.clear_table()
 
         for file_path in self.imported_files:
             try:
@@ -364,9 +390,9 @@ class TableContainerWidget(QWidget):
 
     def set_selected_options(self, options: list):
         self.selected_options = ['', 'Measurement'] + options + ['']
-        self.table.clear_table()
-        self.table.setColumnCount(len(self.selected_options))
-        self.table.setHorizontalHeaderLabels(self.selected_options)
+        self.table_manager.clear_table()
+        self.table_manager.table.setColumnCount(len(self.selected_options))
+        self.table_manager.table.setHorizontalHeaderLabels(self.selected_options)
         self.load_data()
 
 
@@ -375,7 +401,7 @@ class TableContainerWidget(QWidget):
             self.selected_options.remove(label)
             self.import_dialog.uncheck_option(label)
             print(f"Option '{label}' removed from selected_options.")
-            self.table.delete_row(row)
+            self.table_manager.table.delete_row(row)
 
     def insert_data(self, data: dict, file_path: Path):
         row_data = [file_path.name]
@@ -391,8 +417,8 @@ class TableContainerWidget(QWidget):
                 else:
                     row_data.append("")
         
-            self.table.add_table_row(row_data)
-            self.table.setColumnCount(len(row_data)  + 1)
+            self.table_manager.add_table_row(row_data)
+            self.table_manager.table.setColumnCount(len(row_data)  + 1)
 
 class WorkspaceTable(QObject):
     def __init__(self, table: QTableWidget, parent=None):
@@ -448,7 +474,6 @@ class WorkspaceTable(QObject):
             if self.table.cellWidget(row, 0) == btn:
                 self.table.removeRow(row)
                 break
-
 
 class plitterHandle(QSplitterHandle):
 

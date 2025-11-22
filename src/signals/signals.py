@@ -1,3 +1,4 @@
+from pathlib import Path
 from types import CoroutineType
 from PyQt6.QtCore import QObject, pyqtSignal
 from PyQt6 import QtCore, QtWidgets
@@ -67,9 +68,13 @@ class WorkspaceSignalBus(QObject):
     measurement_files_generated_failed = pyqtSignal()
     measurement_file_generated = pyqtSignal(str)
 
-
+    add_file_to_table = pyqtSignal(Path, bool)
+ 
     def __init__(self):
         super().__init__()
+
+    def emitAddFileToTable(self, file_name: Path, checked: bool):
+        self.add_file_to_table.emit(file_name, checked)
 
     def emitIdentificationSuccess(self, product_name: str, serial_number: str):
         self.identification_success.emit(product_name, serial_number)
