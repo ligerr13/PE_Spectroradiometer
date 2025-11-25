@@ -127,24 +127,6 @@ QCheckBox::indicator:checked {
    <item row="0" column="0">
     <widget class="QWidget" name="widget" native="true">
      <layout class="QGridLayout" name="gridLayout_2">
-      <item row="1" column="0">
-       <widget class="QScrollArea" name="scrollArea">
-        <property name="widgetResizable">
-         <bool>true</bool>
-        </property>
-        <widget class="QWidget" name="scrollAreaWidgetContents">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>0</y>
-           <width>507</width>
-           <height>420</height>
-          </rect>
-         </property>
-         <layout class="QHBoxLayout" name="horizontalLayout"/>
-        </widget>
-       </widget>
-      </item>
       <item row="0" column="0">
        <widget class="QWidget" name="widget_5" native="true">
         <layout class="QGridLayout" name="gridLayout_3">
@@ -173,10 +155,28 @@ QCheckBox::indicator:checked {
            </property>
           </widget>
          </item>
+         <item row="1" column="0">
+          <widget class="QScrollArea" name="scrollArea">
+           <property name="widgetResizable">
+            <bool>true</bool>
+           </property>
+           <widget class="QWidget" name="scrollAreaWidgetContents">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>0</y>
+              <width>507</width>
+              <height>420</height>
+             </rect>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_4"/>
+           </widget>
+          </widget>
+         </item>
         </layout>
        </widget>
       </item>
-      <item row="2" column="0">
+      <item row="1" column="0">
        <widget class="QWidget" name="widget_2" native="true">
         <layout class="QHBoxLayout" name="horizontalLayout_2">
          <property name="leftMargin">

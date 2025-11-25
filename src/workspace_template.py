@@ -75,7 +75,6 @@ class ICheckBox(QCheckBox):
 
         self.setText(self.checkbox_data.text)
 
-
     def on_imported_changed(self, imported: bool):
         print(f"Imported state changed to: {imported}")
 
@@ -93,115 +92,159 @@ class ICheckBox(QCheckBox):
         else:
             self.checkbox_data.imported = False
 
-class ImportOptionsWidget(QWidget):
-    optionsSelected = pyqtSignal(list)
+# class ImportOptionsWidget(QWidget):
+#     optionsSelected = pyqtSignal(list)
 
-    def __init__(self, parent=None):
-        super().__init__(parent)
+#     def __init__(self, parent=None):
+#         super().__init__(parent)
 
-        self.checkboxes = []
+#         self.checkboxes = []
 
-        layout = QVBoxLayout(self)
+#         layout = QVBoxLayout(self)
 
-        scroll_area = QScrollArea(self)
-        scroll_area.setWidgetResizable(True)
+#         scroll_area = QScrollArea(self)
+#         scroll_area.setWidgetResizable(True)
 
-        check_widget = QWidget()
-        self.check_layout = QVBoxLayout()
-        check_widget.setLayout(self.check_layout)
+#         check_widget = QWidget()
+#         self.check_layout = QVBoxLayout()
+#         check_widget.setLayout(self.check_layout)
 
-        scroll_area.setWidget(check_widget)
-        layout.addWidget(scroll_area)
+#         scroll_area.setWidget(check_widget)
+#         layout.addWidget(scroll_area)
 
-        apply_btn = QPushButton("Apply")
-        apply_btn.clicked.connect(self.on_apply)
+#         apply_btn = QPushButton("Apply")
+#         apply_btn.clicked.connect(self.on_apply)
 
-        layout.addWidget(apply_btn)
+#         layout.addWidget(apply_btn)
 
-        self.setLayout(layout)
+#         self.setLayout(layout)
 
-        checkbox_data_list = [
-            ICheckBoxData(text="Speed Mode", key="Speed mode", imported=False),
-            ICheckBoxData(text="Sync mode", key="Sync mode", imported=False),
-            ICheckBoxData(text="Integration time", key="Integration time", imported=False),
-            ICheckBoxData(text="Internal ND filter", key="Internal ND filter", imported=False),
-            ICheckBoxData(text="Optional close-up lens", key="Optional close-up lens", imported=False),
-            ICheckBoxData(text="Optional external ND filter", key="Optional external ND filter", imported=False),
-            ICheckBoxData(text="Measurement angle", key="Measurement angle", imported=False),
-            ICheckBoxData(text="Calibration channel", key="Calibration channel", imported=False),
+#         checkbox_data_list = [
+#             ICheckBoxData(text="Speed Mode", key="Speed mode", imported=False),
+#             ICheckBoxData(text="Sync mode", key="Sync mode", imported=False),
+#             ICheckBoxData(text="Integration time", key="Integration time", imported=False),
+#             ICheckBoxData(text="Internal ND filter", key="Internal ND filter", imported=False),
+#             ICheckBoxData(text="Optional close-up lens", key="Optional close-up lens", imported=False),
+#             ICheckBoxData(text="Optional external ND filter", key="Optional external ND filter", imported=False),
+#             ICheckBoxData(text="Measurement angle", key="Measurement angle", imported=False),
+#             ICheckBoxData(text="Calibration channel", key="Calibration channel", imported=False),
 
-            # Colorimetric
-            ICheckBoxData(text="Le", key="Le", imported=False),
-            ICheckBoxData(text="Lv", key="Lv", imported=False),
-            ICheckBoxData(text="X", key="X", imported=False),
-            ICheckBoxData(text="Y", key="Y", imported=False),
-            ICheckBoxData(text="Z", key="Z", imported=False),
-            ICheckBoxData(text="x", key="x", imported=False),
-            ICheckBoxData(text="y", key="y", imported=False),
-            ICheckBoxData(text="u'", key="u'", imported=False),
-            ICheckBoxData(text="v'", key="v'", imported=False),
-            ICheckBoxData(text="T", key="T", imported=False),
-            ICheckBoxData(text="delta uv", key="delta uv", imported=False),
-            ICheckBoxData(text="lambda d", key="lambda d", imported=False),
-            ICheckBoxData(text="Pe", key="Pe", imported=False),
-            ICheckBoxData(text="X10", key="X10", imported=False),
-            ICheckBoxData(text="Y10", key="Y10", imported=False),
-            ICheckBoxData(text="Z10", key="Z10", imported=False),
-            ICheckBoxData(text="x10", key="x10", imported=False),
-            ICheckBoxData(text="y10", key="y10", imported=False),
-            ICheckBoxData(text="u'10", key="u'10", imported=False),
-            ICheckBoxData(text="v'10", key="v'10", imported=False),
-            ICheckBoxData(text="T10", key="T10", imported=False),
-            ICheckBoxData(text="delta uv10", key="delta uv10", imported=False),
-            ICheckBoxData(text="lambda d10", key="lambda d10", imported=False),
-            ICheckBoxData(text="Pe10", key="Pe10", imported=False),
+#             # Colorimetric
+#             ICheckBoxData(text="Le", key="Le", imported=False),
+#             ICheckBoxData(text="Lv", key="Lv", imported=False),
+#             ICheckBoxData(text="X", key="X", imported=False),
+#             ICheckBoxData(text="Y", key="Y", imported=False),
+#             ICheckBoxData(text="Z", key="Z", imported=False),
+#             ICheckBoxData(text="x", key="x", imported=False),
+#             ICheckBoxData(text="y", key="y", imported=False),
+#             ICheckBoxData(text="u'", key="u'", imported=False),
+#             ICheckBoxData(text="v'", key="v'", imported=False),
+#             ICheckBoxData(text="T", key="T", imported=False),
+#             ICheckBoxData(text="delta uv", key="delta uv", imported=False),
+#             ICheckBoxData(text="lambda d", key="lambda d", imported=False),
+#             ICheckBoxData(text="Pe", key="Pe", imported=False),
+#             ICheckBoxData(text="X10", key="X10", imported=False),
+#             ICheckBoxData(text="Y10", key="Y10", imported=False),
+#             ICheckBoxData(text="Z10", key="Z10", imported=False),
+#             ICheckBoxData(text="x10", key="x10", imported=False),
+#             ICheckBoxData(text="y10", key="y10", imported=False),
+#             ICheckBoxData(text="u'10", key="u'10", imported=False),
+#             ICheckBoxData(text="v'10", key="v'10", imported=False),
+#             ICheckBoxData(text="T10", key="T10", imported=False),
+#             ICheckBoxData(text="delta uv10", key="delta uv10", imported=False),
+#             ICheckBoxData(text="lambda d10", key="lambda d10", imported=False),
+#             ICheckBoxData(text="Pe10", key="Pe10", imported=False),
 
-            # Spectral groups
-            ICheckBoxData(text="Spectral380To479JsonBuilder", key="Spectral380To479JsonBuilder", imported=False),
-            ICheckBoxData(text="Spectral480To579JsonBuilder", key="Spectral480To579JsonBuilder", imported=False),
-            ICheckBoxData(text="Spectral580To679JsonBuilder", key="Spectral580To679JsonBuilder", imported=False),
-            ICheckBoxData(text="Spectral680To780JsonBuilder", key="Spectral680To780JsonBuilder", imported=False)
-        ]
+#             # Spectral groups
+#             ICheckBoxData(text="Spectral380To479JsonBuilder", key="Spectral380To479JsonBuilder", imported=False),
+#             ICheckBoxData(text="Spectral480To579JsonBuilder", key="Spectral480To579JsonBuilder", imported=False),
+#             ICheckBoxData(text="Spectral580To679JsonBuilder", key="Spectral580To679JsonBuilder", imported=False),
+#             ICheckBoxData(text="Spectral680To780JsonBuilder", key="Spectral680To780JsonBuilder", imported=False)
+#         ]
 
-        for checkbox_data in checkbox_data_list:
-            checkbox = ICheckBox(checkbox_data)
-            self.add_checkbox(checkbox)
+#         for checkbox_data in checkbox_data_list:
+#             checkbox = ICheckBox(checkbox_data)
+#             self.add_checkbox(checkbox)
 
-    def add_checkbox(self, checkbox: ICheckBox):
-        self.checkboxes.append(checkbox)
-        self.check_layout.addWidget(checkbox)
+#     def add_checkbox(self, checkbox: ICheckBox):
+#         self.checkboxes.append(checkbox)
+#         self.check_layout.addWidget(checkbox)
 
-    def uncheck_option(self, label: str):
-        for checkbox in self.checkboxes:
-            if checkbox.checkbox_data.key == label:
-                checkbox.setChecked(False)
-                checkbox.checkbox_data.imported = False
+#     def uncheck_option(self, label: str):
+#         for checkbox in self.checkboxes:
+#             if checkbox.checkbox_data.key == label:
+#                 checkbox.setChecked(False)
+#                 checkbox.checkbox_data.imported = False
 
-    def on_apply(self):
-        selected = [
-            checkbox.checkbox_data.key
-            for checkbox in self.checkboxes if checkbox.isChecked()
-        ]
-        self.optionsSelected.emit(selected)
-        self.hide()
+#     def on_apply(self):
+#         selected = [
+#             checkbox.checkbox_data.key
+#             for checkbox in self.checkboxes if checkbox.isChecked()
+#         ]
+#         self.optionsSelected.emit(selected)
+#         self.hide()
 
 class DataTableFilter(QWidget):
+    optionsSelected = pyqtSignal(list)
+    optionsChanged = pyqtSignal(list)
+
     def __init__(self, parent=None):
         super().__init__(parent)
 
         self.ui = WDataTableFilterUi_Form()
         self.ui.setupUi(self)
+
+        self.checkboxes = []
+        self.scroll_layout = self.ui.gridLayout_4
+
         QApplication.instance().installEventFilter(self)
         self.installEventFilter(self)
+        self.load_checkboxes()
 
-    def is_visible(self) -> bool:
-        return self.isVisible()
+    def load_checkboxes(self):
+        """ICheckBox elemek létrehozása és hozzáadása."""
+        
+        checkbox_data_list = [
+            ICheckBoxData("Speed mode", "Speed Mode"),
+            ICheckBoxData("Sync mode", "Sync mode"),
+            ICheckBoxData("Integration time", "Integration time"),
+            ICheckBoxData("Internal ND filter", "Internal ND filter"),
+            ICheckBoxData("Optional close-up lens", "Optional close-up lens"),
+            ICheckBoxData("Optional external ND filter", "Optional external ND filter"),
+            ICheckBoxData("Measurement angle", "Measurement angle"),
+            ICheckBoxData("Calibration channel", "Calibration channel"),
 
-    def toggle_on(self) -> None:
-        self.setVisible = True
+            # Colorimetric
+            ICheckBoxData("Le", "Le"),
+            ICheckBoxData("Lv", "Lv"),
+            ICheckBoxData("X", "X"),
+            ICheckBoxData("Y", "Y"),
+            ICheckBoxData("Z", "Z"),
+            ICheckBoxData("x", "x"),
+            ICheckBoxData("y", "y"),
+            ICheckBoxData("u'", "u'"),
+            ICheckBoxData("v'", "v'"),
+            ICheckBoxData("T", "T"),
+            ICheckBoxData("delta uv", "delta uv"),
+            ICheckBoxData("lambda d", "lambda d"),
+            ICheckBoxData("Pe", "Pe"),
 
-    def toggle_off(self) -> None:
-        self.setVisible = False
+            # Spectral
+            ICheckBoxData("Spectral380To479JsonBuilder", "Spectral380To479JsonBuilder"),
+            ICheckBoxData("Spectral480To579JsonBuilder", "Spectral480To579JsonBuilder"),
+            ICheckBoxData("Spectral580To679JsonBuilder", "Spectral580To679JsonBuilder"),
+            ICheckBoxData("Spectral680To780JsonBuilder", "Spectral680To780JsonBuilder"),
+        ]
+
+        for data in checkbox_data_list:
+            cb = ICheckBox(data)
+            cb.stateChanged.connect(self.on_checkbox_changed)
+            self.checkboxes.append(cb)
+            self.scroll_layout.addWidget(cb)
+
+    def on_checkbox_changed(self, state):
+        selected = [cb.checkbox_data.key for cb in self.checkboxes if cb.isChecked()]
+        self.optionsChanged.emit(selected)
 
     def eventFilter(self, obj, event):
         if event.type() == QEvent.Type.MouseButtonPress:
@@ -210,6 +253,29 @@ class DataTableFilter(QWidget):
                     if not self.rect().contains(self.mapFromGlobal(QCursor.pos())):
                         self.hide()
         return super().eventFilter(obj, event)
+    
+    # def add_apply_button(self):
+    #     btn = QPushButton("Apply")
+    #     btn.setFixedHeight(35)
+    #     btn.setStyleSheet("""
+    #         QPushButton {
+    #             background-color: rgb(30, 30, 30);
+    #             border: 1px solid rgb(60, 60, 60);
+    #             border-radius: 5px;
+    #             color: white;
+    #             font: 700 10pt "Consolas";
+    #         }
+    #         QPushButton:hover {
+    #             background-color: rgb(50, 50, 50);
+    #         }
+    #     """)
+    #     btn.clicked.connect(self.on_apply)
+    #     self.scroll_layout.addWidget(btn)
+
+    # def on_apply(self):
+    #     selected = [cb.checkbox_data.key for cb in self.checkboxes if cb.isChecked()]
+    #     self.optionsSelected.emit(selected)
+    #     self.hide()
 
 class WorkspaceDataTable(QWidget):
     def __init__(self, parent=None):
@@ -224,6 +290,7 @@ class WorkspaceDataTable(QWidget):
         self.ui.treeWidget.itemChanged.connect(self.onTreeItemChanged)
 
         self.filter_widget = DataTableFilter(self)
+        self.filter_widget.optionsChanged.connect(self.apply_filter)
         self.filter_widget.hide()
 
         self.splitter = plitter(Qt.Orientation.Horizontal)
@@ -234,9 +301,11 @@ class WorkspaceDataTable(QWidget):
 
         self.initMeasurementFiles()
 
-    def onTreeItemChanged(self, item, column):
-        # print(item.checkState(column))
+    def apply_filter(self, selected):
+        self.ui.tableWidget.setHeaderData() 
+        print("Macska pocse karanten! ", selected)
 
+    def onTreeItemChanged(self, item, column):
         if item.parent() is None:
             return
         
@@ -311,7 +380,6 @@ class TableContainerWidget(QWidget):
         self.w_data_table = WorkspaceDataTable(self)
         self.table_manager = WorkspaceTable(self.w_data_table.ui.tableWidget)
 
-
         # self.w_data_table.ui.verticalLayout_5.addWidget(self.table)
 
         main_layout = QVBoxLayout()
@@ -327,21 +395,17 @@ class TableContainerWidget(QWidget):
         # import_measurement_data_button.clicked.connect(self.import_measurements_to_workspace_table)
         # self.signal_bus.update_options.connect(self.remove_option_from_selected)
 
-        WorkspaceSignalBus.instance().add_file_to_table.connect(
-                    # lambda file_path, checked: print(f"File: {file_path}, is_checked: {checked}")
-                    self.onFileToggled
-                )
-
+        WorkspaceSignalBus.instance().add_file_to_table.connect(self.onFileToggled)
         
     def onFileToggled(self, filepath: Path, checked: bool):
         if checked:
-            # self.addFileToTable(filepath)
-            self.imported_files.append(filepath)
-            self.load_data()
+            if filepath not in self.imported_files:
+                self.imported_files.append(filepath)
+                self.load_data()
         else:
-            # self.removeFileFromTable(filepath)
-            self.imported_files.remove(filepath)
-            self.remove_imported_file()
+            if filepath in self.imported_files:
+                self.imported_files.remove(filepath)
+                self.remove_imported_file(filepath)
 
     def open_import_options(self):
         if not self.file_path:
@@ -370,11 +434,19 @@ class TableContainerWidget(QWidget):
 
         self.load_data()
 
-    def remove_imported_file(self, row: int):
-        if 0 <= row < len(self.imported_files):
-            removed_file = self.imported_files.pop(row)
-            print(f"[INFO] Removed from imported_files: {removed_file.name}")
-        self.table_manager.table.removeRow(row)
+    def remove_imported_file(self, filepath: Path):
+        filename = filepath.name
+
+        table = self.table_manager.table
+
+        for row in range(table.rowCount()):
+            item = table.item(row, 1)
+            if item and item.text() == filename:
+                table.removeRow(row)
+                print(f"[INFO] Row removed for: {filename}")
+                return
+
+        print(f"[WARN] No row found for file: {filename}")
 
     def load_data(self):
         self.table_manager.clear_table()
@@ -395,12 +467,11 @@ class TableContainerWidget(QWidget):
         self.table_manager.table.setHorizontalHeaderLabels(self.selected_options)
         self.load_data()
 
-
     def remove_option_from_selected(self, label: str, row: int):
         if label in self.selected_options:
             self.selected_options.remove(label)
             self.import_dialog.uncheck_option(label)
-            print(f"Option '{label}' removed from selected_options.")
+            print(f"Option '{label}' removed from selected_options.") 
             self.table_manager.table.delete_row(row)
 
     def insert_data(self, data: dict, file_path: Path):
@@ -467,7 +538,7 @@ class WorkspaceTable(QObject):
                 if item:
                     item.setBackground(QColor("#191919"))
 
-        self.table.setFixedHeight((self.table.rowCount() + 1) * 40)
+        # self.table.setFixedHeight((self.table.rowCount() + 1) * 40)
 
     def delete_row_of_button(self, btn):
         for row in range(self.table.rowCount()):
