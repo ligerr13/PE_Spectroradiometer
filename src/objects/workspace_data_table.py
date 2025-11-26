@@ -347,10 +347,8 @@ class Ui_Form(object):
 "}\n"
 "")
         self.tableWidget.setObjectName("tableWidget")
-        self.tableWidget.setColumnCount(1)
+        self.tableWidget.setColumnCount(0)
         self.tableWidget.setRowCount(0)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(0, item)
         self.verticalLayout_5.addWidget(self.tableWidget)
         self.horizontalLayout.addWidget(self.TableContainer)
         self.verticalLayout.addWidget(self.widget)
@@ -365,8 +363,6 @@ class Ui_Form(object):
         self.pushButton.setText(_translate("Form", "📶"))
         self.pushButton_2.setText(_translate("Form", "📁"))
         self.treeWidget.headerItem().setText(0, _translate("Form", "Selected"))
-        item = self.tableWidget.horizontalHeaderItem(0)
-        item.setText(_translate("Form", "Default"))
 
 
 if __name__ == "__main__":

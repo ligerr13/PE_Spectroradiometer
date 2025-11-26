@@ -39,7 +39,7 @@ class WorkspaceSignalBus(QObject):
 
     update_explorer = pyqtSignal()
 
-    update_options = pyqtSignal(str, int)
+    update_options = pyqtSignal(list)
 
     add_widget_to_current_workspace = pyqtSignal(QGraphicsProxyWidget)
 

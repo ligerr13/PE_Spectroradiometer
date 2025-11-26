@@ -539,11 +539,6 @@ QTableWidget::item:selected {
 }
 </string>
            </property>
-           <column>
-            <property name="text">
-             <string>Default</string>
-            </property>
-           </column>
           </widget>
          </item>
         </layout>

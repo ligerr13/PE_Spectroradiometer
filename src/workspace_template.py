@@ -302,8 +302,9 @@ class WorkspaceDataTable(QWidget):
         self.initMeasurementFiles()
 
     def apply_filter(self, selected):
-        self.ui.tableWidget.setHeaderData() 
-        print("Macska pocse karanten! ", selected)
+        print("Filter applied:", selected)
+
+        WorkspaceSignalBus.instance().update_options.emit(selected)
 
     def onTreeItemChanged(self, item, column):
         if item.parent() is None:
@@ -360,136 +361,72 @@ class WorkspaceDataTable(QWidget):
             add_file_to_tree(self.ui.treeWidget, filepath, file_date)
 
 class TableContainerWidget(QWidget):
-    table_count = 0
-    load_data_signal = pyqtSignal()
-
     def __init__(self, file_path: Path):
         super().__init__()
 
-        self.signal_bus = WorkspaceSignalBus().instance()
-
-        TableContainerWidget.table_count += 1
-        self.file_path          = file_path
-        self.selected_files     = []
-        self.imported_files     = []
-        self.selected_options   = []
-
-        sp = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-        self.setSizePolicy(sp)
-
+        self.imported_files = []
+        self.selected_options = []   # csak a FILTER oszlopok!
+        
         self.w_data_table = WorkspaceDataTable(self)
         self.table_manager = WorkspaceTable(self.w_data_table.ui.tableWidget)
 
-        # self.w_data_table.ui.verticalLayout_5.addWidget(self.table)
-
-        main_layout = QVBoxLayout()
-        main_layout.setSpacing(0)
-        main_layout.setContentsMargins(0,0,0,0)
-
-        main_layout.addWidget(self.w_data_table)
-        self.setLayout(main_layout)
-
-        # self.table = self.table_widget.ui.tableWidget
-        
-        # data_selecter_button.clicked.connect(self.open_import_options)
-        # import_measurement_data_button.clicked.connect(self.import_measurements_to_workspace_table)
-        # self.signal_bus.update_options.connect(self.remove_option_from_selected)
-
+        # a FILTER-ek változását figyeli
+        WorkspaceSignalBus.instance().update_options.connect(self.set_selected_options)
         WorkspaceSignalBus.instance().add_file_to_table.connect(self.onFileToggled)
-        
+
     def onFileToggled(self, filepath: Path, checked: bool):
         if checked:
             if filepath not in self.imported_files:
                 self.imported_files.append(filepath)
-                self.load_data()
         else:
             if filepath in self.imported_files:
                 self.imported_files.remove(filepath)
-                self.remove_imported_file(filepath)
-
-    def open_import_options(self):
-        if not self.file_path:
-            return
-
-        self.import_dialog.optionsSelected.connect(self.set_selected_options)
-
-        if self.import_dialog.exec():
-            pass
-        
-    def import_measurements_to_workspace_table(self):  
-        dir = "src/instrument/data"
-        opened_files = open_dialog(self, direction=dir)
-
-        if not opened_files:
-            return
-
-        for file_path_str in opened_files:
-            path_obj = Path(file_path_str)
-            if path_obj in self.imported_files:
-                print(f"[INFO] File already imported: {path_obj.name}")
-                continue
-
-            self.imported_files.append(path_obj)
-            print(f"[INFO] Imported: {path_obj.name}")
 
         self.load_data()
 
-    def remove_imported_file(self, filepath: Path):
-        filename = filepath.name
+    def set_selected_options(self, options: list):
+        """
+        FILTER CHANGE → update header + reload table
+        """
+        print("Selected columns:", options)
+
+        # FIX: NINCS több üres oszlop a végén
+        self.selected_options = ["", "Measurement"] + options
 
         table = self.table_manager.table
+        table.clear()
+        table.setColumnCount(len(self.selected_options))
+        table.setHorizontalHeaderLabels(self.selected_options)
 
-        for row in range(table.rowCount()):
-            item = table.item(row, 1)
-            if item and item.text() == filename:
-                table.removeRow(row)
-                print(f"[INFO] Row removed for: {filename}")
-                return
-
-        print(f"[WARN] No row found for file: {filename}")
+        self.load_data()
 
     def load_data(self):
         self.table_manager.clear_table()
 
-        for file_path in self.imported_files:
+        for fpath in self.imported_files:
             try:
-                with open(file_path, 'r') as json_file:
-                    data = json.load(json_file)
-                    if data:
-                        self.insert_data(data, file_path)
+                with open(fpath, "r") as f:
+                    data = json.load(f)
+                self.insert_data(data, fpath)
             except Exception as e:
-                print(f"[ERROR] Could not load {file_path}: {e}")
+                print("Load error:", fpath, e)
 
-    def set_selected_options(self, options: list):
-        self.selected_options = ['', 'Measurement'] + options + ['']
-        self.table_manager.clear_table()
-        self.table_manager.table.setColumnCount(len(self.selected_options))
-        self.table_manager.table.setHorizontalHeaderLabels(self.selected_options)
-        self.load_data()
+    def insert_data(self, data: dict, fpath: Path):
+        row_data = [fpath.name]
 
-    def remove_option_from_selected(self, label: str, row: int):
-        if label in self.selected_options:
-            self.selected_options.remove(label)
-            self.import_dialog.uncheck_option(label)
-            print(f"Option '{label}' removed from selected_options.") 
-            self.table_manager.table.delete_row(row)
+        # FIX: végre megkapod az utolsó oszlopot is!
+        for key in self.selected_options[2:]:
+            if "MeasurementJsonBuilder" in data and key in data["MeasurementJsonBuilder"]["Measurement Conditions"]:
+                row_data.append(data["MeasurementJsonBuilder"]["Measurement Conditions"][key]["value"])
+            elif key in data.get("ColorimetricJsonBuilder", {}).get("Colorimetric Data", {}):
+                row_data.append(data["ColorimetricJsonBuilder"]["Colorimetric Data"][key]["value"])
+            elif key in data:
+                row_data.append(data[key].get("Spectral data", {}).get("value", ""))
+            else:
+                row_data.append("")
 
-    def insert_data(self, data: dict, file_path: Path):
-        row_data = [file_path.name]
-        
-        if "MeasurementJsonBuilder" in data and "Measurement Conditions" in data["MeasurementJsonBuilder"]:
-            for key in self.selected_options[2:-1]:
-                if key in data["MeasurementJsonBuilder"]["Measurement Conditions"]:
-                    row_data.append(data["MeasurementJsonBuilder"]["Measurement Conditions"][key]["value"])
-                elif key in data:
-                    row_data.append(data[key]["Spectral data"]["value"])
-                elif key in data.get("ColorimetricJsonBuilder", {}).get("Colorimetric Data", {}):
-                    row_data.append(data["ColorimetricJsonBuilder"]["Colorimetric Data"][key]["value"])
-                else:
-                    row_data.append("")
-        
-            self.table_manager.add_table_row(row_data)
-            self.table_manager.table.setColumnCount(len(row_data)  + 1)
+        self.table_manager.add_table_row(row_data)
+
 
 class WorkspaceTable(QObject):
     def __init__(self, table: QTableWidget, parent=None):
@@ -500,12 +437,9 @@ class WorkspaceTable(QObject):
         self.table.setColumnCount(3)
         self.table.setHorizontalHeaderLabels(["", "Measurement", ""])
         self.table.verticalHeader().hide()
-
         self.table.setShowGrid(False)
-       
 
         header = self.table.horizontalHeader()
-       
         header.setSectionResizeMode(0, QHeaderView.ResizeMode.Fixed)
         header.setSectionResizeMode(1, QHeaderView.ResizeMode.Stretch)
         header.setSectionResizeMode(2, QHeaderView.ResizeMode.Stretch)
@@ -521,11 +455,11 @@ class WorkspaceTable(QObject):
         btn.setIcon(QIcon("resources/icons/delete.png"))
         btn.setFixedWidth(40)
         btn.setStyleSheet("background-color: rgb(210,39,48); border: none;")
-        btn.clicked.connect(lambda _, b=btn: self.delete_row_of_button(b))
 
         self.table.setCellWidget(row, 0, btn)
 
-        bold = QFont(); bold.setBold(True)
+        bold = QFont()
+        bold.setBold(True)
 
         for col, v in enumerate(values, start=1):
             item = QTableWidgetItem(str(v))
@@ -534,11 +468,9 @@ class WorkspaceTable(QObject):
 
         if row % 2 == 0:
             for col in range(self.table.columnCount()):
-                item = self.table.item(row, col)
-                if item:
-                    item.setBackground(QColor("#191919"))
-
-        # self.table.setFixedHeight((self.table.rowCount() + 1) * 40)
+                it = self.table.item(row, col)
+                if it:
+                    it.setBackground(QColor("#191919"))
 
     def delete_row_of_button(self, btn):
         for row in range(self.table.rowCount()):
