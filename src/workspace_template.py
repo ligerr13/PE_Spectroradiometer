@@ -68,7 +68,7 @@ class ICheckBox(QCheckBox):
     def __init__(self, checkbox_data: ICheckBoxData):
         super(ICheckBox, self).__init__()
         self.checkbox_data = checkbox_data
-        
+
         self.checkbox_data.importedChanged.connect(self.on_imported_changed)
         self.checkbox_data.textChanged.connect(self.on_text_changed)
         self.checkbox_data.keyChanged.connect(self.on_key_changed)
@@ -84,7 +84,7 @@ class ICheckBox(QCheckBox):
 
     def on_key_changed(self, key: str):
         print(f"Key changed to: {key}")
-        
+
     def on_state_changed(self, state: int):
         print(state)
         if state == Qt.CheckState.Checked:
@@ -203,7 +203,7 @@ class DataTableFilter(QWidget):
 
     def load_checkboxes(self):
         """ICheckBox elemek létrehozása és hozzáadása."""
-        
+
         checkbox_data_list = [
             ICheckBoxData("Speed mode", "Speed Mode"),
             ICheckBoxData("Sync mode", "Sync mode"),
@@ -253,7 +253,7 @@ class DataTableFilter(QWidget):
                     if not self.rect().contains(self.mapFromGlobal(QCursor.pos())):
                         self.hide()
         return super().eventFilter(obj, event)
-    
+
     # def add_apply_button(self):
     #     btn = QPushButton("Apply")
     #     btn.setFixedHeight(35)
@@ -278,6 +278,9 @@ class DataTableFilter(QWidget):
     #     self.hide()
 
 class WorkspaceDataTable(QWidget):
+    fileToggled = pyqtSignal(Path, bool)
+    filterChanged = pyqtSignal(list)
+
     def __init__(self, parent=None):
         super().__init__(parent)
 
@@ -304,19 +307,19 @@ class WorkspaceDataTable(QWidget):
     def apply_filter(self, selected):
         print("Filter applied:", selected)
 
-        WorkspaceSignalBus.instance().update_options.emit(selected)
+        self.filterChanged.emit(selected)
 
     def onTreeItemChanged(self, item, column):
         if item.parent() is None:
             return
-        
-        filename = item.text(0) 
+
+        filename = item.text(0)
         folder = Path("src/instrument/data")
         file_path = folder / filename
 
         checked = item.checkState(0) == Qt.CheckState.Checked
 
-        WorkspaceSignalBus.instance().add_file_to_table.emit(file_path, checked)
+        self.fileToggled.emit(file_path, checked)
 
     def OpenFilterWidget(self):
         target_width = self.ui.widget_2.frameGeometry().width()
@@ -365,14 +368,13 @@ class TableContainerWidget(QWidget):
         super().__init__()
 
         self.imported_files = []
-        self.selected_options = []   # csak a FILTER oszlopok!
-        
+        self.selected_options = []
+
         self.w_data_table = WorkspaceDataTable(self)
         self.table_manager = WorkspaceTable(self.w_data_table.ui.tableWidget)
 
-        # a FILTER-ek változását figyeli
-        WorkspaceSignalBus.instance().update_options.connect(self.set_selected_options)
-        WorkspaceSignalBus.instance().add_file_to_table.connect(self.onFileToggled)
+        self.w_data_table.fileToggled.connect(self.onFileToggled)
+        self.w_data_table.filterChanged.connect(self.set_selected_options)
 
     def onFileToggled(self, filepath: Path, checked: bool):
         if checked:
@@ -390,7 +392,6 @@ class TableContainerWidget(QWidget):
         """
         print("Selected columns:", options)
 
-        # FIX: NINCS több üres oszlop a végén
         self.selected_options = ["", "Measurement"] + options
 
         table = self.table_manager.table
@@ -414,7 +415,6 @@ class TableContainerWidget(QWidget):
     def insert_data(self, data: dict, fpath: Path):
         row_data = [fpath.name]
 
-        # FIX: végre megkapod az utolsó oszlopot is!
         for key in self.selected_options[2:]:
             if "MeasurementJsonBuilder" in data and key in data["MeasurementJsonBuilder"]["Measurement Conditions"]:
                 row_data.append(data["MeasurementJsonBuilder"]["Measurement Conditions"][key]["value"])
@@ -495,14 +495,14 @@ class plitterHandle(QSplitterHandle):
 
     def mousePressEvent(self, event):
         """When handle is pressed, increase its size."""
-        
+
         self.is_pressed == True
         # self.setFixedHeight(self.pressed_height)
         super().mousePressEvent(event)
 
     def mouseReleaseEvent(self, event):
         """When the mouse is released, reset the handle size."""
-        
+
         self.is_pressed == True
         # self.setFixedHeight(self.default_height)
         self.handleRelease.emit()
@@ -514,7 +514,7 @@ class plitter(QSplitter):
     def __init__(self, orientation):
         super().__init__(orientation)
         self.splitterMoved.connect(self.onSplitterMoved)
-        
+
         self.rest_anchor = 0
         self.is_hidden = False
 
@@ -574,7 +574,7 @@ class CustomMenu(QMenu):
         self.addAction(self.cMenu.actionCopy)
         self.addAction(self.cMenu.actionCut)
         self.addAction(self.cMenu.actionSelect_All)
-    
+
 
         self.submenu.addAction(self.cMenu.actionDark)
         self.submenu.addAction(self.cMenu.actionLight)
@@ -597,7 +597,7 @@ class TableTabManager(QObject):
         self.add_table_page(TableContainerWidget("Table"), f'{self.defualt_table_name}', False)
         self.setupPlusButton()
 
-    def setupPlusButton(self): 
+    def setupPlusButton(self):
         """
             Setups the New Worksapce Button.
         """
@@ -605,7 +605,7 @@ class TableTabManager(QObject):
         self.plusButton.setParent(self.tabletabwidget)
         self.plusButton.setFixedSize(3*35, 40)
         self.plusButton.setStyleSheet("""
-        QPushButton { 
+        QPushButton {
                 background: rgb(25, 25, 25);
                 border: 2px solid rgb(35, 35, 35);
                 border-radius: 3px;
@@ -640,11 +640,11 @@ class TableTabManager(QObject):
         """
         Return the size of the TabBar with increased width for the plus button.
         """
-        sizeHint = QTabBar.sizeHint(self.tabletabwidget.tabBar()) 
+        sizeHint = QTabBar.sizeHint(self.tabletabwidget.tabBar())
         width = sizeHint.width()
         height = sizeHint.height()
         return QSize(width + 60, height)
-    
+
     def add_table_page(self, table_widget, page_name, closeable = True):
         """
         Add a new page to the TabWidget.
@@ -652,18 +652,18 @@ class TableTabManager(QObject):
         :param table_widget: The QWidget associated with the new page
         :param page_name: The name of the new page
         """
-       
+
         max_characters = 30
         character_width = 7
         max_width = max_characters * character_width
-        
+
         display_text = page_name + "  " if len(page_name) <= max_characters else page_name[:max_characters] + '...  '
         text_width = min(len(display_text) * character_width, max_width)
-        
+
         index = self.tabletabwidget.addTab(table_widget, display_text)
-        
+
         self.tabletabwidget.setTabToolTip(index, page_name)
-        
+
         closeButton = QPushButton()
         closeButton.setIcon(QIcon("./resources/icons/close-2.png"))
         closeButton.setIconSize(QSize(10, 10))
@@ -671,7 +671,7 @@ class TableTabManager(QObject):
         if closeable:
             self.tabletabwidget.tabBar().setTabButton(index, QTabBar.ButtonPosition.RightSide, closeButton)
         self.tabletabwidget.tabBar().setTabData(index, QSize(text_width, 20))
-        
+
         self.tab_count += 1
 
         self.tabletabwidget.setCurrentWidget(table_widget)
@@ -694,7 +694,7 @@ class Workspace(QWidget):
         self.ui = Ui_WorkspaceDesignForm()
         self.ui.setupUi(self)
         self.main = parent
-        
+
         self.workspace_name = workspace_name
         self.explorer = self.ui.treeWidget
         self.grid = self.ui.gridLayout_5
@@ -762,9 +762,9 @@ class Workspace(QWidget):
                         clone = SpectrumWidget()
                         clone.configure(data.get('data'), data.get('range')['min'], data.get('range')['max'])
                         clone.setGeometry(
-                            data.get('geometry')['x'], 
-                            data.get('geometry')['y'], 
-                            data.get('geometry')['width'], 
+                            data.get('geometry')['x'],
+                            data.get('geometry')['y'],
+                            data.get('geometry')['width'],
                             data.get('geometry')['height']
                         )
                         self.scene.addWidget(clone)
@@ -772,34 +772,34 @@ class Workspace(QWidget):
                     case 'LocusWidget':
                         clone = LocusWidget()
                         clone.configure(
-                            data.get('data'), 
-                            data.get('config')['cctext'], 
+                            data.get('data'),
+                            data.get('config')['cctext'],
                             data.get('config')['eew'],
-                            data.get('config')['dl'], 
+                            data.get('config')['dl'],
                             data.get('config')['bbl'],
                             data.get('config')['d65'])
-                        
+
                         clone.setGeometry(
-                            data.get('geometry')['x'], 
-                            data.get('geometry')['y'], 
-                            data.get('geometry')['width'], 
+                            data.get('geometry')['x'],
+                            data.get('geometry')['y'],
+                            data.get('geometry')['width'],
                             data.get('geometry')['height'])
-                        
+
                         self.scene.addWidget(clone)
 
                     case 'DaylightLocusWidget':
                         clone = DaylightLocusWidget()
                         clone.configure(
-                            data.get('data'), 
-                            data.get('config')['ccts'], 
+                            data.get('data'),
+                            data.get('config')['ccts'],
                             data.get('config')['force_daylight_below4000K'],
-                        )                        
+                        )
                         clone.setGeometry(
-                            data.get('geometry')['x'], 
-                            data.get('geometry')['y'], 
-                            data.get('geometry')['width'], 
+                            data.get('geometry')['x'],
+                            data.get('geometry')['y'],
+                            data.get('geometry')['width'],
                             data.get('geometry')['height'])
-                        
+
                         self.scene.addWidget(clone)
                     case _:
                         print(f"Unsupported widget type: {widget_type}")
@@ -829,24 +829,24 @@ class Workspace(QWidget):
                                   color: rgb(170,170,170);
                                   font: 570 10pt "Consolas";
         """)
-        self.button.setText(f"{self.view.viewport().width()}x{self.view.viewport().height()}") 
-    
+        self.button.setText(f"{self.view.viewport().width()}x{self.view.viewport().height()}")
+
     def update_explorer(self):
         widget_items = self.explorer.findItems("Widget", Qt.MatchFlag.MatchExactly | Qt.MatchFlag.MatchRecursive)
-        
+
         if widget_items:
             for item in widget_items:
                 WIDGET_DATA = self.scene.extract_widget_data()
 
                 current_items = {item.child(i).text(0) for i in range(item.childCount())}
-                
+
                 new_items = {widget.objectName for widget in WIDGET_DATA}
 
                 for i in reversed(range(item.childCount())):
                     child = item.child(i)
                     if child.text(0) not in new_items:
                         item.removeChild(child)
-                
+
                 for objName in new_items:
                     if objName not in current_items:
                         item.addChild(QTreeWidgetItem([objName]))
@@ -855,14 +855,14 @@ class Workspace(QWidget):
             for gridLines in self.scene.items():
                 if isinstance(gridLines, QGraphicsLineItem):
                     gridLines.setVisible(state)
-        
+
     def handle_edit_settings_context_menu(self):
         sender_button = self.sender()
         global_pos = sender_button.mapToGlobal(sender_button.pos())
         global_pos += QPoint(-230, 35)
         self.context_menu.exec(global_pos)
         self.ui.workspaceEditSettingsButton.clearFocus()
-        
+
     def group_workspace_group_buttons_to_pages(self):
          for i, button in enumerate(self.ui.WorkspaceMenuButtonGroup.buttons()):
               self.ui.WorkspaceMenuButtonGroup.setId(button, i)
@@ -893,7 +893,7 @@ class Workspace(QWidget):
                     background-color: transparent;
                     color: 	rgb(171, 171, 171);
             }
-            QToolTip{ 
+            QToolTip{
                     font: 12pt;
                     color: rgb(100, 100, 100);
             }""")
@@ -923,12 +923,12 @@ class Workspace(QWidget):
                     background-color: transparent;
                     color: 	rgb(171, 171, 171);
                 }
-                QToolTip{ 
+                QToolTip{
                         font: 12pt;
                         color: rgb(100, 100, 100);
                 }""")
             self.update_test_button_on_view()
-                
+
     def handle_create_widget_on_scene(self, selected: bool):
         if selected is not None:
             if  selected == False:
@@ -947,7 +947,7 @@ class Workspace(QWidget):
             self.view.setDragMode(QGraphicsView.DragMode.NoDrag)
             WIDGET_DATA = self.scene.extract_widget_data()
             for widget in WIDGET_DATA:
-                widget.enableMovementSignal.emit(False) 
+                widget.enableMovementSignal.emit(False)
 
     def handle_scene_select_mode(self, selected: bool):
             try:
@@ -1019,24 +1019,24 @@ class Workspace(QWidget):
     def handle_add_text_to_scene(self):
         print("Opening text dialog or widget...")
         self.textCreateToScene.popUp()
-    
+
     def handle_add_image_to_scene(self):
         print("Opening image dialog or widget...")
 
     def save_workspace(self, file_name: str):
         WIDGET_DATA = self.scene.extract_widget_data()
-        
+
         DATA = [widget.get_widget_data() for widget in WIDGET_DATA]
-        
+
         WORKSPACE_DATA = {
         "workspace": self.workspace_name,
         "widgets": DATA }
 
         with open(file_name, 'w') as file:
             json.dump(WORKSPACE_DATA, file, indent=4, default=convert_numpy)
-        
+
         # show_toast("Workscape Saved!", 3000, ToastType.SUCCESS)
-    
+
     def load_workspace(self, file_name: str):
         try:
             with open(file_name, 'r') as file:
@@ -1062,7 +1062,7 @@ class Workspace(QWidget):
 
                 if widget_type == 'SceneWidget':
                     if sub_type == 'Spectrum-Color':
-                        try: 
+                        try:
                             widget = SpectrumWidget()
                             widget.setObjectName(WIDGET.get('unique_name', 'DefaultID'))
                             raw_spectral_data = WIDGET.get('data', [])
@@ -1090,7 +1090,7 @@ class Workspace(QWidget):
                                 d65=colorimetric_config.get('d65', False)
                             )
 
-                           
+
                             widget.configure(
                                 data=raw_colorimetric_data,
                                 cctext=config.cctext,
@@ -1183,7 +1183,7 @@ class NodeboardGraphicsScene(QGraphicsScene):
         self.DeleteButton = button
         if button and button.isChecked() and self.selectedWidget:
             self.nodeboard_signal_bus.onWidgetDeletedSignalEmit(self.selectedWidget)
-    
+
     def mousePressEvent(self, event):
         if self.SelectButton and self.SelectButton.isChecked():
             item = self.itemAt(event.scenePos(), QTransform())
@@ -1203,7 +1203,7 @@ class NodeboardGraphicsScene(QGraphicsScene):
             self.nodeboard_signal_bus.onWidgetDeselectedSignalEmit(deleted)
             self.removeItem(deleted)
             self.signal_bus.emitUpdateExplorer()
-                
+
     def onSelectWidget(self, selected: QGraphicsProxyWidget):
         if isinstance(selected, QGraphicsProxyWidget):
             selected.widget().setStyleSheet("QWidget {\nbackground-color: rgb(75, 75, 75);\nborder-radius: 5px; }")
