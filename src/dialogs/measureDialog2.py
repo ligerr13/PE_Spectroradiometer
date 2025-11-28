@@ -87,7 +87,9 @@ class MeasureDialogV2(QDialog):
         self.workspace_signal_bus.identification_success.connect(self.onIndentificationSuccess)
         self.workspace_signal_bus.measurement_file_generated.connect(self.onAddFile)
 
+        # Just for testing 
         self.ui.pushButton_2.clicked.connect(self.runGeneratedFilesFullTest)
+        # self.ui.pushButton_2.clicked.connect(self.onConnectClicked)
         self.ui.comboBox.currentIndexChanged.connect(self.onPortSelected)
 
     def _setupGeneratedFilesUI(self):
@@ -100,6 +102,22 @@ class MeasureDialogV2(QDialog):
     def popUp(self):
         self.exec()
         self.reset()
+
+    def onConnectClicked(self):
+        self.addLog("> Searching for available ports...")
+        
+        self.portPicker.clear()
+        availablePorts = findAllSerialPorts()
+        
+        if not availablePorts:
+            self.addLog('> Found 0 ports. Please check if the instrument is correctly connected to the device.')\
+                .setData(QColor(255, 100, 103), Qt.ItemDataRole.ForegroundRole)
+        else:
+            self.addLog(f'> Found {len(availablePorts)} ports. Please select one.')
+
+            for p in availablePorts:
+                self.portPicker.addItem(f'{p.name} - {p.manufacturer}')
+
 
     def addLog(self, message: str):
         return self.programLogger.addRow(message)
