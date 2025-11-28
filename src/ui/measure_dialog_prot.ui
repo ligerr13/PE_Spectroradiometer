@@ -83,7 +83,7 @@
             <string>Measurement Control Panel</string>
            </property>
            <property name="alignment">
-            <set>Qt::AlignCenter</set>
+            <set>Qt::AlignmentFlag::AlignCenter</set>
            </property>
           </widget>
          </item>
@@ -102,7 +102,7 @@
             <string>Start and monitor measurement processes.</string>
            </property>
            <property name="alignment">
-            <set>Qt::AlignCenter</set>
+            <set>Qt::AlignmentFlag::AlignCenter</set>
            </property>
           </widget>
          </item>
@@ -198,7 +198,7 @@ color: rgb(200,200,200);</string>
                <string notr="true">background-color: rgb(40,40,40);</string>
               </property>
               <property name="orientation">
-               <enum>Qt::Horizontal</enum>
+               <enum>Qt::Orientation::Horizontal</enum>
               </property>
              </widget>
             </item>
@@ -396,10 +396,10 @@ QPushButton:disabled {
             <string notr="true">border: 0px;</string>
            </property>
            <layout class="QHBoxLayout" name="horizontalLayout_3">
-            <item alignment="Qt::AlignHCenter">
+            <item alignment="Qt::AlignmentFlag::AlignHCenter">
              <widget class="QWidget" name="widget_11" native="true">
               <layout class="QVBoxLayout" name="verticalLayout_8">
-               <item alignment="Qt::AlignHCenter">
+               <item alignment="Qt::AlignmentFlag::AlignHCenter">
                 <widget class="QLabel" name="label_6">
                  <property name="minimumSize">
                   <size>
@@ -460,7 +460,7 @@ QLabel {
                   <bool>true</bool>
                  </property>
                  <property name="alignment">
-                  <set>Qt::AlignCenter</set>
+                  <set>Qt::AlignmentFlag::AlignCenter</set>
                  </property>
                 </widget>
                </item>
@@ -477,10 +477,10 @@ QLabel {
               </layout>
              </widget>
             </item>
-            <item alignment="Qt::AlignHCenter">
+            <item alignment="Qt::AlignmentFlag::AlignHCenter">
              <widget class="QWidget" name="widget_13" native="true">
               <layout class="QVBoxLayout" name="verticalLayout_11">
-               <item alignment="Qt::AlignHCenter">
+               <item alignment="Qt::AlignmentFlag::AlignHCenter">
                 <widget class="QLabel" name="label_7">
                  <property name="minimumSize">
                   <size>
@@ -541,7 +541,7 @@ QLabel {
                   <bool>true</bool>
                  </property>
                  <property name="alignment">
-                  <set>Qt::AlignCenter</set>
+                  <set>Qt::AlignmentFlag::AlignCenter</set>
                  </property>
                 </widget>
                </item>
@@ -561,10 +561,10 @@ QLabel {
               </layout>
              </widget>
             </item>
-            <item alignment="Qt::AlignHCenter">
+            <item alignment="Qt::AlignmentFlag::AlignHCenter">
              <widget class="QWidget" name="widget_12" native="true">
               <layout class="QVBoxLayout" name="verticalLayout_12">
-               <item alignment="Qt::AlignHCenter">
+               <item alignment="Qt::AlignmentFlag::AlignHCenter">
                 <widget class="QLabel" name="label_8">
                  <property name="minimumSize">
                   <size>
@@ -625,7 +625,7 @@ QLabel {
                   <bool>true</bool>
                  </property>
                  <property name="alignment">
-                  <set>Qt::AlignCenter</set>
+                  <set>Qt::AlignmentFlag::AlignCenter</set>
                  </property>
                 </widget>
                </item>
@@ -645,10 +645,10 @@ QLabel {
               </layout>
              </widget>
             </item>
-            <item alignment="Qt::AlignHCenter">
+            <item alignment="Qt::AlignmentFlag::AlignHCenter">
              <widget class="QWidget" name="widget_15" native="true">
               <layout class="QVBoxLayout" name="verticalLayout_10">
-               <item alignment="Qt::AlignHCenter">
+               <item alignment="Qt::AlignmentFlag::AlignHCenter">
                 <widget class="QLabel" name="label_10">
                  <property name="minimumSize">
                   <size>
@@ -709,7 +709,7 @@ QLabel {
                   <bool>true</bool>
                  </property>
                  <property name="alignment">
-                  <set>Qt::AlignCenter</set>
+                  <set>Qt::AlignmentFlag::AlignCenter</set>
                  </property>
                 </widget>
                </item>
@@ -729,10 +729,10 @@ QLabel {
               </layout>
              </widget>
             </item>
-            <item alignment="Qt::AlignHCenter">
+            <item alignment="Qt::AlignmentFlag::AlignHCenter">
              <widget class="QWidget" name="widget_16" native="true">
               <layout class="QVBoxLayout" name="verticalLayout_9">
-               <item alignment="Qt::AlignHCenter">
+               <item alignment="Qt::AlignmentFlag::AlignHCenter">
                 <widget class="QLabel" name="label_11">
                  <property name="minimumSize">
                   <size>
@@ -793,7 +793,7 @@ QLabel {
                   <bool>true</bool>
                  </property>
                  <property name="alignment">
-                  <set>Qt::AlignCenter</set>
+                  <set>Qt::AlignmentFlag::AlignCenter</set>
                  </property>
                 </widget>
                </item>
@@ -952,23 +952,90 @@ color: rgb(200,200,200);</string>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_7">
             <item>
-             <widget class="QLabel" name="label_17">
-              <property name="font">
-               <font>
-                <family>Consolas</family>
-                <pointsize>12</pointsize>
-                <bold>false</bold>
-               </font>
+             <widget class="QStackedWidget" name="stackedWidget">
+              <property name="currentIndex">
+               <number>1</number>
               </property>
-              <property name="styleSheet">
-               <string notr="true">color: grey;</string>
-              </property>
-              <property name="text">
-               <string>No generated files.</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
+              <widget class="QWidget" name="page_3">
+               <layout class="QVBoxLayout" name="verticalLayout_14">
+                <item>
+                 <widget class="QLabel" name="label_17">
+                  <property name="font">
+                   <font>
+                    <family>Consolas</family>
+                    <pointsize>12</pointsize>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: grey;</string>
+                  </property>
+                  <property name="text">
+                   <string>No generated files.</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="page_4">
+               <layout class="QGridLayout" name="gridLayout">
+                <item row="0" column="0">
+                 <widget class="QTableWidget" name="tableWidget">
+                  <property name="styleSheet">
+                   <string notr="true">/* Alap táblázat stílus */
+QTableWidget {
+    background-color: #1e1e1e;
+    alternate-background-color: #2e2e2e;
+    gridline-color: #555555;
+    font: 11pt &quot;Segoe UI&quot;;
+    color: #ffffff;
+    border: 1px solid #3a3a3a;
+}
+
+/* Header stílus */
+QHeaderView::section {
+    background-color: #2d2d30;
+    color: #ffffff;
+    padding: 4px;
+    border: 1px solid #3a3a3a;
+    font-weight: bold;
+}
+
+/* Sorok váltakozó szín */
+QTableWidget::item {
+    selection-background-color: #0078d7;
+    selection-color: #ffffff;
+}
+
+/* Oszlopok szélei és elválasztó */
+QTableWidget::item:selected {
+    background-color: #0078d7;
+    color: #ffffff;
+}
+
+/* QPushButton a cellában */
+QPushButton {
+    background-color: #3a3a3a;
+    border: 1px solid #555555;
+    border-radius: 4px;
+    color: #ffffff;
+    padding: 2px 6px;
+}
+QPushButton:hover {
+    background-color: #505050;
+}
+QPushButton:pressed {
+    background-color: #686868;
+}
+</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
              </widget>
             </item>
            </layout>

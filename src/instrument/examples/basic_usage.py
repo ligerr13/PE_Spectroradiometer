@@ -1,4 +1,6 @@
 import asyncio
+import json
+import logging
 from ..src.instrument import Instrument as CS2000
 from ..src.commands import IdentificationDataRead, Measure, MeasuringSwitchEnable, RemoteModeSelect
 from ...globals.utils import show_toast

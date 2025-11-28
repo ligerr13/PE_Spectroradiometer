@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file '.\ui\measure_dialog_prot.ui'
+# Form implementation generated from reading ui file 'ui/measure_dialog_prot.ui'
 #
 # Created by: PyQt6 UI code generator 6.9.0
 #
@@ -12,7 +12,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(562, 795)
+        Dialog.resize(683, 795)
         font = QtGui.QFont()
         font.setFamily("Consolas")
         font.setBold(True)
@@ -163,7 +163,7 @@ class Ui_Dialog(object):
 "    color: #808080;\n"
 "}")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(".\\ui\\../Dokumentumok/PE_Spectroradiometer/PE_Spectroradiometer/resources/icons/play-button.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon.addPixmap(QtGui.QPixmap("ui\\../Dokumentumok/PE_Spectroradiometer/PE_Spectroradiometer/resources/icons/play-button.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.pushButton.setIcon(icon)
         self.pushButton.setObjectName("pushButton")
         self.horizontalLayout_2.addWidget(self.pushButton)
@@ -502,7 +502,13 @@ class Ui_Dialog(object):
         self.widget_9.setObjectName("widget_9")
         self.verticalLayout_7 = QtWidgets.QVBoxLayout(self.widget_9)
         self.verticalLayout_7.setObjectName("verticalLayout_7")
-        self.label_17 = QtWidgets.QLabel(parent=self.widget_9)
+        self.stackedWidget = QtWidgets.QStackedWidget(parent=self.widget_9)
+        self.stackedWidget.setObjectName("stackedWidget")
+        self.page_3 = QtWidgets.QWidget()
+        self.page_3.setObjectName("page_3")
+        self.verticalLayout_14 = QtWidgets.QVBoxLayout(self.page_3)
+        self.verticalLayout_14.setObjectName("verticalLayout_14")
+        self.label_17 = QtWidgets.QLabel(parent=self.page_3)
         font = QtGui.QFont()
         font.setFamily("Consolas")
         font.setPointSize(12)
@@ -511,12 +517,71 @@ class Ui_Dialog(object):
         self.label_17.setStyleSheet("color: grey;")
         self.label_17.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label_17.setObjectName("label_17")
-        self.verticalLayout_7.addWidget(self.label_17)
+        self.verticalLayout_14.addWidget(self.label_17)
+        self.stackedWidget.addWidget(self.page_3)
+        self.page_4 = QtWidgets.QWidget()
+        self.page_4.setObjectName("page_4")
+        self.gridLayout = QtWidgets.QGridLayout(self.page_4)
+        self.gridLayout.setObjectName("gridLayout")
+        self.tableWidget = QtWidgets.QTableWidget(parent=self.page_4)
+        self.tableWidget.setStyleSheet("/* Alap táblázat stílus */\n"
+"QTableWidget {\n"
+"    background-color: #1e1e1e;\n"
+"    alternate-background-color: #2e2e2e;\n"
+"    gridline-color: #555555;\n"
+"    font: 11pt \"Segoe UI\";\n"
+"    color: #ffffff;\n"
+"    border: 1px solid #3a3a3a;\n"
+"}\n"
+"\n"
+"/* Header stílus */\n"
+"QHeaderView::section {\n"
+"    background-color: #2d2d30;\n"
+"    color: #ffffff;\n"
+"    padding: 4px;\n"
+"    border: 1px solid #3a3a3a;\n"
+"    font-weight: bold;\n"
+"}\n"
+"\n"
+"/* Sorok váltakozó szín */\n"
+"QTableWidget::item {\n"
+"    selection-background-color: #0078d7;\n"
+"    selection-color: #ffffff;\n"
+"}\n"
+"\n"
+"/* Oszlopok szélei és elválasztó */\n"
+"QTableWidget::item:selected {\n"
+"    background-color: #0078d7;\n"
+"    color: #ffffff;\n"
+"}\n"
+"\n"
+"/* QPushButton a cellában */\n"
+"QPushButton {\n"
+"    background-color: #3a3a3a;\n"
+"    border: 1px solid #555555;\n"
+"    border-radius: 4px;\n"
+"    color: #ffffff;\n"
+"    padding: 2px 6px;\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: #505050;\n"
+"}\n"
+"QPushButton:pressed {\n"
+"    background-color: #686868;\n"
+"}\n"
+"")
+        self.tableWidget.setObjectName("tableWidget")
+        self.tableWidget.setColumnCount(0)
+        self.tableWidget.setRowCount(0)
+        self.gridLayout.addWidget(self.tableWidget, 0, 0, 1, 1)
+        self.stackedWidget.addWidget(self.page_4)
+        self.verticalLayout_7.addWidget(self.stackedWidget)
         self.verticalLayout_6.addWidget(self.widget_9)
         self.verticalLayout_2.addWidget(self.widget_4)
         self.verticalLayout.addWidget(self.widget)
 
         self.retranslateUi(Dialog)
+        self.stackedWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):
@@ -542,3 +607,13 @@ class Ui_Dialog(object):
         self.label_4.setText(_translate("Dialog", "Program Logger"))
         self.label_5.setText(_translate("Dialog", "Generated Files"))
         self.label_17.setText(_translate("Dialog", "No generated files."))
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    Dialog = QtWidgets.QDialog()
+    ui = Ui_Dialog()
+    ui.setupUi(Dialog)
+    Dialog.show()
+    sys.exit(app.exec())
